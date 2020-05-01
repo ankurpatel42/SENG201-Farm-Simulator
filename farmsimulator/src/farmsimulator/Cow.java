@@ -6,7 +6,7 @@ public class Cow extends Animal {
 	public String cowType = null;
 	public int cowAge = 0;
 	
-	public Cow () {
+	public Cow () { 
 		
 	}
 	
