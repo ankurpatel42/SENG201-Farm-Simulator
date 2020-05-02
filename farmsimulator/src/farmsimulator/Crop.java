@@ -17,16 +17,30 @@ public class Crop extends Farm{
 	public float getCropPurchasePrice() {
 		return cropPurchasePrice;
 	}
+	
+	public void setDaysTillHarvest(int days) {
+		daysTillHarvest = days;
+	}
 
 	public float getCropMoneyGiven() {
 		return cropMoneyGiven;
 	}
 	
-	public void tendCrops() {
-		
+	public void tendCrops(Item choice) {
+		Farmer.useAction();
+		daysTillHarvest -= choice.getHarvestSpeedUpTime();
+		if (daysTillHarvest <= 0) {
+			daysTillHarvest = 0;
+		}
 	}
 	
 	public void harvestCrops() {
-		
+		Farmer.useAction();
+		if (daysTillHarvest > 0) {
+			System.out.Println("Sorry your crops are not ready for Harvest yet");
+		}
+		else {
+			Farm.setMoneyAvailible(Farm.getMoneyAvailible + cropMoneyGiven)
+		}
 	}
 }

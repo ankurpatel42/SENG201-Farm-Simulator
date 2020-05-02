@@ -10,8 +10,9 @@ public class Farm {
 	private static int animalHappiness = 0;
 	private static int farmTidiness = 0;
 	private static ArrayList<Animal> animalsList = null;
-	//private static ArrayList<Crop> cropsList = null;
+	private static ArrayList<Crop> cropsList = null;
 	private static int gameLength = 0;
+	private static ArrayList<Item> itemsOwned = null;
 	
 	public static String getFarmName() {
 		return farmName;
@@ -19,6 +20,10 @@ public class Farm {
 	
 	public static double getMoneyAvailable() {
 		return moneyAvailable;
+	}
+	
+	public static void setMoneyAvailable(double amount) {
+		moneyAvailable = amount;
 	}
 	
 	public static double getCropGrowthRate() {
@@ -37,9 +42,17 @@ public class Farm {
 		return animalsList;
 	}
 	
-	/*public static ArrayList<Crop> getCropsList() {
-		// cropsList;
-	}*/
+	public static void addAnimal(Animal animal) {
+		animalsList.add(animal);
+	}
+	
+	public static ArrayList<Crop> getCropsList() {
+		return cropsList;
+	}
+	
+	public static void addCrop(Crop crop) {
+		cropsList.add(crop);
+	}
 	
 	public static void setGameLength(int chosenGameLength) {
 		gameLength = chosenGameLength;
@@ -75,6 +88,14 @@ public class Farm {
 		}
 		
 		
+	}
+	
+	public static ArrayList<Item> getItemsOwned(){
+		return itemsOwned;
+	}
+	
+	public static void addNewItem(Item item){
+		itemsOwned.add(item);
 	}
 	
 	
