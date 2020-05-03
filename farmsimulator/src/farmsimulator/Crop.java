@@ -40,7 +40,7 @@ public class Crop extends Farm{
 			System.out.Println("Sorry your crops are not ready for Harvest yet");
 		}
 		else {
-			Farm.setMoneyAvailible(Farm.getMoneyAvailible + cropMoneyGiven)
+			Farm.setMoneyAvailible(cropMoneyGiven);
 		}
 	}
 }
