@@ -5,7 +5,7 @@ public class Farmer {
 	private String farmerName = null;
 	private int farmerAge = 0;
 	private static int actionsLeft = 0;
-	private static int dayNum = 0;
+	private static int dayNum = 1;
 	
 	public Farmer (String inputFarmerName) {
 		farmerName = inputFarmerName;
@@ -32,7 +32,7 @@ public class Farmer {
 	}
 	
 	public static void moveToNextDay() {
-		if (dayNum == GameEnvironment.getGameLength()) {
+		if (dayNum > GameEnvironment.getGameLength()) {
 			System.out.println("You cannot move to the next day as this is your last day.");
 		} else {
 			dayNum++;
