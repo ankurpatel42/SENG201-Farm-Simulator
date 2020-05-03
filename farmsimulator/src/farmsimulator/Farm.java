@@ -86,14 +86,6 @@ public class Farm {
 	public static void addNewItem(Item item){
 		itemsOwned.add(item);
 	}
-	
-	public void tendToFarmLand() {
-		//useAction();
-		for (Crop crop : Farm.getCropList()) {
-			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
-		}
-		//All Animal Happiness Increases//
-	}
 
 	
 }
