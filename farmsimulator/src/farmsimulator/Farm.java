@@ -13,6 +13,7 @@ public class Farm {
 	private static ArrayList<Animal> animalsList = null;
 	private static ArrayList<Crop> cropsList = null;
 	private static ArrayList<Item> itemsOwned = null;
+	private static String type = null;
 	
 	public static String getFarmName() {
 		return farmName;
@@ -37,6 +38,10 @@ public class Farm {
 	
 	public static ArrayList<Animal> getAnimalList() {
 		return animalsList;
+	}
+	
+	public static void addCropToList(Crop crop) {
+		cropsList.add(crop);
 	}
 	
 	public static ArrayList<Crop> getCropList() {
@@ -78,6 +83,29 @@ public class Farm {
 	public static int getStartingAnimalHappiness() {
 		return startingAnimalHappiness;
 	}
+	
+	public static void setFarmType(int option) {
+		if (type == null && option == 1) {
+			type = "Farm A";
+		} 
+		else if (type == null && option == 2) {
+			type = "Farm B";
+		}
+		else if (type == null && option == 3) {
+			type = "Farm C";
+		}
+		else if (type == null && option == 4) {
+			type = "Farm D";
+		}
+		else {
+			System.out.println("You cannot change this value.");
+		}
+	}
+	
+	public static String getFarmType() {
+		return type;
+	}
+	
 	
 	public static ArrayList<Item> getItemsOwned(){
 		return itemsOwned;
