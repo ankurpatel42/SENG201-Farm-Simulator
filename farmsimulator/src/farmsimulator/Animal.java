@@ -21,6 +21,7 @@ public class Animal extends Farm {
 	}
 	
 	public void feedAnimal(Item choice) {
+		System.out.println("You have fed the animal " + choice.getItemName() + "!");
 		animalHealthiness += 2;
 	}
 	
