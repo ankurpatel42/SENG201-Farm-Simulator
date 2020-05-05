@@ -31,7 +31,7 @@ public class Farmer {
 		return dayNum;
 	}
 	
-	public static void moveToNextDay() {
+	public void moveToNextDay() {
 		if (dayNum > GameEnvironment.getGameLength()) {
 			System.out.println("You cannot move to the next day as this is your last day.");
 		} else {
@@ -45,6 +45,10 @@ public class Farmer {
 			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
 		}
 		//All Animal Happiness Increases//
+	}
+	
+	public static void visitGeneralStore(GeneralStore store) {
+		System.out.println("Items for sale: " + store.viewItemsForSale());
 	}
 	
 	public String toString() {
