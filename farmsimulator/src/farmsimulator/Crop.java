@@ -5,9 +5,15 @@ public class Crop extends Farm{
 	private float cropPurchasePrice = 0;
 	private float cropMoneyGiven = 0;
 	private int daysTillHarvest = 0;
+	private String name = null;
+	private int daysGrowing = 0;
 
 	public Crop () {
 
+	}
+	
+	public int getDaysGrowing() {
+		return daysGrowing;
 	}
 	
 	public int getDaysTillHarvest() {
@@ -24,6 +30,12 @@ public class Crop extends Farm{
 
 	public float getCropMoneyGiven() {
 		return cropMoneyGiven;
+	}
+	
+	public void dayPassed() {
+		crops = Farm.getCropList();
+		for (Crop crop : crops) {
+			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
 	}
 	
 	public void tendCrops(Item choice) {

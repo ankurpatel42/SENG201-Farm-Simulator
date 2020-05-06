@@ -7,6 +7,7 @@ public class GameEnvironment {
 	private static Scanner scanner = new Scanner(System.in);
 	private static int gameLength = 0;
 	private static Farmer farmer = null;
+	private static Farm farm = null;
 	
 	public static int getGameLength() {
 		return gameLength;
@@ -83,7 +84,7 @@ public class GameEnvironment {
 	}
 	
 	
-	private static String farmerNameChosen() {
+	private static String nameChosen(nameFor) {
 		
 		String farmerName = scanner.nextLine();
 		char[] farmerNameArray = farmerName.toCharArray();
@@ -103,7 +104,7 @@ public class GameEnvironment {
 		//Infinite loop that terminates only once the user has entered valid farm name according to specifications.
 		while(true) {
 			if (farmerName.length() < 3 || farmerName.length() > 15 || farmerNameHasDigit == true || farmerNameContainsSpecialCharacter == true) {
-				System.out.print("Your farmer name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters: ");
+				System.out.print("Your " + nameFor + " farmer name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters: ");
 				farmerNameHasDigit = false;
 				farmerNameContainsSpecialCharacter = false;
 				farmerName = scanner.nextLine();
@@ -121,10 +122,15 @@ public class GameEnvironment {
 		
 		System.out.print("Give your farmer a name: ");
 		
-		String farmerName = farmerNameChosen();
+		String farmerName = nameChosen('farmer');
 		
 		//instatiate farmer after user gives farmer their name
 		farmer = new Farmer(farmerName);
+		
+		System.out.print("Name your farm: ");
+		String farmName = nameChosen('farm');
+		
+		farm = new Farm(farmName);
 		
 		farmOptionsForPlayer();
 		
@@ -169,6 +175,8 @@ public class GameEnvironment {
 			if (number == 1) {
 				if (farmer.getDayNum() > gameLength) {
 					System.out.println("You have completed the game!");
+					System.out.println("Final Money: " + Farm.getMoneyAvailible());
+					//Farm Score
 					break;
 				}
 				farmer.moveToNextDay();

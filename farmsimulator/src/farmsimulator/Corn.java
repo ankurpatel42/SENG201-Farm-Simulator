@@ -2,9 +2,10 @@ package farmsimulator;
 
 public class Corn extends Crop {
 	
-	public String name = "Corn";
-	
 	public Corn() {
-		
+		name = "Corn"
+		cropPurchasePrice = 5;
+		cropMoneyGiven = 60;
+		daysTillHarvest = 6;
 	}
 }

@@ -21,16 +21,22 @@ public class Animal extends Farm {
 	}
 	
 	public void feedAnimal(Item choice) {
+		Farmer.useAction();
 		System.out.println("You have fed the animal " + choice.getItemName() + "!");
 		animalHealthiness += 2;
 	}
 	
 	public void playWithAnimal() {
+		Farmer.useAction();
 		animalHappiness += 3;
 	}
 	
 	public int getAnimalHealthiness() {
 		return animalHealthiness;
+	}
+	
+	public void setAnimalHealthiness(int healthiness) {
+		animalHealthiness = healthiness;
 	}
 	
 	public int getAnimalHappiness() {

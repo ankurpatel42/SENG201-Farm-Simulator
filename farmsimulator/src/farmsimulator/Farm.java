@@ -15,6 +15,10 @@ public class Farm {
 	private static ArrayList<Item> itemsOwned = null;
 	private static String type = null;
 	
+	public static Farm(String name) {
+		farmName = name;
+	}
+	
 	public static String getFarmName() {
 		return farmName;
 	}
