@@ -7,9 +7,12 @@ public class Animal extends Farm {
 	private int animalHealthiness = 0;
 	private int animalHappiness = 0;
 	
-	public Animal () {
-		animalHealthiness = Farm.getStartingAnimalHealthiness();
-		animalHappiness = Farm.getStartingAnimalHappiness();
+	public Animal (String name, float animalPurchasePrice, float animalMoneyGiven, int animalHealthiness, int animalHappiness) {
+		super("Test");
+		this.animalPurchasePrice = animalPurchasePrice;
+		this.animalMoneyGiven = animalMoneyGiven;
+		this.animalHealthiness = animalHealthiness;
+		this.animalHappiness = animalHappiness;
 	}
 	
 	public float getAnimalPurchasePrice() {
@@ -41,6 +44,10 @@ public class Animal extends Farm {
 	
 	public int getAnimalHappiness() {
 		return animalHappiness;
+	}
+
+	public void setAnimalHappiness(int i) {
+		animalHappiness = i;
 	}
 	
 	
