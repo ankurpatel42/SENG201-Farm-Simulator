@@ -2,8 +2,9 @@ package farmsimulator;
 
 public class Farmer {
 	
-	private String farmerName = null;
+	private static String farmerName = null;
 	private int farmerAge = 0;
+	private double bonus;
 	private static int actionsLeft = 2;
 	private static int dayNum = 1;
 	
@@ -25,12 +26,12 @@ public class Farmer {
 	
 	public static void useAction() {
 		if (actionsLeft == 0) {
-			System.out.println(farmerName + ' has no actions left for today');
+			System.out.println(farmerName + " has no actions left for today");
 		}
 		else {
 			actionsLeft--;
 			if (actionsLeft == 0) {
-				System.out.println(farmerName + ' has run out of actions for today');
+				System.out.println(farmerName + " has run out of actions for today");
 			}
 		}
 	}
@@ -46,13 +47,10 @@ public class Farmer {
 			dayNum++;
 			actionsLeft = 2;
 			Crop.dayPassed();
-			animals = Farm.getAnimalList();
-			bonus = 0;
-			for (Animal animal : animals) {
-				bonus += 0.1 * animal.getAnimalHappiness();
+			for (Animal animal : Farm.getAnimalList()) {
+				bonus = getBonus() + 0.1 * animal.getAnimalHappiness();
 			}
-			Farm.setMoneyAvailible(money);
-			}
+			Farm.setMoneyAvailible(Farm.getMoneyAvailable() + bonus);
 		}
 	}
 	
@@ -61,8 +59,8 @@ public class Farmer {
 		for (Crop crop : Farm.getCropList()) {
 			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
 		}
-		for (Animal animal : animals) {
-			animal.setAnimalHappiness(animal.getAnimalHappiness() + 1)
+		for (Animal animal : Farm.getAnimalList()) {
+			animal.setAnimalHappiness(animal.getAnimalHappiness() + 1);
 		}
 	}
 	
@@ -72,6 +70,10 @@ public class Farmer {
 	
 	public String toString() {
 		return "I'm a farmer and my name is " + farmerName;
+	}
+
+	public double getBonus() {
+		return bonus;
 	}
 	
 }
