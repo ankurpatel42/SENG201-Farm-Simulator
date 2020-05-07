@@ -42,7 +42,7 @@ public abstract class Crop {
 	}
 	
 	public static void dayPassed() {
-		crops = GameEnvironment.farm.getCropList();
+		crops = GameEnvironment.getFarm().getCropList();
 		for (Crop crop : crops) {
 			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
 		}
@@ -62,7 +62,7 @@ public abstract class Crop {
 			System.out.println("Sorry your crops are not ready for Harvest yet");
 		}
 		else {
-			GameEnvironment.farm.setMoneyAvailible(cropMoneyGiven);
+			GameEnvironment.getFarm().setMoneyAvailible(cropMoneyGiven);
 		}
 	}
 }
