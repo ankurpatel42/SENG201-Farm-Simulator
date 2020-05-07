@@ -1,6 +1,6 @@
 package farmsimulator;
 
-public class Animal extends Farm {
+public abstract class Animal {
 	
 	private float animalPurchasePrice = 0;
 	private float animalMoneyGiven = 0;
@@ -8,7 +8,6 @@ public class Animal extends Farm {
 	private int animalHappiness = 0;
 	
 	public Animal (String name, float animalPurchasePrice, float animalMoneyGiven, int animalHealthiness, int animalHappiness) {
-		super("Test");
 		this.animalPurchasePrice = animalPurchasePrice;
 		this.animalMoneyGiven = animalMoneyGiven;
 		this.animalHealthiness = animalHealthiness;
