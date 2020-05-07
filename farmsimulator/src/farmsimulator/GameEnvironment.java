@@ -123,7 +123,6 @@ public class GameEnvironment {
 		String farmName = nameChosen("farm");
 		
 		farm = new Farm(farmName);
-		farm.notify(); //remove later
 		
 		farmOptionsForPlayer();
 		
