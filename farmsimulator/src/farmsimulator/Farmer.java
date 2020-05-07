@@ -47,19 +47,19 @@ public class Farmer {
 			dayNum++;
 			actionsLeft = 2;
 			Crop.dayPassed();
-			for (Animal animal : GameEnvironment.farm.getAnimalList()) {
+			for (Animal animal : GameEnvironment.getFarm().getAnimalList()) {
 				bonus = getBonus() + 0.1 * animal.getAnimalHappiness();
 			}
-			GameEnvironment.farm.setMoneyAvailible(GameEnvironment.farm.getMoneyAvailable() + bonus);
+			GameEnvironment.getFarm().setMoneyAvailible(GameEnvironment.getFarm().getMoneyAvailable() + bonus);
 		}
 	}
 	
 	public void tendToFarmLand() {
 		useAction();
-		for (Crop crop : GameEnvironment.farm.getCropList()) {
+		for (Crop crop : GameEnvironment.getFarm().getCropList()) {
 			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
 		}
-		for (Animal animal : GameEnvironment.farm.getAnimalList()) {
+		for (Animal animal : GameEnvironment.getFarm().getAnimalList()) {
 			animal.setAnimalHappiness(animal.getAnimalHappiness() + 1);
 		}
 	}
