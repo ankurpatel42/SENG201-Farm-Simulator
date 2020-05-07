@@ -1,5 +1,7 @@
 package farmsimulator;
 
+import java.util.ArrayList;
+
 public class Crop extends Farm{
 
 	private float cropPurchasePrice = 0;
@@ -7,9 +9,17 @@ public class Crop extends Farm{
 	private int daysTillHarvest = 0;
 	private String name = null;
 	private int daysGrowing = 0;
+	private static ArrayList<Crop> crops = null;
 
-	public Crop () {
-
+	public Crop (String name, float cropPurchasePrice, float cropMoneyGiven, int daysTillHarvest) {
+		super("");
+		this.name = name;
+		this.cropPurchasePrice = cropPurchasePrice;
+		this.daysTillHarvest = daysTillHarvest;
+	}
+	
+	public String getCropName() {
+		return name;
 	}
 	
 	public int getDaysGrowing() {
@@ -32,10 +42,11 @@ public class Crop extends Farm{
 		return cropMoneyGiven;
 	}
 	
-	public void dayPassed() {
+	public static void dayPassed() {
 		crops = Farm.getCropList();
 		for (Crop crop : crops) {
 			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
+		}
 	}
 	
 	public void tendCrops(Item choice) {
@@ -49,7 +60,7 @@ public class Crop extends Farm{
 	public void harvestCrops() {
 		Farmer.useAction();
 		if (daysTillHarvest > 0) {
-			System.out.Println("Sorry your crops are not ready for Harvest yet");
+			System.out.println("Sorry your crops are not ready for Harvest yet");
 		}
 		else {
 			Farm.setMoneyAvailible(cropMoneyGiven);
