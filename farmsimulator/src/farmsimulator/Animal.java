@@ -10,8 +10,8 @@ public abstract class Animal {
 	public Animal (String name, float animalPurchasePrice, float animalMoneyGiven, int animalHealthiness, int animalHappiness) {
 		this.animalPurchasePrice = animalPurchasePrice;
 		this.animalMoneyGiven = animalMoneyGiven;
-		this.animalHealthiness = animalHealthiness;
-		this.animalHappiness = animalHappiness;
+		this.animalHealthiness = GameEnvironment.getFarm().getStartingAnimalHealthiness() + animalHealthiness;
+		this.animalHappiness = GameEnvironment.getFarm().getStartingAnimalHappiness() + animalHappiness;
 	}
 	
 	public float getAnimalPurchasePrice() {
