@@ -6,8 +6,6 @@ public class Farm {
 	
 	private static String farmName = null;
 	private static double moneyAvailable = 0;
-	private static int startingAnimalHappiness = 0;
-	private static int startingAnimalHealthiness = 0;
 	private static double cropGrowthRate = 0;
 	private static int farmTidiness = 0;
 	private static ArrayList<Animal> animalsList = null;
@@ -15,7 +13,7 @@ public class Farm {
 	private static ArrayList<Item> itemsOwned = null;
 	private static String type = null;
 	
-	public static Farm(String name) {
+	public Farm(String name) {
 		farmName = name;
 	}
 	
@@ -62,30 +60,6 @@ public class Farm {
 	
 	public static double getCropGrowthRate() {
 		return cropGrowthRate;
-	}
-	
-	public static void setStartingAnimalHealthiness(int option) {
-		if (startingAnimalHealthiness == 0) {
-			startingAnimalHealthiness = option;
-		} else {
-			System.out.println("You cannot change this value.");
-		}
-	}
-	
-	public static int getStartingAnimalHealthiness() {
-		return startingAnimalHealthiness;
-	}
-
-	public static void setStartingAnimalHappiness(int option) {
-		if (startingAnimalHappiness == 0) {
-			startingAnimalHappiness = option;
-		} else {
-			System.out.println("You cannot change this value.");
-		}
-	}
-	
-	public static int getStartingAnimalHappiness() {
-		return startingAnimalHappiness;
 	}
 	
 	public static void setFarmType(int option) {
