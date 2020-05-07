@@ -11,13 +11,17 @@ public class Farm {
 	private ArrayList<Animal> animalsList = new ArrayList<Animal>();
 	private ArrayList<Crop> cropsList = new ArrayList<Crop>();
 	private ArrayList<Item> itemsOwned = new ArrayList<Item>();
+	private int startingAnimalHealthiness = 0;
+	private int startingAnimalHappiness = 0;
 	private String type = null;
 	
 	
-	public Farm(String name, double money, double cropGrowth) {
+	public Farm(String name, double money, double cropGrowth, int animalHealthiness, int animalHappiness) {
 		farmName = name;
 		moneyAvailable = money;
 		cropGrowthRate = cropGrowth;
+		startingAnimalHealthiness = animalHealthiness;
+		startingAnimalHappiness = animalHappiness;
 	}
 	
 	public String getFarmName() {
@@ -70,6 +74,12 @@ public class Farm {
 	public void addNewItem(Item item){
 		itemsOwned.add(item);
 	}
-
 	
+	public int getStartingAnimalHappiness() {
+		return startingAnimalHappiness;
+	}
+
+	public int getStartingAnimalHealthiness() {
+		return startingAnimalHealthiness;
+	}
 }
