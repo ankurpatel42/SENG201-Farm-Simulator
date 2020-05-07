@@ -2,12 +2,8 @@ package farmsimulator;
 
 public class FertiliserTwo extends Item {
 	
-	private int harvestSpeedUpTime = 3;
-	private double price = 250;
-	private String name = "F2";
-	
-	public int getHarvestSpeedUpTime() {
-		return harvestSpeedUpTime;
+	public FertiliserTwo() {
+		super("F2", 250, 3);
 	}
 	
 }
