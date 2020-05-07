@@ -20,26 +20,18 @@ public class GameEnvironment {
 		if (optionChosen == 1) {
 			Farm.setMoneyAvailible(100);
 			Farm.setCropGrowthRate(2);
-			Farm.setStartingAnimalHealthiness(4);
-			Farm.setStartingAnimalHappiness(3);
 		}
 		else if (optionChosen == 2) {
 			Farm.setMoneyAvailible(300);
 			Farm.setCropGrowthRate(3);
-			Farm.setStartingAnimalHealthiness(5);
-			Farm.setStartingAnimalHappiness(5);
 		}
 		else if (optionChosen == 3) {
 			Farm.setMoneyAvailible(500);
 			Farm.setCropGrowthRate(2);
-			Farm.setStartingAnimalHealthiness(7);
-			Farm.setStartingAnimalHappiness(6);
 		} 
 		else if (optionChosen == 4) {
 			Farm.setMoneyAvailible(2000);
 			Farm.setCropGrowthRate(3);
-			Farm.setStartingAnimalHealthiness(1);
-			Farm.setStartingAnimalHappiness(3);
 		}
 		else {
 			System.out.println("You have not entered a valid option.");
@@ -84,7 +76,7 @@ public class GameEnvironment {
 	}
 	
 	
-	private static String nameChosen(nameFor) {
+	private static String nameChosen(String nameFor) {
 		
 		String farmerName = scanner.nextLine();
 		char[] farmerNameArray = farmerName.toCharArray();
@@ -122,15 +114,16 @@ public class GameEnvironment {
 		
 		System.out.print("Give your farmer a name: ");
 		
-		String farmerName = nameChosen('farmer');
+		String farmerName = nameChosen("farmer");
 		
 		//instatiate farmer after user gives farmer their name
 		farmer = new Farmer(farmerName);
 		
 		System.out.print("Name your farm: ");
-		String farmName = nameChosen('farm');
+		String farmName = nameChosen("farm");
 		
 		farm = new Farm(farmName);
+		farm.notify(); //remove later
 		
 		farmOptionsForPlayer();
 		
@@ -175,7 +168,7 @@ public class GameEnvironment {
 			if (number == 1) {
 				if (farmer.getDayNum() > gameLength) {
 					System.out.println("You have completed the game!");
-					System.out.println("Final Money: " + Farm.getMoneyAvailible());
+					System.out.println("Final Money: " + Farm.getMoneyAvailable());
 					//Farm Score
 					break;
 				}
