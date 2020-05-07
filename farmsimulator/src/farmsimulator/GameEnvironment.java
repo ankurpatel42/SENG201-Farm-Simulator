@@ -7,41 +7,20 @@ public class GameEnvironment {
 	private static Scanner scanner = new Scanner(System.in);
 	private static int gameLength = 0;
 	private static Farmer farmer = null;
-	private static Farm farm = null;
+	private static Farm farm = null; //Not sure whether to leave this private or make public, if public change 'getFarm()' to 'farm' in other 
+	//classes (Crop, Farmer, GeneralStore)
+	
+	public static Farm getFarm() {
+		return farm;
+	}
 	
 	public static int getGameLength() {
 		return gameLength;
 	}
 	
-	private static void farmType(int optionChosen) {
+	private static int farmChosenValid() {
 		
-		Farm.setFarmType(optionChosen);
-		
-		if (optionChosen == 1) {
-			Farm.setMoneyAvailible(100);
-			Farm.setCropGrowthRate(2);
-		}
-		else if (optionChosen == 2) {
-			Farm.setMoneyAvailible(300);
-			Farm.setCropGrowthRate(3);
-		}
-		else if (optionChosen == 3) {
-			Farm.setMoneyAvailible(500);
-			Farm.setCropGrowthRate(2);
-		} 
-		else if (optionChosen == 4) {
-			Farm.setMoneyAvailible(2000);
-			Farm.setCropGrowthRate(3);
-		}
-		else {
-			System.out.println("You have not entered a valid option.");
-		}
-		
-		
-	}
-	
-	private static void farmChosenValid() {
-		
+		int farmNumberChosen = 0;
 		String farmChosen = scanner.nextLine();
 		
 		//Infinite loop that terminates only once the user has entered a valid farm number according to specifications.
@@ -53,7 +32,7 @@ public class GameEnvironment {
 					farmChosen = scanner.nextLine();
 				} 
 				else {
-					farmType(numFarm);
+					farmNumberChosen = numFarm;
 					break;
 				}
 			} catch (NumberFormatException e) {
@@ -63,6 +42,8 @@ public class GameEnvironment {
 		}
 		
 		System.out.println("You have selected option: " + farmChosen );
+		
+		return farmNumberChosen;
 	}
 	
 	private static void farmOptionsForPlayer() {
@@ -122,11 +103,22 @@ public class GameEnvironment {
 		System.out.print("Name your farm: ");
 		String farmName = nameChosen("farm");
 		
-		farm = new Farm(farmName);
-		
 		farmOptionsForPlayer();
 		
-		farmChosenValid();
+		int farmNumberChosen = farmChosenValid();
+		
+		if (farmNumberChosen == 1) {
+			farm = new Farm(farmName, 1000, 100);
+		}
+		else if (farmNumberChosen == 2) {
+			farm = new Farm(farmName, 2000, 200);
+		}
+		else if (farmNumberChosen == 3) {
+			farm = new Farm(farmName, 700, 50);
+		}
+		else if (farmNumberChosen == 4) {
+			farm = new Farm(farmName, 5000, 300);
+		}
 	}
 	
 	private static void SetUpGame() {
@@ -167,7 +159,7 @@ public class GameEnvironment {
 			if (number == 1) {
 				if (farmer.getDayNum() > gameLength) {
 					System.out.println("You have completed the game!");
-					System.out.println("Final Money: " + Farm.getMoneyAvailable());
+					System.out.println("Final Money: " + farm.getMoneyAvailable());
 					//Farm Score
 					break;
 				}
