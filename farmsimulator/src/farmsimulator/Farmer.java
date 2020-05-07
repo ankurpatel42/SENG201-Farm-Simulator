@@ -4,7 +4,7 @@ public class Farmer {
 	
 	private static String farmerName = null;
 	private int farmerAge = 0;
-	private double bonus;
+	private double bonus = 0;
 	private static int actionsLeft = 2;
 	private static int dayNum = 1;
 	
@@ -47,19 +47,19 @@ public class Farmer {
 			dayNum++;
 			actionsLeft = 2;
 			Crop.dayPassed();
-			for (Animal animal : Farm.getAnimalList()) {
+			for (Animal animal : GameEnvironment.farm.getAnimalList()) {
 				bonus = getBonus() + 0.1 * animal.getAnimalHappiness();
 			}
-			Farm.setMoneyAvailible(Farm.getMoneyAvailable() + bonus);
+			GameEnvironment.farm.setMoneyAvailible(GameEnvironment.farm.getMoneyAvailable() + bonus);
 		}
 	}
 	
 	public void tendToFarmLand() {
 		useAction();
-		for (Crop crop : Farm.getCropList()) {
+		for (Crop crop : GameEnvironment.farm.getCropList()) {
 			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
 		}
-		for (Animal animal : Farm.getAnimalList()) {
+		for (Animal animal : GameEnvironment.farm.getAnimalList()) {
 			animal.setAnimalHappiness(animal.getAnimalHappiness() + 1);
 		}
 	}
