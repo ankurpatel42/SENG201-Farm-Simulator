@@ -1,9 +1,9 @@
 package farmsimulator;
 
-public class Item {
+public abstract class Item {
 	
-	private double price;
-	private String name;
+	private double price = 0;
+	private String name = null;
 	private int cropHarvestSpeedUpTime = 0;
 	private int animalHappinessIncrease = 0;
 	
