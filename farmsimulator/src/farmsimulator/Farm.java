@@ -13,7 +13,6 @@ public class Farm {
 	private ArrayList<Item> itemsOwned = new ArrayList<Item>();
 	private int startingAnimalHealthiness = 0;
 	private int startingAnimalHappiness = 0;
-	private String type = null;
 	
 	
 	public Farm(String name, double money, double cropGrowth, int animalHealthiness, int animalHappiness) {
@@ -60,12 +59,6 @@ public class Farm {
 	public double getCropGrowthRate() {
 		return cropGrowthRate;
 	}
-	
-	
-	public String getFarmType() {
-		return type;
-	}
-	
 	
 	public ArrayList<Item> getItemsOwned(){
 		return itemsOwned;
