@@ -107,17 +107,19 @@ public class GameEnvironment {
 		
 		int farmNumberChosen = farmChosenValid();
 		
-		if (farmNumberChosen == 1) {
-			farm = new Farm(farmName, 1000, 100, 10, 20);
-		}
-		else if (farmNumberChosen == 2) {
-			farm = new Farm(farmName, 2000, 200, 100, 20);
-		}
-		else if (farmNumberChosen == 3) {
-			farm = new Farm(farmName, 700, 50, 30, 85);
-		}
-		else if (farmNumberChosen == 4) {
-			farm = new Farm(farmName, 5000, 300, 64, 57);
+		switch (farmNumberChosen) {
+			case 1:
+				farm = new Farm(farmName, 10200, 100, 10, 20);
+				break;
+			case 2:
+				farm = new Farm(farmName, 2000, 100, 10, 20);
+				break;
+			case 3:
+				farm = new Farm(farmName, 3000, 100, 10, 20);
+				break;
+			case 4:
+				farm = new Farm(farmName, 4000, 100, 10, 20);
+				break;
 		}
 	}
 	
