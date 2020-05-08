@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Farm {
 	
 	private String farmName = null;
-	private double moneyAvailable = 0;
-	private double cropGrowthRate = 0;
+	private float moneyAvailable = 0;
+	private float cropGrowthRate = 0;
 	private int farmTidiness = 0;
 	private ArrayList<Animal> animalsList = new ArrayList<Animal>();
 	private ArrayList<Crop> cropsList = new ArrayList<Crop>();
@@ -15,13 +15,14 @@ public class Farm {
 	private int startingAnimalHappiness = 0;
 	
 	
-	public Farm(String name, double money, double cropGrowth, int animalHealthiness, int animalHappiness) {
+	public Farm(String name, float money, float cropGrowth, int animalHealthiness, int animalHappiness) {
 		farmName = name;
 		moneyAvailable = money;
 		cropGrowthRate = cropGrowth;
 		startingAnimalHealthiness = animalHealthiness;
 		startingAnimalHappiness = animalHappiness;
 	}
+	
 	
 	public String getFarmName() {
 		return farmName;
