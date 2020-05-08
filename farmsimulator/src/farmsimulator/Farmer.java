@@ -12,11 +12,6 @@ public class Farmer {
 		farmerName = inputFarmerName;
 	}
 	
-	public Farmer (String inputFarmerName, int inputFarmerAge) {
-		farmerName = inputFarmerName;
-		farmerAge = inputFarmerAge;
-	}
-	
 	public String getFarmerName() {
 		return farmerName;
 	}
