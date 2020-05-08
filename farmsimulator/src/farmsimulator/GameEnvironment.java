@@ -56,30 +56,29 @@ public class GameEnvironment {
 		System.out.print("Please enter a number to choose what farm you would like to work with: ");
 	}
 	
+	private static boolean checkCharsValid(String name) {
+		
+		char[] farmerNameArray = name.toCharArray();
+		
+		for(int i = 0; i < name.length(); i++) {
+			if (!(Character.isLetter(farmerNameArray[i]))) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 	
 	private static String nameChosen(String nameFor) {
 		
 		String farmerName = scanner.nextLine();
-		char[] farmerNameArray = farmerName.toCharArray();
-		boolean farmerNameHasDigit = false;
-		boolean farmerNameContainsSpecialCharacter = false;
-		String specialCharacters = "!@#$%^&\\*()}{][/?.<>,;+ ";
-		
-		for(int i = 0; i < farmerName.length(); i++) {
-			if (Character.isDigit(farmerNameArray[i])) {
-				farmerNameHasDigit = true;
-			}
-			if (specialCharacters.contains(Character.toString(farmerNameArray[i]))) {
-				farmerNameContainsSpecialCharacter = true;
-			}
-		}
 		
 		//Infinite loop that terminates only once the user has entered valid farm name according to specifications.
 		while(true) {
-			if (farmerName.length() < 3 || farmerName.length() > 15 || farmerNameHasDigit == true || farmerNameContainsSpecialCharacter == true) {
+			if (farmerName.length() < 3 || farmerName.length() > 15 || checkCharsValid(farmerName) == false) {
 				System.out.print("Your " + nameFor + " farmer name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters: ");
-				farmerNameHasDigit = false;
-				farmerNameContainsSpecialCharacter = false;
+				//farmerNameNotValid = false;
 				farmerName = scanner.nextLine();
 			} 
 			else {
@@ -109,19 +108,20 @@ public class GameEnvironment {
 		
 		switch (farmNumberChosen) {
 			case 1:
-				farm = new Farm(farmName, 10200, 100, 10, 20);
+				farm = new Farm(farmName, 1000.00, 2.5, 5, 3);
 				break;
 			case 2:
-				farm = new Farm(farmName, 2000, 100, 10, 20);
+				farm = new Farm(farmName, 600, 1.5, 5, 9);
 				break;
 			case 3:
-				farm = new Farm(farmName, 3000, 100, 10, 20);
+				farm = new Farm(farmName, 300, 7.5, 8, 9);
 				break;
 			case 4:
-				farm = new Farm(farmName, 4000, 100, 10, 20);
+				farm = new Farm(farmName, 650, 6.0, 7, 6);
 				break;
 		}
 	}
+			
 	
 	private static void SetUpGame() {
 		
