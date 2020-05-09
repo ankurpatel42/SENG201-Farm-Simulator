@@ -91,6 +91,7 @@ public class SetUpScreen {
 	 */
 	private void initialize() {
 		setUpScreenFrame = new JFrame();
+		setUpScreenFrame.setTitle("Farm Simulator Game");
 		setUpScreenFrame.setBounds(100, 100, 770, 515);
 		setUpScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setUpScreenFrame.getContentPane().setLayout(null);
