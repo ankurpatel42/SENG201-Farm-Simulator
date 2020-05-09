@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public abstract class Crop {
 
-	private float cropPurchasePrice = 0;
-	private float cropMoneyGiven = 0;
+	private double cropPurchasePrice = 0;
+	private double cropMoneyGiven = 0;
 	private int daysTillHarvest = 0;
 	private String name = null;
 	private int daysGrowing = 0;
 	private static ArrayList<Crop> crops = null;
 
-	public Crop (String name, float cropPurchasePrice, float cropMoneyGiven, int daysTillHarvest) {
+	public Crop (String name, double cropPurchasePrice, double cropMoneyGiven, int daysTillHarvest) {
 		this.name = name;
 		this.cropPurchasePrice = cropPurchasePrice;
 		this.daysTillHarvest = daysTillHarvest;
@@ -29,7 +29,7 @@ public abstract class Crop {
 		return daysTillHarvest;
 	}
 	
-	public float getCropPurchasePrice() {
+	public double getCropPurchasePrice() {
 		return cropPurchasePrice;
 	}
 	
@@ -37,7 +37,7 @@ public abstract class Crop {
 		daysTillHarvest = days;
 	}
 
-	public float getCropMoneyGiven() {
+	public double getCropMoneyGiven() {
 		return cropMoneyGiven;
 	}
 	
