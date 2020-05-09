@@ -1,18 +1,32 @@
 package farmsimulator;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+import javax.swing.JTextPane;
 
 public class PurchaseItem {
 
 	private JFrame frmPurchaseItem;
-
+	private String[] items = {"F1", "F2", "F3", "A1", "A2", "A3"};
+	DefaultComboBoxModel<String> itemsCombo = new DefaultComboBoxModel<String>(items);
+	private String itemChosen = null;
+	//private String famerName = GameEnvironment.getFarmer().getFarmerName();
+	private Item item;
+	private GeneralStore store;
+	private Farm farm;
+	private String money;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -33,6 +47,8 @@ public class PurchaseItem {
 	 * Create the application.
 	 */
 	public PurchaseItem() {
+		farm = GameEnvironment.getFarm();
+		money = farm.moneyToString();
 		initialize();
 	}
 
@@ -41,8 +57,9 @@ public class PurchaseItem {
 	 */
 	private void initialize() {
 		frmPurchaseItem = new JFrame();
+		frmPurchaseItem.setVisible(true);
 		frmPurchaseItem.setTitle("Purchase Item");
-		frmPurchaseItem.setBounds(100, 100, 450, 300);
+		frmPurchaseItem.setBounds(100, 100, 496, 338);
 		frmPurchaseItem.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseItem.getContentPane().setLayout(null);
 		
@@ -54,7 +71,7 @@ public class PurchaseItem {
 		lblMoney.setBounds(6, 37, 122, 16);
 		frmPurchaseItem.getContentPane().add(lblMoney);
 		
-		JLabel lblMoneyAvailable = new JLabel("$ Farm's Money $");
+		JLabel lblMoneyAvailable = new JLabel(money);
 		lblMoneyAvailable.setBounds(130, 37, 110, 16);
 		frmPurchaseItem.getContentPane().add(lblMoneyAvailable);
 		
@@ -67,19 +84,67 @@ public class PurchaseItem {
 		frmPurchaseItem.getContentPane().add(lblCropItems);
 		
 		JLabel lblAnimalItems = new JLabel("Animal Items");
-		lblAnimalItems.setBounds(301, 132, 90, 16);
+		lblAnimalItems.setBounds(301, 160, 90, 16);
 		frmPurchaseItem.getContentPane().add(lblAnimalItems);
 		
-		JComboBox comboBoxItem = new JComboBox();
+		JComboBox<String> comboBoxItem = new JComboBox<>(itemsCombo);
 		comboBoxItem.setBounds(24, 93, 147, 27);
 		frmPurchaseItem.getContentPane().add(comboBoxItem);
 		
 		JButton btnPurchase = new JButton("Purchase");
 		btnPurchase.setBounds(34, 127, 117, 29);
+		btnPurchase.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				itemChosen = (String)comboBoxItem.getSelectedItem();
+				switch (itemChosen) {
+					case "A1":
+						item = new AnimalFoodOne();
+						break;
+					case "A2":
+						item = new AnimalFoodTwo();
+						break;
+					case "A3":
+						item = new AnimalFoodThree();
+						break;
+					case "F1":
+						item = new FertiliserOne();
+						break;
+					case "F2":
+						item = new FertiliserTwo();
+						break;
+					case "F3":
+						item = new FertiliserThree();
+						break;
+				}
+				
+				store = GameEnvironment.getStore();
+				store.purchaseItem(item);
+				JOptionPane.showMessageDialog(btnPurchase, "You have purchased one " + itemChosen);
+			}
+		});
 		frmPurchaseItem.getContentPane().add(btnPurchase);
 		
 		JButton btnBack = new JButton("Back to Store");
-		btnBack.setBounds(158, 229, 117, 29);
+		btnBack.setBounds(175, 281, 117, 29);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPurchaseItem.dispose();
+				StoreWindow s = new StoreWindow();
+			}
+		});
 		frmPurchaseItem.getContentPane().add(btnBack);
+		
+		JTextPane txtCrops = new JTextPane();
+		txtCrops.setBounds(206, 65, 273, 80);
+		txtCrops.setText("Name	Price	Crop Growth Boost\r\n\r\nF1: 	$100 	1 day\r\nF2: 	$250 	3 days\r\nF3: 	$400 	5 days");
+		txtCrops.setBackground(Color.LIGHT_GRAY);
+		frmPurchaseItem.getContentPane().add(txtCrops);
+		
+		JTextPane txtAnimals = new JTextPane();
+		txtAnimals.setText("Name	Price	Animal Health Boost\r\n\r\nA1: 	$100 	1\r\nA2: 	$300 	5\r\nA3: 	$700 	10");
+		txtAnimals.setBackground(Color.LIGHT_GRAY);
+		txtAnimals.setBounds(206, 188, 273, 78);
+		frmPurchaseItem.getContentPane().add(txtAnimals);
 	}
 }

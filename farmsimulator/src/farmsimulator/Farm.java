@@ -35,6 +35,10 @@ public class Farm {
 		return moneyAvailable;
 	}
 	
+	public String moneyToString(){
+		String money = "$" + moneyAvailable;
+		return money;
+	}
 	
 	public int getFarmTidiness() {
 		return farmTidiness;

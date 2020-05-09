@@ -9,11 +9,15 @@ import java.awt.Point;
 import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class StoreWindow {
-
+	
+	private Farm farm;
 	private JFrame frmGeneralStore;
 	private JLabel lblStoreTitle;
+	private String money;
 
 	/**
 	 * Launch the application.
@@ -34,6 +38,12 @@ public class StoreWindow {
 	/**
 	 * Create the application.
 	 */
+	public StoreWindow(Farm f) {
+		farm = f;
+		money = farm.moneyToString();
+		initialize();
+	}
+	
 	public StoreWindow() {
 		initialize();
 	}
@@ -43,6 +53,7 @@ public class StoreWindow {
 	 */
 	private void initialize() {
 		frmGeneralStore = new JFrame();
+		frmGeneralStore.setVisible(true);
 		frmGeneralStore.setTitle("General Store");
 		frmGeneralStore.setBounds(100, 100, 450, 300);
 		frmGeneralStore.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,23 +70,47 @@ public class StoreWindow {
 		lblMoney.setBounds(6, 37, 122, 16);
 		frmGeneralStore.getContentPane().add(lblMoney);
 		
-		JLabel lblMoneyAvailable = new JLabel("$ Farm's Money $");
+		JLabel lblMoneyAvailable = new JLabel(money);
 		lblMoneyAvailable.setBounds(130, 37, 110, 16);
 		frmGeneralStore.getContentPane().add(lblMoneyAvailable);
 		
 		JButton btnItem = new JButton("Purchase Item");
+		btnItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmGeneralStore.dispose();
+				PurchaseItem p = new PurchaseItem();
+			}
+		});
 		btnItem.setBounds(41, 78, 148, 29);
 		frmGeneralStore.getContentPane().add(btnItem);
 		
 		JButton btnCrop = new JButton("Purchase Crops");
+		btnCrop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmGeneralStore.dispose();
+				PurchaseCrop p = new PurchaseCrop();
+			}
+		});
 		btnCrop.setBounds(41, 118, 148, 29);
 		frmGeneralStore.getContentPane().add(btnCrop);
 		
 		JButton btnAnimal = new JButton("Purchase Animals");
+		btnAnimal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmGeneralStore.dispose();
+				PurchaseAnimal p = new PurchaseAnimal();
+			}
+		});
 		btnAnimal.setBounds(41, 159, 148, 29);
 		frmGeneralStore.getContentPane().add(btnAnimal);
 		
 		JButton btnLeave = new JButton("Leave Store");
+		btnLeave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmGeneralStore.dispose();
+				//FarmGUI f = new FarmGui();
+			}
+		});
 		btnLeave.setBounds(173, 222, 117, 29);
 		frmGeneralStore.getContentPane().add(btnLeave);
 		

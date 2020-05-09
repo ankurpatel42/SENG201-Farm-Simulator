@@ -9,9 +9,18 @@ public class GameEnvironment {
 	private static Farmer farmer = null;
 	private static Farm farm = null; //Not sure whether to leave this private or make public, if public change 'getFarm()' to 'farm' in other 
 	//classes (Crop, Farmer, GeneralStore)
+	private static GeneralStore store = new GeneralStore();
 	
 	public static Farm getFarm() {
 		return farm;
+	}
+	
+	public static GeneralStore getStore() {
+		return store;
+	}
+	
+	public static Farmer getFarmer() {
+		return farmer;
 	}
 	
 	public static int getGameLength() {

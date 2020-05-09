@@ -10,6 +10,10 @@ public class GeneralStore {
 		return itemList;
 	}
 	
+	public GeneralStore() {
+		
+	}
+	
 	public void purchaseItem(Item item) {
 		double money = GameEnvironment.getFarm().getMoneyAvailable();
 		if (money < item.getPrice()){

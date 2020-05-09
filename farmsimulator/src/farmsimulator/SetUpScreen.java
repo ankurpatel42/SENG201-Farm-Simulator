@@ -104,7 +104,7 @@ public class SetUpScreen {
 		
 		/* Message that asks that user to enter their chosen farmer name */
 		enterFarmerNameMessage = new JLabel("Give your farmer a name:");
-		enterFarmerNameMessage.setBounds(63, 70, 149, 17);
+		enterFarmerNameMessage.setBounds(55, 70, 157, 17);
 		setUpScreenFrame.getContentPane().add(enterFarmerNameMessage);
 		
 		/* Text Field where user inputs their farmer name */
@@ -224,7 +224,7 @@ public class SetUpScreen {
 					switch(farmChosen) {
 						case "Farm A":
 							farm = new Farm(farmNameChosen, 1000.00, 2.5, 5, 3);
-							break;
+			 				break;
 						case "Farm B":
 							farm = new Farm(farmNameChosen, 600.00, 1.5, 5, 9);
 							break;

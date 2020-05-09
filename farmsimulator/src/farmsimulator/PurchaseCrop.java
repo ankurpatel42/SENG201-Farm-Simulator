@@ -1,6 +1,8 @@
 package farmsimulator;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -39,6 +41,7 @@ public class PurchaseCrop {
 	 */
 	private void initialize() {
 		frmPurchaseCrop = new JFrame();
+		frmPurchaseCrop.setVisible(true);
 		frmPurchaseCrop.setTitle("Purchase Crop");
 		frmPurchaseCrop.setBounds(100, 100, 450, 300);
 		frmPurchaseCrop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,6 +76,12 @@ public class PurchaseCrop {
 		frmPurchaseCrop.getContentPane().add(btnPurchase);
 		
 		JButton btnBack = new JButton("Back to Store");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPurchaseCrop.dispose();
+				StoreWindow s = new StoreWindow();
+			}
+		});
 		btnBack.setBounds(156, 178, 117, 29);
 		frmPurchaseCrop.getContentPane().add(btnBack);
 	}
