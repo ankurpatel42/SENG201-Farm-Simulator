@@ -2,23 +2,23 @@ package farmsimulator;
 
 public abstract class Animal {
 	
-	private float animalPurchasePrice = 0;
-	private float animalMoneyGiven = 0;
+	private double animalPurchasePrice = 0;
+	private double animalMoneyGiven = 0;
 	private int animalHealthiness = 0;
 	private int animalHappiness = 0;
 	
-	public Animal (String name, float animalPurchasePrice, float animalMoneyGiven, int animalHealthiness, int animalHappiness) {
+	public Animal (String name, double animalPurchasePrice, double animalMoneyGiven, int animalHealthiness, int animalHappiness) {
 		this.animalPurchasePrice = animalPurchasePrice;
 		this.animalMoneyGiven = animalMoneyGiven;
 		this.animalHealthiness = GameEnvironment.getFarm().getStartingAnimalHealthiness() + animalHealthiness;
 		this.animalHappiness = GameEnvironment.getFarm().getStartingAnimalHappiness() + animalHappiness;
 	}
 	
-	public float getAnimalPurchasePrice() {
+	public double getAnimalPurchasePrice() {
 		return animalPurchasePrice;
 	}
 	
-	public float getAnimalMoneyGiven() {
+	public double getAnimalMoneyGiven() {
 		return animalMoneyGiven;
 	}
 	
