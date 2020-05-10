@@ -41,8 +41,8 @@ public abstract class Crop {
 		return cropMoneyGiven;
 	}
 	
-	public static void dayPassed() {
-		crops = GameEnvironment.getFarm().getCropList();
+	public static void dayPassed(GameEnvironment game) {
+		crops = game.getFarm().getCropList();
 		for (Crop crop : crops) {
 			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
 		}
@@ -56,13 +56,13 @@ public abstract class Crop {
 		}
 	}
 	
-	public void harvestCrops() {
+	public void harvestCrops(GameEnvironment game) {
 		Farmer.useAction();
 		if (daysTillHarvest > 0) {
 			System.out.println("Sorry your crops are not ready for Harvest yet");
 		}
 		else {
-			GameEnvironment.getFarm().setMoneyAvailible(cropMoneyGiven);
+			game.getFarm().setMoneyAvailible(cropMoneyGiven);
 		}
 	}
 }
