@@ -22,11 +22,7 @@ import javax.swing.event.ChangeEvent;
 
 public class SetUpScreen {
 	
-	private String farmerNameChosen = null;
-	private String farmNameChosen = null;
-	private int gameLength = 0;
-	private String farmChosen = null;
-	private Farm farm = null;
+	private GameEnvironment startGame;
 
 	private JFrame setUpScreenFrame;
 	private JLabel enterFarmerNameMessage;
@@ -43,7 +39,7 @@ public class SetUpScreen {
 	private JComboBox<String> farmSelection;
 	private String[] farmOptions = {"Farm A", "Farm B", "Farm C", "Farm D"};
 	DefaultComboBoxModel<String> farmOptionsModel = new DefaultComboBoxModel<String>(farmOptions);
-	private JButton beginGame;
+	private JButton beginGameButton;
 	
 	/* Check that the user has entered the correct input */
 	private boolean checkTextInput(String name) {
@@ -66,6 +62,7 @@ public class SetUpScreen {
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -84,6 +81,21 @@ public class SetUpScreen {
 	 */
 	public SetUpScreen() {
 		initialize();
+	}
+	
+	
+	public SetUpScreen(GameEnvironment startGame) {
+		this.startGame = startGame;
+		initialize();
+		setUpScreenFrame.setVisible(true);
+	}
+	
+	public void closeSetUpScreen() {
+		setUpScreenFrame.dispose();
+	}
+	
+	public void finishedWindow() {
+		startGame.closeSetUpScreen(this);
 	}
 
 	/**
@@ -104,7 +116,7 @@ public class SetUpScreen {
 		
 		/* Message that asks that user to enter their chosen farmer name */
 		enterFarmerNameMessage = new JLabel("Give your farmer a name:");
-		enterFarmerNameMessage.setBounds(55, 70, 157, 17);
+		enterFarmerNameMessage.setBounds(63, 70, 149, 17);
 		setUpScreenFrame.getContentPane().add(enterFarmerNameMessage);
 		
 		/* Text Field where user inputs their farmer name */
@@ -135,29 +147,11 @@ public class SetUpScreen {
 		chooseGameLength.setMajorTickSpacing(1);
 		chooseGameLength.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
-				switch(chooseGameLength.getValue()) { // Returns the value the user selected for the number of days the game is to last
-					case 5:
-						gameLength = 5;
-						break;
-					case 6:
-						gameLength = 6;
-						break;
-					case 7:
-						gameLength = 7;
-						break;
-					case 8:
-						gameLength = 8;
-						break;
-					case 9:
-						gameLength = 9;
-						break;
-					case 10:
-						gameLength = 10;
-						break;
-					
-				}
+				startGame.setGameLength(chooseGameLength.getValue());
 			}
 		});
+		
+		
 		chooseGameLength.setPaintLabels(true);
 		chooseGameLength.setPaintTicks(true);
 		chooseGameLength.setValue(0);
@@ -207,11 +201,11 @@ public class SetUpScreen {
 		
 		/* Once the user clicks the start button the main game will start, the farmer and the chosen farm will be instantiated,
 		 *  if the input they have entered is not valid then an error message pops up */
-		beginGame = new JButton("Start");
-		beginGame.addActionListener(new ActionListener() {
+		beginGameButton = new JButton("Start");
+		beginGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				farmerNameChosen = userFarmerName.getText();
-				farmNameChosen = userFarmName.getText();
+				String farmerNameChosen = userFarmerName.getText();
+				String farmNameChosen = userFarmName.getText();
 				if (checkTextInput(farmerNameChosen) == false) {
 					JOptionPane.showMessageDialog(userFarmerName, "Your farmer name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
 				}
@@ -219,34 +213,31 @@ public class SetUpScreen {
 					JOptionPane.showMessageDialog(userFarmName, "Your farm name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
 				}
 				else {
-					Farmer farmer = new Farmer(farmerNameChosen);
-					farmChosen = (String)farmSelection.getSelectedItem(); //Cast from object to String
+					startGame.setFarmer(farmerNameChosen);
+					String farmChosen = (String)farmSelection.getSelectedItem(); //Cast from object to String
 					switch(farmChosen) {
 						case "Farm A":
-							farm = new Farm(farmNameChosen, 1000.00, 2.5, 5, 3);
-			 				break;
+							startGame.setFarm(farmNameChosen, 1000.00, 2.5, 5, 3);
+							break;
 						case "Farm B":
-							farm = new Farm(farmNameChosen, 600.00, 1.5, 5, 9);
+							startGame.setFarm(farmNameChosen, 600.00, 1.5, 5, 9);
 							break;
 						case "Farm C":
-							farm = new Farm(farmNameChosen, 300.00, 7.5, 8, 9);
+							startGame.setFarm(farmNameChosen, 300.00, 7.5, 8, 9);
 							break;
 						case "Farm D":
-							farm = new Farm(farmNameChosen, 650.00, 6.0, 7, 6);
+							startGame.setFarm(farmNameChosen, 650.00, 6.0, 7, 6);
 							break;
 					}
 					
-					//Get rid of this later
-					JOptionPane.showMessageDialog(beginGame, "You have chosen " + farmChosen +  " and named your farm " 
-					+ farm.getFarmName() + ", Welcome to your " + "brand new farm " + farmer.getFarmerName() + 
-					", your journey will last " + gameLength + " days!");
-					setUpScreenFrame.dispose();
-					MainScreen m = new MainScreen();
+					closeSetUpScreen();
+					finishedWindow();
+					
 				}
 			}
 		});
-		beginGame.setBounds(365, 405, 89, 23);
-		setUpScreenFrame.getContentPane().add(beginGame);
+		beginGameButton.setBounds(365, 405, 89, 23);
+		setUpScreenFrame.getContentPane().add(beginGameButton);
 	}
 	
 }
