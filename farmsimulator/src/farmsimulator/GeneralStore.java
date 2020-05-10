@@ -10,49 +10,36 @@ public class GeneralStore {
 		return itemList;
 	}
 	
-	public GeneralStore() {
-		
-	}
-	
-	public String purchaseItem(Item item) {
-		double money = GameEnvironment.getFarm().getMoneyAvailable();
-		String message = null;
+	public void purchaseItem(Item item, GameEnvironment game) {
+		double money = game.getFarm().getMoneyAvailable();
 		if (money < item.getPrice()){
-			message = "Sorry, You have insuffcient funds to purchase this item";
+			System.out.println("Sorry, You have insuffcient funds to purchase this item");
 		}
 		else {
 			money = money - item.getPrice();
-			GameEnvironment.getFarm().addNewItem(item);
-			message = "You have purchased one " + item.getItemName();
+			game.getFarm().addNewItem(item);
 		}
-		return message;
 	}
 	
-	public String purchaseAnimal(Animal animal) {
-		double money = GameEnvironment.getFarm().getMoneyAvailable();
-		String message = null;
+	public void purchaseAnimal(Animal animal, GameEnvironment game) {
+		double money = game.getFarm().getMoneyAvailable();
 		if (money < animal.getAnimalPurchasePrice()){
-			message = "Sorry, You have insuffcient funds to purchase this animal";
+			System.out.println("Sorry, You have insuffcient funds to purchase this animal");
 		}
 		else {
 			money = money - animal.getAnimalPurchasePrice();
-			GameEnvironment.getFarm().addAnimalToList(animal);
-			message = "You have purchased one " + animal.getName();
+			game.getFarm().addAnimalToList(animal);
 		}
-		return message;
 	}
 	
-	public String purchaseCrop(Crop crop) {
-		double money = GameEnvironment.getFarm().getMoneyAvailable();
-		String message = null;
+	public void purchaseCrop(Crop crop, GameEnvironment game) {
+		double money = game.getFarm().getMoneyAvailable();
 		if (money < crop.getCropPurchasePrice()){
-			message = "Sorry, You have insuffcient funds to purchase this crop";
+			System.out.println("Sorry, You have insuffcient funds to purchase this crop");
 		}
 		else {
 			money = money - crop.getCropPurchasePrice();
-			GameEnvironment.getFarm().addCropToList(crop);
-			message = "You have purchased one " + crop.getCropName();
+			game.getFarm().addCropToList(crop);
 		}
-		return message;
 	}
 }
