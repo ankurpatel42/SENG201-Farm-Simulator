@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Farm {
 	
 	private String farmName = null;
-	private double moneyAvailable = 0;
+	private static double moneyAvailable = 0;
 	private double cropGrowthRate = 0;
 	private int farmTidiness = 0;
 	private ArrayList<Animal> animalsList = new ArrayList<Animal>();
@@ -35,7 +35,7 @@ public class Farm {
 		return moneyAvailable;
 	}
 	
-	public String moneyToString(){
+	public static String moneyToString(){
 		String money = "$" + moneyAvailable;
 		return money;
 	}

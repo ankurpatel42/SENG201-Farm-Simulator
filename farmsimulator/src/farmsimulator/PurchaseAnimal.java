@@ -1,18 +1,30 @@
 package farmsimulator;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextPane;
 
 public class PurchaseAnimal {
 
 	private JFrame frmPurchaseAnimal;
+	private String[] animals = {"Cow", "Pig", "Sheep"};
+	DefaultComboBoxModel<String> animalsCombo = new DefaultComboBoxModel<String>(animals);
+	private String animalChosen = null;
+	private Animal animal;
+	private GeneralStore store;
+	private String message;
+	private String money;
+	private Farm farm;
 
 	/**
 	 * Launch the application.
@@ -34,6 +46,7 @@ public class PurchaseAnimal {
 	 * Create the application.
 	 */
 	public PurchaseAnimal() {
+		farm = GameEnvironment.getFarm();
 		initialize();
 	}
 
@@ -44,7 +57,7 @@ public class PurchaseAnimal {
 		frmPurchaseAnimal = new JFrame();
 		frmPurchaseAnimal.setTitle("Purchase Animal");
 		frmPurchaseAnimal.setVisible(true);
-		frmPurchaseAnimal.setBounds(100, 100, 450, 300);
+		frmPurchaseAnimal.setBounds(100, 100, 450, 263);
 		frmPurchaseAnimal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseAnimal.getContentPane().setLayout(null);
 		
@@ -56,7 +69,8 @@ public class PurchaseAnimal {
 		lblMoney.setBounds(6, 37, 122, 16);
 		frmPurchaseAnimal.getContentPane().add(lblMoney);
 		
-		JLabel lblMoneyAvailable = new JLabel("$ Farm's Money $");
+		money = farm.moneyToString();
+		JLabel lblMoneyAvailable = new JLabel(money);
 		lblMoneyAvailable.setBounds(130, 37, 110, 16);
 		frmPurchaseAnimal.getContentPane().add(lblMoneyAvailable);
 		
@@ -68,12 +82,33 @@ public class PurchaseAnimal {
 		lblCropItems.setBounds(321, 65, 85, 16);
 		frmPurchaseAnimal.getContentPane().add(lblCropItems);
 		
-		JComboBox comboBoxItem = new JComboBox();
-		comboBoxItem.setBounds(24, 93, 147, 27);
-		frmPurchaseAnimal.getContentPane().add(comboBoxItem);
+		JComboBox<String> comboBoxAnimals = new JComboBox<>(animalsCombo);
+		comboBoxAnimals.setBounds(24, 93, 147, 27);
+		frmPurchaseAnimal.getContentPane().add(comboBoxAnimals);
 		
 		JButton btnPurchase = new JButton("Purchase");
 		btnPurchase.setBounds(34, 135, 117, 29);
+		btnPurchase.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				animalChosen = (String)comboBoxAnimals.getSelectedItem();
+				switch (animalChosen) {
+					case "Cow":
+						animal = new Cow();
+						break;
+					case "Pig":
+						animal = new Pig();
+						break;
+					case "Sheep":
+						animal = new Sheep();
+						break;
+				}
+				
+				store = GameEnvironment.getStore();
+				//PROBLEM, Not calling below method?
+				message = store.purchaseAnimal(animal);
+				JOptionPane.showMessageDialog(btnPurchase, message);
+			}
+		});
 		frmPurchaseAnimal.getContentPane().add(btnPurchase);
 		
 		JButton btnBack = new JButton("Back to Store");
@@ -83,8 +118,14 @@ public class PurchaseAnimal {
 				StoreWindow s = new StoreWindow();
 			}
 		});
-		btnBack.setBounds(158, 187, 117, 29);
+		btnBack.setBounds(158, 197, 117, 29);
 		frmPurchaseAnimal.getContentPane().add(btnBack);
+		
+		JTextPane txtAnimals = new JTextPane();
+		txtAnimals.setBounds(235, 81, 209, 103);
+		txtAnimals.setText("Name	Price	Sell Price\r\n\r\nCow: 	$100 	$100\r\nPig: 	$100 	100\r\nSheep: 	$100 	$100");
+		txtAnimals.setBackground(Color.LIGHT_GRAY);
+		frmPurchaseAnimal.getContentPane().add(txtAnimals);
 	}
 
 }

@@ -38,12 +38,6 @@ public class StoreWindow {
 	/**
 	 * Create the application.
 	 */
-	public StoreWindow(Farm f) {
-		farm = f;
-		money = farm.moneyToString();
-		initialize();
-	}
-	
 	public StoreWindow() {
 		initialize();
 	}
@@ -108,7 +102,7 @@ public class StoreWindow {
 		btnLeave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmGeneralStore.dispose();
-				//FarmGUI f = new FarmGui();
+				MainScreen m = new MainScreen();
 			}
 		});
 		btnLeave.setBounds(173, 222, 117, 29);

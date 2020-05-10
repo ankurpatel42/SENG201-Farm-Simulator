@@ -1,17 +1,27 @@
 package farmsimulator;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextPane;
 
 public class PurchaseCrop {
 
 	private JFrame frmPurchaseCrop;
+	private String cropChosen;
+	private String[] items = {"Carrot", "Corn", "Lettuce", "Potato", "Rice", "Wheat"};
+	DefaultComboBoxModel<String> cropCombo = new DefaultComboBoxModel<String>(items);
+	private Crop crop;
+	private GeneralStore store;
+	private String message;
 
 	/**
 	 * Launch the application.
@@ -67,12 +77,42 @@ public class PurchaseCrop {
 		lblCropItems.setBounds(321, 65, 85, 16);
 		frmPurchaseCrop.getContentPane().add(lblCropItems);
 		
-		JComboBox comboBoxItem = new JComboBox();
-		comboBoxItem.setBounds(24, 93, 147, 27);
-		frmPurchaseCrop.getContentPane().add(comboBoxItem);
+		JComboBox<String> comboBoxCrop = new JComboBox<>(cropCombo);
+		comboBoxCrop.setBounds(24, 93, 147, 27);
+		frmPurchaseCrop.getContentPane().add(comboBoxCrop);
 		
 		JButton btnPurchase = new JButton("Purchase");
 		btnPurchase.setBounds(34, 127, 117, 29);
+		btnPurchase.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cropChosen = (String)comboBoxCrop.getSelectedItem();
+				switch (cropChosen) {
+					case "Carrot":
+						crop = new Carrot();
+						break;
+					case "Corn":
+						crop = new Corn();
+						break;
+					case "Lettuce":
+						crop = new Lettuce();
+						break;
+					case "Potato":
+						crop = new Potato();
+						break;
+					case "Rice":
+						crop = new Rice();
+						break;
+					case "Wheat":
+						crop = new Wheat();
+						break;
+				}
+				
+				store = GameEnvironment.getStore();
+				//PROBLEM, Not calling below method?
+				message = store.purchaseCrop(crop);
+				JOptionPane.showMessageDialog(btnPurchase, message);
+			}
+		});
 		frmPurchaseCrop.getContentPane().add(btnPurchase);
 		
 		JButton btnBack = new JButton("Back to Store");
@@ -82,8 +122,14 @@ public class PurchaseCrop {
 				StoreWindow s = new StoreWindow();
 			}
 		});
-		btnBack.setBounds(156, 178, 117, 29);
+		btnBack.setBounds(158, 232, 117, 29);
 		frmPurchaseCrop.getContentPane().add(btnBack);
+		
+		JTextPane txtCrops = new JTextPane();
+		txtCrops.setBounds(182, 93, 245, 127);
+		txtCrops.setText("Name	Price	Grow time\r\n\r\nCarrot:	$10	5 days\r\nCorn: 	$5  	5 days\r\nLettuce: 	$4 	5 days\r\nPotato: 	$4 	8 days\r\nRice: 	$2 	5 days\r\nWheat: 	$2 	3 days");
+		txtCrops.setBackground(Color.LIGHT_GRAY);
+		frmPurchaseCrop.getContentPane().add(txtCrops);
 	}
 
 }

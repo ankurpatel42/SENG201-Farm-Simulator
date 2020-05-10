@@ -240,6 +240,8 @@ public class SetUpScreen {
 					JOptionPane.showMessageDialog(beginGame, "You have chosen " + farmChosen +  " and named your farm " 
 					+ farm.getFarmName() + ", Welcome to your " + "brand new farm " + farmer.getFarmerName() + 
 					", your journey will last " + gameLength + " days!");
+					setUpScreenFrame.dispose();
+					MainScreen m = new MainScreen();
 				}
 			}
 		});

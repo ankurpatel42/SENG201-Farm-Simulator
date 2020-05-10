@@ -44,6 +44,7 @@ public class MainScreen {
 	private void initialize() {
 		mainScreen = new JFrame();
 		mainScreen.setTitle("Farm Home");
+		mainScreen.setVisible(true);
 		mainScreen.setBounds(100, 100, 770, 515);
 		mainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainScreen.getContentPane().setLayout(null);
@@ -104,6 +105,12 @@ public class MainScreen {
 		mainScreen.getContentPane().add(viewCrops);
 		
 		JButton visitStore = new JButton("Visit Store");
+		visitStore.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainScreen.dispose();
+				StoreWindow s = new StoreWindow();
+			}
+		});
 		visitStore.setBounds(165, 321, 123, 23);
 		mainScreen.getContentPane().add(visitStore);
 		

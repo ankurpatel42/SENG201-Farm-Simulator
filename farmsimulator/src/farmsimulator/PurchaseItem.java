@@ -26,11 +26,14 @@ public class PurchaseItem {
 	private GeneralStore store;
 	private Farm farm;
 	private String money;
+	private static String message;
 	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		//TESTING
+		//Farm farm = new Farm("Test", 1000.00, 2.5, 5, 3);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -48,7 +51,6 @@ public class PurchaseItem {
 	 */
 	public PurchaseItem() {
 		farm = GameEnvironment.getFarm();
-		money = farm.moneyToString();
 		initialize();
 	}
 
@@ -71,6 +73,7 @@ public class PurchaseItem {
 		lblMoney.setBounds(6, 37, 122, 16);
 		frmPurchaseItem.getContentPane().add(lblMoney);
 		
+		money = farm.moneyToString();
 		JLabel lblMoneyAvailable = new JLabel(money);
 		lblMoneyAvailable.setBounds(130, 37, 110, 16);
 		frmPurchaseItem.getContentPane().add(lblMoneyAvailable);
@@ -95,7 +98,6 @@ public class PurchaseItem {
 		btnPurchase.setBounds(34, 127, 117, 29);
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				itemChosen = (String)comboBoxItem.getSelectedItem();
 				switch (itemChosen) {
 					case "A1":
@@ -119,8 +121,9 @@ public class PurchaseItem {
 				}
 				
 				store = GameEnvironment.getStore();
-				store.purchaseItem(item);
-				JOptionPane.showMessageDialog(btnPurchase, "You have purchased one " + itemChosen);
+				//PROBLEM, Not calling below method?
+				message = store.purchaseItem(item);
+				JOptionPane.showMessageDialog(btnPurchase, message);
 			}
 		});
 		frmPurchaseItem.getContentPane().add(btnPurchase);

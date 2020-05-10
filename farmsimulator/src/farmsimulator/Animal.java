@@ -6,8 +6,10 @@ public abstract class Animal {
 	private double animalMoneyGiven = 0;
 	private int animalHealthiness = 0;
 	private int animalHappiness = 0;
+	private String animalName;
 	
 	public Animal (String name, double animalPurchasePrice, double animalMoneyGiven, int animalHealthiness, int animalHappiness) {
+		this.animalName = name;
 		this.animalPurchasePrice = animalPurchasePrice;
 		this.animalMoneyGiven = animalMoneyGiven;
 		this.animalHealthiness = GameEnvironment.getFarm().getStartingAnimalHealthiness() + animalHealthiness;
@@ -16,6 +18,10 @@ public abstract class Animal {
 	
 	public double getAnimalPurchasePrice() {
 		return animalPurchasePrice;
+	}
+	
+	public String getName() {
+		return animalName;
 	}
 	
 	public double getAnimalMoneyGiven() {
