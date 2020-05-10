@@ -102,6 +102,12 @@ public class MainScreen {
 		
 		JButton viewCrops = new JButton("View Crops");
 		viewCrops.setBounds(165, 242, 118, 23);
+		viewCrops.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainScreen.dispose();
+				Crops c = new Crops();
+			}
+		});
 		mainScreen.getContentPane().add(viewCrops);
 		
 		JButton visitStore = new JButton("Visit Store");
