@@ -5,10 +5,28 @@ public class GameEnvironment {
 	private Farmer farmer = null;
 	private int gameLength = 0;
 	private Farm farm;
+	private Animal animal;
 	
 	public void setFarm(String farmNameChosen, double moneyAvailable, double cropGrowthRate, int animalHealthiness, int animalHappiness) {
 		farm = new Farm(farmNameChosen, moneyAvailable, cropGrowthRate, animalHealthiness, animalHappiness);
 	}
+	
+	public void createCow() {
+		animal = new Cow();
+		farm.addAnimalToList(animal);
+	}
+	
+	public void createPig() {
+		animal = new Pig();
+		farm.addAnimalToList(animal);
+	}
+	
+	public void createSheep() {
+		animal = new Sheep();
+		farm.addAnimalToList(animal);
+	}
+	
+	//same for crops
 	
 	public Farm getFarm() {
 		return farm;
@@ -56,7 +74,7 @@ public class GameEnvironment {
 	}
 	
 	public void closeSetUpScreen(SetUpScreen setUpScreenFrame) {
-		setUpScreenFrame.closeSetUpScreen();
+		//setUpScreenFrame.closeSetUpScreen();
 		launchMainScreen();
 	}
 	
