@@ -3,7 +3,6 @@ package farmsimulator;
 public class Farmer {
 	
 	private static String farmerName = null;
-	private int farmerAge = 0;
 	private double bonus = 0;
 	private static int actionsLeft = 2;
 	private static int dayNum = 1;
@@ -20,9 +19,6 @@ public class Farmer {
 		return actionsLeft;
 	}
 	
-	public int getAge() {
-		return farmerAge;
-	}
 	
 	public static void useAction() {
 		if (actionsLeft == 0) {
@@ -40,26 +36,26 @@ public class Farmer {
 		return dayNum;
 	}
 	
-	public void moveToNextDay() {
-		if (dayNum > GameEnvironment.getGameLength()) {
+	public void moveToNextDay(GameEnvironment game) {
+		if (dayNum > game.getGameLength()) {
 			System.out.println("You cannot move to the next day as this is your last day.");
 		} else {
 			dayNum++;
 			actionsLeft = 2;
-			Crop.dayPassed();
-			for (Animal animal : GameEnvironment.getFarm().getAnimalList()) {
+			Crop.dayPassed(game);
+			for (Animal animal : game.getFarm().getAnimalList()) {
 				bonus = getBonus() + 0.1 * animal.getAnimalHappiness();
 			}
-			GameEnvironment.getFarm().setMoneyAvailible(GameEnvironment.getFarm().getMoneyAvailable() + bonus);
+			game.getFarm().setMoneyAvailible(game.getFarm().getMoneyAvailable() + bonus);
 		}
 	}
 	
-	public void tendToFarmLand() {
+	public void tendToFarmLand(GameEnvironment game) {
 		useAction();
-		for (Crop crop : GameEnvironment.getFarm().getCropList()) {
+		for (Crop crop : game.getFarm().getCropList()) {
 			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
 		}
-		for (Animal animal : GameEnvironment.getFarm().getAnimalList()) {
+		for (Animal animal : game.getFarm().getAnimalList()) {
 			animal.setAnimalHappiness(animal.getAnimalHappiness() + 1);
 		}
 	}
