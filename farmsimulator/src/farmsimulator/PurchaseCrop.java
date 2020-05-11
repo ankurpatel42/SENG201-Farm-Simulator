@@ -14,12 +14,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 
 public class PurchaseCrop {
+	
+	private GameEnvironment game;
 
 	private JFrame frmPurchaseCrop;
 	private String cropChosen;
 	private String[] items = {"Carrot", "Corn", "Lettuce", "Potato", "Rice", "Wheat"};
 	DefaultComboBoxModel<String> cropCombo = new DefaultComboBoxModel<String>(items);
-	private Crop crop;
+	
 	private GeneralStore store;
 	private String message;
 
@@ -44,6 +46,20 @@ public class PurchaseCrop {
 	 */
 	public PurchaseCrop() {
 		initialize();
+	}
+	
+	public PurchaseCrop(GameEnvironment game) {
+		this.game = game;
+		initialize();
+		frmPurchaseCrop.setVisible(true);
+	}
+	
+	public void closePurchaseCropWindow() {
+		frmPurchaseCrop.dispose();
+	}
+	
+	public void finishedWindow() {
+		game.closePurchaseCropWindow(this);
 	}
 
 	/**
@@ -88,6 +104,7 @@ public class PurchaseCrop {
 				cropChosen = (String)comboBoxCrop.getSelectedItem();
 				switch (cropChosen) {
 					case "Carrot":
+						//make a method in Game Environment that initializes/sets crops and call it here
 						crop = new Carrot();
 						break;
 					case "Corn":
