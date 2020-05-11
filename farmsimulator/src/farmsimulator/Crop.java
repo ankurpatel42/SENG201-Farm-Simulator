@@ -48,8 +48,8 @@ public abstract class Crop {
 		}
 	}
 	
-	public void tendCrops(Item choice) {
-		Farmer.useAction();
+	public void tendCrops(Item choice, GameEnvironment game) {
+		game.useFarmerAction();
 		daysTillHarvest -= choice.getHarvestSpeedUpTime();
 		if (daysTillHarvest <= 0) {
 			daysTillHarvest = 0;
@@ -57,7 +57,7 @@ public abstract class Crop {
 	}
 	
 	public void harvestCrops(GameEnvironment game) {
-		Farmer.useAction();
+		game.useFarmerAction();
 		if (daysTillHarvest > 0) {
 			System.out.println("Sorry your crops are not ready for Harvest yet");
 		}
