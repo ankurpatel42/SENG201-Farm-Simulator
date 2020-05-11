@@ -41,6 +41,7 @@ public class SetUpScreen {
 	DefaultComboBoxModel<String> farmOptionsModel = new DefaultComboBoxModel<String>(farmOptions);
 	private JButton beginGameButton;
 	
+	
 	/* Check that the user has entered the correct input */
 	private boolean checkTextInput(String name) {
 		
@@ -207,26 +208,26 @@ public class SetUpScreen {
 				String farmerNameChosen = userFarmerName.getText();
 				String farmNameChosen = userFarmName.getText();
 				if (checkTextInput(farmerNameChosen) == false) {
-					JOptionPane.showMessageDialog(userFarmerName, "Your farmer name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
+					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARMER name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
 				}
 				if (checkTextInput(farmNameChosen) == false ) {
-					JOptionPane.showMessageDialog(userFarmName, "Your farm name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
+					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARM name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
 				}
 				else {
 					startGame.setFarmer(farmerNameChosen);
 					String farmChosen = (String)farmSelection.getSelectedItem(); //Cast from object to String
 					switch(farmChosen) {
 						case "Farm A":
-							startGame.setFarm(farmNameChosen, 1000.00, 2.5, 5, 3);
+							startGame.setFarm(farmNameChosen, 1000, 2.5, 5, 3);
 							break;
 						case "Farm B":
-							startGame.setFarm(farmNameChosen, 600.00, 1.5, 5, 9);
+							startGame.setFarm(farmNameChosen, 600, 1.5, 5, 9);
 							break;
 						case "Farm C":
-							startGame.setFarm(farmNameChosen, 300.00, 7.5, 8, 9);
+							startGame.setFarm(farmNameChosen, 300, 7.5, 8, 9);
 							break;
 						case "Farm D":
-							startGame.setFarm(farmNameChosen, 650.00, 6.0, 7, 6);
+							startGame.setFarm(farmNameChosen, 650, 6.0, 7, 6);
 							break;
 					}
 					
