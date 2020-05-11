@@ -23,14 +23,14 @@ public abstract class Animal {
 		return animalMoneyGiven;
 	}
 	
-	public void feedAnimal(Item choice) {
-		Farmer.useAction();
+	public void feedAnimal(Item choice, GameEnvironment game) {
+		game.getFarmer().useAction();
 		System.out.println("You have fed the animal " + choice.getItemName() + "!");
 		animalHealthiness += 2;
 	}
 	
-	public void playWithAnimal() {
-		Farmer.useAction();
+	public void playWithAnimal(GameEnvironment game) {
+		game.useFarmerAction();
 		animalHappiness += 3;
 	}
 	
