@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -45,6 +46,14 @@ public class MainScreen {
 		this.mainGame = mainGame;
 		initialize();
 		mainScreen.setVisible(true);
+	}
+	
+	public void closeMainScreen() {
+		mainScreen.dispose();
+	}
+	
+	public void finishedWindow() {
+		mainGame.closeMainScreen(this);
 	}
 
 	/**
@@ -103,8 +112,9 @@ public class MainScreen {
 		
 		JLabel moneyAvailable = new JLabel("0");
 		moneyAvailable.setFont(new Font("Arial", Font.PLAIN, 17));
-		moneyAvailable.setBounds(592, 119, 62, 14);
-		moneyAvailable.setText("$" + Double.toString(mainGame.getFarmMoneyAvailable()));
+		moneyAvailable.setBounds(592, 119, 95, 14);
+		String formatMoneyAvailable = String.format("%.2f", mainGame.getFarmMoneyAvailable());
+		moneyAvailable.setText("$" + formatMoneyAvailable);
 		mainScreen.getContentPane().add(moneyAvailable);
 		
 		JLabel actionsLeft = new JLabel("2");
@@ -121,16 +131,34 @@ public class MainScreen {
 		mainScreen.getContentPane().add(visitStore);
 		
 		JButton viewAnimals = new JButton("View Animals");
+		viewAnimals.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeMainScreen();
+				finishedWindow();
+			}
+		});
 		viewAnimals.setBounds(469, 242, 118, 23);
 		mainScreen.getContentPane().add(viewAnimals);
 		
 		JButton tendFarm = new JButton("Tend Farm");
+		tendFarm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainGame.getFarmerActionsLeft() != 0) {
+					mainGame.tendFarm(mainGame);
+					actionsLeft.setText(Integer.toString(mainGame.getFarmerActionsLeft()));
+				}
+				else {
+					JOptionPane.showMessageDialog(mainScreen, "You cannot perform this action as you have no actions left for today.");
+				}
+			}
+		});
 		tendFarm.setBounds(469, 321, 118, 23);
 		mainScreen.getContentPane().add(tendFarm);
 		
 		JButton moveToNextDay = new JButton("MOVE TO NEXT DAY");
 		moveToNextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		moveToNextDay.setBounds(265, 395, 157, 23);
