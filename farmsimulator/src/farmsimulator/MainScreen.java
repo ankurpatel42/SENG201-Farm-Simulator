@@ -15,7 +15,8 @@ import javax.swing.JButton;
 public class MainScreen {
 
 	private JFrame mainScreen;
-	private GameEnvironment mainGame;
+	
+	private GameEnvironment game;
 
 	/**
 	 * Launch the application.
@@ -24,8 +25,6 @@ public class MainScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					@SuppressWarnings("unused")
-					GameEnvironment mainGame = new GameEnvironment();
 					MainScreen window = new MainScreen();
 					window.mainScreen.setVisible(true);
 				} catch (Exception e) {
@@ -43,7 +42,7 @@ public class MainScreen {
 	}
 	
 	public MainScreen(GameEnvironment mainGame) {
-		this.mainGame = mainGame;
+		this.game = mainGame;
 		initialize();
 		mainScreen.setVisible(true);
 	}
@@ -53,7 +52,7 @@ public class MainScreen {
 	}
 	
 	public void finishedWindow() {
-		mainGame.closeMainScreen(this);
+		game.closeMainScreen(this);
 	}
 
 	/**
@@ -75,7 +74,7 @@ public class MainScreen {
 		JLabel gameLengthChosen = new JLabel("");
 		gameLengthChosen.setFont(new Font("Arial", Font.PLAIN, 17));
 		gameLengthChosen.setBounds(266, 119, 46, 14);
-		gameLengthChosen.setText(Integer.toString(mainGame.getGameLength()));
+		gameLengthChosen.setText(Integer.toString(game.getGameLength()));
 		mainScreen.getContentPane().add(gameLengthChosen);
 		
 		JLabel farmName = new JLabel("Farm Name:");
@@ -86,7 +85,7 @@ public class MainScreen {
 		JLabel farmNameChosen = new JLabel("");
 		farmNameChosen.setFont(new Font("Arial", Font.BOLD, 23));
 		farmNameChosen.setBounds(370, 16, 212, 31);
-		farmNameChosen.setText(mainGame.getFarmName());
+		farmNameChosen.setText(game.getFarmName());
 		mainScreen.getContentPane().add(farmNameChosen);
 		
 		JLabel cropGrowthRateMessage = new JLabel("Crop growth rate:");
@@ -107,13 +106,13 @@ public class MainScreen {
 		JLabel cropGrowthRate = new JLabel("0");
 		cropGrowthRate.setFont(new Font("Arial", Font.PLAIN, 17));
 		cropGrowthRate.setBounds(592, 163, 46, 14);
-		cropGrowthRate.setText(Double.toString(mainGame.getFarmCropGrowthRate()));
+		cropGrowthRate.setText(Double.toString(game.getFarmCropGrowthRate()));
 		mainScreen.getContentPane().add(cropGrowthRate);
 		
 		JLabel moneyAvailable = new JLabel("0");
 		moneyAvailable.setFont(new Font("Arial", Font.PLAIN, 17));
 		moneyAvailable.setBounds(592, 119, 95, 14);
-		String formatMoneyAvailable = String.format("%.2f", mainGame.getFarmMoneyAvailable());
+		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 		moneyAvailable.setText("$" + formatMoneyAvailable);
 		mainScreen.getContentPane().add(moneyAvailable);
 		
@@ -143,9 +142,9 @@ public class MainScreen {
 		JButton tendFarm = new JButton("Tend Farm");
 		tendFarm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (mainGame.getFarmerActionsLeft() != 0) {
-					mainGame.tendFarm(mainGame);
-					actionsLeft.setText(Integer.toString(mainGame.getFarmerActionsLeft()));
+				if (game.getFarmerActionsLeft() != 0) {
+					game.tendFarm(game);
+					actionsLeft.setText(Integer.toString(game.getFarmerActionsLeft()));
 				}
 				else {
 					JOptionPane.showMessageDialog(mainScreen, "You cannot perform this action as you have no actions left for today.");
