@@ -1,5 +1,7 @@
 package farmsimulator;
 
+import java.util.ArrayList;
+
 public class GameEnvironment {
 	
 	private Farmer farmer = null;
@@ -36,6 +38,10 @@ public class GameEnvironment {
 		return farm.getFarmName();
 	}
 	
+	public void tendFarm(GameEnvironment game) {
+		farmer.tendToFarmLand(game);
+	}
+	
 	public double getFarmMoneyAvailable() {
 		return farm.getMoneyAvailable();
 	}
@@ -56,12 +62,20 @@ public class GameEnvironment {
 		return farmer.getFarmerName();
 	}
 	
+	public void useFarmerAction() {
+		farmer.useAction();
+	}
+	
 	public int getFarmerActionsLeft() {
 		return farmer.getActionsLeft();
 	}
 	
 	public void setGameLength(int numDaysChosen) {
 		gameLength = numDaysChosen;
+	}
+	
+	public ArrayList<Animal> getAnimalsOnFarm() {
+		return farm.getAnimalList();
 	}
 	
 	public int getGameLength() {
@@ -74,13 +88,23 @@ public class GameEnvironment {
 	}
 	
 	public void closeSetUpScreen(SetUpScreen setUpScreenFrame) {
-		//setUpScreenFrame.closeSetUpScreen();
+		setUpScreenFrame.closeSetUpScreen();
 		launchMainScreen();
 	}
 	
 	public void launchMainScreen() {
 		@SuppressWarnings("unused")
 		MainScreen mainScreenFrame = new MainScreen(this);
+	}
+	
+	public void closeMainScreen(MainScreen mainScreen) {
+		mainScreen.closeMainScreen();
+		launchAnimalWindow();
+	}
+	
+	public void launchAnimalWindow() {
+		@SuppressWarnings("unused")
+		AnimalWindow animalWindow = new AnimalWindow(this);
 	}
 	
 	public static void main(String[] args) {
