@@ -14,7 +14,10 @@ import java.awt.event.ActionEvent;
 
 public class StoreWindow {
 	
-	private Farm farm;
+	private GameEnvironment game;
+	
+	//private Farm farm;
+	
 	private JFrame frmGeneralStore;
 	private JLabel lblStoreTitle;
 	private String money;
@@ -40,6 +43,12 @@ public class StoreWindow {
 	 */
 	public StoreWindow() {
 		initialize();
+	}
+	
+	public StoreWindow(GameEnvironment game) {
+		this.game = game;
+		initialize();
+		frmGeneralStore.setVisible(true);
 	}
 
 	/**
