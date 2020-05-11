@@ -22,7 +22,7 @@ import javax.swing.event.ChangeEvent;
 
 public class SetUpScreen {
 	
-	private GameEnvironment startGame;
+	private GameEnvironment game;
 
 	private JFrame setUpScreenFrame;
 	private JLabel enterFarmerNameMessage;
@@ -86,7 +86,7 @@ public class SetUpScreen {
 	
 	
 	public SetUpScreen(GameEnvironment startGame) {
-		this.startGame = startGame;
+		this.game = startGame;
 		initialize();
 		setUpScreenFrame.setVisible(true);
 	}
@@ -96,7 +96,7 @@ public class SetUpScreen {
 	}
 	
 	public void finishedWindow() {
-		startGame.closeSetUpScreen(this);
+		game.closeSetUpScreen(this);
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class SetUpScreen {
 		chooseGameLength.setMajorTickSpacing(1);
 		chooseGameLength.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
-				startGame.setGameLength(chooseGameLength.getValue());
+				game.setGameLength(chooseGameLength.getValue());
 			}
 		});
 		
@@ -214,20 +214,20 @@ public class SetUpScreen {
 					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARM name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
 				}
 				else {
-					startGame.setFarmer(farmerNameChosen);
+					game.setFarmer(farmerNameChosen);
 					String farmChosen = (String)farmSelection.getSelectedItem(); //Cast from object to String
 					switch(farmChosen) {
 						case "Farm A":
-							startGame.setFarm(farmNameChosen, 1000, 2.5, 5, 3);
+							game.setFarm(farmNameChosen, 1000, 2.5, 5, 3);
 							break;
 						case "Farm B":
-							startGame.setFarm(farmNameChosen, 600, 1.5, 5, 9);
+							game.setFarm(farmNameChosen, 600, 1.5, 5, 9);
 							break;
 						case "Farm C":
-							startGame.setFarm(farmNameChosen, 300, 7.5, 8, 9);
+							game.setFarm(farmNameChosen, 300, 7.5, 8, 9);
 							break;
 						case "Farm D":
-							startGame.setFarm(farmNameChosen, 650, 6.0, 7, 6);
+							game.setFarm(farmNameChosen, 650, 6.0, 7, 6);
 							break;
 					}
 					
