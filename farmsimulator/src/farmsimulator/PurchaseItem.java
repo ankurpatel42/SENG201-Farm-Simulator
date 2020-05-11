@@ -16,15 +16,16 @@ import java.awt.event.InputMethodEvent;
 import javax.swing.JTextPane;
 
 public class PurchaseItem {
+	
+	GameEnvironment game;
 
 	private JFrame frmPurchaseItem;
 	private String[] items = {"F1", "F2", "F3", "A1", "A2", "A3"};
 	DefaultComboBoxModel<String> itemsCombo = new DefaultComboBoxModel<String>(items);
 	private String itemChosen = null;
 	//private String famerName = GameEnvironment.getFarmer().getFarmerName();
-	private Item item;
+	//private Item item; 
 	private GeneralStore store;
-	private Farm farm;
 	private String money;
 	private static String message;
 	
@@ -50,8 +51,21 @@ public class PurchaseItem {
 	 * Create the application.
 	 */
 	public PurchaseItem() {
-		farm = GameEnvironment.getFarm();
 		initialize();
+	}
+	
+	public PurchaseItem(GameEnvironment game) {
+		this.game = game;
+		initialize();
+		frmPurchaseItem.setVisible(true);
+	}
+	
+	public void closePurchaseItemWindow() {
+		frmPurchaseItem.dispose();
+	}
+	
+	public void finishedWindow() {
+		game.closePurchaseItemWindow(this);
 	}
 
 	/**
@@ -101,6 +115,7 @@ public class PurchaseItem {
 				itemChosen = (String)comboBoxItem.getSelectedItem();
 				switch (itemChosen) {
 					case "A1":
+						//make a method in Game Environment that initializes/sets items and call it here
 						item = new AnimalFoodOne();
 						break;
 					case "A2":
