@@ -15,16 +15,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 
 public class PurchaseAnimal {
+	
+	private GameEnvironment game;
 
 	private JFrame frmPurchaseAnimal;
 	private String[] animals = {"Cow", "Pig", "Sheep"};
 	DefaultComboBoxModel<String> animalsCombo = new DefaultComboBoxModel<String>(animals);
 	private String animalChosen = null;
-	private Animal animal;
 	private GeneralStore store;
 	private String message;
-	private String money;
-	private Farm farm;
 
 	/**
 	 * Launch the application.
@@ -46,8 +45,19 @@ public class PurchaseAnimal {
 	 * Create the application.
 	 */
 	public PurchaseAnimal() {
-		farm = GameEnvironment.getFarm();
 		initialize();
+	}
+	
+	public PurchaseAnimal(GameEnvironment game) {
+		this.game = game;
+	}
+	
+	public void closePurchaseAnimalWindow() {
+		frmPurchaseAnimal.dispose();
+	}
+	
+	public void finishedWindow() {
+		game.closePurchaseAnimalWindow(this);
 	}
 
 	/**
@@ -93,6 +103,7 @@ public class PurchaseAnimal {
 				animalChosen = (String)comboBoxAnimals.getSelectedItem();
 				switch (animalChosen) {
 					case "Cow":
+						//call method in Game Environment
 						animal = new Cow();
 						break;
 					case "Pig":
