@@ -10,10 +10,12 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
-public class Crops{
+public class CropWindow{
+	
+	private GameEnvironment game;
 
 	private JFrame frmCrops;
-	private Farm farm;
+	
 	private Crop cropSelected;
 	private Item itemSelected;
 	private String[] items = {"Yet to be Done"}; //Items Owned
@@ -29,7 +31,7 @@ public class Crops{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Crops window = new Crops();
+					CropWindow window = new CropWindow();
 					window.frmCrops.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,8 +43,22 @@ public class Crops{
 	/**
 	 * Create the application.
 	 */
-	public Crops() {
+	public CropWindow() {
 		initialize();
+	}
+	
+	public CropWindow(GameEnvironment game) {
+		this.game = game;
+		initialize();
+		frmCrops.setVisible(true);
+	}
+	
+	public void closeCropWindow() {
+		frmCrops.dispose();
+	}
+	
+	public void finishedWindow() {
+		game.closeCropWindow(this);
 	}
 
 	/**
