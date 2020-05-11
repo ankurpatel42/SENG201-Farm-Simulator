@@ -4,7 +4,7 @@ public class Farmer {
 	
 	private static String farmerName = null;
 	private double bonus = 0;
-	private static int actionsLeft = 2;
+	private int actionsLeft = 2;
 	private static int dayNum = 1;
 	
 	public Farmer (String inputFarmerName) {
@@ -20,16 +20,8 @@ public class Farmer {
 	}
 	
 	
-	public static void useAction() {
-		if (actionsLeft == 0) {
-			System.out.println(farmerName + " has no actions left for today");
-		}
-		else {
-			actionsLeft--;
-			if (actionsLeft == 0) {
-				System.out.println(farmerName + " has run out of actions for today");
-			}
-		}
+	public void useAction() {
+		actionsLeft--;
 	}
 	
 	public int getDayNum() {
@@ -51,7 +43,7 @@ public class Farmer {
 	}
 	
 	public void tendToFarmLand(GameEnvironment game) {
-		useAction();
+		game.useFarmerAction();
 		for (Crop crop : game.getFarm().getCropList()) {
 			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
 		}
