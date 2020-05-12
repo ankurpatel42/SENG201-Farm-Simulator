@@ -4,20 +4,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
+//import java.awt.BorderLayout;
 import java.awt.Point;
-import java.awt.Component;
+//import java.awt.Component;
 import java.awt.Dimension;
-
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
-import javax.swing.ListSelectionModel;
 
 public class StoreWindow {
 	
@@ -25,8 +19,6 @@ public class StoreWindow {
 	
 	private JFrame frmGeneralStore;
 	private JLabel lblStoreTitle;
-	DefaultListModel<Item> itemListModel = new DefaultListModel<>();
-	JList<Item> listItems = new JList<>(itemListModel);
 
 	/**
 	 * Launch the application.
@@ -69,7 +61,7 @@ public class StoreWindow {
 		frmGeneralStore = new JFrame();
 		frmGeneralStore.setVisible(true);
 		frmGeneralStore.setTitle("General Store");
-		frmGeneralStore.setBounds(100, 100, 450, 300);
+		frmGeneralStore.setBounds(100, 100, 770, 515);
 		frmGeneralStore.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGeneralStore.getContentPane().setLayout(null);
 		
@@ -134,12 +126,8 @@ public class StoreWindow {
 		lblItems.setBounds(322, 37, 94, 16);
 		frmGeneralStore.getContentPane().add(lblItems);
 		
-		
-		itemListModel.addAll(game.getItemsOwnedByFarmer());
-		listItems.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listItems.setForeground(Color.WHITE);
-		listItems.setBackground(Color.GRAY);
-		listItems.setBounds(280, 65, 148, 145);
-		frmGeneralStore.getContentPane().add(listItems);
+		JTextPane txtAllItems = new JTextPane();
+		txtAllItems.setBounds(252, 52, 177, 152);
+		frmGeneralStore.getContentPane().add(txtAllItems);
 	}
 }
