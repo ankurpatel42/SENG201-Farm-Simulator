@@ -151,12 +151,12 @@ public class AnimalWindow {
 		animalsFrame.getContentPane().add(farmNameLabel);
 		
 		//animal food items owned
-		for(int i = 0; i < game.getItemsOwnedByFarmer().size(); i++) {
-			if (game.getItemsOwnedByFarmer().get(i) instanceof AnimalFoodOne || game.getItemsOwnedByFarmer().get(i) 
-					instanceof AnimalFoodTwo || game.getItemsOwnedByFarmer().get(i) instanceof AnimalFoodThree) {
-				animalFoodListModel.add(i, game.getItemsOwnedByFarmer().get(i));
+		for(Item item: game.getItemsOwnedByFarmer()) {
+			if (item instanceof AnimalFoodOne || item instanceof AnimalFoodTwo || item instanceof AnimalFoodThree) {
+				animalFoodListModel.addElement(item);
 			}
 		}
+		
 		
 		animalFoodList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		animalFoodList.setForeground(Color.WHITE);
