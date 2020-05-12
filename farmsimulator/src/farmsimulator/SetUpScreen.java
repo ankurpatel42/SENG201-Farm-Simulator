@@ -40,25 +40,6 @@ public class SetUpScreen {
 	private String[] farmOptions = {"Farm A", "Farm B", "Farm C", "Farm D"};
 	DefaultComboBoxModel<String> farmOptionsModel = new DefaultComboBoxModel<String>(farmOptions);
 	private JButton beginGameButton;
-	
-	
-	/* Check that the user has entered the correct input */
-	private boolean checkTextInput(String name) {
-		
-		char[] nameArray = name.toCharArray();
-		
-		if (name.length() < 3 || name.length() > 15) {
-			return false;
-		}
-		
-		for(int i = 0; i < name.length(); i++) {
-			if (!(Character.isLetter(nameArray[i]))) {
-				return false;
-			}
-		}
-		
-		return true;
-	}
 
 	/**
 	 * Launch the application.
@@ -207,10 +188,10 @@ public class SetUpScreen {
 			public void actionPerformed(ActionEvent e) {
 				String farmerNameChosen = userFarmerName.getText();
 				String farmNameChosen = userFarmName.getText();
-				if (checkTextInput(farmerNameChosen) == false) {
+				if (game.checkTextInput(farmerNameChosen) == false) {
 					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARMER name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
 				}
-				if (checkTextInput(farmNameChosen) == false ) {
+				if (game.checkTextInput(farmNameChosen) == false ) {
 					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARM name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
 				}
 				else {
