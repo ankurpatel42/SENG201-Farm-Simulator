@@ -72,7 +72,7 @@ public class PurchaseAnimal {
 		frmPurchaseAnimal = new JFrame();
 		frmPurchaseAnimal.setTitle("Purchase Animal");
 		frmPurchaseAnimal.setVisible(true);
-		frmPurchaseAnimal.setBounds(100, 100, 450, 263);
+		frmPurchaseAnimal.setBounds(100, 100, 770, 515);
 		frmPurchaseAnimal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseAnimal.getContentPane().setLayout(null);
 		
@@ -123,7 +123,6 @@ public class PurchaseAnimal {
 							else {
 								cowNamesChosen.add(nameChosenForCow);
 								message = game.createCow(nameChosenForCow);
-								JOptionPane.showMessageDialog(btnPurchase, message);
 							}
 						}
 						break;
@@ -142,7 +141,6 @@ public class PurchaseAnimal {
 							else {
 								pigNamesChosen.add(nameChosenForPig);
 								message = game.createPig(nameChosenForPig);
-								JOptionPane.showMessageDialog(btnPurchase, message);
 							}
 						}
 						break;
@@ -161,12 +159,13 @@ public class PurchaseAnimal {
 							else {
 								sheepNamesChosen.add(nameChosenForSheep);
 								message = game.createSheep(nameChosenForSheep);
-								JOptionPane.showMessageDialog(btnPurchase, message);
+
 							}
 						}
 						break;
 				}
-
+				
+				JOptionPane.showMessageDialog(btnPurchase, message);
 				
 			}
 		});
