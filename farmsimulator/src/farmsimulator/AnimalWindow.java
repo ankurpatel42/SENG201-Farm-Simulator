@@ -69,7 +69,7 @@ public class AnimalWindow {
 	private void initialize() {
 		animalsFrame = new JFrame();
 		animalsFrame.setTitle("Animals");
-		animalsFrame.setBounds(100, 100, 654, 413);
+		animalsFrame.setBounds(100, 100, 770, 515);
 		animalsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		animalsFrame.getContentPane().setLayout(null);
 		
@@ -82,40 +82,47 @@ public class AnimalWindow {
 		feedAnimalButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (game.getAnimalsOnFarm().size() == 0) {
-					JOptionPane.showMessageDialog(animalsFrame, "There are no Animals on your farm to feed yet");
+					JOptionPane.showMessageDialog(animalsFrame, "There are no Animals on your farm to feed yet, visit the General Store to "
+							+ "purchase Animals!");
 				}
 				else {
 					if (animalList.getSelectedValue() == null || animalFoodList.getSelectedValue() == null) {
-						JOptionPane.showMessageDialog(animalsFrame, "You must select an Animal and a food item to feed your Animal!");
+						JOptionPane.showMessageDialog(animalsFrame, "You must select an Animal and a food item to feed your Animal! "
+								+ "Animals and food items are available for purchase at the General Store!");
 					}
 					else {
 						game.feedAnimal(animalList.getSelectedValue(), animalFoodList.getSelectedValue());
-						JOptionPane.showMessageDialog(animalsFrame, "You have fed " + animalList.getSelectedValue() + " " 
-								+ animalFoodList.getSelectedValue());
+						JOptionPane.showMessageDialog(animalsFrame, "You have fed " + animalList.getSelectedValue().getAnimalName() + " " 
+								+ animalFoodList.getSelectedValue().getItemName());
+						animalsFrame.repaint();
 					}
 ;				}
 			}
 		});
-		feedAnimalButton.setBounds(401, 252, 144, 23);
+		feedAnimalButton.setBounds(70, 328, 144, 23);
 		animalsFrame.getContentPane().add(feedAnimalButton);
 		
 		JButton playWithAnimalButton = new JButton("Play with Animal");
 		playWithAnimalButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (animalList.getSelectedValue() == null) {
+				if (game.getAnimalsOnFarm().size() == 0) {
+					JOptionPane.showMessageDialog(animalsFrame, "There are no Animals on your farm to play with yet, isit the General Store to purchase Animals!");
+				}
+				else if (animalList.getSelectedValue() == null) {
 					JOptionPane.showMessageDialog(animalsFrame, "Select an animal to play with!");
 				}
 				else {
-					game.playWithAnimal(animalList.getSelectedValue());
-					JOptionPane.showMessageDialog(animalsFrame, "You played with" + animalList.getSelectedValue());
+					game.playWithAnima(animalList.getSelectedValue());
+					JOptionPane.showMessageDialog(animalsFrame, "You played with" + animalList.getSelectedValue().getAnimalName());
+					animalsFrame.repaint();
 				}
 			}
 		});
-		playWithAnimalButton.setBounds(401, 286, 144, 23);
+		playWithAnimalButton.setBounds(70, 374, 144, 23);
 		animalsFrame.getContentPane().add(playWithAnimalButton);
 		
 		JButton backToFarmButton = new JButton("Back to Farm");
-		backToFarmButton.setBounds(470, 320, 144, 23);
+		backToFarmButton.setBounds(549, 420, 144, 23);
 		backToFarmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeAnimalWindow();
@@ -129,8 +136,8 @@ public class AnimalWindow {
 		userFarmNameLabel.setText(game.getFarmName());
 		animalsFrame.getContentPane().add(userFarmNameLabel);
 		
-		JLabel animalsLabel = new JLabel("Animals on Farm (pick an individual to feed!)");
-		animalsLabel.setBounds(372, 11, 278, 32);
+		JLabel animalsLabel = new JLabel("Animals on Farm (pick one to feed or play with!)");
+		animalsLabel.setBounds(400, 11, 278, 32);
 		animalsFrame.getContentPane().add(animalsLabel);
 		
 		
@@ -139,7 +146,7 @@ public class AnimalWindow {
 		animalList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		animalList.setForeground(Color.WHITE);
 		animalList.setBackground(Color.GRAY);
-		animalList.setBounds(368, 45, 217, 198);
+		animalList.setBounds(372, 72, 321, 316);
 		animalsFrame.getContentPane().add(animalList);
 		
 		JLabel feedAllAnimalsLabel = new JLabel("Feed and play with all Animals of a type!");
@@ -149,7 +156,6 @@ public class AnimalWindow {
 		JLabel farmNameLabel = new JLabel("Farm:");
 		farmNameLabel.setBounds(152, 11, 62, 32);
 		animalsFrame.getContentPane().add(farmNameLabel);
-		
 		
 		//animal food items owned
 		for(Item item: game.getItemsOwnedByFarmer()) {
@@ -161,11 +167,15 @@ public class AnimalWindow {
 		animalFoodList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		animalFoodList.setForeground(Color.WHITE);
 		animalFoodList.setBackground(Color.GRAY);
-		animalFoodList.setBounds(70, 177, 217, 109);
+		animalFoodList.setBounds(70, 177, 162, 109);
 		animalsFrame.getContentPane().add(animalFoodList);
 		
 		JLabel animalFoodItemsLabel = new JLabel("Animal Food Items available");
 		animalFoodItemsLabel.setBounds(70, 134, 162, 32);
 		animalsFrame.getContentPane().add(animalFoodItemsLabel);
+		
+		JLabel animalDescriptionLabel = new JLabel("Animal name : Animal healthiness : Animal happiness");
+		animalDescriptionLabel.setBounds(400, 40, 293, 32);
+		animalsFrame.getContentPane().add(animalDescriptionLabel);
 	}
 }
