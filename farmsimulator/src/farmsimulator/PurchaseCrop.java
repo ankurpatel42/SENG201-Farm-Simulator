@@ -22,7 +22,7 @@ public class PurchaseCrop {
 	private String[] items = {"Carrot", "Corn", "Lettuce", "Potato", "Rice", "Wheat"};
 	DefaultComboBoxModel<String> cropCombo = new DefaultComboBoxModel<String>(items);
 	
-	private GeneralStore store;
+	//private GeneralStore store;
 	private String message;
 
 	/**
@@ -69,7 +69,7 @@ public class PurchaseCrop {
 		frmPurchaseCrop = new JFrame();
 		frmPurchaseCrop.setVisible(true);
 		frmPurchaseCrop.setTitle("Purchase Crop");
-		frmPurchaseCrop.setBounds(100, 100, 450, 300);
+		frmPurchaseCrop.setBounds(100, 100, 770, 515);
 		frmPurchaseCrop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseCrop.getContentPane().setLayout(null);
 		
