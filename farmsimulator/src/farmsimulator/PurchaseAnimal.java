@@ -2,7 +2,7 @@ package farmsimulator;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Window;
+//import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -106,17 +106,38 @@ public class PurchaseAnimal {
 				switch (animalChosen) {
 					case "Cow":
 						//call method in Game Environment
-						message = game.createCow();
+						String nameChosenForCow = JOptionPane.showInputDialog("Give your Cow a name!");
+						if (game.checkTextInput(nameChosenForCow) == false) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your cow!");
+						}
+						else {
+							message = game.createCow(nameChosenForCow);
+							JOptionPane.showMessageDialog(btnPurchase, message);
+						}
 						break;
 					case "Pig":
-						message = game.createPig();
+						String nameChosenForPig = JOptionPane.showInputDialog("Give your Pig a name!");
+						if (game.checkTextInput(nameChosenForPig) == false) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig!");
+						}
+						else {
+							message = game.createPig(nameChosenForPig);
+							JOptionPane.showMessageDialog(btnPurchase, message);
+						}
 						break;
 					case "Sheep":
-						message = game.createSheep();
+						String nameChosenForSheep = JOptionPane.showInputDialog("Give your Sheep a name!");
+						if (game.checkTextInput(nameChosenForSheep) == false) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Sheep!");
+						}
+						else {
+							message = game.createSheep(nameChosenForSheep);
+							JOptionPane.showMessageDialog(btnPurchase, message);
+						}
 						break;
 				}
 
-				JOptionPane.showMessageDialog(btnPurchase, message);
+				
 			}
 		});
 		frmPurchaseAnimal.getContentPane().add(btnPurchase);
