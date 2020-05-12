@@ -41,7 +41,7 @@ public class SetUpScreen {
 	DefaultComboBoxModel<String> farmOptionsModel = new DefaultComboBoxModel<String>(farmOptions);
 	private JButton beginGameButton;
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	

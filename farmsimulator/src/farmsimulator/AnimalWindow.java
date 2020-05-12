@@ -158,7 +158,6 @@ public class AnimalWindow {
 			}
 		}
 		
-		
 		animalFoodList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		animalFoodList.setForeground(Color.WHITE);
 		animalFoodList.setBackground(Color.GRAY);
