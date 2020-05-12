@@ -11,8 +11,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
+//import java.awt.event.InputMethodListener;
+//import java.awt.event.InputMethodEvent;
 import javax.swing.JTextPane;
 
 public class PurchaseItem {
@@ -73,7 +73,7 @@ public class PurchaseItem {
 		frmPurchaseItem = new JFrame();
 		frmPurchaseItem.setVisible(true);
 		frmPurchaseItem.setTitle("Purchase Item");
-		frmPurchaseItem.setBounds(100, 100, 496, 338);
+		frmPurchaseItem.setBounds(100, 100, 770, 515);
 		frmPurchaseItem.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseItem.getContentPane().setLayout(null);
 		
