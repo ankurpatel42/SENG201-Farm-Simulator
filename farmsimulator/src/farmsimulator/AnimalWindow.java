@@ -106,7 +106,7 @@ public class AnimalWindow {
 					JOptionPane.showMessageDialog(animalsFrame, "Select an animal to play with!");
 				}
 				else {
-					game.playWithAnima(animalList.getSelectedValue());
+					game.playWithAnimal(animalList.getSelectedValue());
 					JOptionPane.showMessageDialog(animalsFrame, "You played with" + animalList.getSelectedValue());
 				}
 			}
@@ -150,11 +150,11 @@ public class AnimalWindow {
 		farmNameLabel.setBounds(152, 11, 62, 32);
 		animalsFrame.getContentPane().add(farmNameLabel);
 		
+		
 		//animal food items owned
-		for(int i = 0; i < game.getItemsOwnedByFarmer().size(); i++) {
-			if (game.getItemsOwnedByFarmer().get(i) instanceof AnimalFoodOne || game.getItemsOwnedByFarmer().get(i) 
-					instanceof AnimalFoodTwo || game.getItemsOwnedByFarmer().get(i) instanceof AnimalFoodThree) {
-				animalFoodListModel.add(i, game.getItemsOwnedByFarmer().get(i));
+		for(Item item: game.getItemsOwnedByFarmer()) {
+			if (item instanceof AnimalFoodOne || item instanceof AnimalFoodTwo || item instanceof AnimalFoodThree) {
+				animalFoodListModel.addElement(item);
 			}
 		}
 		

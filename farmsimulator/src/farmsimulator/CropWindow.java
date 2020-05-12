@@ -1,5 +1,6 @@
 package farmsimulator;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 
 public class CropWindow{
 	
@@ -19,11 +24,11 @@ public class CropWindow{
 	
 	private Crop cropSelected;
 	private Item itemSelected;
-	private ArrayList<Item> items; //Items Owned
-	//DefaultComboBoxModel<Item> itemsCombo = new DefaultComboBoxModel<Item>(items);
-	private String[] crops = {"Yet to be Done"}; //Crops Owned
-	DefaultComboBoxModel<String> cropsCombo = new DefaultComboBoxModel<String>(crops);
-	
+	private String farmName;
+	DefaultListModel<Crop> cropListModel = new DefaultListModel<>();
+	JList<Crop> listCrops = new JList<>(cropListModel);
+	DefaultListModel<Item> itemListModel = new DefaultListModel<>();
+	JList<Item> listItems = new JList<>(itemListModel);
 
 	/**
 	 * Launch the application.
@@ -73,52 +78,41 @@ public class CropWindow{
 		frmCrops.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCrops.getContentPane().setLayout(null);
 		
-		//farm = GameEnvironment.getFarm();
-		JLabel lblTitle = new JLabel("farm.getFarmName()");
+		farmName = game.getFarmName();
+		JLabel lblTitle = new JLabel(farmName);
 		lblTitle.setBounds(150, 6, 161, 16);
 		frmCrops.getContentPane().add(lblTitle);
-		
-		JLabel lblListTitle = new JLabel("List of Crops");
-		lblListTitle.setBounds(287, 34, 95, 16);
-		frmCrops.getContentPane().add(lblListTitle);
-		
-		JComboBox<String> comboBoxCrop = new JComboBox<>(cropsCombo);
-		comboBoxCrop.setBounds(29, 70, 126, 27);
-		frmCrops.getContentPane().add(comboBoxCrop);
 		
 		JLabel lblChooseCrop = new JLabel("Choose Crop");
 		lblChooseCrop.setBounds(41, 42, 100, 16);
 		frmCrops.getContentPane().add(lblChooseCrop);
 		
 		JLabel lblChooseItem = new JLabel("Choose Item");
-		lblChooseItem.setBounds(41, 152, 103, 16);
+		lblChooseItem.setBounds(280, 42, 103, 16);
 		frmCrops.getContentPane().add(lblChooseItem);
 		
-		/*
-		items = game.getFarm().getItemsOwned();
-		//NotSure
-		JComboBox<String> comboBoxItem = new JComboBox<>(items);
-		//comboBoxItem.setModel(new DefaultComboBoxModel<Item>());
-		comboBoxItem.setBounds(29, 180, 126, 27);
-		frmCrops.getContentPane().add(comboBoxItem);
-		*/
-		
 		JButton btnHarvest = new JButton("Harvest Crop");
-		btnHarvest.setBounds(29, 109, 117, 29);
+		btnHarvest.setBounds(27, 190, 117, 29);
 		btnHarvest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cropSelected = (Crop)comboBoxCrop.getSelectedItem();
-				//cropSelected.harvestCrops();
-				//Give user a message
+				if (listCrops.getSelectedValue() == null) {
+					JOptionPane.showMessageDialog(frmCrops, "Select an crop to harvest!");
+				}
+				else {
+					Crop crop = listCrops.getSelectedValue();
+					String message = game.harvestCrops(crop);
+					JOptionPane.showMessageDialog(frmCrops, message);
+				}
 			}
 		});
 		frmCrops.getContentPane().add(btnHarvest);
 		
 		JButton btnUseItem = new JButton("Use Item");
-		btnUseItem.setBounds(29, 219, 117, 29);
+		btnUseItem.setBounds(280, 190, 117, 29);
 		btnUseItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cropSelected = (Crop)comboBoxCrop.getSelectedItem();
+				
+				//cropSelected = (Crop)comboBoxCrop.getSelectedItem();
 				//itemSelected = (Item)comboBoxItem.getSelectedItem();
 				//cropSelected.tendCrops(itemSelected);
 				//Give user a message
@@ -127,7 +121,7 @@ public class CropWindow{
 		frmCrops.getContentPane().add(btnUseItem);
 		
 		JButton btnBack = new JButton("Back to Farm");
-		btnBack.setBounds(265, 219, 117, 29);
+		btnBack.setBounds(162, 232, 117, 29);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeCropWindow();
@@ -135,5 +129,26 @@ public class CropWindow{
 			}
 		});
 		frmCrops.getContentPane().add(btnBack);
+		
+		cropListModel.addAll(game.getCropsOwned());
+		listCrops.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listCrops.setForeground(Color.WHITE);
+		listCrops.setBackground(Color.GRAY);
+		listCrops.setBounds(27, 68, 114, 110);
+		frmCrops.getContentPane().add(listCrops);
+		
+		
+		//animal food items owned
+		for(Item item: game.getItemsOwnedByFarmer()) {
+			if (item instanceof FertiliserOne || item instanceof FertiliserTwo || item instanceof FertiliserThree) {
+				itemListModel.addElement(item);
+			}
+		}
+
+		listItems.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listItems.setForeground(Color.WHITE);
+		listItems.setBackground(Color.GRAY);
+		listItems.setBounds(255, 68, 117, 110);
+		frmCrops.getContentPane().add(listItems);
 	}
 }

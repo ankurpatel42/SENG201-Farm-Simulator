@@ -155,7 +155,7 @@ public class MainScreen {
 		tendFarm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (game.getFarmerActionsLeft() != 0) {
-					game.tendFarm(game);
+					//game.tendFarm(game);
 					actionsLeft.setText(Integer.toString(game.getFarmerActionsLeft()));
 				}
 				else {
