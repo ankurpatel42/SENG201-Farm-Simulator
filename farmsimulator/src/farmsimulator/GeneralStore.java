@@ -40,7 +40,7 @@ public class GeneralStore {
 			money = money - animal.getAnimalPurchasePrice();
 			game.getFarm().setMoneyAvailible(money);
 			game.getFarm().addAnimalToList(animal);
-			message = "You have purchased one " + animal.getAnimalName();
+			message = "You have purchased " + animal.getAnimalName();
 		}
 		return message;
 	}
