@@ -122,18 +122,30 @@ public class MainScreen {
 		mainScreen.getContentPane().add(actionsLeft);
 		
 		JButton viewCrops = new JButton("View Crops");
-		viewCrops.setBounds(165, 242, 118, 23);
+		viewCrops.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeMainScreen();
+				game.launchCropWindow();
+			}
+		});
+		viewCrops.setBounds(100, 242, 118, 23);
 		mainScreen.getContentPane().add(viewCrops);
 		
 		JButton visitStore = new JButton("Visit Store");
-		visitStore.setBounds(165, 321, 123, 23);
+		visitStore.setBounds(100, 321, 123, 23);
+		visitStore.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeMainScreen();
+				game.launchStoreWindow();
+			}
+		});
 		mainScreen.getContentPane().add(visitStore);
 		
 		JButton viewAnimals = new JButton("View Animals");
 		viewAnimals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeMainScreen();
-				finishedWindow();
+				game.launchAnimalWindow();
 			}
 		});
 		viewAnimals.setBounds(469, 242, 118, 23);

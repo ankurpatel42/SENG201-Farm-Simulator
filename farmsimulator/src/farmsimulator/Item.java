@@ -21,11 +21,14 @@ public abstract class Item {
 		this.name = name;
 	}
 	
-	
 	//For Water
 	public Item (String name, int increase) {
 		this.name = name;
 		this.cropHarvestSpeedUpTime = increase;
+	}
+	
+	public String toString() {
+		return name;
 	}
 	
 	public double getPrice() {

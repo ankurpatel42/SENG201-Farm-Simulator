@@ -11,29 +11,106 @@ public class GameEnvironment {
 	private int gameLength = 0;
 	private Farm farm;
 	private Animal animal;
-	//private Crop crop;
-	//private Item item;
+	private Crop crop;
+	private Item item;
+	private GeneralStore store;
+	private String message;
 	
 	public void setFarm(String farmNameChosen, double moneyAvailable, double cropGrowthRate, int animalHealthiness, int animalHappiness) {
 		farm = new Farm(farmNameChosen, moneyAvailable, cropGrowthRate, animalHealthiness, animalHappiness);
+		//Not sure where to call this
+		store = new GeneralStore(this);
 	}
 	
-	public void createCow() {
+	public String createCow() {
 		animal = new Cow();
-		farm.addAnimalToList(animal);
+		message = store.purchaseAnimal(animal);
+		return message;
 	}
 	
-	public void createPig() {
+	public String createPig() {
 		animal = new Pig();
-		farm.addAnimalToList(animal);
+		message = store.purchaseAnimal(animal);
+		return message;
 	}
 	
-	public void createSheep() {
+	public String createSheep() {
 		animal = new Sheep();
-		farm.addAnimalToList(animal);
+		message = store.purchaseAnimal(animal);
+		return message;
 	}
 	
-	//same for crops and item - do later
+	public String createFertiliserOne() {
+		item = new FertiliserOne();
+		message = store.purchaseItem(item);
+		return message;
+	}
+	
+	public String createFertiliserTwo() {
+		item = new FertiliserTwo();
+		message = store.purchaseItem(item);
+		return message;
+	}
+	
+	public String createFertiliserThree() {
+		item = new FertiliserThree();
+		message = store.purchaseItem(item);
+		return message;
+	}
+	
+	public String createAnimalFoodOne() {
+		item = new AnimalFoodOne();
+		message = store.purchaseItem(item);
+		return message;
+	}
+	
+	public String createAnimalFoodTwo() {
+		item = new AnimalFoodTwo();
+		message = store.purchaseItem(item);
+		return message;
+	}
+	
+	public String createAnimalFoodThree() {
+		item = new AnimalFoodThree();
+		message = store.purchaseItem(item);
+		return message;
+	}
+	
+	public String createCarrot() {
+		crop = new Carrot();
+		message = store.purchaseCrop(crop);
+		return message;
+	}
+	
+	public String createCorn() {
+		crop = new Corn();
+		message = store.purchaseCrop(crop);
+		return message;
+	}
+	
+	public String createLettuce() {
+		crop = new Lettuce();
+		message = store.purchaseCrop(crop);
+		return message;
+	}
+	
+	public String createPotato() {
+		crop = new Potato();
+		message = store.purchaseCrop(crop);
+		return message;
+	}
+	
+	public String createRice() {
+		crop = new Rice();
+		message = store.purchaseCrop(crop);
+		return message;
+	}
+	
+	public String createWheat() {
+		crop = new Wheat();
+		message = store.purchaseCrop(crop);
+		return message;
+	}
 	
 	public Farm getFarm() {
 		return farm;
@@ -104,7 +181,7 @@ public class GameEnvironment {
 	
 	public void closeMainScreen(MainScreen mainScreen) {
 		mainScreen.closeMainScreen();
-		launchAnimalWindow();
+		//launchAnimalWindow();
 	}
 	
 	public void launchAnimalWindow() {

@@ -81,8 +81,10 @@ public class PurchaseCrop {
 		lblMoney.setBounds(6, 37, 122, 16);
 		frmPurchaseCrop.getContentPane().add(lblMoney);
 		
-		JLabel lblMoneyAvailable = new JLabel("$ Farm's Money $");
+		JLabel lblMoneyAvailable = new JLabel("");
 		lblMoneyAvailable.setBounds(130, 37, 110, 16);
+		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+		lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 		frmPurchaseCrop.getContentPane().add(lblMoneyAvailable);
 		
 		JLabel lblSelect = new JLabel("Select Crop");
@@ -105,28 +107,25 @@ public class PurchaseCrop {
 				switch (cropChosen) {
 					case "Carrot":
 						//make a method in Game Environment that initializes/sets crops and call it here
-						crop = new Carrot();
+						message = game.createCarrot();
 						break;
 					case "Corn":
-						crop = new Corn();
+						message = game.createCorn();
 						break;
 					case "Lettuce":
-						crop = new Lettuce();
+						message = game.createLettuce();
 						break;
 					case "Potato":
-						crop = new Potato();
+						message = game.createPotato();
 						break;
 					case "Rice":
-						crop = new Rice();
+						message = game.createRice();
 						break;
 					case "Wheat":
-						crop = new Wheat();
+						message = game.createWheat();
 						break;
 				}
 				
-				store = GameEnvironment.getStore();
-				//PROBLEM, Not calling below method?
-				message = store.purchaseCrop(crop);
 				JOptionPane.showMessageDialog(btnPurchase, message);
 			}
 		});
@@ -135,8 +134,8 @@ public class PurchaseCrop {
 		JButton btnBack = new JButton("Back to Store");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmPurchaseCrop.dispose();
-				StoreWindow s = new StoreWindow();
+				closePurchaseCropWindow();
+				game.launchStoreWindow();
 			}
 		});
 		btnBack.setBounds(158, 232, 117, 29);

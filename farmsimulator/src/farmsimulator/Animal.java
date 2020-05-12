@@ -6,6 +6,7 @@ public abstract class Animal {
 	private double animalMoneyGiven = 0;
 	private int animalHealthiness = 0;
 	private int animalHappiness = 0;
+	private String name;
 	
 	
 	public Animal (String name, double animalPurchasePrice, double animalMoneyGiven, int animalHealthiness, int animalHappiness) {
@@ -13,10 +14,15 @@ public abstract class Animal {
 		this.animalMoneyGiven = animalMoneyGiven;
 		this.animalHealthiness = animalHealthiness;
 		this.animalHappiness = animalHappiness;
+		this.name = name;
 	}
 	
 	public double getAnimalPurchasePrice() {
 		return animalPurchasePrice;
+	}
+	
+	public String getAnimalName() {
+		return name;
 	}
 	
 	public double getAnimalMoneyGiven() {

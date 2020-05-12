@@ -11,16 +11,14 @@ import java.awt.Dimension;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
 
 public class StoreWindow {
 	
 	private GameEnvironment game;
 	
-	//private Farm farm;
-	
 	private JFrame frmGeneralStore;
 	private JLabel lblStoreTitle;
-	private String money;
 
 	/**
 	 * Launch the application.
@@ -50,6 +48,11 @@ public class StoreWindow {
 		initialize();
 		frmGeneralStore.setVisible(true);
 	}
+	
+	public void closeStoreWindow() {
+		frmGeneralStore.dispose();
+	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -73,15 +76,17 @@ public class StoreWindow {
 		lblMoney.setBounds(6, 37, 122, 16);
 		frmGeneralStore.getContentPane().add(lblMoney);
 		
-		JLabel lblMoneyAvailable = new JLabel(money);
+		JLabel lblMoneyAvailable = new JLabel("");
 		lblMoneyAvailable.setBounds(130, 37, 110, 16);
+		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+		lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 		frmGeneralStore.getContentPane().add(lblMoneyAvailable);
 		
 		JButton btnItem = new JButton("Purchase Item");
 		btnItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmGeneralStore.dispose();
-				PurchaseItem p = new PurchaseItem();
+				closeStoreWindow();
+				game.launchPurchaseItemWindow();
 			}
 		});
 		btnItem.setBounds(41, 78, 148, 29);
@@ -90,8 +95,8 @@ public class StoreWindow {
 		JButton btnCrop = new JButton("Purchase Crops");
 		btnCrop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmGeneralStore.dispose();
-				PurchaseCrop p = new PurchaseCrop();
+				closeStoreWindow();
+				game.launchPurchaseCropWindow();
 			}
 		});
 		btnCrop.setBounds(41, 118, 148, 29);
@@ -100,8 +105,8 @@ public class StoreWindow {
 		JButton btnAnimal = new JButton("Purchase Animals");
 		btnAnimal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmGeneralStore.dispose();
-				PurchaseAnimal p = new PurchaseAnimal();
+				closeStoreWindow();
+				game.launchPurchaseAnimalWindow();
 			}
 		});
 		btnAnimal.setBounds(41, 159, 148, 29);
@@ -110,8 +115,8 @@ public class StoreWindow {
 		JButton btnLeave = new JButton("Leave Store");
 		btnLeave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmGeneralStore.dispose();
-				MainScreen m = new MainScreen();
+				closeStoreWindow();
+				game.launchMainScreen();
 			}
 		});
 		btnLeave.setBounds(173, 222, 117, 29);
@@ -120,5 +125,9 @@ public class StoreWindow {
 		JLabel lblItems = new JLabel("Items Owned");
 		lblItems.setBounds(322, 37, 94, 16);
 		frmGeneralStore.getContentPane().add(lblItems);
+		
+		JTextPane txtAllItems = new JTextPane();
+		txtAllItems.setBounds(252, 52, 177, 152);
+		frmGeneralStore.getContentPane().add(txtAllItems);
 	}
 }

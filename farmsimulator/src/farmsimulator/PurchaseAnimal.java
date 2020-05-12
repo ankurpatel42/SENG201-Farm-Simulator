@@ -22,7 +22,6 @@ public class PurchaseAnimal {
 	private String[] animals = {"Cow", "Pig", "Sheep"};
 	DefaultComboBoxModel<String> animalsCombo = new DefaultComboBoxModel<String>(animals);
 	private String animalChosen = null;
-	private GeneralStore store;
 	private String message;
 
 	/**
@@ -50,6 +49,8 @@ public class PurchaseAnimal {
 	
 	public PurchaseAnimal(GameEnvironment game) {
 		this.game = game;
+		initialize();
+		frmPurchaseAnimal.setVisible(true);
 	}
 	
 	public void closePurchaseAnimalWindow() {
@@ -78,10 +79,11 @@ public class PurchaseAnimal {
 		JLabel lblMoney = new JLabel("Money Available:");
 		lblMoney.setBounds(6, 37, 122, 16);
 		frmPurchaseAnimal.getContentPane().add(lblMoney);
-		
-		money = farm.moneyToString();
-		JLabel lblMoneyAvailable = new JLabel(money);
+
+		JLabel lblMoneyAvailable = new JLabel("");
 		lblMoneyAvailable.setBounds(130, 37, 110, 16);
+		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+		lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 		frmPurchaseAnimal.getContentPane().add(lblMoneyAvailable);
 		
 		JLabel lblSelect = new JLabel("Select Animal");
@@ -104,19 +106,16 @@ public class PurchaseAnimal {
 				switch (animalChosen) {
 					case "Cow":
 						//call method in Game Environment
-						animal = new Cow();
+						message = game.createCow();
 						break;
 					case "Pig":
-						animal = new Pig();
+						message = game.createPig();
 						break;
 					case "Sheep":
-						animal = new Sheep();
+						message = game.createSheep();
 						break;
 				}
-				
-				store = GameEnvironment.getStore();
-				//PROBLEM, Not calling below method?
-				message = store.purchaseAnimal(animal);
+
 				JOptionPane.showMessageDialog(btnPurchase, message);
 			}
 		});
@@ -125,8 +124,8 @@ public class PurchaseAnimal {
 		JButton btnBack = new JButton("Back to Store");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmPurchaseAnimal.dispose();
-				StoreWindow s = new StoreWindow();
+				closePurchaseAnimalWindow();
+				game.launchStoreWindow();
 			}
 		});
 		btnBack.setBounds(158, 197, 117, 29);

@@ -51,7 +51,10 @@ public class AnimalWindow {
 		initialize();
 		animalsFrame.setVisible(true);
 	}
-
+	
+	public void closeAnimalWindow() {
+		animalsFrame.dispose();
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -89,6 +92,12 @@ public class AnimalWindow {
 		
 		JButton backToFarmButton = new JButton("Back to Farm");
 		backToFarmButton.setBounds(390, 303, 144, 23);
+		backToFarmButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeAnimalWindow();
+				game.launchMainScreen();
+			}
+		});
 		animalsFrame.getContentPane().add(backToFarmButton);
 		
 		JLabel userFarmNameLabel = new JLabel("New label");

@@ -17,7 +17,7 @@ import javax.swing.JTextPane;
 
 public class PurchaseItem {
 	
-	GameEnvironment game;
+	private GameEnvironment game;
 
 	private JFrame frmPurchaseItem;
 	private String[] items = {"F1", "F2", "F3", "A1", "A2", "A3"};
@@ -25,9 +25,7 @@ public class PurchaseItem {
 	private String itemChosen = null;
 	//private String famerName = GameEnvironment.getFarmer().getFarmerName();
 	//private Item item; 
-	private GeneralStore store;
-	private String money;
-	private static String message;
+	private String message;
 	
 	/**
 	 * Launch the application.
@@ -87,9 +85,10 @@ public class PurchaseItem {
 		lblMoney.setBounds(6, 37, 122, 16);
 		frmPurchaseItem.getContentPane().add(lblMoney);
 		
-		money = farm.moneyToString();
-		JLabel lblMoneyAvailable = new JLabel(money);
+		JLabel lblMoneyAvailable = new JLabel("");
 		lblMoneyAvailable.setBounds(130, 37, 110, 16);
+		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+		lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 		frmPurchaseItem.getContentPane().add(lblMoneyAvailable);
 		
 		JLabel lblSelect = new JLabel("Select Item");
@@ -116,28 +115,25 @@ public class PurchaseItem {
 				switch (itemChosen) {
 					case "A1":
 						//make a method in Game Environment that initializes/sets items and call it here
-						item = new AnimalFoodOne();
+						message = game.createAnimalFoodOne();
 						break;
 					case "A2":
-						item = new AnimalFoodTwo();
+						message = game.createAnimalFoodTwo();
 						break;
 					case "A3":
-						item = new AnimalFoodThree();
+						message = game.createAnimalFoodThree();
 						break;
 					case "F1":
-						item = new FertiliserOne();
+						message = game.createFertiliserOne();
 						break;
 					case "F2":
-						item = new FertiliserTwo();
+						message = game.createFertiliserTwo();
 						break;
 					case "F3":
-						item = new FertiliserThree();
+						message = game.createFertiliserThree();
 						break;
 				}
 				
-				store = GameEnvironment.getStore();
-				//PROBLEM, Not calling below method?
-				message = store.purchaseItem(item);
 				JOptionPane.showMessageDialog(btnPurchase, message);
 			}
 		});
@@ -147,8 +143,8 @@ public class PurchaseItem {
 		btnBack.setBounds(175, 281, 117, 29);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmPurchaseItem.dispose();
-				StoreWindow s = new StoreWindow();
+				closePurchaseItemWindow();
+				game.launchStoreWindow();
 			}
 		});
 		frmPurchaseItem.getContentPane().add(btnBack);

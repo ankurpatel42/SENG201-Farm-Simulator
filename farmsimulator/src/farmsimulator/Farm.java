@@ -28,13 +28,12 @@ public class Farm {
 	}
 	
 	public void setMoneyAvailible(double newBalance) {
-		moneyAvailable += newBalance;
+		moneyAvailable = newBalance;
 	}
 	
 	public double getMoneyAvailable() {
 		return moneyAvailable;
 	}
-	
 	
 	public int getFarmTidiness() {
 		return farmTidiness;
