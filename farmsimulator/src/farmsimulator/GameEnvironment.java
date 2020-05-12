@@ -63,21 +63,18 @@ public class GameEnvironment {
 	
 	public String createAnimalFoodOne() {
 		item = new AnimalFoodOne();
-		addItemsOwnedByFarmer(item);
 		message = store.purchaseItem(item);
 		return message;
 	}
 	
 	public String createAnimalFoodTwo() {
 		item = new AnimalFoodTwo();
-		addItemsOwnedByFarmer(item);
 		message = store.purchaseItem(item);
 		return message;
 	}
 	
 	public String createAnimalFoodThree() {
 		item = new AnimalFoodThree();
-		addItemsOwnedByFarmer(item);
 		message = store.purchaseItem(item);
 		return message;
 	}
@@ -127,7 +124,7 @@ public class GameEnvironment {
 	}
 	
 	public void addItemsOwnedByFarmer(Item item) {
-		farmer.additemToList(item);
+		farm.addNewItem(item);
 	}
 	
 	/*
@@ -145,7 +142,7 @@ public class GameEnvironment {
 	}
 	
 	public ArrayList<Item> getItemsOwnedByFarmer() {
-		return farmer.getItemsOwned();
+		return farm.getItemsOwned();
 	}
 	
 	public double getFarmMoneyAvailable() {
