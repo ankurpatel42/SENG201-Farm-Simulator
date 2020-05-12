@@ -22,7 +22,6 @@ public class GameEnvironment {
 		store = new GeneralStore(this);
 	}
 	
-	
 	public String createCow(String nameForCow) {
 		animal = new Cow();
 		animal.setAnimalName(nameForCow);
@@ -206,7 +205,6 @@ public class GameEnvironment {
 		
 		return true;
 	}
-	
 	
 	public void launchSetUpScreen() {
 		@SuppressWarnings("unused")
