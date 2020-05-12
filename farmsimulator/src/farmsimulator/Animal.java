@@ -21,6 +21,10 @@ public abstract class Animal {
 		return animalPurchasePrice;
 	}
 	
+	public void setAnimalName(String nameChosenForAnimal) {
+		name = nameChosenForAnimal;
+	}
+	
 	public String getAnimalName() {
 		return name;
 	}
@@ -29,14 +33,13 @@ public abstract class Animal {
 		return animalMoneyGiven;
 	}
 	
-	public void feedAnimal(Item choice, GameEnvironment game) {
-		game.getFarmer().useAction();
-		System.out.println("You have fed the animal " + choice.getItemName() + "!");
+	public void feedAnimal(Item choice) {
+		//game.getFarmer().useAction()
 		animalHealthiness += 2;
 	}
 	
-	public void playWithAnimal(GameEnvironment game) {
-		game.useFarmerAction();
+	public void playWithAnimal() {
+		//game.useFarmerAction();
 		animalHappiness += 3;
 	}
 	
