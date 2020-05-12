@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 //import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -23,6 +24,9 @@ public class PurchaseAnimal {
 	DefaultComboBoxModel<String> animalsCombo = new DefaultComboBoxModel<String>(animals);
 	private String animalChosen = null;
 	private String message;
+	private ArrayList<String> cowNamesChosen = new ArrayList<String>();
+	private ArrayList<String> pigNamesChosen = new ArrayList<String>();
+	private ArrayList<String> sheepNamesChosen = new ArrayList<String>();
 
 	/**
 	 * Launch the application.
@@ -105,34 +109,60 @@ public class PurchaseAnimal {
 				animalChosen = (String)comboBoxAnimals.getSelectedItem();
 				switch (animalChosen) {
 					case "Cow":
-						//call method in Game Environment
 						String nameChosenForCow = JOptionPane.showInputDialog("Give your Cow a name!");
-						if (game.checkTextInput(nameChosenForCow) == false) {
+						if (nameChosenForCow == null) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig!");
+						}
+						else if (game.checkTextInput(nameChosenForCow) == false) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your cow!");
 						}
 						else {
-							message = game.createCow(nameChosenForCow);
-							JOptionPane.showMessageDialog(btnPurchase, message);
+							if (cowNamesChosen.contains(nameChosenForCow)) {
+								JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a cow named " + nameChosenForCow);
+							}
+							else {
+								cowNamesChosen.add(nameChosenForCow);
+								message = game.createCow(nameChosenForCow);
+								JOptionPane.showMessageDialog(btnPurchase, message);
+							}
 						}
 						break;
 					case "Pig":
 						String nameChosenForPig = JOptionPane.showInputDialog("Give your Pig a name!");
-						if (game.checkTextInput(nameChosenForPig) == false) {
+						if (nameChosenForPig == null) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig!");
+						}
+						else if (game.checkTextInput(nameChosenForPig) == false) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig!");
 						}
 						else {
-							message = game.createPig(nameChosenForPig);
-							JOptionPane.showMessageDialog(btnPurchase, message);
+							if (pigNamesChosen.contains(nameChosenForPig)) {
+								JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a pig named " + nameChosenForPig);
+							}
+							else {
+								pigNamesChosen.add(nameChosenForPig);
+								message = game.createPig(nameChosenForPig);
+								JOptionPane.showMessageDialog(btnPurchase, message);
+							}
 						}
 						break;
 					case "Sheep":
 						String nameChosenForSheep = JOptionPane.showInputDialog("Give your Sheep a name!");
-						if (game.checkTextInput(nameChosenForSheep) == false) {
+						if (nameChosenForSheep == null) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig!");
+						}
+						else if (game.checkTextInput(nameChosenForSheep) == false) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Sheep!");
 						}
 						else {
-							message = game.createSheep(nameChosenForSheep);
-							JOptionPane.showMessageDialog(btnPurchase, message);
+							if (sheepNamesChosen.contains(nameChosenForSheep)) {
+								JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a sheep named " + nameChosenForSheep);
+							}
+							else {
+								sheepNamesChosen.add(nameChosenForSheep);
+								message = game.createSheep(nameChosenForSheep);
+								JOptionPane.showMessageDialog(btnPurchase, message);
+							}
 						}
 						break;
 				}
