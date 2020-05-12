@@ -127,6 +127,10 @@ public class GameEnvironment {
 		farm.addNewItem(item);
 	}
 	
+	public String harvestCrops(Crop crop) {
+		return crop.harvestCrops();
+	}
+	
 	/*
 	public void tendFarm(GameEnvironment game) {
 		farmer.tendToFarmLand(game);
@@ -143,6 +147,10 @@ public class GameEnvironment {
 	
 	public ArrayList<Item> getItemsOwnedByFarmer() {
 		return farm.getItemsOwned();
+	}
+	
+	public ArrayList<Crop> getCropsOwned() {
+		return farm.getCropList();
 	}
 	
 	public double getFarmMoneyAvailable() {
