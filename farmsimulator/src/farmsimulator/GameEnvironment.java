@@ -80,37 +80,37 @@ public class GameEnvironment {
 	}
 	
 	public String createCarrot() {
-		crop = new Carrot(this);
+		crop = new Carrot();
 		message = store.purchaseCrop(crop);
 		return message;
 	}
 	
 	public String createCorn() {
-		crop = new Corn(this);
+		crop = new Corn();
 		message = store.purchaseCrop(crop);
 		return message;
 	}
 	
 	public String createLettuce() {
-		crop = new Lettuce(this);
+		crop = new Lettuce();
 		message = store.purchaseCrop(crop);
 		return message;
 	}
 	
 	public String createPotato() {
-		crop = new Potato(this);
+		crop = new Potato();
 		message = store.purchaseCrop(crop);
 		return message;
 	}
 	
 	public String createRice() {
-		crop = new Rice(this);
+		crop = new Rice();
 		message = store.purchaseCrop(crop);
 		return message;
 	}
 	
 	public String createWheat() {
-		crop = new Wheat(this);
+		crop = new Wheat();
 		message = store.purchaseCrop(crop);
 		return message;
 	}
@@ -133,24 +133,16 @@ public class GameEnvironment {
 	}
 	*/
 	
-	public String harvestCrops(Crop crop) {
-		return crop.harvestCrops();
-	}
-	
 	public void feedAnimal(Animal animalToBeFed, Item item) {
 		animalToBeFed.feedAnimal(item);
 	}
 	
-	public void playWithAnimal(Animal animalToBePlayedWith) {
+	public void playWithAnima(Animal animalToBePlayedWith) {
 		animalToBePlayedWith.playWithAnimal();
 	}
 	
 	public ArrayList<Item> getItemsOwnedByFarmer() {
 		return farm.getItemsOwned();
-	}
-	
-	public ArrayList<Crop> getCropsOwned() {
-		return farm.getCropList();
 	}
 	
 	public double getFarmMoneyAvailable() {
@@ -212,7 +204,6 @@ public class GameEnvironment {
 	}
 	
 	public void launchSetUpScreen() {
-		@SuppressWarnings("unused")
 		SetUpScreen setUpScreenWindow = new SetUpScreen(this);
 	}
 	
@@ -222,7 +213,6 @@ public class GameEnvironment {
 	}
 	
 	public void launchMainScreen() {
-		@SuppressWarnings("unused")
 		MainScreen mainScreenFrame = new MainScreen(this);
 	}
 	
@@ -232,17 +222,14 @@ public class GameEnvironment {
 	}
 	
 	public void launchAnimalWindow() {
-		@SuppressWarnings("unused")
 		AnimalWindow animalWindow = new AnimalWindow(this);
 	}
 	
 	public void launchStoreWindow() {
-		@SuppressWarnings("unused")
 		StoreWindow storeWindow = new StoreWindow(this);
 	}
 	
 	public void launchPurchaseAnimalWindow() {
-		@SuppressWarnings("unused")
 		PurchaseAnimal purchaseAnimalWindow = new PurchaseAnimal(this);
 	}
 	
@@ -251,7 +238,6 @@ public class GameEnvironment {
 	}
 	
 	public void launchPurchaseCropWindow() {
-		@SuppressWarnings("unused")
 		PurchaseCrop purchaseCropWindow = new PurchaseCrop(this);
 	}
 	
@@ -260,7 +246,6 @@ public class GameEnvironment {
 	}
 	
 	public void launchPurchaseItemWindow() {
-		@SuppressWarnings("unused")
 		PurchaseItem purchaseItemWindow = new PurchaseItem(this);
 	}
 	
@@ -269,7 +254,6 @@ public class GameEnvironment {
 	}
 	
 	public void launchCropWindow() {
-		@SuppressWarnings("unused")
 		CropWindow cropWindow = new CropWindow(this);
 	}
 	
