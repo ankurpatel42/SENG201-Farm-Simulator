@@ -22,20 +22,24 @@ public class GameEnvironment {
 		store = new GeneralStore(this);
 	}
 	
-	public String createCow() {
+	
+	public String createCow(String nameForCow) {
 		animal = new Cow();
+		animal.setAnimalName(nameForCow);
 		message = store.purchaseAnimal(animal);
 		return message;
 	}
 	
-	public String createPig() {
+	public String createPig(String nameForPig) {
 		animal = new Pig();
+		animal.setAnimalName(nameForPig);
 		message = store.purchaseAnimal(animal);
 		return message;
 	}
 	
-	public String createSheep() {
+	public String createSheep(String nameForSheep) {
 		animal = new Sheep();
+		animal.setAnimalName(nameForSheep);
 		message = store.purchaseAnimal(animal);
 		return message;
 	}
@@ -60,18 +64,21 @@ public class GameEnvironment {
 	
 	public String createAnimalFoodOne() {
 		item = new AnimalFoodOne();
+		addItemsOwnedByFarmer(item);
 		message = store.purchaseItem(item);
 		return message;
 	}
 	
 	public String createAnimalFoodTwo() {
 		item = new AnimalFoodTwo();
+		addItemsOwnedByFarmer(item);
 		message = store.purchaseItem(item);
 		return message;
 	}
 	
 	public String createAnimalFoodThree() {
 		item = new AnimalFoodThree();
+		addItemsOwnedByFarmer(item);
 		message = store.purchaseItem(item);
 		return message;
 	}
@@ -120,8 +127,26 @@ public class GameEnvironment {
 		return farm.getFarmName();
 	}
 	
+	public void addItemsOwnedByFarmer(Item item) {
+		farmer.additemToList(item);
+	}
+	
+	/*
 	public void tendFarm(GameEnvironment game) {
 		farmer.tendToFarmLand(game);
+	}
+	*/
+	
+	public void feedAnimal(Animal animalToBeFed, Item item) {
+		animalToBeFed.feedAnimal(item);
+	}
+	
+	public void playWithAnima(Animal animalToBePlayedWith) {
+		animalToBePlayedWith.playWithAnimal();
+	}
+	
+	public ArrayList<Item> getItemsOwnedByFarmer() {
+		return farmer.getItemsOwned();
 	}
 	
 	public double getFarmMoneyAvailable() {
@@ -163,6 +188,25 @@ public class GameEnvironment {
 	public int getGameLength() {
 		return gameLength;
 	}
+	
+	/* Check that the user has entered the correct input */
+	public boolean checkTextInput(String name) {
+		
+		char[] nameArray = name.toCharArray();
+		
+		if (name.length() < 3 || name.length() > 15) {
+			return false;
+		}
+		
+		for(int i = 0; i < name.length(); i++) {
+			if (!(Character.isLetter(nameArray[i]))) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 	
 	public void launchSetUpScreen() {
 		@SuppressWarnings("unused")
