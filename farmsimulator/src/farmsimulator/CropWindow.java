@@ -74,7 +74,7 @@ public class CropWindow{
 		frmCrops = new JFrame();
 		frmCrops.setVisible(true);
 		frmCrops.setTitle("Crops");
-		frmCrops.setBounds(100, 100, 450, 300);
+		frmCrops.setBounds(100, 100, 770, 515);
 		frmCrops.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCrops.getContentPane().setLayout(null);
 		
