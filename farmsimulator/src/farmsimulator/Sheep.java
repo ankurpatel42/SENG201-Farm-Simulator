@@ -7,7 +7,7 @@ public class Sheep extends Animal {
 	}
 	
 	public String toString() {
-		return "Sheep: " + getAnimalName();
+		return getAnimalName() + " (Sheep)";
 	}
 
 }
