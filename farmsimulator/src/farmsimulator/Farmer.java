@@ -1,13 +1,10 @@
 package farmsimulator;
 
-import java.util.ArrayList;
-
 public class Farmer {
 	
 	private String farmerName = null;
 	private double bonus = 0;
 	private int actionsLeft = 2;
-	private ArrayList<Item> itemsOwned = new ArrayList<Item>();
 	
 	public Farmer (String inputFarmerName) {
 		farmerName = inputFarmerName;
@@ -24,14 +21,7 @@ public class Farmer {
 	public void useAction() {
 		actionsLeft--;
 	}
-	
-	public void additemToList(Item item) {
-		itemsOwned.add(item);
-	}
-	
-	public ArrayList<Item> getItemsOwned() {
-		return itemsOwned;
-	}
+
 	
 	/*
 	public int getDayNum() {
