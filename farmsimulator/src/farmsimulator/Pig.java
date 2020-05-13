@@ -2,8 +2,8 @@ package farmsimulator;
 
 public class Pig extends Animal {
 	
-	public Pig () {
-		super("Pig", 100, 0, 0, 0);
+	public Pig (String nameForPig, int initialHappiness, int initialHealthiness) {
+		super(nameForPig, 100, 0, initialHappiness, initialHealthiness);
 	}
 	
 	public String toString() {
