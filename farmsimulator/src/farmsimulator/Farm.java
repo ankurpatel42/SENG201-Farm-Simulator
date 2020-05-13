@@ -29,7 +29,7 @@ public class Farm {
 		return farmName;
 	}
 	
-	public void setMoneyAvailible(double newBalance) {
+	public void setMoneyAvailable(double newBalance) {
 		moneyAvailable = newBalance;
 	}
 	
