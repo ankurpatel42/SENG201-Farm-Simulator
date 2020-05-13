@@ -70,7 +70,7 @@ public abstract class Crop {
 			message = "Sorry your crops are not ready for Harvest yet, still " + daysTillHarvest + " day(s) left";
 		}
 		else {
-			game.getFarm().setMoneyAvailible(game.getFarmMoneyAvailable() + cropMoneyGiven);
+			game.getFarm().setMoneyAvailable(game.getFarmMoneyAvailable() + cropMoneyGiven);
 			message = "Crop harvested and you earnt $" + cropMoneyGiven;
 			game.getCropsOwned().remove(this);
 		}
