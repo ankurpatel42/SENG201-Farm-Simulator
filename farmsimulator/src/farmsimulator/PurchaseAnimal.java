@@ -141,6 +141,7 @@ public class PurchaseAnimal {
 							else {
 								pigNamesChosen.add(nameChosenForPig);
 								message = game.createPig(nameChosenForPig);
+								frmPurchaseAnimal.repaint();
 							}
 						}
 						break;

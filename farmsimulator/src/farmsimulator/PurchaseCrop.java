@@ -125,7 +125,7 @@ public class PurchaseCrop {
 						message = game.createWheat();
 						break;
 				}
-				
+				frmPurchaseCrop.repaint();
 				JOptionPane.showMessageDialog(btnPurchase, message);
 			}
 		});

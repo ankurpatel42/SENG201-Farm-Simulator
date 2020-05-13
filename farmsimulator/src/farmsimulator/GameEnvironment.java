@@ -80,37 +80,37 @@ public class GameEnvironment {
 	}
 	
 	public String createCarrot() {
-		crop = new Carrot();
+		crop = new Carrot(this);
 		message = store.purchaseCrop(crop);
 		return message;
 	}
 	
 	public String createCorn() {
-		crop = new Corn();
+		crop = new Corn(this);
 		message = store.purchaseCrop(crop);
 		return message;
 	}
 	
 	public String createLettuce() {
-		crop = new Lettuce();
+		crop = new Lettuce(this);
 		message = store.purchaseCrop(crop);
 		return message;
 	}
 	
 	public String createPotato() {
-		crop = new Potato();
+		crop = new Potato(this);
 		message = store.purchaseCrop(crop);
 		return message;
 	}
 	
 	public String createRice() {
-		crop = new Rice();
+		crop = new Rice(this);
 		message = store.purchaseCrop(crop);
 		return message;
 	}
 	
 	public String createWheat() {
-		crop = new Wheat();
+		crop = new Wheat(this);
 		message = store.purchaseCrop(crop);
 		return message;
 	}
@@ -129,6 +129,10 @@ public class GameEnvironment {
 	
 	public String harvestCrops(Crop crop) {
 		return crop.harvestCrops();
+	}
+	
+	public String fertiliseCrop(Crop crop, Item item) {
+		return crop.tendCrops(item);
 	}
 	
 	/*

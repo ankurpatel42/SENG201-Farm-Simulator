@@ -21,6 +21,8 @@ public class Farm {
 		cropGrowthRate = cropGrowth;
 		startingAnimalHealthiness = animalHealthiness;
 		startingAnimalHappiness = animalHappiness;
+		Water water = new Water();
+		itemsOwned.add(water);
 	}
 	
 	public String getFarmName() {

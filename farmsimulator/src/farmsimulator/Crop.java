@@ -15,6 +15,7 @@ public abstract class Crop {
 
 	public Crop (String name, double cropPurchasePrice, double cropMoneyGiven, int daysTillHarvest, GameEnvironment gameEnv) {
 		this.name = name;
+		this.cropMoneyGiven = cropMoneyGiven;
 		this.cropPurchasePrice = cropPurchasePrice;
 		this.daysTillHarvest = daysTillHarvest;
 		game = gameEnv;
@@ -51,12 +52,16 @@ public abstract class Crop {
 		}
 	}
 	
-	public void tendCrops(Item choice) {
+	public String tendCrops(Item choice) {
 		game.useFarmerAction();
 		daysTillHarvest -= choice.getHarvestSpeedUpTime();
 		if (daysTillHarvest <= 0) {
 			daysTillHarvest = 0;
 		}
+		if (choice.getItemName() != "Water") {
+			game.getItemsOwnedByFarmer().remove(choice);
+		}
+		return "You fertilised " + name + " using " + choice.getItemName() + ", now " + daysTillHarvest + " day(s) to harvest";
 	}
 	
 	public String harvestCrops() {
@@ -65,8 +70,9 @@ public abstract class Crop {
 			message = "Sorry your crops are not ready for Harvest yet, still " + daysTillHarvest + " day(s) left";
 		}
 		else {
-			game.getFarm().setMoneyAvailible(cropMoneyGiven);
+			game.getFarm().setMoneyAvailible(game.getFarmMoneyAvailable() + cropMoneyGiven);
 			message = "Crop harvested and you earnt $" + cropMoneyGiven;
+			game.getCropsOwned().remove(this);
 		}
 		return message;
 	}
@@ -74,7 +80,7 @@ public abstract class Crop {
 	public String toString() {
 		crops = game.getCropsOwned();
 		int num = crops.indexOf(this) + 1;
-		String display = "Feild " + num + " (" + name + ")"; 
+		String display = "Feild " + num + " (" + name + ")	" + daysTillHarvest; 
 		return display;
 	}
 }

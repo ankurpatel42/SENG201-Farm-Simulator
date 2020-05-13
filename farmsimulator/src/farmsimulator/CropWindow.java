@@ -101,21 +101,37 @@ public class CropWindow{
 				else {
 					Crop crop = listCrops.getSelectedValue();
 					String message = game.harvestCrops(crop);
+					frmCrops.revalidate();
+					frmCrops.repaint();
 					JOptionPane.showMessageDialog(frmCrops, message);
 				}
 			}
 		});
 		frmCrops.getContentPane().add(btnHarvest);
 		
-		JButton btnUseItem = new JButton("Use Item");
+		JButton btnUseItem = new JButton("Fertilise Crop");
 		btnUseItem.setBounds(280, 190, 117, 29);
 		btnUseItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				//cropSelected = (Crop)comboBoxCrop.getSelectedItem();
-				//itemSelected = (Item)comboBoxItem.getSelectedItem();
-				//cropSelected.tendCrops(itemSelected);
-				//Give user a message
+				Crop crop = listCrops.getSelectedValue();
+				Item item = listItems.getSelectedValue();
+				if (crop == null) {
+					if (item == null) {
+						JOptionPane.showMessageDialog(frmCrops, "Select a crop to Fertilise and Fertiliser to use!");
+					}
+					JOptionPane.showMessageDialog(frmCrops, "Select a crop to Fertilise!");
+				}
+				else {
+					if (item == null) {
+						JOptionPane.showMessageDialog(frmCrops, "Select a Fertiliser to use!");
+					}
+					else {
+						String message = game.fertiliseCrop(crop, item);
+						listItems.revalidate();
+						listItems.repaint();
+						JOptionPane.showMessageDialog(frmCrops, message);
+					}
+				}
 			}
 		});
 		frmCrops.getContentPane().add(btnUseItem);
@@ -138,7 +154,7 @@ public class CropWindow{
 		frmCrops.getContentPane().add(listCrops);
 		
 		
-		//animal food items owned
+		//Crop items owned
 		for(Item item: game.getItemsOwnedByFarmer()) {
 			if (item instanceof FertiliserOne || item instanceof FertiliserTwo || item instanceof FertiliserThree) {
 				itemListModel.addElement(item);

@@ -133,7 +133,7 @@ public class PurchaseItem {
 						message = game.createFertiliserThree();
 						break;
 				}
-				
+				frmPurchaseItem.repaint();
 				JOptionPane.showMessageDialog(btnPurchase, message);
 			}
 		});
