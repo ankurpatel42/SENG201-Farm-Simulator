@@ -43,21 +43,22 @@ public abstract class Animal {
 		animalHappiness += 3;
 	}
 	
-	public int getAnimalHealthiness() {
-		return animalHealthiness;
+	public void setAnimalHealthiness(int initialHealthiness) {
+		animalHealthiness = initialHealthiness;
 	}
 	
-	public void setAnimalHealthiness(int healthiness) {
-		animalHealthiness = healthiness;
+	public void setAnimalHappiness(int initialHappiness) {
+		animalHappiness = initialHappiness;
+	}
+	
+	public int getAnimalHealthiness() {
+		return animalHealthiness;
 	}
 	
 	public int getAnimalHappiness() {
 		return animalHappiness;
 	}
 
-	public void setAnimalHappiness(int i) {
-		animalHappiness = i;
-	}
 	
 	
 }
