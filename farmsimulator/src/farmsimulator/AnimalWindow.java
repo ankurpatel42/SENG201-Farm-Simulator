@@ -85,18 +85,16 @@ public class AnimalWindow {
 					JOptionPane.showMessageDialog(animalsFrame, "There are no Animals on your farm to feed yet, visit the General Store to "
 							+ "purchase Animals!");
 				}
-				else {
-					if (animalList.getSelectedValue() == null || animalFoodList.getSelectedValue() == null) {
+				else if (animalList.getSelectedValue() == null || animalFoodList.getSelectedValue() == null) {
 						JOptionPane.showMessageDialog(animalsFrame, "You must select an Animal and a food item to feed your Animal! "
 								+ "Animals and food items are available for purchase at the General Store!");
-					}
-					else {
-						game.feedAnimal(animalList.getSelectedValue(), animalFoodList.getSelectedValue());
-						JOptionPane.showMessageDialog(animalsFrame, "You have fed " + animalList.getSelectedValue().getAnimalName() + " " 
-								+ animalFoodList.getSelectedValue().getItemName());
-						animalsFrame.repaint();
-					}
-;				}
+				}
+				else {
+					game.feedAnimal(animalList.getSelectedValue(), animalFoodList.getSelectedValue());
+					JOptionPane.showMessageDialog(animalsFrame, "You have fed " + animalList.getSelectedValue().getAnimalName() + " " 
+							+ animalFoodList.getSelectedValue().getItemName());
+					animalsFrame.repaint();
+				}
 			}
 		});
 		feedAnimalButton.setBounds(70, 328, 144, 23);
