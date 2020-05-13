@@ -90,10 +90,11 @@ public class AnimalWindow {
 								+ "Animals and food items are available for purchase at the General Store!");
 				}
 				else {
-					game.feedAnimal(animalList.getSelectedValue(), animalFoodList.getSelectedValue());
-					JOptionPane.showMessageDialog(animalsFrame, "You have fed " + animalList.getSelectedValue().getAnimalName() + " " 
-							+ animalFoodList.getSelectedValue().getItemName());
-					animalsFrame.repaint();
+					String message = game.feedAnimal(animalList.getSelectedValue(), animalFoodList.getSelectedValue());
+					if (message.startsWith("You have fed")) {
+						animalFoodListModel.removeElement(animalFoodList.getSelectedValue());
+					}
+					JOptionPane.showMessageDialog(animalsFrame, message);
 				}
 			}
 		});
@@ -110,8 +111,8 @@ public class AnimalWindow {
 					JOptionPane.showMessageDialog(animalsFrame, "Select an animal to play with!");
 				}
 				else {
-					game.playWithAnima(animalList.getSelectedValue());
-					JOptionPane.showMessageDialog(animalsFrame, "You played with" + animalList.getSelectedValue().getAnimalName());
+					String message = game.playWithAnimal(animalList.getSelectedValue());
+					JOptionPane.showMessageDialog(animalsFrame, message);
 					animalsFrame.repaint();
 				}
 			}

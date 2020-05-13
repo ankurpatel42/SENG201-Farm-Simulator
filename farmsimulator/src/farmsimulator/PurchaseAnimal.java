@@ -110,7 +110,7 @@ public class PurchaseAnimal {
 				switch (animalChosen) {
 					case "Cow":
 						String nameChosenForCow = JOptionPane.showInputDialog("Give your Cow a name!");
-						//When you click on the cancek button for showInputDialog you will always get a null value
+						//When you click on the cancel button for showInputDialog you will always get a null value
 						if (nameChosenForCow == null) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
 						}
@@ -123,6 +123,8 @@ public class PurchaseAnimal {
 						else {
 							cowNamesChosen.add(nameChosenForCow);
 							message = game.createCow(nameChosenForCow);
+							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 							JOptionPane.showMessageDialog(btnPurchase, message);
 						}
 						break;
@@ -140,6 +142,8 @@ public class PurchaseAnimal {
 						else {
 							pigNamesChosen.add(nameChosenForPig);
 							message = game.createPig(nameChosenForPig);
+							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 							JOptionPane.showMessageDialog(btnPurchase, message);
 						}
 						break;
@@ -157,6 +161,8 @@ public class PurchaseAnimal {
 						else {
 							sheepNamesChosen.add(nameChosenForSheep);
 							message = game.createSheep(nameChosenForSheep);
+							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 							JOptionPane.showMessageDialog(btnPurchase, message);
 
 						}
@@ -180,7 +186,7 @@ public class PurchaseAnimal {
 		
 		JTextPane txtAnimals = new JTextPane();
 		txtAnimals.setBounds(235, 81, 209, 103);
-		txtAnimals.setText("Name	Price	Sell Price\r\n\r\nCow: 	$100 	$100\r\nPig: 	$100 	100\r\nSheep: 	$100 	$100");
+		txtAnimals.setText("Name	Price	Sell Price\r\n\r\nCow: 	$100 	$100\r\nPig: 	$100 	$100\r\nSheep: 	$100 	$100");
 		txtAnimals.setBackground(Color.LIGHT_GRAY);
 		frmPurchaseAnimal.getContentPane().add(txtAnimals);
 	}

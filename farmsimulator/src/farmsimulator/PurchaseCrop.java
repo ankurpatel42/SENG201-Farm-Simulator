@@ -125,7 +125,8 @@ public class PurchaseCrop {
 						message = game.createWheat();
 						break;
 				}
-				frmPurchaseCrop.repaint();
+				String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+				lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 				JOptionPane.showMessageDialog(btnPurchase, message);
 			}
 		});

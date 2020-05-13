@@ -152,27 +152,27 @@ public class SetUpScreen {
 		/* Description Text of First Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionOne = new JTextPane();
 		farmChoiceDescriptionOne.setBackground(Color.LIGHT_GRAY);
-		farmChoiceDescriptionOne.setText("Farm A\r\n\r\nMoney Available: $1000\r\nCrop Growth Rate: 2.5\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 3");
+		farmChoiceDescriptionOne.setText("Farm A\r\n\r\nMoney Available: $1000\r\nCrop Growth Rate: 2\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 3");
 		farmChoiceDescriptionOne.setBounds(63, 253, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionOne);
 		
 		/* Description Text of Second Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionTwo = new JTextPane();
-		farmChoiceDescriptionTwo.setText("Farm B\r\n\r\nMoney Available: $600\r\nCrop Growth Rate: 1.5\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 9");
+		farmChoiceDescriptionTwo.setText("Farm B\r\n\r\nMoney Available: $600\r\nCrop Growth Rate: 1\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 9");
 		farmChoiceDescriptionTwo.setBackground(Color.LIGHT_GRAY);
 		farmChoiceDescriptionTwo.setBounds(222, 251, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionTwo);
 		
 		/* Description Text of Third Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionThree = new JTextPane();
-		farmChoiceDescriptionThree.setText("Farm C\r\n\r\nMoney Available: $300\r\nCrop Growth Rate: 7.5\r\nAnimal Healthiness: 8\r\nAnimal Happiness: 9");
+		farmChoiceDescriptionThree.setText("Farm C\r\n\r\nMoney Available: $300\r\nCrop Growth Rate: 7\r\nAnimal Healthiness: 8\r\nAnimal Happiness: 9");
 		farmChoiceDescriptionThree.setBackground(Color.LIGHT_GRAY);
 		farmChoiceDescriptionThree.setBounds(381, 251, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionThree);
 		
 		/* Description Text of Fourth Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionFour = new JTextPane();
-		farmChoiceDescriptionFour.setText("Farm D\r\n\r\nMoney Available: $650\r\nCrop Growth Rate: 6.0\r\nAnimal Healthiness: 7\r\nAnimal Happiness: 6");
+		farmChoiceDescriptionFour.setText("Farm D\r\n\r\nMoney Available: $650\r\nCrop Growth Rate: 6\r\nAnimal Healthiness: 7\r\nAnimal Happiness: 6");
 		farmChoiceDescriptionFour.setBackground(Color.LIGHT_GRAY);
 		farmChoiceDescriptionFour.setBounds(540, 253, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionFour);
@@ -199,16 +199,16 @@ public class SetUpScreen {
 					String farmChosen = (String)farmSelection.getSelectedItem(); //Cast from object to String
 					switch(farmChosen) {
 						case "Farm A":
-							game.setFarm(farmNameChosen, 1000, 2.5, 5, 3);
+							game.setFarm(farmNameChosen, 1000, 2, 5, 3);
 							break;
 						case "Farm B":
-							game.setFarm(farmNameChosen, 600, 1.5, 5, 9);
+							game.setFarm(farmNameChosen, 600, 1, 5, 9);
 							break;
 						case "Farm C":
-							game.setFarm(farmNameChosen, 300, 7.5, 8, 9);
+							game.setFarm(farmNameChosen, 300, 7, 8, 9);
 							break;
 						case "Farm D":
-							game.setFarm(farmNameChosen, 650, 6.0, 7, 6);
+							game.setFarm(farmNameChosen, 650, 6, 7, 6);
 							break;
 					}
 					

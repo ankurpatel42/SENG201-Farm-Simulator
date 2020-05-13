@@ -133,7 +133,8 @@ public class PurchaseItem {
 						message = game.createFertiliserThree();
 						break;
 				}
-				frmPurchaseItem.repaint();
+				String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+				lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 				JOptionPane.showMessageDialog(btnPurchase, message);
 			}
 		});

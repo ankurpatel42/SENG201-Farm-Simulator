@@ -45,34 +45,41 @@ public abstract class Crop {
 		return cropMoneyGiven;
 	}
 	
-	public static void dayPassed(GameEnvironment game) {
-		crops = game.getCropsOwned();
-		for (Crop crop : crops) {
-			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
-		}
+	public void dayPassed(GameEnvironment game) {
+		daysTillHarvest -= game.getFarm().getCropGrowthRate();
 	}
 	
 	public String tendCrops(Item choice) {
-		game.useFarmerAction();
-		daysTillHarvest -= choice.getHarvestSpeedUpTime();
-		if (daysTillHarvest <= 0) {
-			daysTillHarvest = 0;
+		if (game.useFarmerAction() == true) {
+			daysTillHarvest -= choice.getHarvestSpeedUpTime();
+			if (daysTillHarvest <= 0) {
+				daysTillHarvest = 0;
+			}
+			if (choice.getItemName() != "Water") {
+				game.getItemsOwnedByFarmer().remove(choice);
+			}
+			message = "You fertilised " + name + " using " + choice.getItemName() + ", now " + daysTillHarvest + " day(s) to harvest";
 		}
-		if (choice.getItemName() != "Water") {
-			game.getItemsOwnedByFarmer().remove(choice);
+		else {
+			message = "You have no actions left for the day, move to next day to complete this action";
 		}
-		return "You fertilised " + name + " using " + choice.getItemName() + ", now " + daysTillHarvest + " day(s) to harvest";
+		return message;
 	}
 	
 	public String harvestCrops() {
-		game.useFarmerAction();
-		if (daysTillHarvest > 0) {
-			message = "Sorry your crops are not ready for Harvest yet, still " + daysTillHarvest + " day(s) left";
+		if (game.useFarmerAction() == true) {
+			game.useFarmerAction();
+			if (daysTillHarvest > 0) {
+				message = "Sorry your crops are not ready for Harvest yet, still " + daysTillHarvest + " day(s) left";
+			}
+			else {
+				game.getFarm().setMoneyAvailable(game.getFarmMoneyAvailable() + cropMoneyGiven);
+				message = "Crop harvested and you earnt $" + cropMoneyGiven;
+				game.getCropsOwned().remove(this);
+			}
 		}
 		else {
-			game.getFarm().setMoneyAvailable(game.getFarmMoneyAvailable() + cropMoneyGiven);
-			message = "Crop harvested and you earnt $" + cropMoneyGiven;
-			game.getCropsOwned().remove(this);
+			message = "You have no actions left for the day, move to next day to complete this action";
 		}
 		return message;
 	}

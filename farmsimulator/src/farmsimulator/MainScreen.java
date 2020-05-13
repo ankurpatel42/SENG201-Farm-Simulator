@@ -71,11 +71,11 @@ public class MainScreen {
 		daysLeftMessage.setBounds(115, 103, 90, 47);
 		mainScreen.getContentPane().add(daysLeftMessage);
 		
-		JLabel gameLengthChosen = new JLabel("");
-		gameLengthChosen.setFont(new Font("Arial", Font.PLAIN, 17));
-		gameLengthChosen.setBounds(266, 119, 46, 14);
-		gameLengthChosen.setText(Integer.toString(game.getGameLength()));
-		mainScreen.getContentPane().add(gameLengthChosen);
+		JLabel daysLeftLabel = new JLabel("");
+		daysLeftLabel.setFont(new Font("Arial", Font.PLAIN, 17));
+		daysLeftLabel.setBounds(266, 119, 46, 14);
+		daysLeftLabel.setText(Integer.toString(game.getGameLength()));
+		mainScreen.getContentPane().add(daysLeftLabel);
 		
 		JLabel farmName = new JLabel("Farm Name:");
 		farmName.setFont(new Font("Arial", Font.BOLD, 23));
@@ -116,7 +116,7 @@ public class MainScreen {
 		moneyAvailable.setText("$" + formatMoneyAvailable);
 		mainScreen.getContentPane().add(moneyAvailable);
 		
-		JLabel actionsLeft = new JLabel("2");
+		JLabel actionsLeft = new JLabel(String.valueOf(game.getFarmerActionsLeft()));
 		actionsLeft.setFont(new Font("Arial", Font.PLAIN, 17));
 		actionsLeft.setBounds(266, 163, 46, 14);
 		mainScreen.getContentPane().add(actionsLeft);
@@ -154,9 +154,10 @@ public class MainScreen {
 		JButton tendFarm = new JButton("Tend Farm");
 		tendFarm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (game.getFarmerActionsLeft() != 0) {
-					//game.tendFarm(game);
-					actionsLeft.setText(Integer.toString(game.getFarmerActionsLeft()));
+				if (game.useFarmerAction() == true) {
+					game.tendFarm();
+					JOptionPane.showMessageDialog(mainScreen, "You tended to your farm, crops have grown and animals are happier");
+					actionsLeft.setText(String.valueOf(game.getFarmerActionsLeft()));
 				}
 				else {
 					JOptionPane.showMessageDialog(mainScreen, "You cannot perform this action as you have no actions left for today.");
@@ -169,7 +170,18 @@ public class MainScreen {
 		JButton moveToNextDay = new JButton("MOVE TO NEXT DAY");
 		moveToNextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				String message = game.nextDay();
+				int daysLeft = game.getGameLength() - game.getFarmer().getDayNum() + 1;
+				if (daysLeft == 0) {
+					//End Game
+				}
+				else {
+					daysLeftLabel.setText(Integer.toString(daysLeft));
+					actionsLeft.setText(String.valueOf(game.getFarmerActionsLeft()));
+					String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+					moneyAvailable.setText("$" + formatMoneyAvailable);
+					JOptionPane.showMessageDialog(mainScreen, message);
+				}
 			}
 		});
 		moveToNextDay.setBounds(265, 395, 157, 23);

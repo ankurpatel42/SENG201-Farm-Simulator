@@ -6,7 +6,7 @@ public class Farm {
 	
 	private String farmName = null;
 	private double moneyAvailable = 0;
-	private double cropGrowthRate = 0;
+	private int cropGrowthRate = 0;
 	private int farmTidiness = 0;
 	private ArrayList<Animal> animalsList = new ArrayList<Animal>();
 	private ArrayList<Crop> cropsList = new ArrayList<Crop>();
@@ -15,7 +15,7 @@ public class Farm {
 	private int startingAnimalHappiness = 0;
 	
 	
-	public Farm(String name, double money, double cropGrowth, int animalHealthiness, int animalHappiness) {
+	public Farm(String name, double money, int cropGrowth, int animalHealthiness, int animalHappiness) {
 		farmName = name;
 		moneyAvailable = money;
 		cropGrowthRate = cropGrowth;
@@ -57,10 +57,9 @@ public class Farm {
 		return cropsList;
 	}
 	
-	public double getCropGrowthRate() {
+	public int getCropGrowthRate() {
 		return cropGrowthRate;
 	}
-	
 	
 	public ArrayList<Item> getItemsOwned(){
 		return itemsOwned;
@@ -70,11 +69,11 @@ public class Farm {
 		itemsOwned.add(item);
 	}
 	
-	public int getStartingAnimalHappiness() {
+	public int getInitialAnimalHappiness() {
 		return startingAnimalHappiness;
 	}
 
-	public int getStartingAnimalHealthiness() {
+	public int getInitialAnimalHealthiness() {
 		return startingAnimalHealthiness;
 	}
 }

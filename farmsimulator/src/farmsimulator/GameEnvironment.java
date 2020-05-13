@@ -16,26 +16,26 @@ public class GameEnvironment {
 	private GeneralStore store;
 	private String message;
 	
-	public void setFarm(String farmNameChosen, double moneyAvailable, double cropGrowthRate, int animalHealthiness, int animalHappiness) {
+	public void setFarm(String farmNameChosen, double moneyAvailable, int cropGrowthRate, int animalHealthiness, int animalHappiness) {
 		farm = new Farm(farmNameChosen, moneyAvailable, cropGrowthRate, animalHealthiness, animalHappiness);
 		//Not sure where to call this
 		store = new GeneralStore(this);
 	}
 	
 	public String createCow(String nameForCow) {
-		animal = new Cow(nameForCow, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness());
+		animal = new Cow(nameForCow, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness(), this);
 		message = store.purchaseAnimal(animal);
 		return message;
 	}
 	
 	public String createPig(String nameForPig) {
-		animal = new Pig(nameForPig, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness());
+		animal = new Pig(nameForPig, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness(), this);
 		message = store.purchaseAnimal(animal);
 		return message;
 	}
 	
 	public String createSheep(String nameForSheep) {
-		animal = new Sheep(nameForSheep, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness());
+		animal = new Sheep(nameForSheep, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness(), this);
 		message = store.purchaseAnimal(animal);
 		return message;
 	}
@@ -132,18 +132,21 @@ public class GameEnvironment {
 		return crop.tendCrops(item);
 	}
 	
-	/*
-	public void tendFarm(GameEnvironment game) {
-		farmer.tendToFarmLand(game);
-	}
-	*/
 	
-	public void feedAnimal(Animal animalToBeFed, Item item) {
-		animalToBeFed.feedAnimal(item);
+	public void tendFarm() {
+		farmer.tendToFarmLand(this);
 	}
 	
-	public void playWithAnima(Animal animalToBePlayedWith) {
-		animalToBePlayedWith.playWithAnimal();
+	public String nextDay() {
+		return farmer.moveToNextDay(this);
+	}
+	
+	public String feedAnimal(Animal animalToBeFed, Item item) {
+		return animalToBeFed.feedAnimal(item);
+	}
+	
+	public String playWithAnimal(Animal animalToBePlayedWith) {
+		return animalToBePlayedWith.playWithAnimal();
 	}
 	
 	public ArrayList<Item> getItemsOwnedByFarmer() {
@@ -156,6 +159,10 @@ public class GameEnvironment {
 	
 	public double getFarmMoneyAvailable() {
 		return farm.getMoneyAvailable();
+	}
+	
+	public void setFarmMoneyAvailable(double money) {
+		farm.setMoneyAvailable(money);
 	}
 	
 	public double getFarmCropGrowthRate() {
@@ -174,8 +181,8 @@ public class GameEnvironment {
 		return farmer.getFarmerName();
 	}
 	
-	public void useFarmerAction() {
-		farmer.useAction();
+	public Boolean useFarmerAction() {
+		return farmer.useAction();
 	}
 	
 	public int getFarmerActionsLeft() {

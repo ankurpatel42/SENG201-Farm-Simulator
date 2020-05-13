@@ -79,7 +79,7 @@ public class CropWindow{
 		frmCrops.getContentPane().setLayout(null);
 		
 		farmName = game.getFarmName();
-		JLabel lblTitle = new JLabel(farmName);
+		JLabel lblTitle = new JLabel(farmName + " Farm's Crops");
 		lblTitle.setBounds(150, 6, 161, 16);
 		frmCrops.getContentPane().add(lblTitle);
 		
@@ -101,8 +101,9 @@ public class CropWindow{
 				else {
 					Crop crop = listCrops.getSelectedValue();
 					String message = game.harvestCrops(crop);
-					frmCrops.revalidate();
-					frmCrops.repaint();
+					if (message.startsWith("Crop harvested")) {
+						cropListModel.removeElement(crop);
+					}
 					JOptionPane.showMessageDialog(frmCrops, message);
 				}
 			}
@@ -127,8 +128,9 @@ public class CropWindow{
 					}
 					else {
 						String message = game.fertiliseCrop(crop, item);
-						listItems.revalidate();
-						listItems.repaint();
+						if (message.startsWith("You fertilised") & item.getItemName() != "Water") {
+							itemListModel.removeElement(item);
+						}
 						JOptionPane.showMessageDialog(frmCrops, message);
 					}
 				}
@@ -156,7 +158,7 @@ public class CropWindow{
 		
 		//Crop items owned
 		for(Item item: game.getItemsOwnedByFarmer()) {
-			if (item instanceof FertiliserOne || item instanceof FertiliserTwo || item instanceof FertiliserThree) {
+			if (item instanceof FertiliserOne || item instanceof FertiliserTwo || item instanceof FertiliserThree || item instanceof Water) {
 				itemListModel.addElement(item);
 			}
 		}
