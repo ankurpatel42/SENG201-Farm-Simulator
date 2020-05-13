@@ -3,7 +3,7 @@ package farmsimulator;
 public class Sheep extends Animal {
 	
 	public Sheep () {
-		super("Sheep", 100, 100, 100, 100);
+		super("Sheep", 75, 0, 0, 0);
 	}
 	
 	public String toString() {
