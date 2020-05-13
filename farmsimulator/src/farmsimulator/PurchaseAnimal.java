@@ -110,63 +110,59 @@ public class PurchaseAnimal {
 				switch (animalChosen) {
 					case "Cow":
 						String nameChosenForCow = JOptionPane.showInputDialog("Give your Cow a name!");
+						//When you click on the cancek button for showInputDialog you will always get a null value
 						if (nameChosenForCow == null) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig!");
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
 						}
 						else if (game.checkTextInput(nameChosenForCow) == false) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your cow!");
 						}
+						else if (cowNamesChosen.contains(nameChosenForCow)) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a cow named " + nameChosenForCow);
+						}
 						else {
-							if (cowNamesChosen.contains(nameChosenForCow)) {
-								JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a cow named " + nameChosenForCow);
-							}
-							else {
-								cowNamesChosen.add(nameChosenForCow);
-								message = game.createCow(nameChosenForCow);
-							}
+							cowNamesChosen.add(nameChosenForCow);
+							message = game.createCow(nameChosenForCow);
+							JOptionPane.showMessageDialog(btnPurchase, message);
 						}
 						break;
 					case "Pig":
 						String nameChosenForPig = JOptionPane.showInputDialog("Give your Pig a name!");
 						if (nameChosenForPig == null) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig!");
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
 						}
 						else if (game.checkTextInput(nameChosenForPig) == false) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig!");
 						}
-						else {
-							if (pigNamesChosen.contains(nameChosenForPig)) {
+						else if (pigNamesChosen.contains(nameChosenForPig)) {
 								JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a pig named " + nameChosenForPig);
-							}
-							else {
-								pigNamesChosen.add(nameChosenForPig);
-								message = game.createPig(nameChosenForPig);
-								frmPurchaseAnimal.repaint();
-							}
+						}
+						else {
+							pigNamesChosen.add(nameChosenForPig);
+							message = game.createPig(nameChosenForPig);
+							JOptionPane.showMessageDialog(btnPurchase, message);
 						}
 						break;
 					case "Sheep":
 						String nameChosenForSheep = JOptionPane.showInputDialog("Give your Sheep a name!");
 						if (nameChosenForSheep == null) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig!");
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
 						}
 						else if (game.checkTextInput(nameChosenForSheep) == false) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Sheep!");
 						}
+						else if (sheepNamesChosen.contains(nameChosenForSheep)) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a sheep named " + nameChosenForSheep);
+						}
 						else {
-							if (sheepNamesChosen.contains(nameChosenForSheep)) {
-								JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a sheep named " + nameChosenForSheep);
-							}
-							else {
-								sheepNamesChosen.add(nameChosenForSheep);
-								message = game.createSheep(nameChosenForSheep);
+							sheepNamesChosen.add(nameChosenForSheep);
+							message = game.createSheep(nameChosenForSheep);
+							JOptionPane.showMessageDialog(btnPurchase, message);
 
-							}
 						}
 						break;
 				}
 				
-				JOptionPane.showMessageDialog(btnPurchase, message);
 				
 			}
 		});
