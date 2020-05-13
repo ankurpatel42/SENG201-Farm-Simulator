@@ -24,7 +24,7 @@ public class GeneralStore {
 		}
 		else {
 			money = money - item.getPrice();
-			game.getFarm().setMoneyAvailible(money);
+			game.getFarm().setMoneyAvailable(money);
 			game.getFarm().addNewItem(item);
 			message = "You have purchased one " + item.getItemName();
 		}
@@ -38,7 +38,7 @@ public class GeneralStore {
 		}
 		else {
 			money = money - animal.getAnimalPurchasePrice();
-			game.getFarm().setMoneyAvailible(money);
+			game.getFarm().setMoneyAvailable(money);
 			game.getFarm().addAnimalToList(animal);
 			message = "You have purchased " + animal.getAnimalName();
 		}
@@ -52,7 +52,7 @@ public class GeneralStore {
 		}
 		else {
 			money = money - crop.getCropPurchasePrice();
-			game.getFarm().setMoneyAvailible(money);
+			game.getFarm().setMoneyAvailable(money);
 			game.getFarm().addCropToList(crop);
 			message = "You have purchased one " + crop.getCropName();
 		}
