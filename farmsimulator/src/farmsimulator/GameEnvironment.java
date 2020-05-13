@@ -25,6 +25,8 @@ public class GameEnvironment {
 	public String createCow(String nameForCow) {
 		animal = new Cow();
 		animal.setAnimalName(nameForCow);
+		animal.setAnimalHappiness(farm.getInitialAnimalHappiness());
+		animal.setAnimalHealthiness(farm.getInitialAnimalHealthiness());
 		message = store.purchaseAnimal(animal);
 		return message;
 	}
@@ -32,6 +34,8 @@ public class GameEnvironment {
 	public String createPig(String nameForPig) {
 		animal = new Pig();
 		animal.setAnimalName(nameForPig);
+		animal.setAnimalHappiness(farm.getInitialAnimalHappiness());
+		animal.setAnimalHealthiness(farm.getInitialAnimalHealthiness());
 		message = store.purchaseAnimal(animal);
 		return message;
 	}
@@ -39,6 +43,8 @@ public class GameEnvironment {
 	public String createSheep(String nameForSheep) {
 		animal = new Sheep();
 		animal.setAnimalName(nameForSheep);
+		animal.setAnimalHappiness(farm.getInitialAnimalHappiness());
+		animal.setAnimalHealthiness(farm.getInitialAnimalHealthiness());
 		message = store.purchaseAnimal(animal);
 		return message;
 	}
