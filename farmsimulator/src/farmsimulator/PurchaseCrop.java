@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class PurchaseCrop {
 	
@@ -69,16 +71,19 @@ public class PurchaseCrop {
 		frmPurchaseCrop = new JFrame();
 		frmPurchaseCrop.setVisible(true);
 		frmPurchaseCrop.setTitle("Purchase Crop");
-		frmPurchaseCrop.setBounds(100, 100, 770, 515);
+		frmPurchaseCrop.setBounds(100, 100, 500, 395);
 		frmPurchaseCrop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseCrop.getContentPane().setLayout(null);
 		
 		JLabel lblTitle = new JLabel("Make Your Purchase");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Arial", Font.BOLD, 11));
 		lblTitle.setBounds(158, 6, 140, 16);
 		frmPurchaseCrop.getContentPane().add(lblTitle);
 		
 		JLabel lblMoney = new JLabel("Money Available:");
-		lblMoney.setBounds(6, 37, 122, 16);
+		lblMoney.setFont(new Font("Arial", Font.BOLD, 11));
+		lblMoney.setBounds(31, 37, 110, 16);
 		frmPurchaseCrop.getContentPane().add(lblMoney);
 		
 		JLabel lblMoneyAvailable = new JLabel("");
@@ -88,11 +93,14 @@ public class PurchaseCrop {
 		frmPurchaseCrop.getContentPane().add(lblMoneyAvailable);
 		
 		JLabel lblSelect = new JLabel("Select Crop");
+		lblSelect.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelect.setFont(new Font("Arial", Font.BOLD, 11));
 		lblSelect.setBounds(56, 65, 85, 16);
 		frmPurchaseCrop.getContentPane().add(lblSelect);
 		
 		JLabel lblCropItems = new JLabel("Crops");
-		lblCropItems.setBounds(321, 65, 85, 16);
+		lblCropItems.setFont(new Font("Arial", Font.BOLD, 11));
+		lblCropItems.setBounds(301, 65, 85, 16);
 		frmPurchaseCrop.getContentPane().add(lblCropItems);
 		
 		JComboBox<String> comboBoxCrop = new JComboBox<>(cropCombo);
@@ -100,7 +108,7 @@ public class PurchaseCrop {
 		frmPurchaseCrop.getContentPane().add(comboBoxCrop);
 		
 		JButton btnPurchase = new JButton("Purchase");
-		btnPurchase.setBounds(34, 127, 117, 29);
+		btnPurchase.setBounds(24, 143, 147, 29);
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cropChosen = (String)comboBoxCrop.getSelectedItem();
@@ -125,9 +133,10 @@ public class PurchaseCrop {
 						message = game.createWheat();
 						break;
 				}
+				
+				JOptionPane.showMessageDialog(btnPurchase, message);
 				String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 				lblMoneyAvailable.setText("$" + formatMoneyAvailable);
-				JOptionPane.showMessageDialog(btnPurchase, message);
 			}
 		});
 		frmPurchaseCrop.getContentPane().add(btnPurchase);
@@ -139,11 +148,12 @@ public class PurchaseCrop {
 				game.launchStoreWindow();
 			}
 		});
-		btnBack.setBounds(158, 232, 117, 29);
+		btnBack.setBounds(310, 284, 117, 29);
 		frmPurchaseCrop.getContentPane().add(btnBack);
 		
 		JTextPane txtCrops = new JTextPane();
-		txtCrops.setBounds(182, 93, 245, 127);
+		txtCrops.setEditable(false);
+		txtCrops.setBounds(197, 92, 245, 140);
 		txtCrops.setText("Name	Price	Grow time\r\n\r\nCarrot:	$10	5 days\r\nCorn: 	$5  	5 days\r\nLettuce: 	$4 	5 days\r\nPotato: 	$4 	8 days\r\nRice: 	$2 	5 days\r\nWheat: 	$2 	3 days");
 		txtCrops.setBackground(Color.LIGHT_GRAY);
 		frmPurchaseCrop.getContentPane().add(txtCrops);
