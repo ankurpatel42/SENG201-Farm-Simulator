@@ -70,6 +70,15 @@ public class CropWindow{
 	public void finishedWindow() {
 		game.closeCropWindow(this);
 	}
+	
+	public void addCropItemsToList() {
+		for(Item item: game.getItemsOwnedByFarmer()) {
+			if (item instanceof FertiliserOne || item instanceof FertiliserTwo || item instanceof FertiliserThree 
+					|| item instanceof Water) {
+				itemListModel.addElement(item);
+			}
+		}
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -169,12 +178,8 @@ public class CropWindow{
 		
 		
 		//Crop items owned
-		for(Item item: game.getItemsOwnedByFarmer()) {
-			if (item instanceof FertiliserOne || item instanceof FertiliserTwo || item instanceof FertiliserThree 
-					|| item instanceof Water) {
-				itemListModel.addElement(item);
-			}
-		}
+		addCropItemsToList();
+		
 		listItems.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		itemsScroller.setBounds(217, 119, 117, 110);
