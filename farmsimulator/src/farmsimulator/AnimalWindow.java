@@ -71,6 +71,14 @@ public class AnimalWindow {
 		game.closeAnimalWindow(this);
 	}
 	
+	public void addAnimalFoodItemsToList() {
+		for(Item item: game.getItemsOwnedByFarmer()) {
+			if (item instanceof AnimalFoodOne || item instanceof AnimalFoodTwo || item instanceof AnimalFoodThree) {
+				animalFoodListModel.addElement(item);
+			}
+		}
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -153,11 +161,8 @@ public class AnimalWindow {
 		animalList.setBackground(Color.DARK_GRAY);
 		
 		//animal food items owned
-		for(Item item: game.getItemsOwnedByFarmer()) {
-			if (item instanceof AnimalFoodOne || item instanceof AnimalFoodTwo || item instanceof AnimalFoodThree) {
-				animalFoodListModel.addElement(item);
-			}
-		}
+		addAnimalFoodItemsToList();
+		
 		animalFoodList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		animalFoodScroller.setBounds(70, 82, 162, 109);
