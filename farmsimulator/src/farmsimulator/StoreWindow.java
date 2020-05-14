@@ -4,20 +4,19 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
-
-//import java.awt.BorderLayout;
 import java.awt.Point;
-import java.awt.Color;
-//import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
-import javax.swing.ListSelectionModel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+
+import java.awt.Color;
 
 public class StoreWindow {
 	
@@ -25,8 +24,11 @@ public class StoreWindow {
 	
 	private JFrame frmGeneralStore;
 	private JLabel lblStoreTitle;
-	DefaultListModel<Item> itemListModel = new DefaultListModel<>();
-	JList<Item> listItems = new JList<>(itemListModel);
+	
+	private DefaultListModel<Item> itemListModel = new DefaultListModel<Item>();
+	private JList<Item> itemList = new JList<>(itemListModel);
+	
+	private JScrollPane itemsOwnedScroller = new JScrollPane(itemList);
 
 	/**
 	 * Launch the application.
@@ -69,23 +71,26 @@ public class StoreWindow {
 		frmGeneralStore = new JFrame();
 		frmGeneralStore.setVisible(true);
 		frmGeneralStore.setTitle("General Store");
-		frmGeneralStore.setBounds(100, 100, 770, 515);
+		frmGeneralStore.setBounds(100, 100, 415, 335);
 		frmGeneralStore.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGeneralStore.getContentPane().setLayout(null);
 		
-		lblStoreTitle = new JLabel("Welcome to the General Store");
-		lblStoreTitle.setSize(197, 16);
-		lblStoreTitle.setLocation(new Point(130, 6));
+		lblStoreTitle = new JLabel("Welcome to the General Store!");
+		lblStoreTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStoreTitle.setFont(new Font("Arial", Font.BOLD, 15));
+		lblStoreTitle.setSize(244, 16);
+		lblStoreTitle.setLocation(new Point(79, 11));
 		lblStoreTitle.setMaximumSize(new Dimension(90, 16));
 		lblStoreTitle.setMinimumSize(new Dimension(90, 16));
 		frmGeneralStore.getContentPane().add(lblStoreTitle);
 		
 		JLabel lblMoney = new JLabel("Money Available:");
-		lblMoney.setBounds(6, 37, 122, 16);
+		lblMoney.setFont(new Font("Arial", Font.BOLD, 11));
+		lblMoney.setBounds(41, 51, 122, 16);
 		frmGeneralStore.getContentPane().add(lblMoney);
 		
 		JLabel lblMoneyAvailable = new JLabel("");
-		lblMoneyAvailable.setBounds(130, 37, 110, 16);
+		lblMoneyAvailable.setBounds(139, 51, 110, 16);
 		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 		lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 		frmGeneralStore.getContentPane().add(lblMoneyAvailable);
@@ -127,19 +132,21 @@ public class StoreWindow {
 				game.launchMainScreen();
 			}
 		});
-		btnLeave.setBounds(173, 222, 117, 29);
+		btnLeave.setBounds(233, 236, 121, 29);
 		frmGeneralStore.getContentPane().add(btnLeave);
 		
 		JLabel lblItems = new JLabel("Items Owned");
-		lblItems.setBounds(322, 37, 94, 16);
+		lblItems.setHorizontalAlignment(SwingConstants.CENTER);
+		lblItems.setFont(new Font("Arial", Font.BOLD, 11));
+		lblItems.setBounds(246, 51, 94, 16);
 		frmGeneralStore.getContentPane().add(lblItems);
 		
-		
 		itemListModel.addAll(game.getItemsOwnedByFarmer());
-		listItems.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listItems.setForeground(Color.WHITE);
-		listItems.setBackground(Color.GRAY);
-		listItems.setBounds(280, 65, 148, 145);
-		frmGeneralStore.getContentPane().add(listItems);
+		
+		itemsOwnedScroller.setBounds(232, 78, 122, 110);
+		frmGeneralStore.add(itemsOwnedScroller);
+		
+		itemList.setBackground(Color.LIGHT_GRAY);
+
 	}
 }
