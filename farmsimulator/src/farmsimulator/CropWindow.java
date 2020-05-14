@@ -4,17 +4,18 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.LineBorder;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class CropWindow{
 	
@@ -22,13 +23,16 @@ public class CropWindow{
 
 	private JFrame frmCrops;
 	
-	private Crop cropSelected;
-	private Item itemSelected;
 	private String farmName;
 	DefaultListModel<Crop> cropListModel = new DefaultListModel<>();
 	JList<Crop> listCrops = new JList<>(cropListModel);
+	
+	private JScrollPane cropsScroller = new JScrollPane(listCrops);
+	
 	DefaultListModel<Item> itemListModel = new DefaultListModel<>();
 	JList<Item> listItems = new JList<>(itemListModel);
+	
+	private JScrollPane itemsScroller = new JScrollPane(listItems);
 
 	/**
 	 * Launch the application.
@@ -74,25 +78,30 @@ public class CropWindow{
 		frmCrops = new JFrame();
 		frmCrops.setVisible(true);
 		frmCrops.setTitle("Crops");
-		frmCrops.setBounds(100, 100, 770, 515);
+		frmCrops.setBounds(100, 100, 399, 462);
 		frmCrops.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCrops.getContentPane().setLayout(null);
 		
 		farmName = game.getFarmName();
 		JLabel lblTitle = new JLabel(farmName + " Farm's Crops");
-		lblTitle.setBounds(150, 6, 161, 16);
+		lblTitle.setFont(new Font("Arial", Font.BOLD, 17));
+		lblTitle.setBounds(89, 11, 209, 16);
 		frmCrops.getContentPane().add(lblTitle);
 		
 		JLabel lblChooseCrop = new JLabel("Choose Crop");
-		lblChooseCrop.setBounds(41, 42, 100, 16);
+		lblChooseCrop.setHorizontalAlignment(SwingConstants.CENTER);
+		lblChooseCrop.setFont(new Font("Arial", Font.BOLD, 11));
+		lblChooseCrop.setBounds(60, 41, 100, 16);
 		frmCrops.getContentPane().add(lblChooseCrop);
 		
 		JLabel lblChooseItem = new JLabel("Choose Item");
-		lblChooseItem.setBounds(280, 42, 103, 16);
+		lblChooseItem.setFont(new Font("Arial", Font.BOLD, 11));
+		lblChooseItem.setHorizontalAlignment(SwingConstants.CENTER);
+		lblChooseItem.setBounds(236, 92, 84, 16);
 		frmCrops.getContentPane().add(lblChooseItem);
 		
 		JButton btnHarvest = new JButton("Harvest Crop");
-		btnHarvest.setBounds(27, 190, 117, 29);
+		btnHarvest.setBounds(27, 253, 117, 29);
 		btnHarvest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (listCrops.getSelectedValue() == null) {
@@ -111,7 +120,7 @@ public class CropWindow{
 		frmCrops.getContentPane().add(btnHarvest);
 		
 		JButton btnUseItem = new JButton("Fertilise Crop");
-		btnUseItem.setBounds(280, 190, 117, 29);
+		btnUseItem.setBounds(27, 306, 117, 29);
 		btnUseItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Crop crop = listCrops.getSelectedValue();
@@ -138,8 +147,8 @@ public class CropWindow{
 		});
 		frmCrops.getContentPane().add(btnUseItem);
 		
-		JButton btnBack = new JButton("Back to Farm");
-		btnBack.setBounds(162, 232, 117, 29);
+		JButton btnBack = new JButton("Back to Home");
+		btnBack.setBounds(217, 358, 117, 29);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeCropWindow();
@@ -149,24 +158,30 @@ public class CropWindow{
 		frmCrops.getContentPane().add(btnBack);
 		
 		cropListModel.addAll(game.getCropsOwned());
+		
+		cropsScroller.setBounds(27, 68, 161, 161);
+		frmCrops.getContentPane().add(cropsScroller);
+		
+		listCrops.setBorder(new LineBorder(new Color(0, 0, 0)));
 		listCrops.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listCrops.setForeground(Color.WHITE);
-		listCrops.setBackground(Color.GRAY);
-		listCrops.setBounds(27, 68, 114, 110);
-		frmCrops.getContentPane().add(listCrops);
+		listCrops.setBackground(Color.DARK_GRAY);
 		
 		
 		//Crop items owned
 		for(Item item: game.getItemsOwnedByFarmer()) {
-			if (item instanceof FertiliserOne || item instanceof FertiliserTwo || item instanceof FertiliserThree || item instanceof Water) {
+			if (item instanceof FertiliserOne || item instanceof FertiliserTwo || item instanceof FertiliserThree 
+					|| item instanceof Water) {
 				itemListModel.addElement(item);
 			}
 		}
+		listItems.setBorder(new LineBorder(new Color(0, 0, 0)));
 
+		itemsScroller.setBounds(217, 119, 117, 110);
+		frmCrops.getContentPane().add(itemsScroller);
+		
 		listItems.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listItems.setForeground(Color.WHITE);
-		listItems.setBackground(Color.GRAY);
-		listItems.setBounds(255, 68, 117, 110);
-		frmCrops.getContentPane().add(listItems);
+		listItems.setBackground(Color.DARK_GRAY);
 	}
 }
