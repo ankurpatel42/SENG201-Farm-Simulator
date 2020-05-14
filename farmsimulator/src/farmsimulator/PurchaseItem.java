@@ -11,9 +11,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-//import java.awt.event.InputMethodListener;
-//import java.awt.event.InputMethodEvent;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class PurchaseItem {
 	
@@ -73,16 +73,19 @@ public class PurchaseItem {
 		frmPurchaseItem = new JFrame();
 		frmPurchaseItem.setVisible(true);
 		frmPurchaseItem.setTitle("Purchase Item");
-		frmPurchaseItem.setBounds(100, 100, 770, 515);
+		frmPurchaseItem.setBounds(100, 100, 530, 433);
 		frmPurchaseItem.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseItem.getContentPane().setLayout(null);
 		
 		JLabel lblTitle = new JLabel("Make Your Purchase");
-		lblTitle.setBounds(158, 6, 140, 16);
+		lblTitle.setFont(new Font("Arial", Font.BOLD, 11));
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setBounds(170, 10, 140, 16);
 		frmPurchaseItem.getContentPane().add(lblTitle);
 		
 		JLabel lblMoney = new JLabel("Money Available:");
-		lblMoney.setBounds(6, 37, 122, 16);
+		lblMoney.setFont(new Font("Arial", Font.BOLD, 11));
+		lblMoney.setBounds(29, 37, 122, 16);
 		frmPurchaseItem.getContentPane().add(lblMoney);
 		
 		JLabel lblMoneyAvailable = new JLabel("");
@@ -92,23 +95,29 @@ public class PurchaseItem {
 		frmPurchaseItem.getContentPane().add(lblMoneyAvailable);
 		
 		JLabel lblSelect = new JLabel("Select Item");
+		lblSelect.setFont(new Font("Arial", Font.BOLD, 11));
+		lblSelect.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelect.setBounds(56, 65, 85, 16);
 		frmPurchaseItem.getContentPane().add(lblSelect);
 		
 		JLabel lblCropItems = new JLabel("Crop Items");
-		lblCropItems.setBounds(301, 37, 85, 16);
+		lblCropItems.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCropItems.setFont(new Font("Arial", Font.BOLD, 11));
+		lblCropItems.setBounds(306, 65, 85, 16);
 		frmPurchaseItem.getContentPane().add(lblCropItems);
 		
 		JLabel lblAnimalItems = new JLabel("Animal Items");
-		lblAnimalItems.setBounds(301, 160, 90, 16);
+		lblAnimalItems.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAnimalItems.setFont(new Font("Arial", Font.BOLD, 11));
+		lblAnimalItems.setBounds(301, 192, 90, 16);
 		frmPurchaseItem.getContentPane().add(lblAnimalItems);
 		
 		JComboBox<String> comboBoxItem = new JComboBox<>(itemsCombo);
-		comboBoxItem.setBounds(24, 93, 147, 27);
+		comboBoxItem.setBounds(29, 95, 147, 27);
 		frmPurchaseItem.getContentPane().add(comboBoxItem);
 		
 		JButton btnPurchase = new JButton("Purchase");
-		btnPurchase.setBounds(34, 127, 117, 29);
+		btnPurchase.setBounds(29, 144, 147, 29);
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				itemChosen = (String)comboBoxItem.getSelectedItem();
@@ -133,15 +142,16 @@ public class PurchaseItem {
 						message = game.createFertiliserThree();
 						break;
 				}
+				
+				JOptionPane.showMessageDialog(btnPurchase, message);
 				String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 				lblMoneyAvailable.setText("$" + formatMoneyAvailable);
-				JOptionPane.showMessageDialog(btnPurchase, message);
 			}
 		});
 		frmPurchaseItem.getContentPane().add(btnPurchase);
 		
 		JButton btnBack = new JButton("Back to Store");
-		btnBack.setBounds(175, 281, 117, 29);
+		btnBack.setBounds(362, 339, 117, 29);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closePurchaseItemWindow();
@@ -151,15 +161,20 @@ public class PurchaseItem {
 		frmPurchaseItem.getContentPane().add(btnBack);
 		
 		JTextPane txtCrops = new JTextPane();
-		txtCrops.setBounds(206, 65, 273, 80);
+		txtCrops.setEditable(false);
+		txtCrops.setBounds(206, 92, 273, 95);
 		txtCrops.setText("Name	Price	Crop Growth Boost\r\n\r\nF1: 	$100 	1 day\r\nF2: 	$250 	3 days\r\nF3: 	$400 	5 days");
 		txtCrops.setBackground(Color.LIGHT_GRAY);
 		frmPurchaseItem.getContentPane().add(txtCrops);
 		
+		
 		JTextPane txtAnimals = new JTextPane();
+		txtAnimals.setEditable(false);
 		txtAnimals.setText("Name	Price	Animal Health Boost\r\n\r\nA1: 	$100 	1\r\nA2: 	$300 	5\r\nA3: 	$700 	10");
 		txtAnimals.setBackground(Color.LIGHT_GRAY);
-		txtAnimals.setBounds(206, 188, 273, 78);
+		txtAnimals.setBounds(206, 219, 273, 95);
 		frmPurchaseItem.getContentPane().add(txtAnimals);
+		
+
 	}
 }
