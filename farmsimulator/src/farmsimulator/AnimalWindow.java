@@ -3,33 +3,36 @@ package farmsimulator;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.ListSelectionModel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 public class AnimalWindow {
 
 	private GameEnvironment game;
 	
 	private JFrame animalsFrame;
-	private JComboBox<String> animalSelection;
-	private String[] animalOptions = {"Cow", "Pig", "Sheep"};
-	DefaultComboBoxModel<String> animalOptionsModel = new DefaultComboBoxModel<String>(animalOptions);
 	
-	DefaultListModel<Animal> animalListModel = new DefaultListModel<Animal>();
-	JList<Animal> animalList = new JList<>(animalListModel);
+	private DefaultListModel<Animal> animalListModel = new DefaultListModel<Animal>();
+	private JList<Animal> animalList = new JList<>(animalListModel);
 	
-	DefaultListModel<Item> animalFoodListModel = new DefaultListModel<Item>();
-	JList<Item> animalFoodList = new JList<>(animalFoodListModel);
+	private JScrollPane animalScroller = new JScrollPane(animalList);
+	
+	private DefaultListModel<Item> animalFoodListModel = new DefaultListModel<Item>();
+	private JList<Item> animalFoodList = new JList<>(animalFoodListModel);
+	
+	private JScrollPane animalFoodScroller = new JScrollPane(animalFoodList);
 	
 	/**
 	 * Launch the application.
@@ -63,19 +66,20 @@ public class AnimalWindow {
 	public void closeAnimalWindow() {
 		animalsFrame.dispose();
 	}
+	
+	public void finishedWindow() {
+		game.closeAnimalWindow(this);
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		animalsFrame = new JFrame();
 		animalsFrame.setTitle("Animals");
-		animalsFrame.setBounds(100, 100, 770, 515);
+		animalsFrame.setBounds(100, 100, 612, 413);
 		animalsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		animalsFrame.getContentPane().setLayout(null);
-		
-		animalSelection = new JComboBox<>(animalOptionsModel);
-		animalSelection.setBounds(70, 96, 144, 22);
-		animalsFrame.getContentPane().add(animalSelection);
 		
 		
 		JButton feedAnimalButton = new JButton("Feed Animal");
@@ -95,10 +99,11 @@ public class AnimalWindow {
 						animalFoodListModel.removeElement(animalFoodList.getSelectedValue());
 					}
 					JOptionPane.showMessageDialog(animalsFrame, message);
+					animalsFrame.repaint();
 				}
 			}
 		});
-		feedAnimalButton.setBounds(70, 328, 144, 23);
+		feedAnimalButton.setBounds(70, 202, 162, 23);
 		animalsFrame.getContentPane().add(feedAnimalButton);
 		
 		JButton playWithAnimalButton = new JButton("Play with Animal");
@@ -117,44 +122,35 @@ public class AnimalWindow {
 				}
 			}
 		});
-		playWithAnimalButton.setBounds(70, 374, 144, 23);
+		playWithAnimalButton.setBounds(70, 243, 162, 23);
 		animalsFrame.getContentPane().add(playWithAnimalButton);
 		
-		JButton backToFarmButton = new JButton("Back to Farm");
-		backToFarmButton.setBounds(549, 420, 144, 23);
+		JButton backToFarmButton = new JButton("Back to Home");
+		backToFarmButton.setBounds(312, 326, 144, 23);
 		backToFarmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeAnimalWindow();
+				finishedWindow();
 				game.launchMainScreen();
 			}
 		});
 		animalsFrame.getContentPane().add(backToFarmButton);
 		
 		JLabel userFarmNameLabel = new JLabel("");
-		userFarmNameLabel.setBounds(205, 11, 132, 32);
-		userFarmNameLabel.setText(game.getFarmName());
+		userFarmNameLabel.setFont(new Font("Arial", Font.BOLD, 17));
+		userFarmNameLabel.setBounds(70, 11, 267, 32);
+		userFarmNameLabel.setText(game.getFarmName() + "'s Animals");
 		animalsFrame.getContentPane().add(userFarmNameLabel);
-		
-		JLabel animalsLabel = new JLabel("Animals on Farm (pick one to feed or play with!)");
-		animalsLabel.setBounds(400, 11, 278, 32);
-		animalsFrame.getContentPane().add(animalsLabel);
 		
 		
 		animalListModel.addAll(game.getAnimalsOnFarm());
 		
+		animalScroller.setBounds(281, 83, 267, 194);
+		animalsFrame.getContentPane().add(animalScroller);
+		
 		animalList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		animalList.setForeground(Color.WHITE);
-		animalList.setBackground(Color.GRAY);
-		animalList.setBounds(372, 72, 321, 316);
-		animalsFrame.getContentPane().add(animalList);
-		
-		JLabel feedAllAnimalsLabel = new JLabel("Feed and play with all Animals of a type!");
-		feedAllAnimalsLabel.setBounds(70, 54, 217, 32);
-		animalsFrame.getContentPane().add(feedAllAnimalsLabel);
-		
-		JLabel farmNameLabel = new JLabel("Farm:");
-		farmNameLabel.setBounds(152, 11, 62, 32);
-		animalsFrame.getContentPane().add(farmNameLabel);
+		animalList.setBackground(Color.DARK_GRAY);
 		
 		//animal food items owned
 		for(Item item: game.getItemsOwnedByFarmer()) {
@@ -162,19 +158,24 @@ public class AnimalWindow {
 				animalFoodListModel.addElement(item);
 			}
 		}
+		animalFoodList.setBorder(new LineBorder(new Color(0, 0, 0)));
+		
+		animalFoodScroller.setBounds(70, 82, 162, 109);
+		animalsFrame.add(animalFoodScroller);
 		
 		animalFoodList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		animalFoodList.setForeground(Color.WHITE);
-		animalFoodList.setBackground(Color.GRAY);
-		animalFoodList.setBounds(70, 177, 162, 109);
-		animalsFrame.getContentPane().add(animalFoodList);
+		animalFoodList.setBackground(Color.DARK_GRAY);
 		
 		JLabel animalFoodItemsLabel = new JLabel("Animal Food Items available");
-		animalFoodItemsLabel.setBounds(70, 134, 162, 32);
+		animalFoodItemsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		animalFoodItemsLabel.setFont(new Font("Arial", Font.BOLD, 11));
+		animalFoodItemsLabel.setBounds(70, 54, 162, 32);
 		animalsFrame.getContentPane().add(animalFoodItemsLabel);
 		
-		JLabel animalDescriptionLabel = new JLabel("Animal name : Animal healthiness : Animal happiness");
-		animalDescriptionLabel.setBounds(400, 40, 293, 32);
-		animalsFrame.getContentPane().add(animalDescriptionLabel);
+		JLabel lblAnimalDescription = new JLabel("Name        :        Healthiness        :        Happiness");
+		lblAnimalDescription.setFont(new Font("Arial", Font.BOLD, 11));
+		lblAnimalDescription.setBounds(281, 63, 267, 14);
+		animalsFrame.getContentPane().add(lblAnimalDescription);
 	}
 }
