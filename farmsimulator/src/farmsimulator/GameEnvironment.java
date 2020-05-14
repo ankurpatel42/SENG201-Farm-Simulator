@@ -16,99 +16,102 @@ public class GameEnvironment {
 	private GeneralStore store;
 	private String message;
 	
-	public void setFarm(String farmNameChosen, double moneyAvailable, int cropGrowthRate, int animalHealthiness, int animalHappiness) {
+	public void createFarm(String farmNameChosen, double moneyAvailable, int cropGrowthRate, int animalHealthiness, int animalHappiness) {
 		farm = new Farm(farmNameChosen, moneyAvailable, cropGrowthRate, animalHealthiness, animalHappiness);
-		//Not sure where to call this
-		store = new GeneralStore(this);
 	}
 	
+	public void createGeneralStore() {
+		store = new GeneralStore();
+	}
+	
+	
 	public String createCow(String nameForCow) {
-		animal = new Cow(nameForCow, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness(), this);
-		message = store.purchaseAnimal(animal);
+		animal = new Cow(nameForCow, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness());
+		message = store.purchaseAnimal(animal, this);
 		return message;
 	}
 	
 	public String createPig(String nameForPig) {
-		animal = new Pig(nameForPig, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness(), this);
-		message = store.purchaseAnimal(animal);
+		animal = new Pig(nameForPig, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness());
+		message = store.purchaseAnimal(animal, this);
 		return message;
 	}
 	
 	public String createSheep(String nameForSheep) {
-		animal = new Sheep(nameForSheep, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness(), this);
-		message = store.purchaseAnimal(animal);
+		animal = new Sheep(nameForSheep, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness());
+		message = store.purchaseAnimal(animal, this);
 		return message;
 	}
 	
 	public String createFertiliserOne() {
 		item = new FertiliserOne();
-		message = store.purchaseItem(item);
+		message = store.purchaseItem(item, this);
 		return message;
 	}
 	
 	public String createFertiliserTwo() {
 		item = new FertiliserTwo();
-		message = store.purchaseItem(item);
+		message = store.purchaseItem(item, this);
 		return message;
 	}
 	
 	public String createFertiliserThree() {
 		item = new FertiliserThree();
-		message = store.purchaseItem(item);
+		message = store.purchaseItem(item, this);
 		return message;
 	}
 	
 	public String createAnimalFoodOne() {
 		item = new AnimalFoodOne();
-		message = store.purchaseItem(item);
+		message = store.purchaseItem(item, this);
 		return message;
 	}
 	
 	public String createAnimalFoodTwo() {
 		item = new AnimalFoodTwo();
-		message = store.purchaseItem(item);
+		message = store.purchaseItem(item, this);
 		return message;
 	}
 	
 	public String createAnimalFoodThree() {
 		item = new AnimalFoodThree();
-		message = store.purchaseItem(item);
+		message = store.purchaseItem(item, this);
 		return message;
 	}
 	
 	public String createCarrot() {
-		crop = new Carrot(this);
-		message = store.purchaseCrop(crop);
+		crop = new Carrot();
+		message = store.purchaseCrop(crop, this);
 		return message;
 	}
 	
 	public String createCorn() {
-		crop = new Corn(this);
-		message = store.purchaseCrop(crop);
+		crop = new Corn();
+		message = store.purchaseCrop(crop, this);
 		return message;
 	}
 	
 	public String createLettuce() {
-		crop = new Lettuce(this);
-		message = store.purchaseCrop(crop);
+		crop = new Lettuce();
+		message = store.purchaseCrop(crop, this);
 		return message;
 	}
 	
 	public String createPotato() {
-		crop = new Potato(this);
-		message = store.purchaseCrop(crop);
+		crop = new Potato();
+		message = store.purchaseCrop(crop, this);
 		return message;
 	}
 	
 	public String createRice() {
-		crop = new Rice(this);
-		message = store.purchaseCrop(crop);
+		crop = new Rice();
+		message = store.purchaseCrop(crop, this);
 		return message;
 	}
 	
 	public String createWheat() {
-		crop = new Wheat(this);
-		message = store.purchaseCrop(crop);
+		crop = new Wheat();
+		message = store.purchaseCrop(crop, this);
 		return message;
 	}
 	
@@ -125,11 +128,11 @@ public class GameEnvironment {
 	}
 	
 	public String harvestCrops(Crop crop) {
-		return crop.harvestCrops();
+		return crop.harvestCrops(this);
 	}
 	
 	public String fertiliseCrop(Crop crop, Item item) {
-		return crop.tendCrops(item);
+		return crop.tendCrops(item, this);
 	}
 	
 	
@@ -142,11 +145,27 @@ public class GameEnvironment {
 	}
 	
 	public String feedAnimal(Animal animalToBeFed, Item item) {
-		return animalToBeFed.feedAnimal(item);
+		return animalToBeFed.feedAnimal(item, this);
 	}
 	
 	public String playWithAnimal(Animal animalToBePlayedWith) {
-		return animalToBePlayedWith.playWithAnimal();
+		return animalToBePlayedWith.playWithAnimal(this);
+	}
+	
+	public ArrayList<Animal> getAnimalsOnFarm() {
+		return farm.getAnimalList();
+	}
+	
+	public double getFinalAnimalStatus() {
+		ArrayList<Animal> finalAnimals = getAnimalsOnFarm();
+		
+		double totalAnimalStatus = 0;
+		
+		for(Animal animal: finalAnimals) {
+			totalAnimalStatus = totalAnimalStatus + animal.getAnimalHappiness() + animal.getAnimalHealthiness();
+		}
+		
+		return totalAnimalStatus;
 	}
 	
 	public ArrayList<Item> getItemsOwnedByFarmer() {
@@ -193,16 +212,13 @@ public class GameEnvironment {
 		gameLength = numDaysChosen;
 	}
 	
-	public ArrayList<Animal> getAnimalsOnFarm() {
-		return farm.getAnimalList();
-	}
 	
 	public int getGameLength() {
 		return gameLength;
 	}
 	
 	/* Check that the user has entered the correct input */
-	public boolean checkTextInput(String name) {
+	public boolean userInputValid(String name) {
 		
 		char[] nameArray = name.toCharArray();
 		
@@ -241,6 +257,10 @@ public class GameEnvironment {
 		AnimalWindow animalWindow = new AnimalWindow(this);
 	}
 	
+	public void closeAnimalWindow(AnimalWindow animalWindow) {
+		animalWindow.closeAnimalWindow();
+	}
+	
 	public void launchStoreWindow() {
 		StoreWindow storeWindow = new StoreWindow(this);
 	}
@@ -275,6 +295,14 @@ public class GameEnvironment {
 	
 	public void closeCropWindow(CropWindow cropWindow) {
 		cropWindow.closeCropWindow();
+	}
+	
+	public void launchFinalScreen() {
+		FinalScreen finalScreen = new FinalScreen(this);
+	}
+	
+	public void closeFinalScreen(FinalScreen finalScreen) {
+		finalScreen.closeFinalScreen();
 	}
 	
 	public static void main(String[] args) {
