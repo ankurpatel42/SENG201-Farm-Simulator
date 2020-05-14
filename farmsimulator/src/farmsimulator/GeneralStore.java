@@ -5,19 +5,14 @@ import java.util.ArrayList;
 public class GeneralStore {
 	
 	private ArrayList<Item> itemList = null;
-	private GameEnvironment game;
 	private String message;
 	private double money;
-	
-	public GeneralStore(GameEnvironment gameEnv) {
-		game = gameEnv;
-	}
 	
 	public ArrayList<Item> viewItemsForSale() {
 		return itemList;
 	}
 	
-	public String purchaseItem(Item item) {
+	public String purchaseItem(Item item, GameEnvironment game) {
 		money = game.getFarm().getMoneyAvailable();
 		if (money < item.getPrice()){
 			message = "Sorry, You have insuffcient funds to purchase this item";
@@ -31,7 +26,7 @@ public class GeneralStore {
 		return message;
 	}
 	
-	public String purchaseAnimal(Animal animal) {
+	public String purchaseAnimal(Animal animal, GameEnvironment game) {
 		money = game.getFarm().getMoneyAvailable();
 		if (money < animal.getAnimalPurchasePrice()){
 			message = "Sorry, You have insuffcient funds to purchase this animal";
@@ -45,7 +40,7 @@ public class GeneralStore {
 		return message;
 	}
 	
-	public String purchaseCrop(Crop crop) {
+	public String purchaseCrop(Crop crop, GameEnvironment game) {
 		money = game.getFarm().getMoneyAvailable();
 		if (money < crop.getCropPurchasePrice()){
 			message = "Sorry, You have insuffcient funds to purchase this crop";
