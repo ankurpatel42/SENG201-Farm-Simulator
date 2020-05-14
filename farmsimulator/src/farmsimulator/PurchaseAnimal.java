@@ -21,7 +21,7 @@ public class PurchaseAnimal {
 
 	private JFrame frmPurchaseAnimal;
 	private String[] animals = {"Cow", "Pig", "Sheep"};
-	DefaultComboBoxModel<String> animalsCombo = new DefaultComboBoxModel<String>(animals);
+	private DefaultComboBoxModel<String> animalsCombo = new DefaultComboBoxModel<String>(animals);
 	private String animalChosen = null;
 	private String message;
 	private ArrayList<String> cowNamesChosen = new ArrayList<String>();
@@ -72,7 +72,7 @@ public class PurchaseAnimal {
 		frmPurchaseAnimal = new JFrame();
 		frmPurchaseAnimal.setTitle("Purchase Animal");
 		frmPurchaseAnimal.setVisible(true);
-		frmPurchaseAnimal.setBounds(100, 100, 770, 515);
+		frmPurchaseAnimal.setBounds(100, 100, 508, 351);
 		frmPurchaseAnimal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseAnimal.getContentPane().setLayout(null);
 		
@@ -99,11 +99,11 @@ public class PurchaseAnimal {
 		frmPurchaseAnimal.getContentPane().add(lblCropItems);
 		
 		JComboBox<String> comboBoxAnimals = new JComboBox<>(animalsCombo);
-		comboBoxAnimals.setBounds(24, 93, 147, 27);
+		comboBoxAnimals.setBounds(24, 92, 147, 27);
 		frmPurchaseAnimal.getContentPane().add(comboBoxAnimals);
 		
 		JButton btnPurchase = new JButton("Purchase");
-		btnPurchase.setBounds(34, 135, 117, 29);
+		btnPurchase.setBounds(24, 140, 147, 29);
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				animalChosen = (String)comboBoxAnimals.getSelectedItem();
@@ -114,8 +114,10 @@ public class PurchaseAnimal {
 						if (nameChosenForCow == null) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
 						}
-						else if (game.checkTextInput(nameChosenForCow) == false) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your cow!");
+						else if (game.userInputValid(nameChosenForCow) == false) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your cow! Your COW name "
+									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
+									+ "characters!" );
 						}
 						else if (cowNamesChosen.contains(nameChosenForCow)) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a cow named " + nameChosenForCow);
@@ -133,8 +135,10 @@ public class PurchaseAnimal {
 						if (nameChosenForPig == null) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
 						}
-						else if (game.checkTextInput(nameChosenForPig) == false) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig!");
+						else if (game.userInputValid(nameChosenForPig) == false) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig! Your PIG name "
+									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
+									+ "characters!");
 						}
 						else if (pigNamesChosen.contains(nameChosenForPig)) {
 								JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a pig named " + nameChosenForPig);
@@ -152,11 +156,13 @@ public class PurchaseAnimal {
 						if (nameChosenForSheep == null) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
 						}
-						else if (game.checkTextInput(nameChosenForSheep) == false) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Sheep!");
+						else if (game.userInputValid(nameChosenForSheep) == false) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Sheep! Your SHEEP name "
+									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
+									+ "characters!");
 						}
 						else if (sheepNamesChosen.contains(nameChosenForSheep)) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a sheep named " + nameChosenForSheep);
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a sheep named " + nameChosenForSheep + " pick another name!");
 						}
 						else {
 							sheepNamesChosen.add(nameChosenForSheep);
@@ -181,12 +187,13 @@ public class PurchaseAnimal {
 				game.launchStoreWindow();
 			}
 		});
-		btnBack.setBounds(158, 197, 117, 29);
+		btnBack.setBounds(289, 233, 117, 29);
 		frmPurchaseAnimal.getContentPane().add(btnBack);
 		
 		JTextPane txtAnimals = new JTextPane();
+		txtAnimals.setEditable(false);
 		txtAnimals.setBounds(235, 81, 209, 103);
-		txtAnimals.setText("Name	Price	Sell Price\r\n\r\nCow: 	$100 	$100\r\nPig: 	$100 	$100\r\nSheep: 	$100 	$100");
+		txtAnimals.setText("Name\tPrice\tSell Price\r\n\r\nCow: \t$100 \t$100\r\nPig: \t$75 \t$100\r\nSheep: \t$50 \t$100");
 		txtAnimals.setBackground(Color.LIGHT_GRAY);
 		frmPurchaseAnimal.getContentPane().add(txtAnimals);
 	}
