@@ -1,7 +1,5 @@
 package farmsimulator;
 
-import java.util.ArrayList;
-
 public abstract class Crop {
 
 	private double cropPurchasePrice = 0;
@@ -9,16 +7,21 @@ public abstract class Crop {
 	private int daysTillHarvest = 0;
 	private String name = null;
 	private int daysGrowing = 0;
-	private static ArrayList<Crop> crops = null;
-	private GameEnvironment game;
 	private String message;
+	private static int fieldCounter = 0;
+	private int fieldNumber = 0;
 
-	public Crop (String name, double cropPurchasePrice, double cropMoneyGiven, int daysTillHarvest, GameEnvironment gameEnv) {
+	public Crop (String name, double cropPurchasePrice, double cropMoneyGiven, int daysTillHarvest) {
 		this.name = name;
 		this.cropMoneyGiven = cropMoneyGiven;
 		this.cropPurchasePrice = cropPurchasePrice;
 		this.daysTillHarvest = daysTillHarvest;
-		game = gameEnv;
+		fieldCounter++;
+		fieldNumber = fieldCounter;
+	}
+	
+	public int getFieldNumber() {
+		return fieldNumber;
 	}
 	
 	public String getCropName() {
@@ -49,7 +52,7 @@ public abstract class Crop {
 		daysTillHarvest -= game.getFarm().getCropGrowthRate();
 	}
 	
-	public String tendCrops(Item choice) {
+	public String tendCrops(Item choice, GameEnvironment game) {
 		if (game.useFarmerAction() == true) {
 			daysTillHarvest -= choice.getHarvestSpeedUpTime();
 			if (daysTillHarvest <= 0) {
@@ -66,7 +69,7 @@ public abstract class Crop {
 		return message;
 	}
 	
-	public String harvestCrops() {
+	public String harvestCrops(GameEnvironment game) {
 		if (game.useFarmerAction() == true) {
 			game.useFarmerAction();
 			if (daysTillHarvest > 0) {
@@ -85,9 +88,8 @@ public abstract class Crop {
 	}
 	
 	public String toString() {
-		crops = game.getCropsOwned();
-		int num = crops.indexOf(this) + 1;
-		String display = "Feild " + num + " (" + name + ")	" + daysTillHarvest; 
+		String display = "Feild " + getFieldNumber() + " (" + name + ")	" + daysTillHarvest; 
 		return display;
 	}
+	
 }
