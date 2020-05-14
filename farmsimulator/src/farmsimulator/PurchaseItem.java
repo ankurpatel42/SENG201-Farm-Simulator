@@ -23,16 +23,12 @@ public class PurchaseItem {
 	private String[] items = {"F1", "F2", "F3", "A1", "A2", "A3"};
 	DefaultComboBoxModel<String> itemsCombo = new DefaultComboBoxModel<String>(items);
 	private String itemChosen = null;
-	//private String famerName = GameEnvironment.getFarmer().getFarmerName();
-	//private Item item; 
 	private String message;
 	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		//TESTING
-		//Farm farm = new Farm("Test", 1000.00, 2.5, 5, 3);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
