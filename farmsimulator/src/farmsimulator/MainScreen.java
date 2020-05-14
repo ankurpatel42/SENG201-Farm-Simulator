@@ -67,7 +67,7 @@ public class MainScreen {
 		
 		
 		JLabel daysLeftMessage = new JLabel("Days Left:");
-		daysLeftMessage.setFont(new Font("Arial", Font.PLAIN, 17));
+		daysLeftMessage.setFont(new Font("Arial", Font.BOLD, 17));
 		daysLeftMessage.setBounds(115, 103, 90, 47);
 		mainScreen.getContentPane().add(daysLeftMessage);
 		
@@ -78,28 +78,28 @@ public class MainScreen {
 		mainScreen.getContentPane().add(daysLeftLabel);
 		
 		JLabel farmName = new JLabel("Farm Name:");
-		farmName.setFont(new Font("Arial", Font.BOLD, 23));
-		farmName.setBounds(231, 11, 141, 41);
+		farmName.setFont(new Font("Arial", Font.BOLD, 27));
+		farmName.setBounds(160, 11, 212, 68);
 		mainScreen.getContentPane().add(farmName);
 		
 		JLabel farmNameChosen = new JLabel("");
-		farmNameChosen.setFont(new Font("Arial", Font.BOLD, 23));
-		farmNameChosen.setBounds(370, 16, 212, 31);
+		farmNameChosen.setFont(new Font("Arial", Font.BOLD, 27));
+		farmNameChosen.setBounds(344, 30, 212, 31);
 		farmNameChosen.setText(game.getFarmName());
 		mainScreen.getContentPane().add(farmNameChosen);
 		
 		JLabel cropGrowthRateMessage = new JLabel("Crop growth rate:");
-		cropGrowthRateMessage.setFont(new Font("Arial", Font.PLAIN, 17));
+		cropGrowthRateMessage.setFont(new Font("Arial", Font.BOLD, 17));
 		cropGrowthRateMessage.setBounds(434, 147, 148, 47);
 		mainScreen.getContentPane().add(cropGrowthRateMessage);
 		
 		JLabel moneyAvailableMessage = new JLabel("Money available:");
-		moneyAvailableMessage.setFont(new Font("Arial", Font.PLAIN, 17));
+		moneyAvailableMessage.setFont(new Font("Arial", Font.BOLD, 17));
 		moneyAvailableMessage.setBounds(434, 103, 148, 47);
 		mainScreen.getContentPane().add(moneyAvailableMessage);
 		
 		JLabel actionsLeftMessage = new JLabel("Actions left in day:");
-		actionsLeftMessage.setFont(new Font("Arial", Font.PLAIN, 17));
+		actionsLeftMessage.setFont(new Font("Arial", Font.BOLD, 17));
 		actionsLeftMessage.setBounds(115, 147, 148, 47);
 		mainScreen.getContentPane().add(actionsLeftMessage);
 		
@@ -172,8 +172,11 @@ public class MainScreen {
 			public void actionPerformed(ActionEvent e) {
 				String message = game.nextDay();
 				int daysLeft = game.getGameLength() - game.getFarmer().getDayNum() + 1;
+				
 				if (daysLeft == 0) {
-					//End Game
+					game.launchFinalScreen();
+					closeMainScreen();
+					finishedWindow();
 				}
 				else {
 					daysLeftLabel.setText(Integer.toString(daysLeft));
