@@ -2,6 +2,7 @@ package farmsimulator;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,6 +21,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.SwingConstants;
+
+/**
+ * This is the setup window where the user enters their farm name, farmer name, type of farm to play on and game length.
+ * 
+ * @author Ankur Patel, Benjamin Crozier
+ * @version 15/05/2020
+ */
+
 
 public class SetUpScreen {
 	
@@ -66,17 +75,27 @@ public class SetUpScreen {
 		initialize();
 	}
 	
-	
+	/**
+	 * SetUpScreen constructor.
+	 * 
+	 * @param startGame			The game environment played on.
+	 */
 	public SetUpScreen(GameEnvironment startGame) {
 		this.game = startGame;
 		initialize();
 		setUpScreenFrame.setVisible(true);
 	}
 	
+	/**
+	 * Closes the window after the user has started the main game.
+	 */
 	public void closeSetUpScreen() {
 		setUpScreenFrame.dispose();
 	}
 	
+	/**
+	 * Closes the window after the user has started the main game.
+	 */
 	public void finishedWindow() {
 		game.closeSetUpScreen(this);
 	}
