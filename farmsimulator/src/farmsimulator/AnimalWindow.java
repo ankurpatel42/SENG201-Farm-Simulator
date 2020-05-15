@@ -2,6 +2,7 @@ package farmsimulator;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -17,6 +18,13 @@ import javax.swing.ListSelectionModel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+
+/**
+ * This is the animal window where the user can see and perform actions on their animals.
+ * 
+ * @author Ankur Patel, Benjamin Crozier
+ * @version 15/05/2020
+ */
 
 public class AnimalWindow {
 
@@ -57,20 +65,34 @@ public class AnimalWindow {
 		initialize();
 	}
 	
+	/**
+	 * Animal window constructor.
+	 * 
+	 * @param mainGame				The game environment played on.
+	 */
 	public AnimalWindow(GameEnvironment mainGame) {
 		game = mainGame;
 		initialize();
 		animalsFrame.setVisible(true);
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to return to the main screen.
+	 */
 	public void closeAnimalWindow() {
 		animalsFrame.dispose();
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to return to the main screen.
+	 */
 	public void finishedWindow() {
 		game.closeAnimalWindow(this);
 	}
 	
+	/**
+	 * Adds animal food items to the JList.
+	 */
 	public void addAnimalFoodItemsToList() {
 		for(Item item: game.getItemsOwnedByFarmer()) {
 			if (item instanceof AnimalFoodOne || item instanceof AnimalFoodTwo || item instanceof AnimalFoodThree) {
