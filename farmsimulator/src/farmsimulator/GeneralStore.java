@@ -2,16 +2,45 @@ package farmsimulator;
 
 import java.util.ArrayList;
 
+/** 
+ * This class contains attributes and methods for the GeneralStore object.
+ * 
+ * @author Ankur Patel, Benjamin Crozier
+ * @version 15/05/2020
+ */
+
+
 public class GeneralStore {
 	
+	/**
+	 * The items list for items on sale.
+	 */
 	private ArrayList<Item> itemList = null;
+	/**
+	 * The message shown to the user.
+	 */
 	private String message;
+	/**
+	 * The amount of money the user currently has.
+	 */
 	private double money;
 	
+	/**
+	 * Shows the items currently for sale.
+	 * 
+	 * @return				An arraylist of items that are currently for sale.
+	 */
 	public ArrayList<Item> viewItemsForSale() {
 		return itemList;
 	}
 	
+	/**
+	 * Purchasing an item.
+	 * 
+	 * @param item			The item to be bought.
+	 * @param game			GameEnvironment object.
+	 * @return					A string which states whether the item purchase has been successfull or not.
+	 */
 	public String purchaseItem(Item item, GameEnvironment game) {
 		money = game.getFarm().getMoneyAvailable();
 		if (money < item.getPrice()){
@@ -26,6 +55,13 @@ public class GeneralStore {
 		return message;
 	}
 	
+	/**
+	 * Purchasing an animal.
+	 * 
+	 * @param animal		The animal to be bought.
+	 * @param game			GameEnvironment object.
+	 * @return					A string which states whether the animal purchase has been successfull or not.
+	 */
 	public String purchaseAnimal(Animal animal, GameEnvironment game) {
 		money = game.getFarm().getMoneyAvailable();
 		if (money < animal.getAnimalPurchasePrice()){
@@ -40,6 +76,13 @@ public class GeneralStore {
 		return message;
 	}
 	
+	/**
+	 * Purchasing a crop.
+	 * 
+	 * @param crop			The crop to be bought.
+	 * @param game			GameEnvironment object.
+	 * @return					A string which states whether the crop purchase has been successfull or not.
+	 */
 	public String purchaseCrop(Crop crop, GameEnvironment game) {
 		money = game.getFarm().getMoneyAvailable();
 		if (money < crop.getCropPurchasePrice()){
