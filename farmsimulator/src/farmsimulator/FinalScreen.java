@@ -49,7 +49,7 @@ public class FinalScreen {
 	/**
 	 * Final screen constructor.
 	 * 
-	 * @param mainGame				The game environment played on.
+	 * @param game			The game environment played on.
 	 */
 	public FinalScreen(GameEnvironment game) {
 		this.game = game;
