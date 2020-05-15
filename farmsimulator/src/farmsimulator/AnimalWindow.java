@@ -140,7 +140,7 @@ public class AnimalWindow {
 		playWithAnimalButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (game.getAnimalsOnFarm().size() == 0) {
-					JOptionPane.showMessageDialog(animalsFrame, "There are no Animals on your farm to play with yet, isit the General Store to purchase Animals!");
+					JOptionPane.showMessageDialog(animalsFrame, "There are no Animals on your farm to play with yet, visit the General Store to purchase Animals!");
 				}
 				else if (animalList.getSelectedValue() == null) {
 					JOptionPane.showMessageDialog(animalsFrame, "Select an animal to play with!");
