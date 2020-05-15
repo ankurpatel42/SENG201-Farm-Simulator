@@ -1,6 +1,7 @@
 package farmsimulator;
 
 import java.awt.Color;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+/**
+ * This is the purchase crop window where the user can purchase crops.
+ * 
+ * @author Ankur Patel, Benjamin Crozier
+ * @version 15/05/2020
+ */
+
 
 public class PurchaseCrop {
 	
