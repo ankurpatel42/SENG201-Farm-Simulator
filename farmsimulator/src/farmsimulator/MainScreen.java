@@ -2,6 +2,7 @@ package farmsimulator;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -11,6 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+
+/**
+ * This is the main window that is the Farm home, this where the user can perform actions on the farm.
+ * 
+ * @author Ankur Patel, Benjamin Crozier
+ * @version 15/05/2020
+ */
 
 public class MainScreen {
 
@@ -41,16 +49,27 @@ public class MainScreen {
 		initialize();
 	}
 	
+	/**
+	 * Main screen constructor.
+	 * 
+	 * @param mainGame				The game environment played on.
+	 */
 	public MainScreen(GameEnvironment mainGame) {
 		this.game = mainGame;
 		initialize();
 		mainScreen.setVisible(true);
 	}
 	
+	/**
+	 * Closes the window after the user has chosen another window to open.
+	 */
 	public void closeMainScreen() {
 		mainScreen.dispose();
 	}
 	
+	/**
+	 * Closes the window after the user has chosen another window to open.
+	 */
 	public void finishedWindow() {
 		game.closeMainScreen(this);
 	}
@@ -154,7 +173,10 @@ public class MainScreen {
 		JButton tendFarm = new JButton("Tend Farm");
 		tendFarm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (game.useFarmerAction() == true) {
+				if (game.getAnimalsOnFarm().size() == 0 && game.getCropsOwned().size() == 0) {
+					JOptionPane.showMessageDialog(mainScreen, "Your farm does not have any animals or crops yet, visit the General Store to buy them.");
+				}
+				else if (game.useFarmerAction() == true) {
 					game.tendFarm();
 					JOptionPane.showMessageDialog(mainScreen, "You tended to your farm, crops have grown and animals are happier");
 					actionsLeft.setText(String.valueOf(game.getFarmerActionsLeft()));
