@@ -12,6 +12,10 @@ public class Pig extends Animal {
 	
 	/**
 	 * Pig constructor. This class creates an instance of Pig by providing initial values to its parent class' constructor.
+	 * 
+	 * @param nameForPig			The name given to the pig.
+	 * @param initialHappiness		The initial happiness of the pig depending on what type of farm the user chose.
+	 * @param initialHealthiness	The initial healthiness of the pig depending on what type of farm the user chose.
 	 */
 	public Pig (String nameForPig, int initialHappiness, int initialHealthiness) {
 		super(nameForPig, 75, 0, initialHappiness, initialHealthiness);
