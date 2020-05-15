@@ -129,6 +129,9 @@ public abstract class Crop {
 	 */
 	public void dayPassed(GameEnvironment game) {
 		daysTillHarvest -= game.getFarm().getCropGrowthRate();
+		if (daysTillHarvest < 0) {
+			daysTillHarvest = 0;
+		}
 	}
 	
 	/**
