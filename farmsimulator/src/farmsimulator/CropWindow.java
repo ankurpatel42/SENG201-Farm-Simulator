@@ -136,7 +136,10 @@ public class CropWindow{
 		btnHarvest.setBounds(27, 253, 117, 29);
 		btnHarvest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (listCrops.getSelectedValue() == null) {
+				if (game.getCropsOwned().size() == 0) {
+					JOptionPane.showMessageDialog(frmCrops, "There are no crops on your farm yet, visit the General Store to buy them!");
+				}
+				else if (listCrops.getSelectedValue() == null) {
 					JOptionPane.showMessageDialog(frmCrops, "Select an crop to harvest!");
 				}
 				else {
@@ -157,11 +160,11 @@ public class CropWindow{
 			public void actionPerformed(ActionEvent e) {
 				Crop crop = listCrops.getSelectedValue();
 				Item item = listItems.getSelectedValue();
-				if (crop == null) {
-					if (item == null) {
+				if (game.getCropsOwned().size() == 0) {
+					JOptionPane.showMessageDialog(frmCrops, "There are no crops on your farm yet, visit the General Store to buy them!");
+				}
+				else if (crop == null) {
 						JOptionPane.showMessageDialog(frmCrops, "Select a crop to Fertilise and Fertiliser to use!");
-					}
-					JOptionPane.showMessageDialog(frmCrops, "Select a crop to Fertilise!");
 				}
 				else {
 					if (item == null) {
