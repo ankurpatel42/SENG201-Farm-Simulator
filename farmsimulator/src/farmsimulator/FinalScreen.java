@@ -2,12 +2,21 @@ package farmsimulator;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+/**
+ * This is the final screen which displays the users statistics after the game has ended.
+ * 
+ * @author Ankur Patel, Benjamin Crozier
+ * @version 15/05/2020
+ */
+
 
 public class FinalScreen {
 
@@ -37,16 +46,27 @@ public class FinalScreen {
 		initialize();
 	}
 	
+	/**
+	 * Final screen constructor.
+	 * 
+	 * @param mainGame				The game environment played on.
+	 */
 	public FinalScreen(GameEnvironment game) {
 		this.game = game;
 		initialize();
 		finalScreenFrame.setVisible(true);
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to play the game again.
+	 */
 	public void closeFinalScreen() {
 		finalScreenFrame.dispose();
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to play the game again.
+	 */
 	public void finishedWindow() {
 		game.closeFinalScreen(this);
 	}
