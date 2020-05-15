@@ -15,6 +15,15 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
+
+/**
+ * This is the purchase item window where the user can purchase items.
+ * 
+ * @author Ankur Patel, Benjamin Crozier
+ * @version 15/05/2020
+ */
+
+
 public class PurchaseItem {
 	
 	private GameEnvironment game;
@@ -48,16 +57,27 @@ public class PurchaseItem {
 		initialize();
 	}
 	
+	/**
+	 * PurchaseItem constructor.
+	 * 
+	 * @param game			The game environment played on.
+	 */
 	public PurchaseItem(GameEnvironment game) {
 		this.game = game;
 		initialize();
 		frmPurchaseItem.setVisible(true);
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to go back to the store window.
+	 */
 	public void closePurchaseItemWindow() {
 		frmPurchaseItem.dispose();
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to go back to the store window.
+	 */
 	public void finishedWindow() {
 		game.closePurchaseItemWindow(this);
 	}
