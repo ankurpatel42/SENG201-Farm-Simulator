@@ -50,16 +50,27 @@ public class PurchaseCrop {
 		initialize();
 	}
 	
+	/**
+	 * PurchaseCrop constructor.
+	 * 
+	 * @param game			The game environment played on.
+	 */
 	public PurchaseCrop(GameEnvironment game) {
 		this.game = game;
 		initialize();
 		frmPurchaseCrop.setVisible(true);
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to go back to the store window.
+	 */
 	public void closePurchaseCropWindow() {
 		frmPurchaseCrop.dispose();
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to go back to the store window.
+	 */
 	public void finishedWindow() {
 		game.closePurchaseCropWindow(this);
 	}
