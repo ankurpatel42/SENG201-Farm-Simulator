@@ -2,6 +2,7 @@ package farmsimulator;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Point;
@@ -17,6 +18,14 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 
 import java.awt.Color;
+
+/**
+ * This is the store window where the player can see what items they own and purchase animals and items.
+ * 
+ * @author Ankur Patel, Benjamin Crozier
+ * @version 15/05/2020
+ */
+
 
 public class StoreWindow {
 	
@@ -53,14 +62,29 @@ public class StoreWindow {
 		initialize();
 	}
 	
+	/**
+	 * Store window constructor.
+	 * 
+	 * @param mainGame				The game environment played on.
+	 */
 	public StoreWindow(GameEnvironment game) {
 		this.game = game;
 		initialize();
 		frmGeneralStore.setVisible(true);
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to open a different window.
+	 */
 	public void closeStoreWindow() {
 		frmGeneralStore.dispose();
+	}
+	
+	/**
+	 * Closes the window after the user has chosen to open a different window.
+	 */
+	public void finishedWindow() {
+		game.closeStoreWindow(this);
 	}
 	
 
@@ -129,6 +153,7 @@ public class StoreWindow {
 		btnLeave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeStoreWindow();
+				finishedWindow();
 				game.launchMainScreen();
 			}
 		});
