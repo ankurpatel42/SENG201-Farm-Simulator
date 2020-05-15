@@ -1,8 +1,8 @@
 package farmsimulator;
 
 import java.awt.Color;
+
 import java.awt.EventQueue;
-//import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -14,6 +14,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
+
+/**
+ * This is the purchase animal window where the user can purchase animals and give them a name.
+ * 
+ * @author Ankur Patel, Benjamin Crozier
+ * @version 15/05/2020
+ */
+
 
 public class PurchaseAnimal {
 	
@@ -51,16 +59,27 @@ public class PurchaseAnimal {
 		initialize();
 	}
 	
+	/**
+	 * PurchaseAnimal constructor.
+	 * 
+	 * @param game			The game environment played on.
+	 */
 	public PurchaseAnimal(GameEnvironment game) {
 		this.game = game;
 		initialize();
 		frmPurchaseAnimal.setVisible(true);
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to go back to the store window.
+	 */
 	public void closePurchaseAnimalWindow() {
 		frmPurchaseAnimal.dispose();
 	}
 	
+	/**
+	 * Closes the window after the user has chosen to go back to the store window.
+	 */
 	public void finishedWindow() {
 		game.closePurchaseAnimalWindow(this);
 	}
