@@ -80,14 +80,14 @@ public class MainScreen {
 	private void initialize() {
 		mainScreen = new JFrame();
 		mainScreen.setTitle("Farm Home");
-		mainScreen.setBounds(100, 100, 770, 515);
+		mainScreen.setBounds(100, 100, 749, 515);
 		mainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainScreen.getContentPane().setLayout(null);
 		
 		
 		JLabel daysLeftMessage = new JLabel("Days Left:");
 		daysLeftMessage.setFont(new Font("Arial", Font.BOLD, 17));
-		daysLeftMessage.setBounds(115, 103, 90, 47);
+		daysLeftMessage.setBounds(100, 103, 90, 47);
 		mainScreen.getContentPane().add(daysLeftMessage);
 		
 		JLabel daysLeftLabel = new JLabel("");
@@ -119,7 +119,7 @@ public class MainScreen {
 		
 		JLabel actionsLeftMessage = new JLabel("Actions left in day:");
 		actionsLeftMessage.setFont(new Font("Arial", Font.BOLD, 17));
-		actionsLeftMessage.setBounds(115, 147, 148, 47);
+		actionsLeftMessage.setBounds(100, 147, 148, 47);
 		mainScreen.getContentPane().add(actionsLeftMessage);
 		
 		JLabel cropGrowthRate = new JLabel("0");
@@ -147,7 +147,7 @@ public class MainScreen {
 				game.launchCropWindow();
 			}
 		});
-		viewCrops.setBounds(100, 242, 118, 23);
+		viewCrops.setBounds(100, 242, 123, 23);
 		mainScreen.getContentPane().add(viewCrops);
 		
 		JButton visitStore = new JButton("Visit Store");
@@ -167,7 +167,7 @@ public class MainScreen {
 				game.launchAnimalWindow();
 			}
 		});
-		viewAnimals.setBounds(469, 242, 118, 23);
+		viewAnimals.setBounds(520, 242, 118, 23);
 		mainScreen.getContentPane().add(viewAnimals);
 		
 		JButton tendFarm = new JButton("Tend Farm");
@@ -186,7 +186,7 @@ public class MainScreen {
 				}
 			}
 		});
-		tendFarm.setBounds(469, 321, 118, 23);
+		tendFarm.setBounds(520, 321, 118, 23);
 		mainScreen.getContentPane().add(tendFarm);
 		
 		JButton moveToNextDay = new JButton("MOVE TO NEXT DAY");
@@ -209,7 +209,7 @@ public class MainScreen {
 				}
 			}
 		});
-		moveToNextDay.setBounds(265, 395, 157, 23);
+		moveToNextDay.setBounds(298, 395, 157, 23);
 		mainScreen.getContentPane().add(moveToNextDay);
 	}
 	
