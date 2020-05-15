@@ -12,6 +12,10 @@ public class Sheep extends Animal {
 	
 	/**
 	 * Sheep constructor. This class creates an instance of Sheep by providing initial values to its parent class' constructor.
+	 * 
+	 * @param nameForSheep			The name given to the sheep.
+	 * @param initialHappiness		The initial happiness of the sheep depending on what type of farm the user chose.
+	 * @param initialHealthiness	The initial healthiness of the sheep depending on what type of farm the user chose.
 	 */
 	public Sheep(String nameForSheep, int initialHappiness, int initialHealthiness) {
 		super(nameForSheep, 50, 0, initialHappiness, initialHealthiness);
