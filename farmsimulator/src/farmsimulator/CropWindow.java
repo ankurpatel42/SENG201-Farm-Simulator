@@ -202,7 +202,6 @@ public class CropWindow{
 		listCrops.setForeground(Color.WHITE);
 		listCrops.setBackground(Color.DARK_GRAY);
 		
-		
 		//Crop items owned
 		addCropItemsToList();
 		
