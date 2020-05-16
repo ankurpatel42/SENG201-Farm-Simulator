@@ -1,5 +1,7 @@
 package farmsimulator;
 
+import java.util.ArrayList;
+
 /** 
  * This class contains attributes and methods for the Crop objects.
  * 
@@ -96,7 +98,7 @@ public abstract class Crop {
 	}
 	
 	/**
-	 * Gets the purchase price of the crop/.
+	 * Gets the purchase price of the crop.
 	 * 
 	 * @return			A double which is the purchase price for the crop.
 	 */
@@ -125,30 +127,31 @@ public abstract class Crop {
 	/**
 	 * Decreases the days till harvest when player moves to the next day.
 	 * 
-	 * @param game		GameEnvironment object.
+	 * @param farm		The farm being played on.
 	 */
-	public void dayPassed(GameEnvironment game) {
-		daysTillHarvest -= game.getFarm().getCropGrowthRate();
+	public void dayPassed(Farm farm) {
+		daysTillHarvest -= farm.getCropGrowthRate();
 		if (daysTillHarvest < 0) {
 			daysTillHarvest = 0;
 		}
 	}
 	
 	/**
-	 * Tend to crops using an item of choice.
+	 * Tend to crops.
 	 * 
-	 * @param choice		The item used to tend to the crop.
-	 * @param game			GameEnvironment object.
-	 * @return					A string which states whether the crop has been successfully tended to or not.
+	 * @param choice			The item of choice to tend the crop with.				
+	 * @param farmer			The farmer which is to tend to the crop.
+	 * @param itemsOwned		The items currently owned.
+	 * @return						A string which states whether the crop has been successfully tended to or not.
 	 */
-	public String tendCrops(Item choice, GameEnvironment game) {
-		if (game.useFarmerAction() == true) {
+	public String tendCrops(Item choice, Farmer farmer, ArrayList<Item> itemsOwned) {
+		if (farmer.useAction() == true) {
 			daysTillHarvest -= choice.getHarvestSpeedUpTime();
 			if (daysTillHarvest <= 0) {
 				daysTillHarvest = 0;
 			}
 			if (choice.getItemName() != "Water") {
-				game.getItemsOwnedByFarmer().remove(choice);
+				itemsOwned.remove(choice);
 			}
 			message = "You fertilised " + name + " using " + choice.getItemName() + ", now " + daysTillHarvest + " day(s) to harvest";
 		}
@@ -159,21 +162,23 @@ public abstract class Crop {
 	}
 	
 	/**
-	 * Harvest crops
+	 * Harvest Crops.
 	 * 
-	 * @param game		GameEnvironment object.	
-	 * @return				A string which states whether the crop has been successfully harvested or not.
+	 * @param farmer			The farmer which is to harvest the crop.
+	 * @param farm				The farm which the crop is on.
+	 * @param cropsOnFarm		The crops currently on the farm.
+	 * @return						A string which states whether the crop has been successfully harvested or not.
 	 */
-	public String harvestCrops(GameEnvironment game) {
-		if (game.useFarmerAction() == true) {
-			game.useFarmerAction();
+	public String harvestCrops(Farmer farmer, Farm farm, ArrayList<Crop> cropsOnFarm) {
+		if (farmer.useAction() == true) {
+			farmer.useAction();
 			if (daysTillHarvest > 0) {
 				message = "Sorry your crops are not ready for Harvest yet, still " + daysTillHarvest + " day(s) left";
 			}
 			else {
-				game.getFarm().setMoneyAvailable(game.getFarmMoneyAvailable() + cropMoneyGiven);
+				farm.setMoneyAvailable(farm.getMoneyAvailable() + cropMoneyGiven);
 				message = "Crop harvested and you earnt $" + cropMoneyGiven;
-				game.getCropsOwned().remove(this);
+				cropsOnFarm.remove(this);
 			}
 		}
 		else {
@@ -187,7 +192,7 @@ public abstract class Crop {
 	 * String representation of crop objects.
 	 */
 	public String toString() {
-		String display = "Feild " + getFieldNumber() + " (" + name + ")	" + daysTillHarvest; 
+		String display = "Feild " + getFieldNumber() + " (" + name + ")     " + daysTillHarvest; 
 		return display;
 	}
 	
