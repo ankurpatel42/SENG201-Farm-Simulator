@@ -14,6 +14,6 @@ public class Lettuce extends Crop {
 	 * Lettuce constructor. This class creates an instance of Lettuce by providing initial values to its parent class' constructor.
 	 */
 	public Lettuce() {
-		super("Lettuce", 4, 35, 5);
+		super("Lettuce", 100, 400, 5);
 	}
 }

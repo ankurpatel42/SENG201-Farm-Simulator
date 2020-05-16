@@ -15,6 +15,6 @@ public class Rice extends Crop {
 	 * Rice constructor. This class creates an instance of Rice by providing initial values to its parent class' constructor.
 	 */
 	public Rice() {
-		super("Rice", 2, 20, 5);
+		super("Rice", 150, 500, 5);
 	}
 }

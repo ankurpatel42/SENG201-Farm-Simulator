@@ -173,8 +173,8 @@ public class PurchaseCrop {
 		
 		JTextPane txtCrops = new JTextPane();
 		txtCrops.setEditable(false);
-		txtCrops.setBounds(197, 92, 245, 140);
-		txtCrops.setText("Name	Price	Grow time\r\n\r\nCarrot:	$10	5 days\r\nCorn: 	$5  	5 days\r\nLettuce: 	$4 	5 days\r\nPotato: 	$4 	8 days\r\nRice: 	$2 	5 days\r\nWheat: 	$2 	3 days");
+		txtCrops.setBounds(197, 92, 269, 152);
+		txtCrops.setText("Name	Purchase	Grow	Sell\r\n	Price	Time	Price\r\n\r\nCarrot:	$100	3 days	$250\r\nCorn: 	$50  	3 days	$200\r\nLettuce: 	$100 	5 days	$400\r\nPotato: 	$200 	8 days	$1000\r\nRice: 	$150 	5 days	$500\r\nWheat: 	$75 	4 days	$300");
 		txtCrops.setBackground(Color.LIGHT_GRAY);
 		frmPurchaseCrop.getContentPane().add(txtCrops);
 	}

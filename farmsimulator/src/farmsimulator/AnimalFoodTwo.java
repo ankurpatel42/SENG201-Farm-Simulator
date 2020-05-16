@@ -14,6 +14,6 @@ public class AnimalFoodTwo extends Item {
 	 * AnimalFoodTwo constructor. This class creates an instance of AnimalFoodTwo by providing initial values to its parent class' constructor.
 	 */
 	public AnimalFoodTwo() {
-		super(300, 5, "A2");
+		super(90, 20, "A2");
 	}
 }

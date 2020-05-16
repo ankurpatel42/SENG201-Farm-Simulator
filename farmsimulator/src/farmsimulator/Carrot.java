@@ -15,7 +15,7 @@ public class Carrot extends Crop {
 	 * Carrot constructor. This class creates an instance of Carrot by providing initial values to its parent class' constructor.
 	 */
 	public Carrot() {
-		super("Carrot", 10, 100, 5);
+		super("Carrot", 100, 250, 3);
 	}
 	
 }

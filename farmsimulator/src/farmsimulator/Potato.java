@@ -14,6 +14,6 @@ public class Potato extends Crop {
 	 * Potato constructor. This class creates an instance of Potato by providing initial values to its parent class' constructor.
 	 */
 	public Potato() {
-		super("Potato", 4, 50, 8);
+		super("Potato", 200, 1000, 8);
 	}
 }

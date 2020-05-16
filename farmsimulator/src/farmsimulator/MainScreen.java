@@ -92,8 +92,8 @@ public class MainScreen {
 		
 		JLabel daysLeftLabel = new JLabel("");
 		daysLeftLabel.setFont(new Font("Arial", Font.PLAIN, 17));
-		daysLeftLabel.setBounds(266, 119, 46, 14);
-		daysLeftLabel.setText(Integer.toString(game.getGameLength()));
+		daysLeftLabel.setBounds(280, 119, 46, 14);
+		daysLeftLabel.setText(Integer.toString(game.getGameLength() - game.getFarmer().getDayNum() + 1));
 		mainScreen.getContentPane().add(daysLeftLabel);
 		
 		JLabel farmName = new JLabel("Farm Name:");
@@ -119,7 +119,7 @@ public class MainScreen {
 		
 		JLabel actionsLeftMessage = new JLabel("Actions left in day:");
 		actionsLeftMessage.setFont(new Font("Arial", Font.BOLD, 17));
-		actionsLeftMessage.setBounds(100, 147, 148, 47);
+		actionsLeftMessage.setBounds(100, 147, 168, 47);
 		mainScreen.getContentPane().add(actionsLeftMessage);
 		
 		JLabel cropGrowthRate = new JLabel("0");
@@ -137,7 +137,7 @@ public class MainScreen {
 		
 		JLabel actionsLeft = new JLabel(String.valueOf(game.getFarmerActionsLeft()));
 		actionsLeft.setFont(new Font("Arial", Font.PLAIN, 17));
-		actionsLeft.setBounds(266, 163, 46, 14);
+		actionsLeft.setBounds(280, 163, 46, 14);
 		mainScreen.getContentPane().add(actionsLeft);
 		
 		JButton viewCrops = new JButton("View Crops");

@@ -456,7 +456,7 @@ public class GameEnvironment {
 	public int getGameLength() {
 		return gameLength;
 	}
-	
+
 	/**
 	 * Checks whether or not what the user has entered for Farm, Farmer, and Animal names is valid.
 	 * 

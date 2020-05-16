@@ -14,7 +14,7 @@ public class Corn extends Crop {
 	 * Corn constructor. This class creates an instance of Corn by providing initial values to its parent class' constructor.
 	 */
 	public Corn() {
-		super("Corn", 5, 60, 5);
+		super("Corn", 50, 200, 3);
 	}
 	
 }

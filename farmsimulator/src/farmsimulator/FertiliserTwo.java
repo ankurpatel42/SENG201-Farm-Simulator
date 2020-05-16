@@ -14,7 +14,7 @@ public class FertiliserTwo extends Item {
 	 * FertiliserTwo constructor. This class creates an instance of FertiliserTwo by providing initial values to its parent class' constructor.
 	 */
 	public FertiliserTwo() {
-		super("F2", 250, 3);
+		super("F2", 90, 2);
 	}
 	
 }

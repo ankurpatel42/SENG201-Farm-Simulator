@@ -15,6 +15,6 @@ public class Wheat extends Crop {
 	 * Wheat constructor. This class creates an instance of Wheat by providing initial values to its parent class' constructor.
 	 */
 	public Wheat () {
-		super("Wheat", 2, 10, 3);
+		super("Wheat", 75, 300, 4);
 	}
 }

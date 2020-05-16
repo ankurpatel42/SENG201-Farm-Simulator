@@ -175,7 +175,6 @@ public abstract class Crop {
 		}
 		else {
 			if (farmer.useAction() == true) {
-				farmer.useAction();
 				farm.setMoneyAvailable(farm.getMoneyAvailable() + cropMoneyGiven);
 				message = "Crop harvested and you earnt $" + cropMoneyGiven;
 				cropsOnFarm.remove(this);

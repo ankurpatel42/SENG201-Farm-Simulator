@@ -112,28 +112,28 @@ public class CropWindow{
 		frmCrops.setTitle("Crops");
 		frmCrops.setBounds(100, 100, 399, 462);
 		frmCrops.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmCrops.getContentPane().setLayout(null);
 		
 		farmName = game.getFarmName();
+		frmCrops.getContentPane().setLayout(null);
 		JLabel lblTitle = new JLabel(farmName + " Farm's Crops");
-		lblTitle.setFont(new Font("Arial", Font.BOLD, 17));
 		lblTitle.setBounds(89, 11, 209, 16);
+		lblTitle.setFont(new Font("Arial", Font.BOLD, 17));
 		frmCrops.getContentPane().add(lblTitle);
 		
 		JLabel lblChooseCrop = new JLabel("Choose Crop");
+		lblChooseCrop.setBounds(58, 39, 100, 16);
 		lblChooseCrop.setHorizontalAlignment(SwingConstants.CENTER);
 		lblChooseCrop.setFont(new Font("Arial", Font.BOLD, 11));
-		lblChooseCrop.setBounds(60, 41, 100, 16);
 		frmCrops.getContentPane().add(lblChooseCrop);
 		
 		JLabel lblChooseItem = new JLabel("Choose Item");
+		lblChooseItem.setBounds(236, 92, 84, 16);
 		lblChooseItem.setFont(new Font("Arial", Font.BOLD, 11));
 		lblChooseItem.setHorizontalAlignment(SwingConstants.CENTER);
-		lblChooseItem.setBounds(236, 92, 84, 16);
 		frmCrops.getContentPane().add(lblChooseItem);
 		
 		JButton btnHarvest = new JButton("Harvest Crop");
-		btnHarvest.setBounds(27, 253, 117, 29);
+		btnHarvest.setBounds(139, 280, 117, 29);
 		btnHarvest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (game.getCropsOwned().size() == 0) {
@@ -155,7 +155,7 @@ public class CropWindow{
 		frmCrops.getContentPane().add(btnHarvest);
 		
 		JButton btnUseItem = new JButton("Fertilise Crop");
-		btnUseItem.setBounds(27, 306, 117, 29);
+		btnUseItem.setBounds(139, 358, 117, 29);
 		btnUseItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Crop crop = listCrops.getSelectedValue();
@@ -183,7 +183,7 @@ public class CropWindow{
 		frmCrops.getContentPane().add(btnUseItem);
 		
 		JButton btnBack = new JButton("Back to Home");
-		btnBack.setBounds(217, 358, 117, 29);
+		btnBack.setBounds(254, 390, 117, 29);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeCropWindow();
@@ -193,7 +193,6 @@ public class CropWindow{
 		frmCrops.getContentPane().add(btnBack);
 		
 		cropListModel.addAll(game.getCropsOwned());
-		
 		cropsScroller.setBounds(27, 68, 161, 161);
 		frmCrops.getContentPane().add(cropsScroller);
 		
@@ -206,12 +205,28 @@ public class CropWindow{
 		addCropItemsToList();
 		
 		listItems.setBorder(new LineBorder(new Color(0, 0, 0)));
-
 		itemsScroller.setBounds(217, 119, 117, 110);
 		frmCrops.getContentPane().add(itemsScroller);
 		
 		listItems.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listItems.setForeground(Color.WHITE);
 		listItems.setBackground(Color.DARK_GRAY);
+		
+		JLabel lblHarvestInstructions = new JLabel("Select a Crop from the list above to harvest");
+		lblHarvestInstructions.setBounds(49, 252, 280, 16);
+		frmCrops.getContentPane().add(lblHarvestInstructions);
+		
+		JLabel lblFertiliseInstructions = new JLabel("Select an crop to fertilise and an item");
+		lblFertiliseInstructions.setBounds(66, 313, 243, 16);
+		frmCrops.getContentPane().add(lblFertiliseInstructions);
+		
+		JLabel lblFertiliseInstructionsTwo = new JLabel("to fertilise with from above");
+		lblFertiliseInstructionsTwo.setBounds(106, 330, 185, 16);
+		frmCrops.getContentPane().add(lblFertiliseInstructionsTwo);
+		
+		JLabel lblCropColumnHeads = new JLabel("Field (Crop Type)	Days till harvest");
+		lblCropColumnHeads.setBounds(21, 52, 193, 16);
+		lblCropColumnHeads.setFont(new Font("Arial", Font.PLAIN, 11));
+		frmCrops.getContentPane().add(lblCropColumnHeads);
 	}
 }

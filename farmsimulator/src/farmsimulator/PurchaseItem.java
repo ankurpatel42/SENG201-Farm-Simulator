@@ -179,14 +179,14 @@ public class PurchaseItem {
 		JTextPane txtCrops = new JTextPane();
 		txtCrops.setEditable(false);
 		txtCrops.setBounds(206, 92, 273, 95);
-		txtCrops.setText("Name	Price	Crop Growth Boost\r\n\r\nF1: 	$100 	1 day\r\nF2: 	$250 	3 days\r\nF3: 	$400 	5 days");
+		txtCrops.setText("Name	Price	Crop Growth Boost\r\n\r\nF1: 	$50 	1 day\r\nF2: 	$90 	2 days\r\nF3: 	$150 	4 days");
 		txtCrops.setBackground(Color.LIGHT_GRAY);
 		frmPurchaseItem.getContentPane().add(txtCrops);
 		
 		
 		JTextPane txtAnimals = new JTextPane();
 		txtAnimals.setEditable(false);
-		txtAnimals.setText("Name	Price	Animal Health Boost\r\n\r\nA1: 	$100 	1\r\nA2: 	$300 	5\r\nA3: 	$700 	10");
+		txtAnimals.setText("Name	Price	Animal Health Boost\r\n\r\nA1: 	$50 	10\r\nA2: 	$90 	20\r\nA3: 	$150 	40");
 		txtAnimals.setBackground(Color.LIGHT_GRAY);
 		txtAnimals.setBounds(206, 219, 273, 95);
 		frmPurchaseItem.getContentPane().add(txtAnimals);

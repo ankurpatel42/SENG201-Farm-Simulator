@@ -9,7 +9,6 @@ import java.util.ArrayList;
  * @version 15/05/2020
  */
 
-
 public class GeneralStore {
 	
 	/**
@@ -24,6 +23,10 @@ public class GeneralStore {
 	 * The amount of money the user currently has.
 	 */
 	private double money;
+	
+	public GeneralStore(){
+		
+	}
 	
 	/**
 	 * Shows the items currently for sale.

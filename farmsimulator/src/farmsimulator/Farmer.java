@@ -98,7 +98,7 @@ public class Farmer {
 		}
 		bonus = 0;
 		for (Animal animal : animalsOwned) {
-			bonus += 0.1 * animal.getAnimalHappiness();
+			bonus += 2 * animal.getAnimalHappiness();
 		}
 		farm.setMoneyAvailable(bonus + farm.getMoneyAvailable());
 		return ("You earnt a $" + bonus + " from you happy animals, you are now on day " + dayNum + " out of " + gameLength);
