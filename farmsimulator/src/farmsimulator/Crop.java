@@ -173,15 +173,19 @@ public abstract class Crop {
 		if (daysTillHarvest > 0) {
 				message = "Sorry your crops are not ready for Harvest yet, still " + daysTillHarvest + " day(s) left";
 		}
-		else if (farmer.useAction() == true) {
-			farmer.useAction();
-			farm.setMoneyAvailable(farm.getMoneyAvailable() + cropMoneyGiven);
-			message = "Crop harvested and you earnt $" + cropMoneyGiven;
-			cropsOnFarm.remove(this);
-		}
 		else {
-			message = "You have no actions left for the day, move to next day to complete this action";
+			if (farmer.useAction() == true) {
+				farmer.useAction();
+				farm.setMoneyAvailable(farm.getMoneyAvailable() + cropMoneyGiven);
+				message = "Crop harvested and you earnt $" + cropMoneyGiven;
+				cropsOnFarm.remove(this);
+			}
+			else {
+				message = "You have no actions left for the day, move to next day to complete this action";
+			}
+		
 		}
+		
 		return message;
 	}
 	
