@@ -75,7 +75,7 @@ public class GameEnvironment {
 	 */
 	public String createCow(String nameForCow) {
 		animal = new Cow(nameForCow, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness());
-		message = store.purchaseAnimal(animal, this);
+		message = store.purchaseAnimal(animal, farm);
 		return message;
 	}
 	
@@ -88,7 +88,7 @@ public class GameEnvironment {
 	 */
 	public String createPig(String nameForPig) {
 		animal = new Pig(nameForPig, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness());
-		message = store.purchaseAnimal(animal, this);
+		message = store.purchaseAnimal(animal, farm);
 		return message;
 	}
 	
@@ -101,7 +101,7 @@ public class GameEnvironment {
 	 */
 	public String createSheep(String nameForSheep) {
 		animal = new Sheep(nameForSheep, farm.getInitialAnimalHappiness(), farm.getInitialAnimalHealthiness());
-		message = store.purchaseAnimal(animal, this);
+		message = store.purchaseAnimal(animal, farm);
 		return message;
 	}
 	
@@ -112,7 +112,7 @@ public class GameEnvironment {
 	 */
 	public String createFertiliserOne() {
 		item = new FertiliserOne();
-		message = store.purchaseItem(item, this);
+		message = store.purchaseItem(item, farm);
 		return message;
 	}
 	
@@ -123,7 +123,7 @@ public class GameEnvironment {
 	 */
 	public String createFertiliserTwo() {
 		item = new FertiliserTwo();
-		message = store.purchaseItem(item, this);
+		message = store.purchaseItem(item, farm);
 		return message;
 	}
 	
@@ -134,7 +134,7 @@ public class GameEnvironment {
 	 */
 	public String createFertiliserThree() {
 		item = new FertiliserThree();
-		message = store.purchaseItem(item, this);
+		message = store.purchaseItem(item, farm);
 		return message;
 	}
 	
@@ -145,7 +145,7 @@ public class GameEnvironment {
 	 */
 	public String createAnimalFoodOne() {
 		item = new AnimalFoodOne();
-		message = store.purchaseItem(item, this);
+		message = store.purchaseItem(item, farm);
 		return message;
 	}
 	
@@ -156,7 +156,7 @@ public class GameEnvironment {
 	 */
 	public String createAnimalFoodTwo() {
 		item = new AnimalFoodTwo();
-		message = store.purchaseItem(item, this);
+		message = store.purchaseItem(item, farm);
 		return message;
 	}
 	
@@ -167,7 +167,7 @@ public class GameEnvironment {
 	 */
 	public String createAnimalFoodThree() {
 		item = new AnimalFoodThree();
-		message = store.purchaseItem(item, this);
+		message = store.purchaseItem(item, farm);
 		return message;
 	}
 	
@@ -178,7 +178,7 @@ public class GameEnvironment {
 	 */
 	public String createCarrot() {
 		crop = new Carrot();
-		message = store.purchaseCrop(crop, this);
+		message = store.purchaseCrop(crop, farm);
 		return message;
 	}
 	
@@ -189,7 +189,7 @@ public class GameEnvironment {
 	 */
 	public String createCorn() {
 		crop = new Corn();
-		message = store.purchaseCrop(crop, this);
+		message = store.purchaseCrop(crop, farm);
 		return message;
 	}
 	
@@ -200,7 +200,7 @@ public class GameEnvironment {
 	 */
 	public String createLettuce() {
 		crop = new Lettuce();
-		message = store.purchaseCrop(crop, this);
+		message = store.purchaseCrop(crop, farm);
 		return message;
 	}
 	
@@ -211,7 +211,7 @@ public class GameEnvironment {
 	 */
 	public String createPotato() {
 		crop = new Potato();
-		message = store.purchaseCrop(crop, this);
+		message = store.purchaseCrop(crop, farm);
 		return message;
 	}
 	
@@ -222,7 +222,7 @@ public class GameEnvironment {
 	 */
 	public String createRice() {
 		crop = new Rice();
-		message = store.purchaseCrop(crop, this);
+		message = store.purchaseCrop(crop, farm);
 		return message;
 	}
 	
@@ -233,7 +233,7 @@ public class GameEnvironment {
 	 */
 	public String createWheat() {
 		crop = new Wheat();
-		message = store.purchaseCrop(crop, this);
+		message = store.purchaseCrop(crop, farm);
 		return message;
 	}
 	
@@ -271,18 +271,18 @@ public class GameEnvironment {
 	 * @return							A string that tells the user whether they have successfully harvested their crop.
 	 */
 	public String harvestCrops(Crop crop) {
-		return crop.harvestCrops(this);
+		return crop.harvestCrops(farmer, farm, getCropsOwned());
 	}
 	
 	/**
-	 * Fertilises the crop that the user has chosen, decreasing its time till harvest.
+	 * Fertilises the crop that the user has chosen with an item the user chooses, decreasing its time till harvest.
 	 * 
 	 * @param crop					A crop object that is to be fertilised.
 	 * @param item					An item object used to fertilise the crop object.
 	 * @return							A string that tells the user whether they have successfully fertilised their chosen crop using their item of choice.
 	 */
 	public String fertiliseCrop(Crop crop, Item item) {
-		return crop.tendCrops(item, this);
+		return crop.tendCrops(item, farmer, getItemsOwnedByFarmer());
 	}
 	
 	/**
@@ -290,7 +290,7 @@ public class GameEnvironment {
 	 * 
 	 */
 	public void tendFarm() {
-		farmer.tendToFarmLand(this);
+		farmer.tendToFarmLand(getCropsOwned(), getAnimalsOnFarm());
 	}
 	
 	/**
@@ -299,7 +299,7 @@ public class GameEnvironment {
 	 * @return							A string that tells the user they have moved to the next day and what day their journey is now on.							 
 	 */
 	public String nextDay() {
-		return farmer.moveToNextDay(this);
+		return farmer.moveToNextDay(farm, getCropsOwned(), getItemsOwnedByFarmer(), getAnimalsOnFarm(), getGameLength());
 	}
 	
 	/**
@@ -310,7 +310,7 @@ public class GameEnvironment {
 	 * @return							A string that tells the user whetehr they have successfully fed their chosen animal using their item of choice.
 	 */
 	public String feedAnimal(Animal animalToBeFed, Item item) {
-		return animalToBeFed.feedAnimal(item, this);
+		return animalToBeFed.feedAnimal(item, farmer, getItemsOwnedByFarmer());
 	}
 	
 	/**
@@ -320,7 +320,7 @@ public class GameEnvironment {
 	 * @return							A string that tells the user whether they have successfully played with their animal.
 	 */
 	public String playWithAnimal(Animal animalToBePlayedWith) {
-		return animalToBePlayedWith.playWithAnimal(this);
+		return animalToBePlayedWith.playWithAnimal(farmer);
 	}
 	
 	/**
@@ -582,7 +582,7 @@ public class GameEnvironment {
 	/**
 	 * Closes the purchase item window.
 	 * 
-	 * @param purchaseItemsFrame		A PurchaseItem object which is the purchase item window.
+	 * @param purchaseItemFrame		A PurchaseItem object which is the purchase item window.
 	 */
 	public void closePurchaseItemWindow(PurchaseItem purchaseItemFrame) {
 		purchaseItemFrame.closePurchaseItemWindow();
@@ -623,7 +623,7 @@ public class GameEnvironment {
 	/**
 	 * The main method of the game, this is where the program begins by instantiating a game object and calling the launchSetUpScreen() method.
 	 * 
-	 * @param args		
+	 * @param args		command line arguments for the application (not applicable here)
 	 */
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
