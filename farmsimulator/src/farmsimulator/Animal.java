@@ -1,5 +1,7 @@
 package farmsimulator;
 
+import java.util.ArrayList;
+
 /** 
  * This class contains attributes and methods for Animal objects.
  * 
@@ -88,16 +90,17 @@ public abstract class Animal {
 	}
 	
 	/**
-	 * Feed the animal
+	 * Feed an animal.
 	 * 
-	 * @param choice	The item of choice that is to be fed to the animal.
-	 * @param game		The GameEnvironment object.
-	 * @return				A string that states whether the animal has been successfully fed.
+	 * @param choice		The animal food item of choice to feed to the animal.
+	 * @param farmer		The farmer which is to feed the animal.
+	 * @param itemsOwned	The items currently owned.
+	 * @return					A string that states whether the animal has been successfully fed.
 	 */
-	public String feedAnimal(Item choice, GameEnvironment game) {
-		if (game.useFarmerAction() == true) {
+	public String feedAnimal(Item choice, Farmer farmer, ArrayList<Item> itemsOwned) {
+		if (farmer.useAction() == true) {
 			animalHealthiness += choice.getAnimalHappinessIncrease();
-			game.getItemsOwnedByFarmer().remove(choice);
+			itemsOwned.remove(choice);
 			message = "You have fed " + name + " " + choice.getItemName();
 		}
 		else {
@@ -107,13 +110,13 @@ public abstract class Animal {
 	}
 	
 	/**
-	 * Play with the animal
+	 * Play with an animal.
 	 * 
-	 * @param game		The GameEnvironment object.
-	 * @return				A string that states whether the animal has been played with or not.
+	 * @param farmer		The farmer which is to play with the animal.
+	 * @return					A string that states whether the animal has been played with or not.
 	 */
-	public String playWithAnimal(GameEnvironment game) {
-		if (game.useFarmerAction() == true) {
+	public String playWithAnimal(Farmer farmer) {
+		if (farmer.useAction() == true) {
 			animalHappiness += 3;
 			message = "You have played with " + name;
 		}
