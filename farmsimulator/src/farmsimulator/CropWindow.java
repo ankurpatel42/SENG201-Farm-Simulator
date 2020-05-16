@@ -69,7 +69,7 @@ public class CropWindow{
 	/**
 	 * Crop window constructor.
 	 * 
-	 * @param mainGame				The game environment played on.
+	 * @param game			The game environment played on.
 	 */
 	public CropWindow(GameEnvironment game) {
 		this.game = game;
@@ -200,6 +200,7 @@ public class CropWindow{
 		listCrops.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listCrops.setForeground(Color.WHITE);
 		listCrops.setBackground(Color.DARK_GRAY);
+		
 		
 		//Crop items owned
 		addCropItemsToList();
