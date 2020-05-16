@@ -170,16 +170,14 @@ public abstract class Crop {
 	 * @return						A string which states whether the crop has been successfully harvested or not.
 	 */
 	public String harvestCrops(Farmer farmer, Farm farm, ArrayList<Crop> cropsOnFarm) {
-		if (farmer.useAction() == true) {
-			farmer.useAction();
-			if (daysTillHarvest > 0) {
+		if (daysTillHarvest > 0) {
 				message = "Sorry your crops are not ready for Harvest yet, still " + daysTillHarvest + " day(s) left";
-			}
-			else {
-				farm.setMoneyAvailable(farm.getMoneyAvailable() + cropMoneyGiven);
-				message = "Crop harvested and you earnt $" + cropMoneyGiven;
-				cropsOnFarm.remove(this);
-			}
+		}
+		else if (farmer.useAction() == true) {
+			farmer.useAction();
+			farm.setMoneyAvailable(farm.getMoneyAvailable() + cropMoneyGiven);
+			message = "Crop harvested and you earnt $" + cropMoneyGiven;
+			cropsOnFarm.remove(this);
 		}
 		else {
 			message = "You have no actions left for the day, move to next day to complete this action";
