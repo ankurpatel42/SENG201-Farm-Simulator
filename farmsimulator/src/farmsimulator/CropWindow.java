@@ -43,7 +43,7 @@ public class CropWindow{
 	
 	private JScrollPane itemsScroller = new JScrollPane(listItems);
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
