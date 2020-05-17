@@ -42,7 +42,7 @@ public class AnimalWindow {
 	
 	private JScrollPane animalFoodScroller = new JScrollPane(animalFoodList);
 	
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
