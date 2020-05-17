@@ -34,7 +34,7 @@ public class PurchaseItem {
 	private String itemChosen = null;
 	private String message;
 	
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
