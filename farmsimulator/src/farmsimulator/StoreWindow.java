@@ -39,7 +39,7 @@ public class StoreWindow {
 	
 	private JScrollPane itemsOwnedScroller = new JScrollPane(itemList);
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
