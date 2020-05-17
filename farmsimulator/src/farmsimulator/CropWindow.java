@@ -33,13 +33,13 @@ public class CropWindow{
 	private JFrame frmCrops;
 	
 	private String farmName;
-	DefaultListModel<Crop> cropListModel = new DefaultListModel<>();
-	JList<Crop> listCrops = new JList<>(cropListModel);
+	private DefaultListModel<Crop> cropListModel = new DefaultListModel<>();
+	private JList<Crop> listCrops = new JList<>(cropListModel);
 	
 	private JScrollPane cropsScroller = new JScrollPane(listCrops);
 	
-	DefaultListModel<Item> itemListModel = new DefaultListModel<>();
-	JList<Item> listItems = new JList<>(itemListModel);
+	private DefaultListModel<Item> itemListModel = new DefaultListModel<>();
+	private JList<Item> listItems = new JList<>(itemListModel);
 	
 	private JScrollPane itemsScroller = new JScrollPane(listItems);
 
