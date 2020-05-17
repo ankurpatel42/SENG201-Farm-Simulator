@@ -42,7 +42,7 @@ public class GeneralStore {
 	 * 
 	 * @param item			The item to be bought.
 	 * @param farm			The farm which the item will be placed on.
-	 * @return					A string which states whether the item purchase has been successfull or not.
+	 * @return					A string which states whether the item purchase has been successful or not.
 	 */
 	public String purchaseItem(Item item, Farm farm) {
 		money = farm.getMoneyAvailable();
@@ -63,7 +63,7 @@ public class GeneralStore {
 	 * 
 	 * @param animal		The animal to be bought.
 	 * @param farm			The farm which the animal will be placed on.
-	 * @return					A string which states whether the animal purchase has been successfull or not.
+	 * @return					A string which states whether the animal purchase has been successful or not.
 	 */
 	public String purchaseAnimal(Animal animal, Farm farm) {
 		money = farm.getMoneyAvailable();
@@ -84,7 +84,7 @@ public class GeneralStore {
 	 * 
 	 * @param crop			The crop to be bought.
 	 * @param farm			The farm which the crop will be placed on.
-	 * @return					A string which states whether the crop purchase has been successfull or not.
+	 * @return					A string which states whether the crop purchase has been successful or not.
 	 */
 	public String purchaseCrop(Crop crop, Farm farm) {
 		money = farm.getMoneyAvailable();
