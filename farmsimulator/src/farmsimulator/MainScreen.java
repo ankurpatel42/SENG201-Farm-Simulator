@@ -26,7 +26,7 @@ public class MainScreen {
 	
 	private GameEnvironment game;
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
