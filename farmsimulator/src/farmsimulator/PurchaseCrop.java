@@ -31,7 +31,7 @@ public class PurchaseCrop {
 	private JFrame frmPurchaseCrop;
 	private String cropChosen;
 	private String[] items = {"Carrot", "Corn", "Lettuce", "Potato", "Rice", "Wheat"};
-	DefaultComboBoxModel<String> cropCombo = new DefaultComboBoxModel<String>(items);
+	private DefaultComboBoxModel<String> cropCombo = new DefaultComboBoxModel<String>(items);
 	
 	private String message;
 
