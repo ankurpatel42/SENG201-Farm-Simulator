@@ -404,7 +404,7 @@ public class GameEnvironment {
 	}
 	
 	/**
-	 * Getst the farmer object
+	 * Gets the farmer object
 	 * 
 	 * @return						A farmer object.
 	 */

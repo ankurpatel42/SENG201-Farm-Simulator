@@ -102,7 +102,7 @@ public class Farmer {
 		}
 		farm.setMoneyAvailable(bonus + farm.getMoneyAvailable());
 		String bonusFormatted = String.format("%.2f", bonus);
-		return ("You earnt a $" + bonusFormatted + " from you happy animals, you are now on day " + dayNum + " out of " + gameLength);
+		return ("You earnt a $" + bonusFormatted + " from your happy animals, you are now on day " + dayNum + " out of " + gameLength);
 	}
 	
 	

@@ -14,6 +14,7 @@ import farmsimulator.Farmer;
 import farmsimulator.FertiliserOne;
 import farmsimulator.GeneralStore;
 import farmsimulator.Item;
+import farmsimulator.Water;
 
 class CropFertiliseTest {
 
@@ -32,6 +33,17 @@ class CropFertiliseTest {
 	}
 	
 	@Test
+	public void fertiliseWithWater() {
+		Farm farm = new Farm("Test", 1000, 1, 1, 1);
+		Farmer farmer = new Farmer("TestFarmer");
+		Corn crop = new Corn();
+		store.purchaseCrop(crop, farm);
+		Water water = new Water();
+		String message = crop.tendCrops(water, farmer, farm.getItemsOwned());
+		assertEquals("You fertilised Corn using Water, now 2 day(s) to harvest", message);
+	}
+	
+	@Test
 	public void fertiliseItemCheck() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
 		Farmer farmer = new Farmer("TestFarmer");
@@ -41,8 +53,7 @@ class CropFertiliseTest {
 		store.purchaseItem(f1, farm);
 		crop.tendCrops(f1, farmer, farm.getItemsOwned());
 		ArrayList<Item> test = new ArrayList<Item>();
-		//Water Item needs to be included
-		//assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
+		assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
 	}
 	
 	@Test
@@ -72,8 +83,7 @@ class CropFertiliseTest {
 		crop.tendCrops(f1, farmer, farm.getItemsOwned());
 		ArrayList<Item> test = new ArrayList<Item>();
 		test.add(f1);
-		//Water Item needs to be included
-		//assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
+		assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
 	}
 
 }

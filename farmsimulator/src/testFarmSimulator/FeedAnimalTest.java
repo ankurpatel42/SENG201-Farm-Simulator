@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import farmsimulator.Animal;
 import farmsimulator.AnimalFoodOne;
+import farmsimulator.AnimalFoodThree;
+import farmsimulator.AnimalFoodTwo;
 import farmsimulator.Corn;
 import farmsimulator.Cow;
 import farmsimulator.Farm;
@@ -38,9 +40,9 @@ class FeedAnimalTest {
 		Farmer farmer = new Farmer("TestFarmer");
 		Animal animal = new Cow("TestCow",0,0);
 		store.purchaseAnimal(animal, farm);
-		AnimalFoodOne a1 = new AnimalFoodOne();
-		store.purchaseItem(a1, farm);
-		animal.feedAnimal(a1, farmer, farm.getItemsOwned());
+		AnimalFoodTwo a2 = new AnimalFoodTwo();
+		store.purchaseItem(a2, farm);
+		animal.feedAnimal(a2, farmer, farm.getItemsOwned());
 		ArrayList<Item> test = new ArrayList<Item>();
 		assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
 	}
@@ -53,9 +55,9 @@ class FeedAnimalTest {
 		farmer.useAction();
 		Animal animal = new Cow("TestCow",0,0);
 		store.purchaseAnimal(animal, farm);
-		AnimalFoodOne a1 = new AnimalFoodOne();
-		store.purchaseItem(a1, farm);
-		String message = animal.feedAnimal(a1, farmer, farm.getItemsOwned());
+		AnimalFoodThree a3 = new AnimalFoodThree();
+		store.purchaseItem(a3, farm);
+		String message = animal.feedAnimal(a3, farmer, farm.getItemsOwned());
 		assertEquals("You have no actions left for the day, move to next day to complete this action", message);
 	}
 	
