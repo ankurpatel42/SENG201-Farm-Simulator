@@ -176,6 +176,7 @@ public class CropWindow{
 							itemListModel.removeElement(item);
 						}
 						JOptionPane.showMessageDialog(frmCrops, message);
+						frmCrops.repaint();
 					}
 				}
 			}
