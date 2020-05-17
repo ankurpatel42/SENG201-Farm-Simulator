@@ -481,6 +481,48 @@ public class GameEnvironment {
 	}
 	
 	/**
+	 * Checks whether the cow name entered by the user already exists or not.
+	 * 
+	 * @param cowNameChosen			The cow name chosen by the user.
+	 * @return							A boolean which states whether the cow name exists or not.
+	 */
+	public boolean cowNameExists(String cowNameChosen) {
+		if (farm.cowNameExists(cowNameChosen) == true) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Checks whether the pig name entered by the user already exists or not.
+	 * 
+	 * @param pigNameChosen			The pig name chosen by the user.
+	 * @return							A boolean which states whether the pig name exists or not.
+	 */
+	public boolean pigNameExists(String pigNameChosen) {
+		if (farm.pigNameExists(pigNameChosen) == true) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Checks whether the sheep name entered by the user already exists or not.
+	 * 
+	 * @param sheepNameChosen		The sheep name chosen by the user.
+	 * @return							A boolean which states whether the sheep name exists or not.
+	 */
+	public boolean sheepNameExists(String sheepNameChosen) {
+		if (farm.sheepNameExists(sheepNameChosen) == true) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
 	 * Launches the setup screen window.
 	 */
 	public void launchSetUpScreen() {
