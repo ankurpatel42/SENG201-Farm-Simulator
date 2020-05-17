@@ -65,7 +65,7 @@ public class StoreWindow {
 	/**
 	 * Store window constructor.
 	 * 
-	 * @param game				The game environment played on.
+	 * @param game 		The game environment played on.
 	 */
 	public StoreWindow(GameEnvironment game) {
 		this.game = game;
