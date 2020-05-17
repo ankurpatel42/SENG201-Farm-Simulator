@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -32,11 +31,8 @@ public class PurchaseAnimal {
 	private DefaultComboBoxModel<String> animalsCombo = new DefaultComboBoxModel<String>(animals);
 	private String animalChosen = null;
 	private String message;
-	private ArrayList<String> cowNamesChosen = new ArrayList<String>();
-	private ArrayList<String> pigNamesChosen = new ArrayList<String>();
-	private ArrayList<String> sheepNamesChosen = new ArrayList<String>();
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -138,11 +134,11 @@ public class PurchaseAnimal {
 									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
 									+ "characters!" );
 						}
-						else if (cowNamesChosen.contains(nameChosenForCow)) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a cow named " + nameChosenForCow);
+						else if (game.cowNameExists(nameChosenForCow) == true) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That cow name already exists, pick another one!");
 						}
 						else {
-							cowNamesChosen.add(nameChosenForCow);
+							//cowNamesChosen.add(nameChosenForCow);
 							message = game.createCow(nameChosenForCow);
 							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
@@ -159,11 +155,11 @@ public class PurchaseAnimal {
 									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
 									+ "characters!");
 						}
-						else if (pigNamesChosen.contains(nameChosenForPig)) {
-								JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a pig named " + nameChosenForPig);
+						else if (game.pigNameExists(nameChosenForPig) == true) {
+								JOptionPane.showMessageDialog(frmPurchaseAnimal, "That pig name already exists, pick another one!");
 						}
 						else {
-							pigNamesChosen.add(nameChosenForPig);
+							//pigNamesChosen.add(nameChosenForPig);
 							message = game.createPig(nameChosenForPig);
 							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
@@ -180,11 +176,11 @@ public class PurchaseAnimal {
 									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
 									+ "characters!");
 						}
-						else if (sheepNamesChosen.contains(nameChosenForSheep)) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "You already have a sheep named " + nameChosenForSheep + " pick another name!");
+						else if (game.sheepNameExists(nameChosenForSheep)) {
+							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That sheep name already exists, pick another one!");
 						}
 						else {
-							sheepNamesChosen.add(nameChosenForSheep);
+							//sheepNamesChosen.add(nameChosenForSheep);
 							message = game.createSheep(nameChosenForSheep);
 							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
