@@ -30,7 +30,7 @@ public class PurchaseItem {
 
 	private JFrame frmPurchaseItem;
 	private String[] items = {"F1", "F2", "F3", "A1", "A2", "A3"};
-	DefaultComboBoxModel<String> itemsCombo = new DefaultComboBoxModel<String>(items);
+	private DefaultComboBoxModel<String> itemsCombo = new DefaultComboBoxModel<String>(items);
 	private String itemChosen = null;
 	private String message;
 	
