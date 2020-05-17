@@ -78,7 +78,7 @@ public class SetUpScreen {
 	/**
 	 * SetUpScreen constructor.
 	 * 
-	 * @param startGame			The game environment played on.
+	 * @param startGame 		The game environment played on.
 	 */
 	public SetUpScreen(GameEnvironment startGame) {
 		this.game = startGame;
@@ -217,7 +217,7 @@ public class SetUpScreen {
 				if (game.userInputValid(farmerNameChosen) == false) {
 					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARMER name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
 				}
-				if (game.userInputValid(farmNameChosen) == false ) {
+				else if (game.userInputValid(farmNameChosen) == false ) {
 					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARM name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
 				}
 				else {
@@ -239,6 +239,8 @@ public class SetUpScreen {
 					}
 					
 					game.createGeneralStore();
+					Water water = new Water();
+					game.addItemsOwnedByFarmer(water);
 					closeSetUpScreen();
 					finishedWindow();
 					
