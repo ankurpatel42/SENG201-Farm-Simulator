@@ -138,7 +138,6 @@ public class PurchaseAnimal {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That cow name already exists, pick another one!");
 						}
 						else {
-							//cowNamesChosen.add(nameChosenForCow);
 							message = game.createCow(nameChosenForCow);
 							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
@@ -159,7 +158,6 @@ public class PurchaseAnimal {
 								JOptionPane.showMessageDialog(frmPurchaseAnimal, "That pig name already exists, pick another one!");
 						}
 						else {
-							//pigNamesChosen.add(nameChosenForPig);
 							message = game.createPig(nameChosenForPig);
 							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
@@ -180,7 +178,6 @@ public class PurchaseAnimal {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That sheep name already exists, pick another one!");
 						}
 						else {
-							//sheepNamesChosen.add(nameChosenForSheep);
 							message = game.createSheep(nameChosenForSheep);
 							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
