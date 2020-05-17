@@ -63,8 +63,6 @@ public class Farm {
 		cropGrowthRate = cropGrowth;
 		initialAnimalHealthiness = animalHealthiness;
 		initialAnimalHappiness = animalHappiness;
-		Water water = new Water();
-		itemsOwned.add(water);
 	}
 	
 	/**
@@ -182,4 +180,55 @@ public class Farm {
 	public int getInitialAnimalHealthiness() {
 		return initialAnimalHealthiness;
 	}
+	
+	/**
+	 * Checks whether the cow name provided by the user already exists or not.
+	 * 
+	 * @param cowNameChosen		The cow name chosen by the user.
+	 * @return						A boolean which states whether the cow name exists already or not.
+	 */
+	public boolean cowNameExists(String cowNameChosen) {
+		for (Animal animal : animalsList) {
+			if (animal.getAnimalName().compareToIgnoreCase(cowNameChosen) == 0 && animal instanceof Cow) {
+				return true;
+			}
+		}
+		
+		return false;
+		
+	}
+	
+	/**
+	 * Checks whether the pig name provided by the user already exists or not.
+	 * 
+	 * @param pigNameChosen		The pig name chosen by the user.
+	 * @return						A boolean which states whether the pig name exists already or not.
+	 */
+	public boolean pigNameExists(String pigNameChosen) {
+		for (Animal animal : animalsList) {
+			if (animal.getAnimalName().compareToIgnoreCase(pigNameChosen) == 0 && animal instanceof Pig) {
+				return true;
+			}
+		}
+		
+		return false;
+		
+	}
+	
+	/**
+	 * Checks whether the sheep name provided by the user already exists or not.
+	 * 
+	 * @param sheepNameChosen	The sheep name chosen by the user.
+	 * @return						A boolean which states whether the sheep name exists already or not.
+	 */
+	public boolean sheepNameExists(String sheepNameChosen) {
+		for (Animal animal : animalsList) {
+			if (animal.getAnimalName().compareToIgnoreCase(sheepNameChosen) == 0 && animal instanceof Sheep) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 }
