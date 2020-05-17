@@ -23,7 +23,7 @@ public class FinalScreen {
 	private JFrame finalScreenFrame;
 	private GameEnvironment game;
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -140,8 +140,8 @@ public class FinalScreen {
 		lblAnimalStatus.setText(Double.toString(game.getFinalAnimalStatus()));
 		finalScreenFrame.getContentPane().add(lblAnimalStatus);
 		
-		JLabel labelMoneyEarned = new JLabel("Money earned :");
-		labelMoneyEarned.setBounds(37, 267, 141, 55);
+		JLabel labelMoneyEarned = new JLabel("Money remaining :");
+		labelMoneyEarned.setBounds(37, 267, 210, 55);
 		labelMoneyEarned.setFont(new Font("Arial", Font.BOLD, 18));
 		finalScreenFrame.getContentPane().add(labelMoneyEarned);
 		
