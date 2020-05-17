@@ -33,10 +33,9 @@ public class PurchaseCrop {
 	private String[] items = {"Carrot", "Corn", "Lettuce", "Potato", "Rice", "Wheat"};
 	DefaultComboBoxModel<String> cropCombo = new DefaultComboBoxModel<String>(items);
 	
-	//private GeneralStore store;
 	private String message;
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
