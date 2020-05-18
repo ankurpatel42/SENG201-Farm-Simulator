@@ -129,7 +129,7 @@ public class PurchaseAnimal {
 						if (nameChosenForCow == null) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
 						}
-						else if (game.userInputValid(nameChosenForCow) == false) {
+						else if (game.userInputNameValid(nameChosenForCow) == false) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your cow! Your COW name "
 									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
 									+ "characters!" );
@@ -149,7 +149,7 @@ public class PurchaseAnimal {
 						if (nameChosenForPig == null) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
 						}
-						else if (game.userInputValid(nameChosenForPig) == false) {
+						else if (game.userInputNameValid(nameChosenForPig) == false) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig! Your PIG name "
 									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
 									+ "characters!");
@@ -169,7 +169,7 @@ public class PurchaseAnimal {
 						if (nameChosenForSheep == null) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
 						}
-						else if (game.userInputValid(nameChosenForSheep) == false) {
+						else if (game.userInputNameValid(nameChosenForSheep) == false) {
 							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Sheep! Your SHEEP name "
 									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
 									+ "characters!");
