@@ -6,9 +6,8 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import farmsimulator.Carrot;
 import farmsimulator.Corn;
-import farmsimulator.Crop;
+
 import farmsimulator.Farm;
 import farmsimulator.Farmer;
 import farmsimulator.FertiliserOne;
@@ -23,7 +22,7 @@ class CropFertiliseTest {
 	@Test
 	public void fertilise() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		Corn crop = new Corn();
 		store.purchaseCrop(crop, farm);
 		FertiliserOne f1 = new FertiliserOne();
@@ -35,7 +34,7 @@ class CropFertiliseTest {
 	@Test
 	public void fertiliseWithWater() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		Corn crop = new Corn();
 		store.purchaseCrop(crop, farm);
 		Water water = new Water();
@@ -46,7 +45,7 @@ class CropFertiliseTest {
 	@Test
 	public void fertiliseItemCheck() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		Corn crop = new Corn();
 		store.purchaseCrop(crop, farm);
 		FertiliserOne f1 = new FertiliserOne();
@@ -59,7 +58,7 @@ class CropFertiliseTest {
 	@Test
 	public void fertiliseNoAction() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		farmer.useAction();
 		farmer.useAction();
 		Corn crop = new Corn();
@@ -73,7 +72,7 @@ class CropFertiliseTest {
 	@Test
 	public void fertiliseItemCheckNoAction() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		farmer.useAction();
 		farmer.useAction();
 		Corn crop = new Corn();
