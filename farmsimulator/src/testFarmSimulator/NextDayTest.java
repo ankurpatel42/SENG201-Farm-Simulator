@@ -21,7 +21,7 @@ class NextDayTest {
 	public void cropGrow() {
 		Wheat crop = new Wheat();
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		store.purchaseCrop(crop, farm);
 		farmer.moveToNextDay(farm, farm.getCropList(), farm.getItemsOwned(), farm.getAnimalList(), 5);
 		assertEquals(3, crop.getDaysTillHarvest());
@@ -31,7 +31,7 @@ class NextDayTest {
 	public void highCropGrowth() {
 		Corn crop = new Corn();
 		Farm farm = new Farm("Test", 1000, 4, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		store.purchaseCrop(crop, farm);
 		farmer.moveToNextDay(farm, farm.getCropList(), farm.getItemsOwned(), farm.getAnimalList(), 5);
 		assertEquals(0, crop.getDaysTillHarvest());
@@ -41,7 +41,7 @@ class NextDayTest {
 	public void dailyAnimalBonus() {
 		Sheep animal = new Sheep("Test", 5, 5);
 		Farm farm = new Farm("Test", 1000, 1, 5, 5);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		store.purchaseAnimal(animal, farm);
 		farmer.moveToNextDay(farm, farm.getCropList(), farm.getItemsOwned(), farm.getAnimalList(), 5);
 		assertEquals(1000 - 50 + 10, farm.getMoneyAvailable());
@@ -52,7 +52,7 @@ class NextDayTest {
 		Cow animal = new Cow("Test", 5, 5);
 		Rice crop = new Rice();
 		Farm farm = new Farm("Test", 1000, 1, 5, 5);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		store.purchaseAnimal(animal, farm);
 		store.purchaseCrop(crop, farm);
 		String message = farmer.moveToNextDay(farm, farm.getCropList(), farm.getItemsOwned(), farm.getAnimalList(), 5);
