@@ -10,11 +10,11 @@ import farmsimulator.Animal;
 import farmsimulator.AnimalFoodOne;
 import farmsimulator.AnimalFoodThree;
 import farmsimulator.AnimalFoodTwo;
-import farmsimulator.Corn;
+
 import farmsimulator.Cow;
 import farmsimulator.Farm;
 import farmsimulator.Farmer;
-import farmsimulator.FertiliserOne;
+
 import farmsimulator.GeneralStore;
 import farmsimulator.Item;
 
@@ -25,7 +25,7 @@ class FeedAnimalTest {
 	@Test
 	public void feedAnimaltest() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		Animal animal = new Cow("TestCow",0,0);
 		store.purchaseAnimal(animal, farm);
 		AnimalFoodOne a1 = new AnimalFoodOne();
@@ -37,7 +37,7 @@ class FeedAnimalTest {
 	@Test
 	public void feedAnimalItemCheck() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		Animal animal = new Cow("TestCow",0,0);
 		store.purchaseAnimal(animal, farm);
 		AnimalFoodTwo a2 = new AnimalFoodTwo();
@@ -50,7 +50,7 @@ class FeedAnimalTest {
 	@Test
 	public void feedAnimalNoActionTest() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		farmer.useAction();
 		farmer.useAction();
 		Animal animal = new Cow("TestCow",0,0);
