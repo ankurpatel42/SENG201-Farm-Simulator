@@ -76,6 +76,7 @@ public class FinalScreen {
 	 */
 	private void initialize() {
 		finalScreenFrame = new JFrame();
+		finalScreenFrame.setTitle("Game Over");
 		finalScreenFrame.setBounds(100, 100, 599, 441);
 		finalScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		finalScreenFrame.getContentPane().setLayout(null);
