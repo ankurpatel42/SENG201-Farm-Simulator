@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import farmsimulator.Animal;
-import farmsimulator.AnimalFoodOne;
+
 import farmsimulator.Cow;
 import farmsimulator.Farm;
 import farmsimulator.Farmer;
@@ -16,9 +16,9 @@ class PlayWithAnimalTest {
 	private GeneralStore store = new GeneralStore();
 
 	@Test
-	public void feedAnimaltest() {
+	public void playedWithAnimaltest() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		Animal animal = new Cow("TestCow",0,0);
 		store.purchaseAnimal(animal, farm);
 		String message = animal.playWithAnimal(farmer);
@@ -28,7 +28,7 @@ class PlayWithAnimalTest {
 	@Test
 	public void playWithAnimalNoActionTest() {
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		farmer.useAction();
 		farmer.useAction();
 		Animal animal = new Cow("TestCow",0,0);
