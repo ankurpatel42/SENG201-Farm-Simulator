@@ -17,7 +17,7 @@ class CropHarvestTest {
 	public void testHarvest() {
 		Carrot crop = new Carrot();
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		crop.setDaysTillHarvest(0);
 		String message = crop.harvestCrops(farmer, farm, farm.getCropList());
 		assertEquals("Crop harvested and you earnt $250.0", message);
@@ -27,7 +27,7 @@ class CropHarvestTest {
 	public void testHarvestMoney() {
 		Carrot crop = new Carrot();
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		crop.setDaysTillHarvest(0);
 		crop.harvestCrops(farmer, farm, farm.getCropList());
 		assertEquals(1250, farm.getMoneyAvailable());
@@ -38,7 +38,7 @@ class CropHarvestTest {
 		Carrot crop = new Carrot();
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
 		farm.addCropToList(crop);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		crop.setDaysTillHarvest(0);
 		crop.harvestCrops(farmer, farm, farm.getCropList());
 		ArrayList<Crop> test = new ArrayList<Crop>();
@@ -49,7 +49,7 @@ class CropHarvestTest {
 	public void testUnreadyHarvest() {
 		Carrot crop = new Carrot();
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		String message = crop.harvestCrops(farmer, farm, farm.getCropList());
 		assertEquals("Sorry your crops are not ready for Harvest yet, still 3 day(s) left", message);
 	}
@@ -58,7 +58,7 @@ class CropHarvestTest {
 	public void testUndreadyHarvestMoney() {
 		Carrot crop = new Carrot();
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		crop.harvestCrops(farmer, farm, farm.getCropList());
 		assertEquals(1000, farm.getMoneyAvailable());
 	}
@@ -68,7 +68,7 @@ class CropHarvestTest {
 		Carrot crop = new Carrot();
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
 		farm.addCropToList(crop);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		crop.harvestCrops(farmer, farm, farm.getCropList());
 		ArrayList<Crop> test = new ArrayList<Crop>();
 		test.add(crop);
@@ -79,7 +79,7 @@ class CropHarvestTest {
 	public void testHarvestNoActions() {
 		Carrot crop = new Carrot();
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		farmer.useAction();
 		farmer.useAction();
 		crop.setDaysTillHarvest(0);
@@ -91,7 +91,7 @@ class CropHarvestTest {
 	public void testNoActionHarvestMoney() {
 		Carrot crop = new Carrot();
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		farmer.useAction();
 		farmer.useAction();
 		crop.setDaysTillHarvest(0);
@@ -104,7 +104,7 @@ class CropHarvestTest {
 		Carrot crop = new Carrot();
 		Farm farm = new Farm("Test", 1000, 1, 1, 1);
 		farm.addCropToList(crop);
-		Farmer farmer = new Farmer("TestFarmer");
+		Farmer farmer = new Farmer("TestFarmer", 30);
 		farmer.useAction();
 		farmer.useAction();
 		crop.setDaysTillHarvest(0);
