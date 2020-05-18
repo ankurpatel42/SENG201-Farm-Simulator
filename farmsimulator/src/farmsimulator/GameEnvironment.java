@@ -399,8 +399,8 @@ public class GameEnvironment {
 	 * 
 	 * @param farmerNameChosen	A string which is the chosen farmer name by the user when setting up the game.
 	 */
-	public void setFarmer(String farmerNameChosen) {
-		farmer = new Farmer(farmerNameChosen);
+	public void setFarmer(String farmerNameChosen, int farmerAgeChosen) {
+		farmer = new Farmer(farmerNameChosen, farmerAgeChosen);
 	}
 	
 	/**
@@ -463,7 +463,7 @@ public class GameEnvironment {
 	 * @param name				A string which the user has entered as input for names.
 	 * @return						A boolean which determines whether or not the user input is valid.
 	 */
-	public boolean userInputValid(String name) {
+	public boolean userInputNameValid(String name) {
 		
 		char[] nameArray = name.toCharArray();
 		
@@ -478,6 +478,26 @@ public class GameEnvironment {
 		}
 		
 		return true;
+	}
+	
+	/**
+	 * Checks whether or not the farmer age input by the user is valid.
+	 * 
+	 * @param age
+	 * @return
+	 */
+	public boolean userInputFarmerAgeValid(String inputAge) {
+		try {
+			Integer.parseInt(inputAge);
+			if (Integer.parseInt(inputAge) < 20 || Integer.parseInt(inputAge) > 75) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 	
 	/**
