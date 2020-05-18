@@ -16,6 +16,10 @@ public class Farmer {
 	 */
 	private String farmerName = null;
 	/**
+	 * The age of the farmer
+	 */
+	private int farmerAge = 0;
+	/**
 	 * The bonus earned by the farmer.
 	 */
 	private double bonus;
@@ -32,9 +36,11 @@ public class Farmer {
 	 * Farmer constructor.
 	 * 
 	 * @param inputFarmerName		The name of the farmer.
+	 * @param inputFarmerAge		The age of the farmer.
 	 */
-	public Farmer (String inputFarmerName) {
+	public Farmer (String inputFarmerName, int inputFarmerAge) {
 		farmerName = inputFarmerName;
+		farmerAge = inputFarmerAge;
 	}
 	
 	/**
@@ -44,6 +50,15 @@ public class Farmer {
 	 */
 	public String getFarmerName() {
 		return farmerName;
+	}
+	
+	/**
+	 * Get the age of the farmer.
+	 * 
+	 * @ return			An integer which is the age of the farmer.
+	 */
+	public int getFarmerAge() {
+		return farmerAge;
 	}
 	
 	/**
@@ -125,7 +140,7 @@ public class Farmer {
 	/**
 	 * Gets the bonus for the farmer at the end of the day.
 	 * 
-	 * @return			A double which is the bonus the farmer earned.
+	 * @return			A double which is the bonus the farmer earned at the end of the day.
 	 */
 	public double getBonus() {
 		return bonus;
