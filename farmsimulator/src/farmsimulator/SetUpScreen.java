@@ -107,7 +107,7 @@ public class SetUpScreen {
 	private void initialize() {
 		setUpScreenFrame = new JFrame();
 		setUpScreenFrame.setTitle("Farm Simulator Game");
-		setUpScreenFrame.setBounds(100, 100, 770, 594);
+		setUpScreenFrame.setBounds(100, 100, 770, 547);
 		setUpScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setUpScreenFrame.getContentPane().setLayout(null);
 		
@@ -222,7 +222,10 @@ public class SetUpScreen {
 				String farmerNameChosen = userFarmerName.getText();
 				String farmNameChosen = userFarmName.getText();
 				String farmerAgeChosen = userFarmerAge.getText();
-				if (game.userInputNameValid(farmerNameChosen) == false) {
+				if (farmerNameChosen.length() == 0 || farmNameChosen.length() == 0 || farmerAgeChosen.length() == 0) {
+					JOptionPane.showMessageDialog(setUpScreenFrame, "You must not leave any fields blank!");
+				}
+				else if (game.userInputNameValid(farmerNameChosen) == false) {
 					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARMER name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
 				}
 				else if (game.userInputNameValid(farmNameChosen) == false ) {
@@ -251,8 +254,7 @@ public class SetUpScreen {
 					}
 					
 					game.createGeneralStore();
-					Water water = new Water();
-					game.addItemsOwnedByFarmer(water);
+					game.createWater();
 					closeSetUpScreen();
 					finishedWindow();
 					
