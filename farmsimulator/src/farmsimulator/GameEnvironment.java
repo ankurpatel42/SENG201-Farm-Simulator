@@ -67,6 +67,14 @@ public class GameEnvironment {
 	}
 	
 	/**
+	 * Creating/Instantiating a water item which is then added to the list of items owned by the farmer.
+	 */
+	public void createWater() {
+		Water water = new Water();
+		addItemsOwnedByFarmer(water);
+	}
+	
+	/**
 	 * Creates/Instantiates an Animal object of type Cow after the user has successfully purchased it from the General Store. The animal's
 	 * happiness and healthiness attributes are initialised to the Farm's initial animal healthiness and happiness.
 	 * 
