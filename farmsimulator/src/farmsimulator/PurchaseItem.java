@@ -31,7 +31,6 @@ public class PurchaseItem {
 	private JFrame frmPurchaseItem;
 	private String[] items = {"F1", "F2", "F3", "A1", "A2", "A3"};
 	private DefaultComboBoxModel<String> itemsCombo = new DefaultComboBoxModel<String>(items);
-	private String itemChosen = null;
 	private String message;
 	
 	/*
@@ -136,28 +135,7 @@ public class PurchaseItem {
 		btnPurchase.setBounds(29, 144, 147, 29);
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				itemChosen = (String)comboBoxItem.getSelectedItem();
-				switch (itemChosen) {
-					case "A1":
-						message = game.createAnimalFoodOne();
-						break;
-					case "A2":
-						message = game.createAnimalFoodTwo();
-						break;
-					case "A3":
-						message = game.createAnimalFoodThree();
-						break;
-					case "F1":
-						message = game.createFertiliserOne();
-						break;
-					case "F2":
-						message = game.createFertiliserTwo();
-						break;
-					case "F3":
-						message = game.createFertiliserThree();
-						break;
-				}
-				
+				message = game.createItem((String)comboBoxItem.getSelectedItem());
 				JOptionPane.showMessageDialog(btnPurchase, message);
 				String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 				lblMoneyAvailable.setText("$" + formatMoneyAvailable);

@@ -145,7 +145,10 @@ public abstract class Crop {
 	 * @return						A string which states whether the crop has been successfully tended to or not.
 	 */
 	public String tendCrops(Item choice, Farmer farmer, ArrayList<Item> itemsOwned) {
-		if (farmer.useAction() == true) {
+		if (daysTillHarvest == 0) {
+			message = "These crops are ready to harvest, no need to fertilise them";
+		}
+		else if (farmer.useAction() == true) {
 			daysTillHarvest -= choice.getHarvestSpeedUpTime();
 			if (daysTillHarvest <= 0) {
 				daysTillHarvest = 0;

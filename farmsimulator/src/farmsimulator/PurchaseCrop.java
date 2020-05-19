@@ -29,7 +29,6 @@ public class PurchaseCrop {
 	private GameEnvironment game;
 
 	private JFrame frmPurchaseCrop;
-	private String cropChosen;
 	private String[] items = {"Carrot", "Corn", "Lettuce", "Potato", "Rice", "Wheat"};
 	private DefaultComboBoxModel<String> cropCombo = new DefaultComboBoxModel<String>(items);
 	
@@ -130,28 +129,7 @@ public class PurchaseCrop {
 		btnPurchase.setBounds(24, 143, 147, 29);
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cropChosen = (String)comboBoxCrop.getSelectedItem();
-				switch (cropChosen) {
-					case "Carrot":
-						message = game.createCarrot();
-						break;
-					case "Corn":
-						message = game.createCorn();
-						break;
-					case "Lettuce":
-						message = game.createLettuce();
-						break;
-					case "Potato":
-						message = game.createPotato();
-						break;
-					case "Rice":
-						message = game.createRice();
-						break;
-					case "Wheat":
-						message = game.createWheat();
-						break;
-				}
-				
+				message = game.createCrop((String)comboBoxCrop.getSelectedItem());
 				JOptionPane.showMessageDialog(btnPurchase, message);
 				String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 				lblMoneyAvailable.setText("$" + formatMoneyAvailable);

@@ -2,6 +2,8 @@ package farmsimulator;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 /** This class is the main class for the game, it
  *  contains all the game logic such as variables
  * and methods that are used with other classes.
@@ -272,6 +274,88 @@ public class GameEnvironment {
 		farm.addNewItem(item);
 	}
 	
+	/** Takes crop user has chosen in combo box and creates and purchases that crop
+	 * 
+	 * 
+	 * @param cropSelected			A string selected from the combo box to purchase.
+	 * @return 							A string message to be displayed in the GUI, whether purchase was successful or not
+	 */
+	public String createCrop(String cropSelected) {
+		switch (cropSelected) {
+			case "Carrot":
+				message = createCarrot();
+				break;
+			case "Corn":
+				message = createCorn();
+				break;
+			case "Lettuce":
+				message = createLettuce();
+				break;
+			case "Potato":
+				message = createPotato();
+				break;
+			case "Rice":
+				message = createRice();
+				break;
+			case "Wheat":
+				message = createWheat();
+				break;
+		}
+		return message;
+	}
+	
+	
+	/** Takes item user has chosen in combo box and creates and purchases that item
+	 * 
+	 * 
+	 * @param itemSelected			A string selected from the combo box to purchase.
+	 * @return 							A string message to be displayed in the GUI, whether purchase was successful or not
+	 */
+	public String createItem(String itemSelected) {
+		switch (itemSelected) {
+			case "A1":
+				message = createAnimalFoodOne();
+				break;
+			case "A2":
+				message = createAnimalFoodTwo();
+				break;
+			case "A3":
+				message = createAnimalFoodThree();
+				break;
+			case "F1":
+				message = createFertiliserOne();
+				break;
+			case "F2":
+				message = createFertiliserTwo();
+				break;
+			case "F3":
+				message = createFertiliserThree();
+				break;
+		}
+		return message;
+	}
+	
+	/** Takes animal user has chosen in combo box and creates and purchases that animal after checking name is valid
+	 * 
+	 * 
+	 * @param itemSelected			A string selected from the combo box to purchase.
+	 * @return 							A string message to be displayed in the GUI, whether purchase was successful or not
+	 */
+	public String createAnimal(String animalSelected, String nameSelected) {
+		switch (animalSelected) {
+			case "Cow":
+				message = cowNameValidCheck(nameSelected);
+				break;
+			case "Pig":
+				message = pigNameValidCheck(nameSelected);
+				break;
+			case "Sheep":
+				message = sheepNameValidCheck(nameSelected);
+				break;
+		}
+		return message;
+	}
+	
 	/**
 	 * Harvests the crop that the user has chosen.
 	 * 
@@ -406,7 +490,7 @@ public class GameEnvironment {
 	 * Creates/Instantiates the farmer object.
 	 * 
 	 * @param farmerNameChosen		A string which is the chosen farmer name by the user when setting up the game.
-	 * @param farmerAgeChosen		An int which is teh chosen farmer age by the user wen setting up the game.
+	 * @param farmerAgeChosen		An int which is then chosen farmer age by the user when setting up the game.
 	 */
 	public void setFarmer(String farmerNameChosen, int farmerAgeChosen) {
 		farmer = new Farmer(farmerNameChosen, farmerAgeChosen);
@@ -621,7 +705,9 @@ public class GameEnvironment {
 		else if (cowNameExists(nameChosenForCow) == true) {
 			message = "That cow name already exists, pick another one!";
 		}
-		
+		else {
+			message = createCow(nameChosenForCow);
+		}
 		return message;
 	}
 	

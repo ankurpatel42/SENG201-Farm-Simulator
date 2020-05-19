@@ -121,7 +121,7 @@ public class SetUpScreen {
 		
 		/* Message that asks that user to enter their chosen farmer name */
 		enterFarmerNameMessage = new JLabel("Give your farmer a name:");
-		enterFarmerNameMessage.setBounds(63, 70, 149, 17);
+		enterFarmerNameMessage.setBounds(63, 70, 161, 17);
 		setUpScreenFrame.getContentPane().add(enterFarmerNameMessage);
 		
 		/* Text Field where user inputs their farmer name */
@@ -248,7 +248,7 @@ public class SetUpScreen {
 		setUpScreenFrame.getContentPane().add(beginGameButton);
 		
 		JLabel famerAgeLabel = new JLabel("Give your farmer an age:");
-		famerAgeLabel.setBounds(63, 152, 142, 14);
+		famerAgeLabel.setBounds(63, 152, 161, 14);
 		setUpScreenFrame.getContentPane().add(famerAgeLabel);
 		
 	}

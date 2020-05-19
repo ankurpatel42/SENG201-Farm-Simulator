@@ -122,21 +122,9 @@ public class PurchaseAnimal {
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				animalChosen = (String)comboBoxAnimals.getSelectedItem();
-				switch (animalChosen) {
-					case "Cow":
-						String nameChosenForCow = JOptionPane.showInputDialog("Give your Cow a name!");
-						message = game.cowNameValidCheck(nameChosenForCow);
-						break;
-					case "Pig":
-						String nameChosenForPig = JOptionPane.showInputDialog("Give your Pig a name!");
-						message = game.pigNameValidCheck(nameChosenForPig);
-						break;
-					case "Sheep":
-						String nameChosenForSheep = JOptionPane.showInputDialog("Give your Sheep a name!");
-						message = game.sheepNameValidCheck(nameChosenForSheep);
-						break;
-				}
-				
+				String nameSelected = JOptionPane.showInputDialog("Give your " + animalChosen + " a name!");
+				message = game.createAnimal(animalChosen, nameSelected);
+						
 				JOptionPane.showMessageDialog(frmPurchaseAnimal, message);
 				
 				String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());

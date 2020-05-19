@@ -3,7 +3,6 @@ package testFarmSimulator;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,6 @@ import farmsimulator.FertiliserThree;
 import farmsimulator.FertiliserTwo;
 import farmsimulator.GeneralStore;
 import farmsimulator.Item;
-import farmsimulator.Water;
 
 class PurchaseItemTest {
 
@@ -28,8 +26,7 @@ class PurchaseItemTest {
 		store.purchaseItem(f1, farm);
 		ArrayList<Item> test = new ArrayList<Item>();
 		test.add(f1);
-		//Water item added is a problem
-		//assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
+		assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
 	}
 	
 	@Test
@@ -72,8 +69,7 @@ class PurchaseItemTest {
 		Farm farm = new Farm("Test", 0, 1, 1, 1);
 		store.purchaseItem(f1, farm);
 		ArrayList<Item> test = new ArrayList<Item>();
-		//Water item added is a problem
-		//assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
+		assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
 	}
 
 }
