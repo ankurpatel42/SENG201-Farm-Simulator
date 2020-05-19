@@ -315,7 +315,7 @@ public class GameEnvironment {
 	 * 
 	 * @param animalToBeFed			An animal object that is to be fed.
 	 * @param item					An item object used to feed animals.
-	 * @return							A string that tells the user whether they have successfully fed their chosen animal using their item of choice.
+	 * @return							A string that tells the user whetehr they have successfully fed their chosen animal using their item of choice.
 	 */
 	public String feedAnimal(Animal animalToBeFed, Item item) {
 		return animalToBeFed.feedAnimal(item, farmer, getItemsOwnedByFarmer());
@@ -405,7 +405,8 @@ public class GameEnvironment {
 	/**
 	 * Creates/Instantiates the farmer object.
 	 * 
-	 * @param farmerNameChosen	A string which is the chosen farmer name by the user when setting up the game.
+	 * @param farmerNameChosen		A string which is the chosen farmer name by the user when setting up the game.
+	 * @param farmerAgeChosen		An int which is teh chosen farmer age by the user wen setting up the game.
 	 */
 	public void setFarmer(String farmerNameChosen, int farmerAgeChosen) {
 		farmer = new Farmer(farmerNameChosen, farmerAgeChosen);
@@ -491,8 +492,8 @@ public class GameEnvironment {
 	/**
 	 * Checks whether or not the farmer age input by the user is valid.
 	 * 
-	 * @param age
-	 * @return
+	 * @param inputAge			The input age.
+	 * @return				A boolean which states whether the age is a valid age.
 	 */
 	public boolean userInputFarmerAgeValid(String inputAge) {
 		try {
@@ -548,6 +549,130 @@ public class GameEnvironment {
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * Checks whether all the inputs entered by the user is valid.
+	 * 
+	 * @param farmerNameChosen				The farmer name input by the user.
+	 * @param farmNameChosen				The farm name input by the user.
+	 * @param farmerAgeChosen				The farmer age input by the user.
+	 * @return						A string which tells the user if their input is invalid, if all input is valid the game can start.
+	 */
+	public String allUserInputValidCheck(String farmerNameChosen, String farmNameChosen, String farmerAgeChosen) {
+		if (farmerNameChosen.length() == 0 || farmNameChosen.length() == 0 || farmerAgeChosen.length() == 0) {
+			message = "You must not leave any fields blank!";
+		}
+		else if (userInputNameValid(farmerNameChosen) == false) {
+			message = "Your FARMER name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!";
+		}
+		else if (userInputNameValid(farmNameChosen) == false ) {
+			message =  "Your FARM name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!";
+		}
+		else if (userInputFarmerAgeValid(farmerAgeChosen) == false) {
+			message = "Your FARMER age must be an integer between 20 and 75 (inclusive)!";
+		}
+		else {
+			message = "All checks passed, all input by user is valid.";
+		}
+		
+		return message;
+	}
+	
+	/**
+	 * Creates the farm chosen by the user with the farm name chosen by the user by calling the method which instantiates a farm.
+	 * 
+	 * @param farmNameChosen		The farm name chosen by the user.
+	 * @param farmChosen			The farm chosen to play by the user.
+	 */
+	public void createFarmChosenByUser(String farmNameChosen, String farmChosen) {
+		switch(farmChosen) {
+			case "Farm A":
+				createFarm(farmNameChosen, 1000, 2, 5, 3);
+				break;
+			case "Farm B":
+				createFarm(farmNameChosen, 600, 1, 5, 9);
+				break;
+			case "Farm C":
+				createFarm(farmNameChosen, 300, 7, 8, 9);
+				break;
+			case "Farm D":
+				createFarm(farmNameChosen, 650, 6, 7, 6);
+				break;
+		}
+		
+	}
+	
+	/**
+	 * Checks if the name input by the user for a cow is valid.
+	 * 
+	 * @param nameChosenForCow			The name of the Cow chosen by the user.
+	 * @return						A string which states whether the cow name is valid, and if it is creates a new cow.
+	 */
+	public String cowNameValidCheck(String nameChosenForCow) {
+		if (nameChosenForCow == null) {
+			message = "Your purchase has been cancelled.";
+		}
+		else if (userInputNameValid(nameChosenForCow) == false) {
+			message = "That's not a valid name for your cow! Your COW name "
+					+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
+					+ "characters!";
+		}
+		else if (cowNameExists(nameChosenForCow) == true) {
+			message = "That cow name already exists, pick another one!";
+		}
+		
+		return message;
+	}
+	
+	/**
+	 * Checks if the name input by the user for the pig is valid.
+	 * 
+	 * @param nameChosenForPig				The name of the pig chosen by the user.
+	 * @return							A string which states whether the pig name is valid, and if it is creates a new pig.
+	 */
+	public String pigNameValidCheck(String nameChosenForPig) {
+		if (nameChosenForPig == null) {
+			message = "Your purchase has been cancelled.";
+		}
+		else if (userInputNameValid(nameChosenForPig) == false) {
+			message = "That's not a valid name for your Pig! Your PIG name "
+					+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
+					+ "characters!";
+		}
+		else if (pigNameExists(nameChosenForPig) == true) {
+				message = "That pig name already exists, pick another one!";
+		}
+		else {
+			message = createPig(nameChosenForPig);
+		}
+		
+		return message;
+	}
+	
+	/**
+	 * Checks if the name input by the user for the sheep is valid.
+	 * 
+	 * @param nameChosenForSheep				The name of the sheep chosen by the user.
+	 * @return							A string which states whether the sheep name is valid, and if it is creates a new sheep.
+	 */
+	public String sheepNameValidCheck(String nameChosenForSheep) {
+		if (nameChosenForSheep == null) {
+			message = "Your purchase has been cancelled.";
+		}
+		else if (userInputNameValid(nameChosenForSheep) == false) {
+			message = "That's not a valid name for your Sheep! Your SHEEP name "
+					+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
+					+ "characters!";
+		}
+		else if (sheepNameExists(nameChosenForSheep) == true) {
+				message = "That sheep name already exists, pick another one!";
+		}
+		else {
+			message = createSheep(nameChosenForSheep);
+		}
+		
+		return message;
 	}
 	
 	/**
@@ -693,7 +818,7 @@ public class GameEnvironment {
 	/**
 	 * The main method of the game, this is where the program begins by instantiating a game object and calling the launchSetUpScreen() method.
 	 * 
-	 * @param args		command line arguments for the application (not applicable here)
+	 * @param args		Command line arguments.
 	 */
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
