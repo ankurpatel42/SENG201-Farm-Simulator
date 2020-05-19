@@ -621,6 +621,9 @@ public class GameEnvironment {
 		else if (cowNameExists(nameChosenForCow) == true) {
 			message = "That cow name already exists, pick another one!";
 		}
+		else {
+			message = createCow(nameChosenForCow);
+		}
 		
 		return message;
 	}
