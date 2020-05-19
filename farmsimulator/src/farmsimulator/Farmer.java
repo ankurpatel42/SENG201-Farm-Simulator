@@ -113,11 +113,11 @@ public class Farmer {
 		}
 		bonus = 0;
 		for (Animal animal : animalsOwned) {
-			bonus += 2 * animal.getAnimalHappiness();
+			bonus += 2 * (animal.getAnimalHappiness() + animal.getAnimalHealthiness());
 		}
 		farm.setMoneyAvailable(bonus + farm.getMoneyAvailable());
 		String bonusFormatted = String.format("%.2f", bonus);
-		return ("You earnt a $" + bonusFormatted + " from your happy animals, you are now on day " + dayNum + " out of " + gameLength);
+		return ("You earnt $" + bonusFormatted + " from your happy and healthy animals, you are now on day " + dayNum + " out of " + gameLength);
 	}
 	
 	
