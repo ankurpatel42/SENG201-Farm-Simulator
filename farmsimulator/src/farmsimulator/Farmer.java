@@ -55,7 +55,7 @@ public class Farmer {
 	/**
 	 * Get the age of the farmer.
 	 * 
-	 * @ return			An integer which is the age of the farmer.
+	 * @return			An integer which is the age of the farmer.
 	 */
 	public int getFarmerAge() {
 		return farmerAge;
