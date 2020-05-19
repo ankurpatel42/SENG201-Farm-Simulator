@@ -315,7 +315,7 @@ public class GameEnvironment {
 	 * 
 	 * @param animalToBeFed			An animal object that is to be fed.
 	 * @param item					An item object used to feed animals.
-	 * @return							A string that tells the user whetehr they have successfully fed their chosen animal using their item of choice.
+	 * @return							A string that tells the user whether they have successfully fed their chosen animal using their item of choice.
 	 */
 	public String feedAnimal(Animal animalToBeFed, Item item) {
 		return animalToBeFed.feedAnimal(item, farmer, getItemsOwnedByFarmer());

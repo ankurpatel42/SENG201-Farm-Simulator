@@ -139,7 +139,6 @@ public class PurchaseItem {
 				itemChosen = (String)comboBoxItem.getSelectedItem();
 				switch (itemChosen) {
 					case "A1":
-						//make a method in Game Environment that initializes/sets items and call it here
 						message = game.createAnimalFoodOne();
 						break;
 					case "A2":

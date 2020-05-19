@@ -133,7 +133,6 @@ public class PurchaseCrop {
 				cropChosen = (String)comboBoxCrop.getSelectedItem();
 				switch (cropChosen) {
 					case "Carrot":
-						//make a method in Game Environment that initializes/sets crops and call it here
 						message = game.createCarrot();
 						break;
 					case "Corn":
