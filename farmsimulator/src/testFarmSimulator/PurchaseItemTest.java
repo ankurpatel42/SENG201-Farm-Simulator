@@ -17,8 +17,6 @@ class PurchaseItemTest {
 
 	private GeneralStore store = new GeneralStore();
 	
-	//Purchase Completes
-	
 	@Test
 	public void itemListUpdate() {
 		FertiliserOne f1 = new FertiliserOne();
@@ -44,8 +42,6 @@ class PurchaseItemTest {
 		String message = store.purchaseItem(f3, farm);
 		assertEquals("You have purchased one F3", message);
 	}
-	
-	//Purchase Fails
 	
 	@Test
 	public void testFailMessage() {

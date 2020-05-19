@@ -173,17 +173,9 @@ public class MainScreen {
 		JButton tendFarm = new JButton("Tend Farm");
 		tendFarm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (game.getAnimalsOnFarm().size() == 0 && game.getCropsOwned().size() == 0) {
-					JOptionPane.showMessageDialog(mainScreen, "Your farm does not have any animals or crops yet, visit the General Store to buy them.");
-				}
-				else if (game.useFarmerAction() == true) {
-					game.tendFarm();
-					JOptionPane.showMessageDialog(mainScreen, "You tended to your farm, crops have grown and animals are happier");
-					actionsLeft.setText(String.valueOf(game.getFarmerActionsLeft()));
-				}
-				else {
-					JOptionPane.showMessageDialog(mainScreen, "You cannot perform this action as you have no actions left for today.");
-				}
+				String message = game.tendFarm();
+				JOptionPane.showMessageDialog(mainScreen, message);
+				actionsLeft.setText(String.valueOf(game.getFarmerActionsLeft()));
 			}
 		});
 		tendFarm.setBounds(520, 321, 118, 23);
@@ -194,7 +186,6 @@ public class MainScreen {
 			public void actionPerformed(ActionEvent e) {
 				String message = game.nextDay();
 				int daysLeft = game.getGameLength() - game.getFarmer().getDayNum() + 1;
-				
 				if (daysLeft == 0) {
 					game.launchFinalScreen();
 					closeMainScreen();

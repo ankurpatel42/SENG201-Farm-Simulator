@@ -129,7 +129,6 @@ public class PurchaseAnimal {
 				
 				String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 				lblMoneyAvailable.setText("$" + formatMoneyAvailable);
-				
 			}
 		});
 		frmPurchaseAnimal.getContentPane().add(btnPurchase);

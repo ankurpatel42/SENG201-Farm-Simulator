@@ -2,6 +2,8 @@ package farmsimulator;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 
 /** This class is the main class for the game, it
  *  contains all the game logic such as variables
@@ -362,7 +364,16 @@ public class GameEnvironment {
 	 * @return							A string that tells the user whether they have successfully harvested their crop.
 	 */
 	public String harvestCrops(Crop crop) {
-		return crop.harvestCrops(farmer, farm, getCropsOwned());
+		if (getCropsOwned().size() == 0) {
+			message = "There are no crops on your farm yet, visit the General Store to buy them!";
+		}
+		else if (crop == null) {
+			message = "Select an crop to harvest!";
+		}
+		else {
+			message = crop.harvestCrops(farmer, farm, getCropsOwned());
+		}
+		return message;
 	}
 	
 	/**
@@ -373,15 +384,39 @@ public class GameEnvironment {
 	 * @return							A string that tells the user whether they have successfully fertilised their chosen crop using their item of choice.
 	 */
 	public String fertiliseCrop(Crop crop, Item item) {
-		return crop.tendCrops(item, farmer, getItemsOwnedByFarmer());
+		if (getCropsOwned().size() == 0) {
+			message = "There are no crops on your farm yet, visit the General Store to buy them!";
+		}
+		else if (crop == null) {
+			message = "Select a crop to Fertilise and Fertiliser to use!";
+		}
+		else {
+			if (item == null) {
+				message = "Select a Fertiliser to use!";
+			}
+			else {
+				message = crop.tendCrops(item, farmer, getItemsOwnedByFarmer());
+			}
+		}
+		return message;
 	}
 	
 	/**
 	 * Tend to farm, increases amount of crops that can be grown as well as animal's happiness.
 	 * 
 	 */
-	public void tendFarm() {
-		farmer.tendToFarmLand(getCropsOwned(), getAnimalsOnFarm());
+	public String tendFarm() {
+		if (getAnimalsOnFarm().size() == 0 && getCropsOwned().size() == 0) {
+			message = "Your farm does not have any animals or crops yet, visit the General Store to buy them.";
+		}
+		else if (useFarmerAction() == true) {
+			farmer.tendToFarmLand(getCropsOwned(), getAnimalsOnFarm());
+			message = "You tended to your farm, crops have grown and animals are happier";
+		}
+		else {
+			message = "You cannot perform this action as you have no actions left for today.";
+		}
+		return message;
 	}
 	
 	/**
@@ -828,7 +863,7 @@ public class GameEnvironment {
 	}
 	
 	/**
-	 * Closes the purchae animal window.
+	 * Closes the purchase animal window.
 	 * 
 	 * @param purchaseAnimalFrame		A PurchaseAnimal object which is the purchae animal window.
 	 */

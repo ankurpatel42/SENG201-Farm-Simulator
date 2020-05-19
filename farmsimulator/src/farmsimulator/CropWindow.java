@@ -136,20 +136,11 @@ public class CropWindow{
 		btnHarvest.setBounds(139, 280, 117, 29);
 		btnHarvest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (game.getCropsOwned().size() == 0) {
-					JOptionPane.showMessageDialog(frmCrops, "There are no crops on your farm yet, visit the General Store to buy them!");
+				String message = game.harvestCrops(listCrops.getSelectedValue());
+				if (message.startsWith("Crop harvested")) {
+					cropListModel.removeElement(listCrops.getSelectedValue());
 				}
-				else if (listCrops.getSelectedValue() == null) {
-					JOptionPane.showMessageDialog(frmCrops, "Select an crop to harvest!");
-				}
-				else {
-					Crop crop = listCrops.getSelectedValue();
-					String message = game.harvestCrops(crop);
-					if (message.startsWith("Crop harvested")) {
-						cropListModel.removeElement(crop);
-					}
-					JOptionPane.showMessageDialog(frmCrops, message);
-				}
+				JOptionPane.showMessageDialog(frmCrops, message);
 			}
 		});
 		frmCrops.getContentPane().add(btnHarvest);
@@ -160,24 +151,10 @@ public class CropWindow{
 			public void actionPerformed(ActionEvent e) {
 				Crop crop = listCrops.getSelectedValue();
 				Item item = listItems.getSelectedValue();
-				if (game.getCropsOwned().size() == 0) {
-					JOptionPane.showMessageDialog(frmCrops, "There are no crops on your farm yet, visit the General Store to buy them!");
-				}
-				else if (crop == null) {
-						JOptionPane.showMessageDialog(frmCrops, "Select a crop to Fertilise and Fertiliser to use!");
-				}
-				else {
-					if (item == null) {
-						JOptionPane.showMessageDialog(frmCrops, "Select a Fertiliser to use!");
-					}
-					else {
-						String message = game.fertiliseCrop(crop, item);
-						if (message.startsWith("You fertilised") & item.getItemName() != "Water") {
-							itemListModel.removeElement(item);
-						}
-						JOptionPane.showMessageDialog(frmCrops, message);
-						frmCrops.repaint();
-					}
+				String message = game.fertiliseCrop(crop, item);
+				JOptionPane.showMessageDialog(frmCrops, message);
+				if (message.startsWith("You fertilised") && item.getItemName() != "Water") {
+					itemListModel.removeElement(item);
 				}
 			}
 		});
@@ -202,8 +179,6 @@ public class CropWindow{
 		listCrops.setForeground(Color.WHITE);
 		listCrops.setBackground(Color.DARK_GRAY);
 		
-		
-		//Crop items owned
 		addCropItemsToList();
 		
 		listItems.setBorder(new LineBorder(new Color(0, 0, 0)));

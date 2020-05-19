@@ -84,5 +84,31 @@ class CropFertiliseTest {
 		test.add(f1);
 		assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
 	}
-
+	
+	@Test
+	public void fertiliseReadyCrop() {
+		Farm farm = new Farm("Test", 1000, 1, 1, 1);
+		Farmer farmer = new Farmer("TestFarmer", 30);
+		Corn crop = new Corn();
+		store.purchaseCrop(crop, farm);
+		crop.setDaysTillHarvest(0);
+		FertiliserOne f1 = new FertiliserOne();
+		store.purchaseItem(f1, farm);
+		String message = crop.tendCrops(f1, farmer, farm.getItemsOwned());
+		assertEquals("These crops are ready to harvest, no need to fertilise them", message);
+	}
+	
+	@Test void fertiliseReadyCropItem() {
+		Farm farm = new Farm("Test", 1000, 1, 1, 1);
+		Farmer farmer = new Farmer("TestFarmer", 30);
+		Corn crop = new Corn();
+		store.purchaseCrop(crop, farm);
+		crop.setDaysTillHarvest(0);
+		FertiliserOne f1 = new FertiliserOne();
+		store.purchaseItem(f1, farm);
+		crop.tendCrops(f1, farmer, farm.getItemsOwned());
+		ArrayList<Item> test = new ArrayList<Item>();
+		test.add(f1);
+		assertArrayEquals(test.toArray(), farm.getItemsOwned().toArray());
+	}
 }
