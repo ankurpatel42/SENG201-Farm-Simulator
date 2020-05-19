@@ -125,68 +125,22 @@ public class PurchaseAnimal {
 				switch (animalChosen) {
 					case "Cow":
 						String nameChosenForCow = JOptionPane.showInputDialog("Give your Cow a name!");
-						//When you click on the cancel button for showInputDialog you will always get a null value
-						if (nameChosenForCow == null) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
-						}
-						else if (game.userInputNameValid(nameChosenForCow) == false) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your cow! Your COW name "
-									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
-									+ "characters!" );
-						}
-						else if (game.cowNameExists(nameChosenForCow) == true) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That cow name already exists, pick another one!");
-						}
-						else {
-							message = game.createCow(nameChosenForCow);
-							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
-							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
-							JOptionPane.showMessageDialog(btnPurchase, message);
-						}
+						message = game.cowNameValidCheck(nameChosenForCow);
 						break;
 					case "Pig":
 						String nameChosenForPig = JOptionPane.showInputDialog("Give your Pig a name!");
-						if (nameChosenForPig == null) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
-						}
-						else if (game.userInputNameValid(nameChosenForPig) == false) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Pig! Your PIG name "
-									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
-									+ "characters!");
-						}
-						else if (game.pigNameExists(nameChosenForPig) == true) {
-								JOptionPane.showMessageDialog(frmPurchaseAnimal, "That pig name already exists, pick another one!");
-						}
-						else {
-							message = game.createPig(nameChosenForPig);
-							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
-							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
-							JOptionPane.showMessageDialog(btnPurchase, message);
-						}
+						message = game.pigNameValidCheck(nameChosenForPig);
 						break;
 					case "Sheep":
 						String nameChosenForSheep = JOptionPane.showInputDialog("Give your Sheep a name!");
-						if (nameChosenForSheep == null) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "Your purchase has been cancelled.");
-						}
-						else if (game.userInputNameValid(nameChosenForSheep) == false) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That's not a valid name for your Sheep! Your SHEEP name "
-									+ "must contain between 3 and 15 characters (inclusive) and not contain any numbers or special "
-									+ "characters!");
-						}
-						else if (game.sheepNameExists(nameChosenForSheep)) {
-							JOptionPane.showMessageDialog(frmPurchaseAnimal, "That sheep name already exists, pick another one!");
-						}
-						else {
-							message = game.createSheep(nameChosenForSheep);
-							String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
-							lblMoneyAvailable.setText("$" + formatMoneyAvailable);
-							JOptionPane.showMessageDialog(btnPurchase, message);
-
-						}
+						message = game.sheepNameValidCheck(nameChosenForSheep);
 						break;
 				}
 				
+				JOptionPane.showMessageDialog(frmPurchaseAnimal, message);
+				
+				String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
+				lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 				
 			}
 		});
