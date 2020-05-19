@@ -51,6 +51,7 @@ public class SetUpScreen {
 	private DefaultComboBoxModel<String> farmOptionsModel = new DefaultComboBoxModel<String>(farmOptions);
 	private JButton beginGameButton;
 	private JTextField userFarmerAge;
+	private String message;
 
 	/*
 	 * Launch the application.
@@ -120,7 +121,7 @@ public class SetUpScreen {
 		
 		/* Message that asks that user to enter their chosen farmer name */
 		enterFarmerNameMessage = new JLabel("Give your farmer a name:");
-		enterFarmerNameMessage.setBounds(47, 70, 165, 17);
+		enterFarmerNameMessage.setBounds(63, 70, 149, 17);
 		setUpScreenFrame.getContentPane().add(enterFarmerNameMessage);
 		
 		/* Text Field where user inputs their farmer name */
@@ -222,50 +223,32 @@ public class SetUpScreen {
 				String farmerNameChosen = userFarmerName.getText();
 				String farmNameChosen = userFarmName.getText();
 				String farmerAgeChosen = userFarmerAge.getText();
-				if (farmerNameChosen.length() == 0 || farmNameChosen.length() == 0 || farmerAgeChosen.length() == 0) {
-					JOptionPane.showMessageDialog(setUpScreenFrame, "You must not leave any fields blank!");
-				}
-				else if (game.userInputNameValid(farmerNameChosen) == false) {
-					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARMER name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
-				}
-				else if (game.userInputNameValid(farmNameChosen) == false ) {
-					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARM name must contain between 3 and 15 characters (inclusive) and not contain any numbers or special characters!");
-				}
-				else if (game.userInputFarmerAgeValid(farmerAgeChosen) == false) {
-					JOptionPane.showMessageDialog(setUpScreenFrame, "Your FARMER age must be an integer between 20 and 75 (inclusive)!");
+				String farmChosen = (String)farmSelection.getSelectedItem();
+				
+				message = game.allUserInputValidCheck(farmerNameChosen, farmNameChosen, farmerAgeChosen);
+				
+				if (message.startsWith("Yo")) {
+					JOptionPane.showMessageDialog(setUpScreenFrame, message);
 				}
 				else {
 					int intFarmerAge = Integer.parseInt(farmerAgeChosen);
-					game.setFarmer(farmerNameChosen, intFarmerAge);
-					String farmChosen = (String)farmSelection.getSelectedItem(); //Cast from object to String
-					switch(farmChosen) {
-						case "Farm A":
-							game.createFarm(farmNameChosen, 1000, 2, 5, 3);
-							break;
-						case "Farm B":
-							game.createFarm(farmNameChosen, 600, 1, 5, 9);
-							break;
-						case "Farm C":
-							game.createFarm(farmNameChosen, 300, 7, 8, 9);
-							break;
-						case "Farm D":
-							game.createFarm(farmNameChosen, 650, 6, 7, 6);
-							break;
-					}
 					
+					game.setFarmer(farmerNameChosen, intFarmerAge);
+					game.createFarmChosenByUser(farmNameChosen, farmChosen);
 					game.createGeneralStore();
 					game.createWater();
+	
 					closeSetUpScreen();
 					finishedWindow();
-					
 				}
 			}
 		});
+		
 		beginGameButton.setBounds(365, 442, 89, 23);
 		setUpScreenFrame.getContentPane().add(beginGameButton);
 		
 		JLabel famerAgeLabel = new JLabel("Give your farmer an age:");
-		famerAgeLabel.setBounds(54, 152, 158, 14);
+		famerAgeLabel.setBounds(63, 152, 142, 14);
 		setUpScreenFrame.getContentPane().add(famerAgeLabel);
 		
 	}
