@@ -44,7 +44,7 @@ class NextDayTest {
 		Farmer farmer = new Farmer("TestFarmer", 30);
 		store.purchaseAnimal(animal, farm);
 		farmer.moveToNextDay(farm, farm.getCropList(), farm.getItemsOwned(), farm.getAnimalList(), 5);
-		assertEquals(1000 - 50 + 10, farm.getMoneyAvailable());
+		assertEquals(1000 - 50 + 20, farm.getMoneyAvailable());
 	}
 	
 	@Test
@@ -56,7 +56,7 @@ class NextDayTest {
 		store.purchaseAnimal(animal, farm);
 		store.purchaseCrop(crop, farm);
 		String message = farmer.moveToNextDay(farm, farm.getCropList(), farm.getItemsOwned(), farm.getAnimalList(), 5);
-		assertEquals("You earnt a $10.00 from your happy animals, you are now on day 2 out of 5", message);
+		assertEquals("You earnt $20.00 from your happy and healthy animals, you are now on day 2 out of 5", message);
 	}
 
 
