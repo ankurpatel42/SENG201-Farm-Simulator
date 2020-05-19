@@ -2,7 +2,6 @@ package farmsimulator;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
 
 /** This class is the main class for the game, it
  *  contains all the game logic such as variables
