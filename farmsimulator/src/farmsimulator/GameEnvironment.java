@@ -725,10 +725,10 @@ public class GameEnvironment {
 				createFarm(farmNameChosen, 600, 1, 5, 9);
 				break;
 			case "Farm C":
-				createFarm(farmNameChosen, 300, 7, 8, 9);
+				createFarm(farmNameChosen, 300, 3, 8, 9);
 				break;
 			case "Farm D":
-				createFarm(farmNameChosen, 650, 6, 7, 6);
+				createFarm(farmNameChosen, 650, 3, 7, 6);
 				break;
 		}
 		

@@ -199,7 +199,7 @@ public class SetUpScreen {
 		/* Description Text of Third Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionThree = new JTextPane();
 		farmChoiceDescriptionThree.setEditable(false);
-		farmChoiceDescriptionThree.setText("                 Farm C\r\n\r\nMoney Available: $300\r\nCrop Growth Rate: 7.0\r\nAnimal Healthiness: 8\r\nAnimal Happiness: 9");
+		farmChoiceDescriptionThree.setText("                 Farm C\r\n\r\nMoney Available: $300\r\nCrop Growth Rate: 3.0\r\nAnimal Healthiness: 8\r\nAnimal Happiness: 9");
 		farmChoiceDescriptionThree.setBackground(Color.LIGHT_GRAY);
 		farmChoiceDescriptionThree.setBounds(427, 292, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionThree);
@@ -207,7 +207,7 @@ public class SetUpScreen {
 		/* Description Text of Fourth Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionFour = new JTextPane();
 		farmChoiceDescriptionFour.setEditable(false);
-		farmChoiceDescriptionFour.setText("                 Farm D\r\n\r\nMoney Available: $650\r\nCrop Growth Rate: 6.0\r\nAnimal Healthiness: 7\r\nAnimal Happiness: 6");
+		farmChoiceDescriptionFour.setText("                 Farm D\r\n\r\nMoney Available: $650\r\nCrop Growth Rate: 3.0\r\nAnimal Healthiness: 7\r\nAnimal Happiness: 6");
 		farmChoiceDescriptionFour.setBackground(Color.LIGHT_GRAY);
 		farmChoiceDescriptionFour.setBounds(610, 292, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionFour);

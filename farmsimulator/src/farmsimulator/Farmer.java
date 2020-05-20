@@ -130,6 +130,9 @@ public class Farmer {
 	public void tendToFarmLand(ArrayList<Crop> cropsOwned, ArrayList<Animal> animalsOwned) {
 		for (Crop crop : cropsOwned) {
 			crop.setDaysTillHarvest(crop.getDaysTillHarvest() - 1);
+			if (crop.getDaysTillHarvest() < 0) {
+				crop.setDaysTillHarvest(0);
+			}
 		}
 		for (Animal animal : animalsOwned) {
 			double add = (animal.getAnimalHappiness() + 1);
