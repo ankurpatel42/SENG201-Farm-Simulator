@@ -100,13 +100,13 @@ public class PurchaseAnimal {
 		frmPurchaseAnimal.getContentPane().add(lblMoney);
 
 		JLabel lblMoneyAvailable = new JLabel("");
-		lblMoneyAvailable.setBounds(130, 37, 110, 16);
+		lblMoneyAvailable.setBounds(130, 37, 209, 16);
 		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 		lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 		frmPurchaseAnimal.getContentPane().add(lblMoneyAvailable);
 		
 		JLabel lblSelect = new JLabel("Select Animal");
-		lblSelect.setBounds(56, 65, 85, 16);
+		lblSelect.setBounds(47, 65, 115, 16);
 		frmPurchaseAnimal.getContentPane().add(lblSelect);
 		
 		JLabel lblCropItems = new JLabel("Animals");
@@ -123,7 +123,7 @@ public class PurchaseAnimal {
 			public void actionPerformed(ActionEvent e) {
 				animalChosen = (String)comboBoxAnimals.getSelectedItem();
 				String nameSelected = JOptionPane.showInputDialog("Give your " + animalChosen + " a name!");
-				message = game.createAnimal(animalChosen, nameSelected);
+				message = game.createAnimalCheck(animalChosen, nameSelected);
 						
 				JOptionPane.showMessageDialog(frmPurchaseAnimal, message);
 				
