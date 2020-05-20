@@ -157,7 +157,10 @@ public class CropWindow{
 				if (message.startsWith("You fertilised") && item.getItemName() != "Water") {
 					itemListModel.removeElement(item);
 				}
+				
+				frmCrops.repaint();
 			}
+			
 		});
 		frmCrops.getContentPane().add(btnUseItem);
 		
