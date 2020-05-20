@@ -95,15 +95,15 @@ public class StoreWindow {
 		frmGeneralStore = new JFrame();
 		frmGeneralStore.setVisible(true);
 		frmGeneralStore.setTitle("General Store");
-		frmGeneralStore.setBounds(100, 100, 415, 335);
+		frmGeneralStore.setBounds(100, 100, 388, 343);
 		frmGeneralStore.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGeneralStore.getContentPane().setLayout(null);
 		
 		lblStoreTitle = new JLabel("Welcome to the General Store!");
 		lblStoreTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStoreTitle.setFont(new Font("Arial", Font.BOLD, 15));
-		lblStoreTitle.setSize(244, 16);
-		lblStoreTitle.setLocation(new Point(79, 11));
+		lblStoreTitle.setSize(291, 16);
+		lblStoreTitle.setLocation(new Point(66, 12));
 		lblStoreTitle.setMaximumSize(new Dimension(90, 16));
 		lblStoreTitle.setMinimumSize(new Dimension(90, 16));
 		frmGeneralStore.getContentPane().add(lblStoreTitle);
@@ -114,7 +114,7 @@ public class StoreWindow {
 		frmGeneralStore.getContentPane().add(lblMoney);
 		
 		JLabel lblMoneyAvailable = new JLabel("");
-		lblMoneyAvailable.setBounds(139, 51, 110, 16);
+		lblMoneyAvailable.setBounds(159, 50, 110, 16);
 		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 		lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 		frmGeneralStore.getContentPane().add(lblMoneyAvailable);
@@ -126,7 +126,7 @@ public class StoreWindow {
 				game.launchPurchaseItemWindow();
 			}
 		});
-		btnItem.setBounds(41, 78, 148, 29);
+		btnItem.setBounds(41, 78, 164, 29);
 		frmGeneralStore.getContentPane().add(btnItem);
 		
 		JButton btnCrop = new JButton("Purchase Crops");
@@ -136,7 +136,7 @@ public class StoreWindow {
 				game.launchPurchaseCropWindow();
 			}
 		});
-		btnCrop.setBounds(41, 118, 148, 29);
+		btnCrop.setBounds(41, 118, 164, 29);
 		frmGeneralStore.getContentPane().add(btnCrop);
 		
 		JButton btnAnimal = new JButton("Purchase Animals");
@@ -146,7 +146,7 @@ public class StoreWindow {
 				game.launchPurchaseAnimalWindow();
 			}
 		});
-		btnAnimal.setBounds(41, 159, 148, 29);
+		btnAnimal.setBounds(41, 159, 164, 29);
 		frmGeneralStore.getContentPane().add(btnAnimal);
 		
 		JButton btnLeave = new JButton("Leave Store");
@@ -157,7 +157,7 @@ public class StoreWindow {
 				game.launchMainScreen();
 			}
 		});
-		btnLeave.setBounds(233, 236, 121, 29);
+		btnLeave.setBounds(232, 241, 121, 29);
 		frmGeneralStore.getContentPane().add(btnLeave);
 		
 		JLabel lblItems = new JLabel("Items Owned");
@@ -169,7 +169,7 @@ public class StoreWindow {
 		itemListModel.addAll(game.getItemsOwnedByFarmer());
 		
 		itemsOwnedScroller.setBounds(232, 78, 122, 110);
-		frmGeneralStore.add(itemsOwnedScroller);
+		frmGeneralStore.getContentPane().add(itemsOwnedScroller);
 		
 		itemList.setBackground(Color.LIGHT_GRAY);
 
