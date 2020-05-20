@@ -801,7 +801,7 @@ public class GameEnvironment {
 	/**
 	 * Launches the setup screen window.
 	 */
-	public void launchSetUpScreen() {
+	public void launchSetupScreen() {
 		SetupScreen setUpScreenWindow = new SetupScreen(this);
 	}
 	
@@ -945,7 +945,7 @@ public class GameEnvironment {
 	 */
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
-		game.launchSetUpScreen();
+		game.launchSetupScreen();
 	}
 }
 
