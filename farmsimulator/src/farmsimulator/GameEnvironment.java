@@ -811,8 +811,8 @@ public class GameEnvironment {
 	/**
 	 * Launches the setup screen window.
 	 */
-	public void launchSetupScreen() {
-		SetupScreen setUpScreenWindow = new SetupScreen(this);
+	public void launchSetUpScreen() {
+		SetUpScreen setUpScreenWindow = new SetUpScreen(this);
 	}
 	
 	/**
@@ -820,8 +820,8 @@ public class GameEnvironment {
 	 * 
 	 * @param setUpScreenFrame	A SetUpScreen object which is the setup screen window.	
 	 */
-	public void closeSetupScreen(SetupScreen setUpScreenFrame) {
-		setUpScreenFrame.closeSetupScreen();
+	public void closeSetUpScreen(SetUpScreen setUpScreenFrame) {
+		setUpScreenFrame.closeSetUpScreen();
 		launchMainScreen();
 	}
 	
@@ -955,7 +955,7 @@ public class GameEnvironment {
 	 */
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
-		game.launchSetupScreen();
+		game.launchSetUpScreen();
 	}
 }
 

@@ -21,7 +21,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
 
 /**
  * This is the setup window where the user enters their farm name, farmer name, type of farm to play on and game length.
@@ -31,7 +30,7 @@ import javax.swing.ImageIcon;
  */
 
 
-public class SetupScreen {
+public class SetUpScreen {
 	
 	private GameEnvironment game;
 
@@ -62,7 +61,7 @@ public class SetupScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SetupScreen window = new SetupScreen();
+					SetUpScreen window = new SetUpScreen();
 					window.setUpScreenFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -74,7 +73,7 @@ public class SetupScreen {
 	/**
 	 * Create the application.
 	 */
-	public SetupScreen() {
+	public SetUpScreen() {
 		initialize();
 	}
 	
@@ -83,7 +82,7 @@ public class SetupScreen {
 	 * 
 	 * @param startGame 		The game environment played on.
 	 */
-	public SetupScreen(GameEnvironment startGame) {
+	public SetUpScreen(GameEnvironment startGame) {
 		this.game = startGame;
 		initialize();
 		setUpScreenFrame.setVisible(true);
@@ -92,7 +91,7 @@ public class SetupScreen {
 	/**
 	 * Closes the window after the user has started the main game.
 	 */
-	public void closeSetupScreen() {
+	public void closeSetUpScreen() {
 		setUpScreenFrame.dispose();
 	}
 	
@@ -100,7 +99,7 @@ public class SetupScreen {
 	 * Closes the window after the user has started the main game.
 	 */
 	public void finishedWindow() {
-		game.closeSetupScreen(this);
+		game.closeSetUpScreen(this);
 	}
 
 	/**
@@ -109,20 +108,20 @@ public class SetupScreen {
 	private void initialize() {
 		setUpScreenFrame = new JFrame();
 		setUpScreenFrame.setTitle("Farm Simulator Game");
-		setUpScreenFrame.setBounds(100, 100, 865, 522);
+		setUpScreenFrame.setBounds(100, 100, 770, 547);
 		setUpScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setUpScreenFrame.getContentPane().setLayout(null);
 		
 		/* Display game title */
 		JLabel gameTitle = new JLabel("Farm Game!");
 		gameTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		gameTitle.setFont(new Font("Dialog", Font.BOLD, 25));
-		gameTitle.setBounds(322, 10, 236, 46);
+		gameTitle.setFont(new Font("Arial", Font.BOLD, 28));
+		gameTitle.setBounds(262, 11, 192, 46);
 		setUpScreenFrame.getContentPane().add(gameTitle);
 		
 		/* Message that asks that user to enter their chosen farmer name */
 		enterFarmerNameMessage = new JLabel("Give your farmer a name:");
-		enterFarmerNameMessage.setBounds(63, 70, 203, 17);
+		enterFarmerNameMessage.setBounds(63, 70, 161, 17);
 		setUpScreenFrame.getContentPane().add(enterFarmerNameMessage);
 		
 		/* Text Field where user inputs their farmer name */
@@ -133,7 +132,7 @@ public class SetupScreen {
 		
 		/* Message that asks that user to enter their chosen farm name */
 		enterFarmNameMessage = new JLabel("Give your farm a name:");
-		enterFarmNameMessage.setBounds(63, 110, 175, 17);
+		enterFarmNameMessage.setBounds(63, 110, 149, 17);
 		setUpScreenFrame.getContentPane().add(enterFarmNameMessage);
 		
 		/* Text Field where user inputs their farm name */
@@ -150,7 +149,7 @@ public class SetupScreen {
 		
 		/* Message that asks the user to enter the number of days they want the game to last (game length) */
 		selectGameLengthMessage = new JLabel("Select number of days:");
-		selectGameLengthMessage.setBounds(63, 201, 175, 17);
+		selectGameLengthMessage.setBounds(63, 201, 149, 17);
 		setUpScreenFrame.getContentPane().add(selectGameLengthMessage);
 		
 		/* Slider so users select the number of days the game is to last, users are only able to choose distinct values 5,6,7,8,9 
@@ -177,43 +176,43 @@ public class SetupScreen {
 		chooseAFarmLabel = new JLabel("Choose a Farm!");
 		chooseAFarmLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		chooseAFarmLabel.setFont(new Font("Arial", Font.BOLD, 18));
-		chooseAFarmLabel.setBounds(344, 258, 173, 24);
+		chooseAFarmLabel.setBounds(303, 246, 142, 24);
 		setUpScreenFrame.getContentPane().add(chooseAFarmLabel);
 		
 		/* Description Text of First Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionOne = new JTextPane();
 		farmChoiceDescriptionOne.setEditable(false);
 		farmChoiceDescriptionOne.setBackground(Color.LIGHT_GRAY);
-		farmChoiceDescriptionOne.setText("             Farm A\r\n\r\nMoney Available: $1000\r\nCrop Growth Rate: 2\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 3");
-		farmChoiceDescriptionOne.setBounds(63, 292, 161, 116);
+		farmChoiceDescriptionOne.setText("Farm A\r\n\r\nMoney Available: $1000\r\nCrop Growth Rate: 2\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 3");
+		farmChoiceDescriptionOne.setBounds(63, 292, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionOne);
 		
 		/* Description Text of Second Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionTwo = new JTextPane();
 		farmChoiceDescriptionTwo.setEditable(false);
-		farmChoiceDescriptionTwo.setText("            Farm B\r\n\r\nMoney Available: $600\r\nCrop Growth Rate: 1\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 9");
+		farmChoiceDescriptionTwo.setText("Farm B\r\n\r\nMoney Available: $600\r\nCrop Growth Rate: 1\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 9");
 		farmChoiceDescriptionTwo.setBackground(Color.LIGHT_GRAY);
-		farmChoiceDescriptionTwo.setBounds(261, 292, 155, 116);
+		farmChoiceDescriptionTwo.setBounds(223, 292, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionTwo);
 		
 		/* Description Text of Third Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionThree = new JTextPane();
 		farmChoiceDescriptionThree.setEditable(false);
-		farmChoiceDescriptionThree.setText("             Farm C\r\n\r\nMoney Available: $300\r\nCrop Growth Rate: 7\r\nAnimal Healthiness: 8\r\nAnimal Happiness: 9");
+		farmChoiceDescriptionThree.setText("Farm C\r\n\r\nMoney Available: $300\r\nCrop Growth Rate: 7\r\nAnimal Healthiness: 8\r\nAnimal Happiness: 9");
 		farmChoiceDescriptionThree.setBackground(Color.LIGHT_GRAY);
-		farmChoiceDescriptionThree.setBounds(450, 292, 155, 116);
+		farmChoiceDescriptionThree.setBounds(388, 292, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionThree);
 		
 		/* Description Text of Fourth Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionFour = new JTextPane();
 		farmChoiceDescriptionFour.setEditable(false);
-		farmChoiceDescriptionFour.setText("             Farm D\r\n\r\nMoney Available: $650\r\nCrop Growth Rate: 6\r\nAnimal Healthiness: 7\r\nAnimal Happiness: 6");
+		farmChoiceDescriptionFour.setText("Farm D\r\n\r\nMoney Available: $650\r\nCrop Growth Rate: 6\r\nAnimal Healthiness: 7\r\nAnimal Happiness: 6");
 		farmChoiceDescriptionFour.setBackground(Color.LIGHT_GRAY);
-		farmChoiceDescriptionFour.setBounds(642, 292, 161, 116);
+		farmChoiceDescriptionFour.setBounds(550, 292, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionFour);
 		
 		farmSelection = new JComboBox<>(farmOptionsModel);
-		farmSelection.setBounds(372, 442, 121, 22);
+		farmSelection.setBounds(103, 442, 121, 22);
 		setUpScreenFrame.getContentPane().add(farmSelection);
 		
 		/* Once the user clicks the start button the main game will start, the farmer and the chosen farm will be instantiated,
@@ -238,24 +237,19 @@ public class SetupScreen {
 					game.createFarmChosenByUser(farmNameChosen, farmChosen);
 					game.createGeneralStore();
 					game.createWater();
-	
-					closeSetupScreen();
+					
+					closeSetUpScreen();
 					finishedWindow();
 				}
 			}
 		});
 		
-		beginGameButton.setBounds(714, 442, 89, 23);
+		beginGameButton.setBounds(365, 442, 89, 23);
 		setUpScreenFrame.getContentPane().add(beginGameButton);
 		
 		JLabel famerAgeLabel = new JLabel("Give your farmer an age:");
-		famerAgeLabel.setBounds(63, 139, 175, 37);
+		famerAgeLabel.setBounds(63, 152, 161, 14);
 		setUpScreenFrame.getContentPane().add(famerAgeLabel);
-		
-		JLabel setupscreenImage = new JLabel("");
-		setupscreenImage.setIcon(new ImageIcon(SetupScreen.class.getResource("/images/setupscreenimage.jpeg.jpeg")));
-		setupscreenImage.setBounds(513, 61, 290, 173);
-		setUpScreenFrame.getContentPane().add(setupscreenImage);
 		
 	}
 }

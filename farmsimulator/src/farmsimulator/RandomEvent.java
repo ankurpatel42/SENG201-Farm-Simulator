@@ -10,6 +10,12 @@ public class RandomEvent {
 	private String message;
 	private int tracker;
 	
+	/**
+	 * Decides if and what random event will occur that day through random numbers 
+	 * 
+	 * @param farm						The Farm where the random event will have its effects
+	 * @return 								String with message to the user about the random event, null if one doesn't happen
+	 */
 	public String decideRandomEvent(Farm farm) {
 		rand = new Random();
 		rand_int = rand.nextInt(100);
@@ -28,6 +34,12 @@ public class RandomEvent {
 		return message;
 	}
 	
+	/**
+	 * Random event of a fence breaking, random number of animals escape, rest have happiness reduced
+	 * 
+	 * @param farm						Farm class that holds the list of animals affected
+	 * @return 								String with the outcome of the broken fence for the user
+	 */
 	public String fenceBroken(Farm farm) {
 		if (farm.getAnimalList().size() > 0) {
 			rand = new Random();
@@ -49,6 +61,12 @@ public class RandomEvent {
 		return message;
 	}
 	
+	/**
+	 * Random event of a drought, half the crops are destroyed
+	 * 
+	 * @param farm						Farm class that holds the list of crops affected
+	 * @return 								String with the outcome of the drought for the user
+	 */
 	public String drought(Farm farm) {
 		if (farm.getCropList().size() > 0) {
 			int cropsNeedGone = Math.round((farm.getCropList().size()/2));
@@ -67,6 +85,12 @@ public class RandomEvent {
 		return message;
 	}
 	
+	/**
+	 * Random event of winning the country fair, money boost depends on crops and animals on farm.
+	 * 
+	 * @param farm						Farm class that holds the list of crops and animals and the money
+	 * @return 								String with the outcome of winning the fair for the user
+	 */
 	public String winCountyFair(Farm farm) {
 		double moneyWon = 200 + farm.getAnimalList().size() * 100 + farm.getCropList().size() * 100;
 		farm.setMoneyAvailable(farm.getMoneyAvailable() + moneyWon);
