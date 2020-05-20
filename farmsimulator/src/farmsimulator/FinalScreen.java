@@ -158,7 +158,7 @@ public class FinalScreen {
 			public void actionPerformed(ActionEvent e) {
 				closeFinalScreen();
 				finishedWindow();
-				game.launchSetUpScreen();
+				game.launchSetupScreen();
 			}
 		});
 		reStartGame.setBounds(65, 370, 200, 23);
