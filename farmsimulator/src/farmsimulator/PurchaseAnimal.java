@@ -122,7 +122,7 @@ public class PurchaseAnimal {
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				animalChosen = (String)comboBoxAnimals.getSelectedItem();
-				String nameSelected = JOptionPane.showInputDialog("Give your " + animalChosen + " a name!");
+				String nameSelected = JOptionPane.showInputDialog(frmPurchaseAnimal, "Give your " + animalChosen + " a name!");
 				message = game.createAnimalCheck(animalChosen, nameSelected);
 						
 				JOptionPane.showMessageDialog(frmPurchaseAnimal, message);
