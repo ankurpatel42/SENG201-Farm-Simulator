@@ -105,7 +105,7 @@ public class PurchaseCrop {
 		frmPurchaseCrop.getContentPane().add(lblMoney);
 		
 		JLabel lblMoneyAvailable = new JLabel("");
-		lblMoneyAvailable.setBounds(130, 37, 110, 16);
+		lblMoneyAvailable.setBounds(155, 36, 197, 16);
 		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 		lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 		frmPurchaseCrop.getContentPane().add(lblMoneyAvailable);
