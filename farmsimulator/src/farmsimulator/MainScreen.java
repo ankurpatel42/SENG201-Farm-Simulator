@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
 
 /**
  * This is the main window that is the Farm home, this where the user can perform actions on the farm.
@@ -80,19 +81,19 @@ public class MainScreen {
 	private void initialize() {
 		mainScreen = new JFrame();
 		mainScreen.setTitle("Farm Home");
-		mainScreen.setBounds(100, 100, 749, 515);
+		mainScreen.setBounds(100, 100, 765, 531);
 		mainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainScreen.getContentPane().setLayout(null);
 		
 		
 		JLabel daysLeftMessage = new JLabel("Days Left:");
 		daysLeftMessage.setFont(new Font("Arial", Font.BOLD, 17));
-		daysLeftMessage.setBounds(100, 103, 90, 47);
+		daysLeftMessage.setBounds(100, 103, 141, 47);
 		mainScreen.getContentPane().add(daysLeftMessage);
 		
 		JLabel daysLeftLabel = new JLabel("");
 		daysLeftLabel.setFont(new Font("Arial", Font.PLAIN, 17));
-		daysLeftLabel.setBounds(280, 119, 46, 14);
+		daysLeftLabel.setBounds(292, 119, 46, 14);
 		daysLeftLabel.setText(Integer.toString(game.getGameLength() - game.getFarmer().getDayNum() + 1));
 		mainScreen.getContentPane().add(daysLeftLabel);
 		
@@ -103,41 +104,40 @@ public class MainScreen {
 		
 		JLabel farmNameChosen = new JLabel("");
 		farmNameChosen.setFont(new Font("Arial", Font.BOLD, 27));
-		farmNameChosen.setBounds(344, 30, 212, 31);
+		farmNameChosen.setBounds(352, 30, 364, 31);
 		farmNameChosen.setText(game.getFarmName());
 		mainScreen.getContentPane().add(farmNameChosen);
 		
 		JLabel cropGrowthRateMessage = new JLabel("Crop growth rate:");
 		cropGrowthRateMessage.setFont(new Font("Arial", Font.BOLD, 17));
-		cropGrowthRateMessage.setBounds(434, 147, 148, 47);
+		cropGrowthRateMessage.setBounds(434, 147, 170, 47);
 		mainScreen.getContentPane().add(cropGrowthRateMessage);
 		
 		JLabel moneyAvailableMessage = new JLabel("Money available:");
 		moneyAvailableMessage.setFont(new Font("Arial", Font.BOLD, 17));
-		moneyAvailableMessage.setBounds(434, 103, 148, 47);
+		moneyAvailableMessage.setBounds(434, 103, 170, 47);
 		mainScreen.getContentPane().add(moneyAvailableMessage);
 		
 		JLabel actionsLeftMessage = new JLabel("Actions left in day:");
 		actionsLeftMessage.setFont(new Font("Arial", Font.BOLD, 17));
-		actionsLeftMessage.setBounds(100, 147, 168, 47);
+		actionsLeftMessage.setBounds(100, 147, 183, 47);
 		mainScreen.getContentPane().add(actionsLeftMessage);
 		
 		JLabel cropGrowthRate = new JLabel("0");
 		cropGrowthRate.setFont(new Font("Arial", Font.PLAIN, 17));
-		cropGrowthRate.setBounds(592, 163, 46, 14);
-		cropGrowthRate.setText(Double.toString(game.getFarmCropGrowthRate()));
+		cropGrowthRate.setBounds(623, 163, 46, 14);
 		mainScreen.getContentPane().add(cropGrowthRate);
 		
 		JLabel moneyAvailable = new JLabel("0");
 		moneyAvailable.setFont(new Font("Arial", Font.PLAIN, 17));
-		moneyAvailable.setBounds(592, 119, 95, 14);
+		moneyAvailable.setBounds(616, 119, 95, 14);
 		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 		moneyAvailable.setText("$" + formatMoneyAvailable);
 		mainScreen.getContentPane().add(moneyAvailable);
 		
 		JLabel actionsLeft = new JLabel(String.valueOf(game.getFarmerActionsLeft()));
 		actionsLeft.setFont(new Font("Arial", Font.PLAIN, 17));
-		actionsLeft.setBounds(280, 163, 46, 14);
+		actionsLeft.setBounds(292, 163, 46, 14);
 		mainScreen.getContentPane().add(actionsLeft);
 		
 		JButton viewCrops = new JButton("View Crops");
@@ -147,11 +147,11 @@ public class MainScreen {
 				game.launchCropWindow();
 			}
 		});
-		viewCrops.setBounds(100, 242, 123, 23);
+		viewCrops.setBounds(528, 231, 141, 23);
 		mainScreen.getContentPane().add(viewCrops);
 		
 		JButton visitStore = new JButton("Visit Store");
-		visitStore.setBounds(100, 321, 123, 23);
+		visitStore.setBounds(356, 321, 141, 23);
 		visitStore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeMainScreen();
@@ -167,7 +167,7 @@ public class MainScreen {
 				game.launchAnimalWindow();
 			}
 		});
-		viewAnimals.setBounds(520, 242, 118, 23);
+		viewAnimals.setBounds(356, 231, 139, 23);
 		mainScreen.getContentPane().add(viewAnimals);
 		
 		JButton tendFarm = new JButton("Tend Farm");
@@ -178,7 +178,7 @@ public class MainScreen {
 				actionsLeft.setText(String.valueOf(game.getFarmerActionsLeft()));
 			}
 		});
-		tendFarm.setBounds(520, 321, 118, 23);
+		tendFarm.setBounds(530, 321, 139, 23);
 		mainScreen.getContentPane().add(tendFarm);
 		
 		JButton moveToNextDay = new JButton("MOVE TO NEXT DAY");
@@ -200,8 +200,12 @@ public class MainScreen {
 				}
 			}
 		});
-		moveToNextDay.setBounds(298, 395, 157, 23);
+		moveToNextDay.setBounds(422, 424, 183, 23);
 		mainScreen.getContentPane().add(moveToNextDay);
+		
+		JLabel mainScreenImage = new JLabel("");
+		mainScreenImage.setIcon(new ImageIcon(MainScreen.class.getResource("/images/mainscreenimage.jpeg")));
+		mainScreenImage.setBounds(100, 218, 238, 245);
+		mainScreen.getContentPane().add(mainScreenImage);
 	}
-	
 }
