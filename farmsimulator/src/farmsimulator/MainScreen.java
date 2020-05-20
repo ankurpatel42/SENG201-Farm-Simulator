@@ -194,9 +194,13 @@ public class MainScreen {
 				else {
 					daysLeftLabel.setText(Integer.toString(daysLeft));
 					actionsLeft.setText(String.valueOf(game.getFarmerActionsLeft()));
+					JOptionPane.showMessageDialog(mainScreen, message);
+					message = game.randomEvent();
+					if (message != null) {
+						JOptionPane.showMessageDialog(mainScreen, message);
+					}
 					String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 					moneyAvailable.setText("$" + formatMoneyAvailable);
-					JOptionPane.showMessageDialog(mainScreen, message);
 				}
 			}
 		});

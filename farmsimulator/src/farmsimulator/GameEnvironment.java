@@ -429,11 +429,21 @@ public class GameEnvironment {
 	}
 	
 	/**
+	 * Each day there is a chance a random event occurs, this method determines what happens
+	 * 
+	 * @return							A string that tells the user if a random event has happened and what the consequences are							 
+	 */
+	public String randomEvent() {
+		RandomEvent event = new RandomEvent();
+		return event.decideRandomEvent(farm);
+	}
+	
+	/**
 	 * Feeds an animal chosen by the user using a food item that is chosen by the user.
 	 * 
 	 * @param animalToBeFed			An animal object that is to be fed.
 	 * @param item					An item object used to feed animals.
-	 * @return							A string that tells the user whetehr they have successfully fed their chosen animal using their item of choice.
+	 * @return							A string that tells the user whether they have successfully fed their chosen animal using their item of choice.
 	 */
 	public String feedAnimal(Animal animalToBeFed, Item item) {
 		return animalToBeFed.feedAnimal(item, farmer, getItemsOwnedByFarmer());
