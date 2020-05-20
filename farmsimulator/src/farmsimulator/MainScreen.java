@@ -126,6 +126,8 @@ public class MainScreen {
 		JLabel cropGrowthRate = new JLabel("0");
 		cropGrowthRate.setFont(new Font("Arial", Font.PLAIN, 17));
 		cropGrowthRate.setBounds(623, 163, 46, 14);
+		String cropGrowthRateFormatted = Double.toString(game.getFarmCropGrowthRate());
+		cropGrowthRate.setText(cropGrowthRateFormatted);
 		mainScreen.getContentPane().add(cropGrowthRate);
 		
 		JLabel moneyAvailable = new JLabel("0");
