@@ -336,13 +336,16 @@ public class GameEnvironment {
 		return message;
 	}
 	
-	/** Takes animal user has chosen in combo box and creates and purchases that animal after checking name is valid
+	/**
+	 * Takes animal user has chosen in combo box and creates and purchases that animal after checking name is valid
 	 * 
+	 *
 	 * 
-	 * @param itemSelected			A string selected from the combo box to purchase.
-	 * @return 							A string message to be displayed in the GUI, whether purchase was successful or not
+	 * @param animalSelected		The animal chosen by the user to purchase.
+	 * @param nameSelected			The animal name input by the user.
+	 * @return							A string message to be displayed in the GUI, whether purchase was successful or not
 	 */
-	public String createAnimal(String animalSelected, String nameSelected) {
+	public String createAnimalCheck(String animalSelected, String nameSelected) {
 		switch (animalSelected) {
 			case "Cow":
 				message = cowNameValidCheck(nameSelected);
@@ -808,8 +811,8 @@ public class GameEnvironment {
 	/**
 	 * Launches the setup screen window.
 	 */
-	public void launchSetUpScreen() {
-		SetUpScreen setUpScreenWindow = new SetUpScreen(this);
+	public void launchSetupScreen() {
+		SetupScreen setUpScreenWindow = new SetupScreen(this);
 	}
 	
 	/**
@@ -817,8 +820,8 @@ public class GameEnvironment {
 	 * 
 	 * @param setUpScreenFrame	A SetUpScreen object which is the setup screen window.	
 	 */
-	public void closeSetUpScreen(SetUpScreen setUpScreenFrame) {
-		setUpScreenFrame.closeSetUpScreen();
+	public void closeSetupScreen(SetupScreen setUpScreenFrame) {
+		setUpScreenFrame.closeSetupScreen();
 		launchMainScreen();
 	}
 	
@@ -952,7 +955,7 @@ public class GameEnvironment {
 	 */
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
-		game.launchSetUpScreen();
+		game.launchSetupScreen();
 	}
 }
 

@@ -18,6 +18,7 @@ import javax.swing.ListSelectionModel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.ImageIcon;
 
 /**
  * This is the animal window where the user can see and perform actions on their animals.
@@ -107,7 +108,7 @@ public class AnimalWindow {
 	private void initialize() {
 		animalsFrame = new JFrame();
 		animalsFrame.setTitle("Animals");
-		animalsFrame.setBounds(100, 100, 612, 413);
+		animalsFrame.setBounds(100, 100, 605, 599);
 		animalsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		animalsFrame.getContentPane().setLayout(null);
 		
@@ -156,7 +157,7 @@ public class AnimalWindow {
 		animalsFrame.getContentPane().add(playWithAnimalButton);
 		
 		JButton backToFarmButton = new JButton("Back to Home");
-		backToFarmButton.setBounds(312, 326, 144, 23);
+		backToFarmButton.setBounds(404, 515, 144, 23);
 		backToFarmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeAnimalWindow();
@@ -188,7 +189,7 @@ public class AnimalWindow {
 		animalFoodList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		animalFoodScroller.setBounds(70, 82, 162, 109);
-		animalsFrame.add(animalFoodScroller);
+		animalsFrame.getContentPane().add(animalFoodScroller);
 		
 		animalFoodList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		animalFoodList.setForeground(Color.WHITE);
@@ -197,12 +198,27 @@ public class AnimalWindow {
 		JLabel animalFoodItemsLabel = new JLabel("Animal Food Items available");
 		animalFoodItemsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		animalFoodItemsLabel.setFont(new Font("Arial", Font.BOLD, 11));
-		animalFoodItemsLabel.setBounds(70, 54, 162, 32);
+		animalFoodItemsLabel.setBounds(44, 54, 217, 32);
 		animalsFrame.getContentPane().add(animalFoodItemsLabel);
 		
-		JLabel lblAnimalDescription = new JLabel("Name        :        Healthiness        :        Happiness");
+		JLabel lblAnimalDescription = new JLabel("Name    :     Healthiness    :     Happiness");
 		lblAnimalDescription.setFont(new Font("Arial", Font.BOLD, 11));
 		lblAnimalDescription.setBounds(281, 63, 267, 14);
 		animalsFrame.getContentPane().add(lblAnimalDescription);
+		
+		JLabel cowIcon = new JLabel("");
+		cowIcon.setIcon(new ImageIcon(AnimalWindow.class.getResource("/images/cowimage.jpeg")));
+		cowIcon.setBounds(70, 309, 144, 169);
+		animalsFrame.getContentPane().add(cowIcon);
+		
+		JLabel pigIcon = new JLabel("");
+		pigIcon.setIcon(new ImageIcon(AnimalWindow.class.getResource("/images/pigicon.jpeg")));
+		pigIcon.setBounds(226, 309, 159, 172);
+		animalsFrame.getContentPane().add(pigIcon);
+		
+		JLabel sheepIcon = new JLabel("");
+		sheepIcon.setIcon(new ImageIcon(AnimalWindow.class.getResource("/images/sheepimage.jpeg")));
+		sheepIcon.setBounds(397, 309, 151, 180);
+		animalsFrame.getContentPane().add(sheepIcon);
 	}
 }

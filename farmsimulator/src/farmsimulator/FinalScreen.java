@@ -98,45 +98,45 @@ public class FinalScreen {
 		finalScreenFrame.getContentPane().add(lblgameOverMessage);
 		
 		JLabel lblgameDurationMessage = new JLabel("Days your journey lasted :");
-		lblgameDurationMessage.setBounds(36, 92, 255, 72);
+		lblgameDurationMessage.setBounds(36, 92, 279, 72);
 		lblgameDurationMessage.setFont(new Font("Arial", Font.BOLD, 18));
 		finalScreenFrame.getContentPane().add(lblgameDurationMessage);
 		
 		JLabel lblnumberOfCropsMessage = new JLabel("Number of Crops left : ");
-		lblnumberOfCropsMessage.setBounds(37, 135, 228, 72);
+		lblnumberOfCropsMessage.setBounds(37, 135, 278, 72);
 		lblnumberOfCropsMessage.setFont(new Font("Arial", Font.BOLD, 18));
 		finalScreenFrame.getContentPane().add(lblnumberOfCropsMessage);
 		
 		JLabel lblnumberOfAnimalsMessage = new JLabel("Number of Animals : ");
-		lblnumberOfAnimalsMessage.setBounds(37, 184, 200, 62);
+		lblnumberOfAnimalsMessage.setBounds(37, 184, 247, 62);
 		lblnumberOfAnimalsMessage.setFont(new Font("Arial", Font.BOLD, 18));
 		finalScreenFrame.getContentPane().add(lblnumberOfAnimalsMessage);
 		
 		JLabel animalStatusMessage = new JLabel("Overall Animal Status :");
-		animalStatusMessage.setBounds(37, 219, 228, 72);
+		animalStatusMessage.setBounds(37, 219, 264, 72);
 		animalStatusMessage.setFont(new Font("Arial", Font.BOLD, 18));
 		finalScreenFrame.getContentPane().add(animalStatusMessage);
 		
 		JLabel lbldaysLasted = new JLabel("New label");
-		lbldaysLasted.setBounds(297, 117, 91, 24);
+		lbldaysLasted.setBounds(369, 117, 91, 24);
 		lbldaysLasted.setFont(new Font("Arial", Font.BOLD, 14));
 		lbldaysLasted.setText(Integer.toString(game.getGameLength()));
 		finalScreenFrame.getContentPane().add(lbldaysLasted);
 		
 		JLabel lblnumberOfCrops = new JLabel("New label");
-		lblnumberOfCrops.setBounds(297, 160, 91, 24);
+		lblnumberOfCrops.setBounds(369, 160, 91, 24);
 		lblnumberOfCrops.setFont(new Font("Arial", Font.BOLD, 14));
 		lblnumberOfCrops.setText(Integer.toString(game.getCropsOwned().size()));
 		finalScreenFrame.getContentPane().add(lblnumberOfCrops);
 		
 		JLabel lblNumberOfAnimals = new JLabel("New label");
-		lblNumberOfAnimals.setBounds(297, 204, 91, 24);
+		lblNumberOfAnimals.setBounds(369, 204, 91, 24);
 		lblNumberOfAnimals.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNumberOfAnimals.setText(Integer.toString(game.getAnimalsOnFarm().size()));
 		finalScreenFrame.getContentPane().add(lblNumberOfAnimals);
 		
 		JLabel lblAnimalStatus = new JLabel("New label");
-		lblAnimalStatus.setBounds(297, 244, 91, 24);
+		lblAnimalStatus.setBounds(369, 244, 91, 24);
 		lblAnimalStatus.setFont(new Font("Arial", Font.BOLD, 14));
 		lblAnimalStatus.setText(Double.toString(game.getFinalAnimalStatus()));
 		finalScreenFrame.getContentPane().add(lblAnimalStatus);
@@ -147,7 +147,7 @@ public class FinalScreen {
 		finalScreenFrame.getContentPane().add(labelMoneyEarned);
 		
 		JLabel moneyEarned = new JLabel("$ 0.00");
-		moneyEarned.setBounds(297, 280, 91, 24);
+		moneyEarned.setBounds(369, 283, 91, 24);
 		moneyEarned.setFont(new Font("Arial", Font.BOLD, 14));
 		String finalMoney = String.format("%.2f", game.getFarmMoneyAvailable());
 		moneyEarned.setText("$ " + finalMoney);
@@ -158,10 +158,10 @@ public class FinalScreen {
 			public void actionPerformed(ActionEvent e) {
 				closeFinalScreen();
 				finishedWindow();
-				game.launchSetUpScreen();
+				game.launchSetupScreen();
 			}
 		});
-		reStartGame.setBounds(65, 370, 161, 23);
+		reStartGame.setBounds(65, 370, 200, 23);
 		finalScreenFrame.getContentPane().add(reStartGame);
 		
 		JButton btnCloseGame = new JButton("Quit Game");

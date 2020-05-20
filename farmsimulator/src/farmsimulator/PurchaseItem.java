@@ -104,7 +104,7 @@ public class PurchaseItem {
 		frmPurchaseItem.getContentPane().add(lblMoney);
 		
 		JLabel lblMoneyAvailable = new JLabel("");
-		lblMoneyAvailable.setBounds(130, 37, 110, 16);
+		lblMoneyAvailable.setBounds(148, 36, 178, 16);
 		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 		lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 		frmPurchaseItem.getContentPane().add(lblMoneyAvailable);

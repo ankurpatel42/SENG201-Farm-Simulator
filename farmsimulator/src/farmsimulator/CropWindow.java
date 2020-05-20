@@ -17,6 +17,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 /**
  * This is the purchase crop window where the user can purchase crops.
@@ -110,13 +111,13 @@ public class CropWindow{
 		frmCrops = new JFrame();
 		frmCrops.setVisible(true);
 		frmCrops.setTitle("Crops");
-		frmCrops.setBounds(100, 100, 399, 462);
+		frmCrops.setBounds(100, 100, 637, 515);
 		frmCrops.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		farmName = game.getFarmName();
 		frmCrops.getContentPane().setLayout(null);
 		JLabel lblTitle = new JLabel(farmName + " Farm's Crops");
-		lblTitle.setBounds(89, 11, 209, 16);
+		lblTitle.setBounds(89, 11, 243, 16);
 		lblTitle.setFont(new Font("Arial", Font.BOLD, 17));
 		frmCrops.getContentPane().add(lblTitle);
 		
@@ -133,7 +134,7 @@ public class CropWindow{
 		frmCrops.getContentPane().add(lblChooseItem);
 		
 		JButton btnHarvest = new JButton("Harvest Crop");
-		btnHarvest.setBounds(139, 280, 117, 29);
+		btnHarvest.setBounds(236, 297, 141, 29);
 		btnHarvest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String message = game.harvestCrops(listCrops.getSelectedValue());
@@ -146,7 +147,7 @@ public class CropWindow{
 		frmCrops.getContentPane().add(btnHarvest);
 		
 		JButton btnUseItem = new JButton("Fertilise Crop");
-		btnUseItem.setBounds(139, 358, 117, 29);
+		btnUseItem.setBounds(236, 379, 141, 29);
 		btnUseItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Crop crop = listCrops.getSelectedValue();
@@ -161,7 +162,7 @@ public class CropWindow{
 		frmCrops.getContentPane().add(btnUseItem);
 		
 		JButton btnBack = new JButton("Back to Home");
-		btnBack.setBounds(254, 390, 117, 29);
+		btnBack.setBounds(442, 430, 154, 29);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeCropWindow();
@@ -190,20 +191,25 @@ public class CropWindow{
 		listItems.setBackground(Color.DARK_GRAY);
 		
 		JLabel lblHarvestInstructions = new JLabel("Select a Crop from the list above to harvest");
-		lblHarvestInstructions.setBounds(49, 252, 280, 16);
+		lblHarvestInstructions.setBounds(133, 269, 326, 16);
 		frmCrops.getContentPane().add(lblHarvestInstructions);
 		
 		JLabel lblFertiliseInstructions = new JLabel("Select an crop to fertilise and an item");
-		lblFertiliseInstructions.setBounds(66, 313, 243, 16);
+		lblFertiliseInstructions.setBounds(162, 338, 297, 16);
 		frmCrops.getContentPane().add(lblFertiliseInstructions);
 		
 		JLabel lblFertiliseInstructionsTwo = new JLabel("to fertilise with from above");
-		lblFertiliseInstructionsTwo.setBounds(106, 330, 185, 16);
+		lblFertiliseInstructionsTwo.setBounds(206, 352, 226, 16);
 		frmCrops.getContentPane().add(lblFertiliseInstructionsTwo);
 		
 		JLabel lblCropColumnHeads = new JLabel("Field (Crop Type)	Days till harvest");
 		lblCropColumnHeads.setBounds(21, 52, 193, 16);
 		lblCropColumnHeads.setFont(new Font("Arial", Font.PLAIN, 11));
 		frmCrops.getContentPane().add(lblCropColumnHeads);
+		
+		JLabel cropsIcon = new JLabel("");
+		cropsIcon.setIcon(new ImageIcon(CropWindow.class.getResource("/images/crops.jpeg")));
+		cropsIcon.setBounds(365, 57, 231, 177);
+		frmCrops.getContentPane().add(cropsIcon);
 	}
 }
