@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 /**
  * This is the setup window where the user enters their farm name, farmer name, type of farm to play on and game length.
@@ -108,7 +109,7 @@ public class SetUpScreen {
 	private void initialize() {
 		setUpScreenFrame = new JFrame();
 		setUpScreenFrame.setTitle("Farm Simulator Game");
-		setUpScreenFrame.setBounds(100, 100, 770, 547);
+		setUpScreenFrame.setBounds(100, 100, 865, 522);
 		setUpScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setUpScreenFrame.getContentPane().setLayout(null);
 		
@@ -183,32 +184,32 @@ public class SetUpScreen {
 		farmChoiceDescriptionOne = new JTextPane();
 		farmChoiceDescriptionOne.setEditable(false);
 		farmChoiceDescriptionOne.setBackground(Color.LIGHT_GRAY);
-		farmChoiceDescriptionOne.setText("Farm A\r\n\r\nMoney Available: $1000\r\nCrop Growth Rate: 2\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 3");
+		farmChoiceDescriptionOne.setText("                 Farm A\r\n\r\nMoney Available: $1000\r\nCrop Growth Rate: 2.0\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 3");
 		farmChoiceDescriptionOne.setBounds(63, 292, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionOne);
 		
 		/* Description Text of Second Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionTwo = new JTextPane();
 		farmChoiceDescriptionTwo.setEditable(false);
-		farmChoiceDescriptionTwo.setText("Farm B\r\n\r\nMoney Available: $600\r\nCrop Growth Rate: 1\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 9");
+		farmChoiceDescriptionTwo.setText("                 Farm B\r\n\r\nMoney Available: $600\r\nCrop Growth Rate: 1.0\r\nAnimal Healthiness: 5\r\nAnimal Happiness: 9");
 		farmChoiceDescriptionTwo.setBackground(Color.LIGHT_GRAY);
-		farmChoiceDescriptionTwo.setBounds(223, 292, 142, 116);
+		farmChoiceDescriptionTwo.setBounds(243, 292, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionTwo);
 		
 		/* Description Text of Third Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionThree = new JTextPane();
 		farmChoiceDescriptionThree.setEditable(false);
-		farmChoiceDescriptionThree.setText("Farm C\r\n\r\nMoney Available: $300\r\nCrop Growth Rate: 7\r\nAnimal Healthiness: 8\r\nAnimal Happiness: 9");
+		farmChoiceDescriptionThree.setText("                 Farm C\r\n\r\nMoney Available: $300\r\nCrop Growth Rate: 7.0\r\nAnimal Healthiness: 8\r\nAnimal Happiness: 9");
 		farmChoiceDescriptionThree.setBackground(Color.LIGHT_GRAY);
-		farmChoiceDescriptionThree.setBounds(388, 292, 142, 116);
+		farmChoiceDescriptionThree.setBounds(427, 292, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionThree);
 		
 		/* Description Text of Fourth Farm, the user is able to see what attributes each farm has before making a selection */
 		farmChoiceDescriptionFour = new JTextPane();
 		farmChoiceDescriptionFour.setEditable(false);
-		farmChoiceDescriptionFour.setText("Farm D\r\n\r\nMoney Available: $650\r\nCrop Growth Rate: 6\r\nAnimal Healthiness: 7\r\nAnimal Happiness: 6");
+		farmChoiceDescriptionFour.setText("                 Farm D\r\n\r\nMoney Available: $650\r\nCrop Growth Rate: 6.0\r\nAnimal Healthiness: 7\r\nAnimal Happiness: 6");
 		farmChoiceDescriptionFour.setBackground(Color.LIGHT_GRAY);
-		farmChoiceDescriptionFour.setBounds(550, 292, 142, 116);
+		farmChoiceDescriptionFour.setBounds(610, 292, 142, 116);
 		setUpScreenFrame.getContentPane().add(farmChoiceDescriptionFour);
 		
 		farmSelection = new JComboBox<>(farmOptionsModel);
@@ -250,6 +251,11 @@ public class SetUpScreen {
 		JLabel famerAgeLabel = new JLabel("Give your farmer an age:");
 		famerAgeLabel.setBounds(63, 152, 161, 14);
 		setUpScreenFrame.getContentPane().add(famerAgeLabel);
+		
+		JLabel setUpScreenImage = new JLabel("");
+		setUpScreenImage.setIcon(new ImageIcon(SetUpScreen.class.getResource("/images/setupscreenimage.jpeg.jpeg")));
+		setUpScreenImage.setBounds(524, 70, 291, 162);
+		setUpScreenFrame.getContentPane().add(setUpScreenImage);
 		
 	}
 }
