@@ -117,7 +117,7 @@ public class SetUpScreen {
 		JLabel gameTitle = new JLabel("Farm Game!");
 		gameTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		gameTitle.setFont(new Font("Arial", Font.BOLD, 28));
-		gameTitle.setBounds(262, 11, 192, 46);
+		gameTitle.setBounds(335, 11, 192, 46);
 		setUpScreenFrame.getContentPane().add(gameTitle);
 		
 		/* Message that asks that user to enter their chosen farmer name */
@@ -253,7 +253,7 @@ public class SetUpScreen {
 		setUpScreenFrame.getContentPane().add(famerAgeLabel);
 		
 		JLabel setUpScreenImage = new JLabel("");
-		setUpScreenImage.setIcon(new ImageIcon(SetUpScreen.class.getResource("/images/setupscreenimage.jpeg.jpeg")));
+		setUpScreenImage.setIcon(new ImageIcon(SetUpScreen.class.getResource("/images/setupscreenimage.jpeg")));
 		setUpScreenImage.setBounds(524, 70, 291, 162);
 		setUpScreenFrame.getContentPane().add(setUpScreenImage);
 		
