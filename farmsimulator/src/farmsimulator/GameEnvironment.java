@@ -961,8 +961,8 @@ public class GameEnvironment {
 	 */
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
-		game.playMusic();
 		game.launchSetUpScreen();
+		game.playMusic();
 	}
 }
 
