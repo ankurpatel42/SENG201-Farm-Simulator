@@ -2,9 +2,6 @@ package farmsimulator;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
-
 /** This class is the main class for the game, it
  *  contains all the game logic such as variables
  * and methods that are used with other classes.
@@ -725,10 +722,10 @@ public class GameEnvironment {
 				createFarm(farmNameChosen, 600, 1, 5, 9);
 				break;
 			case "Farm C":
-				createFarm(farmNameChosen, 300, 3, 8, 9);
+				createFarm(farmNameChosen, 300, 7, 8, 9);
 				break;
 			case "Farm D":
-				createFarm(farmNameChosen, 650, 3, 7, 6);
+				createFarm(farmNameChosen, 650, 6, 7, 6);
 				break;
 		}
 		
@@ -806,6 +803,15 @@ public class GameEnvironment {
 		}
 		
 		return message;
+	}
+	
+	/**
+	 * Begins the music for the game as soon as the game has started.
+	 */
+	public void playMusic() {
+		String filepath = "src/music/Sergey_Cheremisinov_The_Healing.wav";
+		MusicPlayer music = new MusicPlayer();
+		music.playMusic(filepath);
 	}
 	
 	/**
@@ -955,6 +961,7 @@ public class GameEnvironment {
 	 */
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
+		game.playMusic();
 		game.launchSetUpScreen();
 	}
 }
