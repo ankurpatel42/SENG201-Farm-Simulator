@@ -404,6 +404,7 @@ public class GameEnvironment {
 	/**
 	 * Tend to farm, increases amount of crops that can be grown as well as animal's happiness.
 	 * 
+	 * @return 		A message stating whether the farm was tended to or not depending on if animals or crops are present.
 	 */
 	public String tendFarm() {
 		if (getAnimalsOnFarm().size() == 0 && getCropsOwned().size() == 0) {
