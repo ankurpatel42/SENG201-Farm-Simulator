@@ -2,13 +2,13 @@ package farmsimulator;
 
 import java.util.Random;
 
+/** This class contain random events, that may or may not occur when the user moves to the next day.
+ * 
+ * @author Ankur Patel, Benjamin Crozier
+ * @version 15/05/2020
+ */
+
 public class RandomEvent {
-	
-	/** This class contain random events, that may or may not occur when the user moves to the next day.
-	 * 
-	 * @author Ankur Patel, Benjamin Crozier
-	 * @version 15/05/2020
-	 */
 	
 	private Random rand;
 	private int rand_int;
