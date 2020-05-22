@@ -140,7 +140,7 @@ public class PurchaseAnimal {
 				game.launchStoreWindow();
 			}
 		});
-		btnBack.setBounds(289, 233, 117, 29);
+		btnBack.setBounds(289, 233, 155, 29);
 		frmPurchaseAnimal.getContentPane().add(btnBack);
 		
 		JTextPane txtAnimals = new JTextPane();
