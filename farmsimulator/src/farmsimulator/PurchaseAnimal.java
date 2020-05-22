@@ -87,7 +87,7 @@ public class PurchaseAnimal {
 		frmPurchaseAnimal = new JFrame();
 		frmPurchaseAnimal.setTitle("Purchase Animal");
 		frmPurchaseAnimal.setVisible(true);
-		frmPurchaseAnimal.setBounds(100, 100, 508, 351);
+		frmPurchaseAnimal.setBounds(100, 100, 401, 351);
 		frmPurchaseAnimal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseAnimal.getContentPane().setLayout(null);
 		
@@ -110,7 +110,7 @@ public class PurchaseAnimal {
 		frmPurchaseAnimal.getContentPane().add(lblSelect);
 		
 		JLabel lblCropItems = new JLabel("Animals");
-		lblCropItems.setBounds(321, 65, 85, 16);
+		lblCropItems.setBounds(259, 64, 85, 16);
 		frmPurchaseAnimal.getContentPane().add(lblCropItems);
 		
 		JComboBox<String> comboBoxAnimals = new JComboBox<>(animalsCombo);
@@ -140,13 +140,13 @@ public class PurchaseAnimal {
 				game.launchStoreWindow();
 			}
 		});
-		btnBack.setBounds(289, 233, 155, 29);
+		btnBack.setBounds(213, 229, 122, 29);
 		frmPurchaseAnimal.getContentPane().add(btnBack);
 		
 		JTextPane txtAnimals = new JTextPane();
 		txtAnimals.setEditable(false);
-		txtAnimals.setBounds(235, 81, 209, 103);
-		txtAnimals.setText("Name\tPrice\tSell Price\r\n\r\nCow: \t$100 \t$100\r\nPig: \t$75 \t$100\r\nSheep: \t$50 \t$100");
+		txtAnimals.setBounds(235, 81, 97, 103);
+		txtAnimals.setText("Name    Price\r\n\r\nCow:     $100 \t\r\nPig:       $75 \t\r\nSheep:  $50 \t");
 		txtAnimals.setBackground(Color.LIGHT_GRAY);
 		frmPurchaseAnimal.getContentPane().add(txtAnimals);
 	}
