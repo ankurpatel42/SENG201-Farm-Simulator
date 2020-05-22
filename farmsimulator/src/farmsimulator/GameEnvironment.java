@@ -1,6 +1,5 @@
 package farmsimulator;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 
 /** This class is the main class for the game, it
