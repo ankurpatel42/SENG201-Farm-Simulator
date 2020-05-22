@@ -144,7 +144,7 @@ public class PurchaseCrop {
 				game.launchStoreWindow();
 			}
 		});
-		btnBack.setBounds(310, 284, 117, 29);
+		btnBack.setBounds(310, 284, 147, 29);
 		frmPurchaseCrop.getContentPane().add(btnBack);
 		
 		JTextPane txtCrops = new JTextPane();
