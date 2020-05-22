@@ -144,7 +144,7 @@ public class PurchaseItem {
 		frmPurchaseItem.getContentPane().add(btnPurchase);
 		
 		JButton btnBack = new JButton("Back to Store");
-		btnBack.setBounds(362, 339, 117, 29);
+		btnBack.setBounds(339, 339, 140, 29);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closePurchaseItemWindow();
