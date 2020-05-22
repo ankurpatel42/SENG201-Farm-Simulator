@@ -1,5 +1,6 @@
 package farmsimulator;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 /** This class is the main class for the game, it
@@ -809,9 +810,8 @@ public class GameEnvironment {
 	 * Begins the music for the game as soon as the game has started.
 	 */
 	public void playMusic() {
-		String filepath = "src/music/Sergey_Cheremisinov_The_Healing.wav";
 		MusicPlayer music = new MusicPlayer();
-		music.playMusic(filepath);
+		music.playMusic();
 	}
 	
 	/**
