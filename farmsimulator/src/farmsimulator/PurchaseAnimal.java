@@ -146,7 +146,7 @@ public class PurchaseAnimal {
 		JTextPane txtAnimals = new JTextPane();
 		txtAnimals.setEditable(false);
 		txtAnimals.setBounds(263, 82, 140, 106);
-		txtAnimals.setText("Type           Price\r\n\r\nCow:      \t$100\nPig:      \t$75\nSheep: \t$50");
+		txtAnimals.setText("Type                Price\r\n\r\nCow:      \t$100\nPig:      \t$75\nSheep: \t$50");
 		txtAnimals.setBackground(Color.LIGHT_GRAY);
 		frmPurchaseAnimal.getContentPane().add(txtAnimals);
 	}
