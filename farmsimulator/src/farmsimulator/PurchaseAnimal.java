@@ -87,38 +87,38 @@ public class PurchaseAnimal {
 		frmPurchaseAnimal = new JFrame();
 		frmPurchaseAnimal.setTitle("Purchase Animal");
 		frmPurchaseAnimal.setVisible(true);
-		frmPurchaseAnimal.setBounds(100, 100, 401, 351);
+		frmPurchaseAnimal.setBounds(100, 100, 443, 323);
 		frmPurchaseAnimal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseAnimal.getContentPane().setLayout(null);
 		
 		JLabel lblTitle = new JLabel("Make Your Purchase");
-		lblTitle.setBounds(158, 6, 140, 16);
+		lblTitle.setBounds(147, 9, 181, 16);
 		frmPurchaseAnimal.getContentPane().add(lblTitle);
 		
 		JLabel lblMoney = new JLabel("Money Available:");
-		lblMoney.setBounds(6, 37, 122, 16);
+		lblMoney.setBounds(35, 37, 122, 16);
 		frmPurchaseAnimal.getContentPane().add(lblMoney);
 
 		JLabel lblMoneyAvailable = new JLabel("");
-		lblMoneyAvailable.setBounds(130, 37, 209, 16);
+		lblMoneyAvailable.setBounds(159, 37, 209, 16);
 		String formatMoneyAvailable = String.format("%.2f", game.getFarmMoneyAvailable());
 		lblMoneyAvailable.setText("$" + formatMoneyAvailable);
 		frmPurchaseAnimal.getContentPane().add(lblMoneyAvailable);
 		
 		JLabel lblSelect = new JLabel("Select Animal");
-		lblSelect.setBounds(47, 65, 115, 16);
+		lblSelect.setBounds(62, 65, 115, 16);
 		frmPurchaseAnimal.getContentPane().add(lblSelect);
 		
 		JLabel lblCropItems = new JLabel("Animals");
-		lblCropItems.setBounds(259, 64, 85, 16);
+		lblCropItems.setBounds(300, 65, 85, 16);
 		frmPurchaseAnimal.getContentPane().add(lblCropItems);
 		
 		JComboBox<String> comboBoxAnimals = new JComboBox<>(animalsCombo);
-		comboBoxAnimals.setBounds(24, 92, 147, 27);
+		comboBoxAnimals.setBounds(62, 93, 147, 27);
 		frmPurchaseAnimal.getContentPane().add(comboBoxAnimals);
 		
 		JButton btnPurchase = new JButton("Purchase");
-		btnPurchase.setBounds(24, 140, 147, 29);
+		btnPurchase.setBounds(62, 141, 147, 29);
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				animalChosen = (String)comboBoxAnimals.getSelectedItem();
@@ -140,13 +140,13 @@ public class PurchaseAnimal {
 				game.launchStoreWindow();
 			}
 		});
-		btnBack.setBounds(213, 229, 122, 29);
+		btnBack.setBounds(263, 223, 140, 29);
 		frmPurchaseAnimal.getContentPane().add(btnBack);
 		
 		JTextPane txtAnimals = new JTextPane();
 		txtAnimals.setEditable(false);
-		txtAnimals.setBounds(235, 81, 97, 103);
-		txtAnimals.setText("Name    Price\r\n\r\nCow:     $100 \t\r\nPig:       $75 \t\r\nSheep:  $50 \t");
+		txtAnimals.setBounds(263, 82, 140, 106);
+		txtAnimals.setText("Type           Price\r\n\r\nCow:      \t$100\nPig:      \t$75\nSheep: \t$50");
 		txtAnimals.setBackground(Color.LIGHT_GRAY);
 		frmPurchaseAnimal.getContentPane().add(txtAnimals);
 	}
