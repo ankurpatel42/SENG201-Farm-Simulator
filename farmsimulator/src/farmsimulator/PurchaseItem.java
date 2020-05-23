@@ -88,7 +88,7 @@ public class PurchaseItem {
 		frmPurchaseItem = new JFrame();
 		frmPurchaseItem.setVisible(true);
 		frmPurchaseItem.setTitle("Purchase Item");
-		frmPurchaseItem.setBounds(100, 100, 530, 433);
+		frmPurchaseItem.setBounds(100, 100, 540, 433);
 		frmPurchaseItem.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPurchaseItem.getContentPane().setLayout(null);
 		
@@ -144,7 +144,7 @@ public class PurchaseItem {
 		frmPurchaseItem.getContentPane().add(btnPurchase);
 		
 		JButton btnBack = new JButton("Back to Store");
-		btnBack.setBounds(339, 339, 140, 29);
+		btnBack.setBounds(356, 340, 140, 29);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closePurchaseItemWindow();
@@ -155,17 +155,17 @@ public class PurchaseItem {
 		
 		JTextPane txtCrops = new JTextPane();
 		txtCrops.setEditable(false);
-		txtCrops.setBounds(206, 92, 273, 95);
-		txtCrops.setText("Name	Price	Crop Growth Boost\r\n\r\nF1: 	$50 	1 day\r\nF2: 	$90 	2 days\r\nF3: 	$150 	4 days");
+		txtCrops.setBounds(206, 92, 290, 95);
+		txtCrops.setText("Type\tPrice\tCrop Growth Boost\r\n\r\nF1: \t$50 \t1 day\r\nF2: \t$90 \t2 days\r\nF3: \t$150 \t4 days");
 		txtCrops.setBackground(Color.LIGHT_GRAY);
 		frmPurchaseItem.getContentPane().add(txtCrops);
 		
 		
 		JTextPane txtAnimals = new JTextPane();
 		txtAnimals.setEditable(false);
-		txtAnimals.setText("Name	Price	Animal Health Boost\r\n\r\nA1: 	$50 	10\r\nA2: 	$90 	20\r\nA3: 	$150 	40");
+		txtAnimals.setText("Type\tPrice\tAnimal Health Boost\r\n\r\nA1: \t$50 \t10\r\nA2: \t$90 \t20\r\nA3: \t$150 \t40");
 		txtAnimals.setBackground(Color.LIGHT_GRAY);
-		txtAnimals.setBounds(206, 219, 273, 95);
+		txtAnimals.setBounds(206, 219, 290, 95);
 		frmPurchaseItem.getContentPane().add(txtAnimals);
 		
 
