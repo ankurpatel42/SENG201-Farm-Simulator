@@ -177,7 +177,7 @@ public class SetUpScreen {
 		chooseAFarmLabel = new JLabel("Choose a Farm!");
 		chooseAFarmLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		chooseAFarmLabel.setFont(new Font("Arial", Font.BOLD, 18));
-		chooseAFarmLabel.setBounds(303, 246, 173, 24);
+		chooseAFarmLabel.setBounds(353, 256, 173, 24);
 		setUpScreenFrame.getContentPane().add(chooseAFarmLabel);
 		
 		/* Description Text of First Farm, the user is able to see what attributes each farm has before making a selection */
